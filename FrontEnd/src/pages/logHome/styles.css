@@ -1,0 +1,179 @@
+.logged-user {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #1e293b;
+}
+
+.user-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-info strong {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.user-info span {
+  margin-top: 2px;
+  color: #64748b;
+  font-size: 10px;
+}
+
+.logout-button {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.logout-button:hover {
+  color: #2563eb;
+}
+
+
+/* AÇÕES RÁPIDAS */
+
+.quick-actions {
+  padding: 90px 7%;
+  background: #f8fafc;
+}
+
+.quick-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.quick-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 22px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #1e293b;
+  transition: 0.2s;
+}
+
+.quick-card:hover {
+  border-color: #2563eb;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.quick-icon {
+  min-width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  background: #dbeafe;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.quick-card div:nth-child(2) {
+  flex: 1;
+}
+
+.quick-card h3 {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.quick-card p {
+  margin-top: 4px;
+  color: #64748b;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.quick-arrow {
+  color: #2563eb;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 1000px) {
+
+  .logged-user {
+    gap: 10px;
+  }
+
+  .user-info {
+    display: none;
+  }
+
+  .quick-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+
+@media (max-width: 750px) {
+
+  .logged-user {
+    margin-left: auto;
+  }
+
+  .logout-button {
+    display: none;
+  }
+
+  .quick-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+
+}
+
+
+@media (max-width: 500px) {
+
+  .user-avatar {
+    width: 34px;
+    height: 34px;
+  }
+
+  .quick-actions {
+    padding: 65px 6%;
+  }
+
+  .quick-card {
+    padding: 18px;
+  }
+
+}
