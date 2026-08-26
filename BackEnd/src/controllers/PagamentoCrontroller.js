@@ -44,7 +44,7 @@ class PagamentoController {
 
     static async getAll(req, res) {
         try {
-            const pagamentos = await Pagamento.find()
+            const pagamentos = await Pagamento.find({ ativo: true })
                 .populate('clienteId')
                 .populate('agendamentoId');
 
@@ -64,7 +64,10 @@ class PagamentoController {
         try {
             const { id } = req.params;
 
-            const pagamento = await Pagamento.findById(id)
+            const pagamento = await Pagamento.findOne({
+                _id: id,
+                ativo: true
+            })
                 .populate('clienteId')
                 .populate('agendamentoId');
 
@@ -108,8 +111,11 @@ class PagamentoController {
                 valor
             };
 
-            const updatedPagamento = await Pagamento.findByIdAndUpdate(
-                id,
+            const updatedPagamento = await Pagamento.findOneAndUpdate(
+                {
+                    _id: id,
+                    ativo: true
+                },
                 updatedData,
                 { new: true }
             );
@@ -137,7 +143,18 @@ class PagamentoController {
         try {
             const { id } = req.params;
 
-            const deletedPagamento = await Pagamento.findByIdAndDelete(id);
+            const deletedPagamento = await Pagamento.findOneAndUpdate(
+                {
+                    _id: id,
+                    ativo: true
+                },
+                {
+                    ativo: false
+                },
+                {
+                    new: true
+                }
+            );
 
             if (!deletedPagamento) {
                 return res.status(404).json({
@@ -146,12 +163,13 @@ class PagamentoController {
             }
 
             return res.status(200).json({
-                message: 'Pagamento deletado com sucesso'
+                message: 'Pagamento desativado com sucesso',
+                data: deletedPagamento
             });
 
         } catch (error) {
             return res.status(500).json({
-                message: 'Erro ao deletar pagamento',
+                message: 'Erro ao desativar pagamento',
                 error: error.message
             });
         }
@@ -159,4 +177,3 @@ class PagamentoController {
 }
 
 export default PagamentoController;
-

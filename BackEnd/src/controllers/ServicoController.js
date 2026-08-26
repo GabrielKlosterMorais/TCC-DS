@@ -35,7 +35,9 @@ class ServicoController {
 
     static async getAll(req, res) {
         try {
-            const servicos = await Servico.find();
+            const servicos = await Servico.find({
+                ativo: true
+            });
 
             return res.status(200).json({
                 data: servicos
@@ -53,7 +55,10 @@ class ServicoController {
         try {
             const { id } = req.params;
 
-            const servico = await Servico.findById(id);
+            const servico = await Servico.findOne({
+                _id: id,
+                ativo: true
+            });
 
             if (!servico) {
                 return res.status(404).json({
@@ -85,8 +90,11 @@ class ServicoController {
                 duracao
             };
 
-            const updatedServico = await Servico.findByIdAndUpdate(
-                id,
+            const updatedServico = await Servico.findOneAndUpdate(
+                {
+                    _id: id,
+                    ativo: true
+                },
                 updatedData,
                 { new: true }
             );
@@ -114,7 +122,18 @@ class ServicoController {
         try {
             const { id } = req.params;
 
-            const deletedServico = await Servico.findByIdAndDelete(id);
+            const deletedServico = await Servico.findOneAndUpdate(
+                {
+                    _id: id,
+                    ativo: true
+                },
+                {
+                    ativo: false
+                },
+                {
+                    new: true
+                }
+            );
 
             if (!deletedServico) {
                 return res.status(404).json({
@@ -123,12 +142,12 @@ class ServicoController {
             }
 
             return res.status(200).json({
-                message: 'Serviço deletado com sucesso'
+                message: 'Serviço desativado com sucesso'
             });
 
         } catch (error) {
             return res.status(500).json({
-                message: 'Erro ao deletar serviço',
+                message: 'Erro ao desativar serviço',
                 error: error.message
             });
         }
@@ -136,4 +155,3 @@ class ServicoController {
 }
 
 export default ServicoController;
-

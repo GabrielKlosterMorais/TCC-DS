@@ -3,11 +3,33 @@ import Agendamento from '../models/Agendamento.js';
 class AgendamentoController {
     static async create(req, res) {
         try {
-            const { petId, servicoId, data, hora, status, observacoes } = req.body;
+            const {
+                petId,
+                servicoId,
+                data,
+                hora,
+                status,
+                observacoes
+            } = req.body;
 
             if (!petId || !servicoId || !data || !hora || !status) {
                 return res.status(400).json({
                     message: "Dados inválidos. Certifique-se de enviar petId, servicoId, data, hora e status."
+                });
+            }
+
+            // Verifica se já existe um agendamento pendente
+            // para o mesmo dia e horário
+            const agendamentoExistente = await Agendamento.findOne({
+                data: new Date(data),
+                hora: hora,
+                status: 'pendente',
+                ativo: true
+            });
+
+            if (agendamentoExistente) {
+                return res.status(409).json({
+                    message: 'Já existe um agendamento pendente para este dia e horário.'
                 });
             }
 
@@ -82,7 +104,29 @@ class AgendamentoController {
     static async update(req, res) {
         try {
             const { id } = req.params;
-            const { petId, servicoId, data, hora, status, observacoes } = req.body;
+
+            const {
+                petId,
+                servicoId,
+                data,
+                hora,
+                status,
+                observacoes
+            } = req.body;
+
+            const agendamentoExistente = await Agendamento.findOne({
+                _id: { $ne: id },
+                data: new Date(data),
+                hora: hora,
+                status: 'pendente',
+                ativo: true
+            });
+
+            if (agendamentoExistente) {
+                return res.status(409).json({
+                    message: 'Já existe um agendamento pendente para este dia e horário.'
+                });
+            }
 
             const updatedData = {
                 petId,
@@ -144,4 +188,3 @@ class AgendamentoController {
 }
 
 export default AgendamentoController;
-

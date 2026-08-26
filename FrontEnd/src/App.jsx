@@ -7,6 +7,7 @@ import SobreNos from './pages/sobre'
 import LogHome from './pages/logHome'
 import PetCare from './pages/petcare'
 import Pets from './pages/pets'
+import Agendamento from './pages/agendamento'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css'
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/loghome' element={<LogHome />} />
         <Route path='/petcare' element={<PetCare />} />
         <Route path='/pets' element={<Pets />} />
+        <Route path='/agendamentos' element={<Agendamento />} />
       </Routes>
     </Router>
   )

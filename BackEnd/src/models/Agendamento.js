@@ -6,7 +6,8 @@ const Agendamento = mongoose.model('Agendamento', {
     data: {   type: Date, required: true      },
     hora: {   type: String, required: true      },
     status: {   type: String, required: true, enum: ['pendente', 'confirmado', 'cancelado']      },
-    observacoes: {   type: String, required: false      }
+    observacoes: {   type: String, required: false      },
+    ativo: { type: Boolean, default: true }
 });
 
 export default Agendamento;

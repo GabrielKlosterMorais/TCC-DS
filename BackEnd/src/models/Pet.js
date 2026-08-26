@@ -8,7 +8,8 @@ const petSchema = new mongoose.Schema({
     sexo: {   type: String, required: true      },
     peso: {   type: Number, required: true      },
     observacoes: {   type: String, required: false      },
-    clienteId: {   type: mongoose.Schema.Types.ObjectId, ref: 'Cliente', required: true    }
+    clienteId: {   type: mongoose.Schema.Types.ObjectId, ref: 'Cliente', required: true    },
+    ativo: { type: Boolean, default: true }
 });
 
 const Pet = mongoose.model('Pet', petSchema);

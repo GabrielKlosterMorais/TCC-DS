@@ -1,16 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './styles.css';
 import LogNavbar from '../../components/logNavBar';
 
 interface Pet {
-  id: number;
+  _id: string;
   nome: string;
   especie: string;
   raca: string;
-  idade: string;
+  idade: number;
   sexo: string;
-  peso: string;
-  observacoes: string;
+  peso: number;
+  observacoes?: string;
+  clienteId: string;
 }
 
 function Pets() {
@@ -25,35 +26,171 @@ function Pets() {
   const [peso, setPeso] = useState('');
   const [observacoes, setObservacoes] = useState('');
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+
+  const getClienteId = () => {
+    const user = localStorage.getItem('user');
+
+    if (!user) {
+      return null;
+    }
+
+    try {
+      const usuario = JSON.parse(user);
+      return usuario.id || null;
+    } catch {
+      return null;
+    }
+  };
+
+  const carregarPets = async () => {
+    const clienteId = getClienteId();
+
+    if (!clienteId) {
+      setError('Usuário não encontrado. Faça login novamente.');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:3001/Pet');
+
+      if (!response.ok) {
+        throw new Error('Erro ao buscar pets');
+      }
+
+      const result = await response.json();
+
+      const petsDoCliente = result.data.filter(
+        (pet: Pet) => pet.clienteId === clienteId
+      );
+
+      setPets(petsDoCliente);
+    } catch (error) {
+      console.error(error);
+      setError('Não foi possível carregar seus pets.');
+    }
+  };
+
+  useEffect(() => {
+    carregarPets();
+  }, []);
+
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
     e.preventDefault();
 
-    const novoPet: Pet = {
-      id: Date.now(),
+    setLoading(true);
+    setError('');
+    setSuccess('');
+
+    const clienteId = getClienteId();
+
+    if (!clienteId) {
+      setError('Usuário não encontrado. Faça login novamente.');
+      setLoading(false);
+      return;
+    }
+
+    const petData = {
       nome,
       especie,
       raca,
-      idade,
+      idade: Number(idade),
       sexo,
-      peso,
+      peso: Number(peso),
       observacoes,
+      clienteId,
     };
 
-    setPets([...pets, novoPet]);
+    try {
+      const response = await fetch(
+        'http://localhost:3001/Pet',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(petData),
+        }
+      );
 
-    setNome('');
-    setEspecie('');
-    setRaca('');
-    setIdade('');
-    setSexo('');
-    setPeso('');
-    setObservacoes('');
+      const result = await response.json();
 
-    setShowForm(false);
+      if (!response.ok) {
+        throw new Error(
+          result.message || 'Erro ao cadastrar pet'
+        );
+      }
+
+      setSuccess('Pet cadastrado com sucesso!');
+
+      setNome('');
+      setEspecie('');
+      setRaca('');
+      setIdade('');
+      setSexo('');
+      setPeso('');
+      setObservacoes('');
+
+      setShowForm(false);
+
+      await carregarPets();
+    } catch (error) {
+      console.error(error);
+
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError('Erro ao cadastrar pet.');
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const removerPet = (id: number) => {
-    setPets(pets.filter((pet) => pet.id !== id));
+  const removerPet = async (id: string) => {
+    const confirmar = window.confirm(
+      'Tem certeza que deseja excluir este pet?'
+    );
+
+    if (!confirmar) {
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        `http://localhost:3001/Pet/${id}`,
+        {
+          method: 'DELETE',
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          result.message || 'Erro ao excluir pet'
+        );
+      }
+
+      setPets(
+        pets.filter((pet) => pet._id !== id)
+      );
+
+      setSuccess('Pet excluído com sucesso!');
+      setError('');
+    } catch (error) {
+      console.error(error);
+
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError('Erro ao excluir pet.');
+      }
+    }
   };
 
   return (
@@ -82,7 +219,11 @@ function Pets() {
 
           <button
             className="add-pet-button"
-            onClick={() => setShowForm(true)}
+            onClick={() => {
+              setShowForm(true);
+              setError('');
+              setSuccess('');
+            }}
           >
             <span>+</span>
             Adicionar pet
@@ -90,6 +231,17 @@ function Pets() {
 
         </section>
 
+        {error && (
+          <div className="form-error">
+            {error}
+          </div>
+        )}
+
+        {success && (
+          <div className="form-success">
+            {success}
+          </div>
+        )}
 
         {pets.length === 0 && !showForm && (
 
@@ -119,7 +271,6 @@ function Pets() {
 
         )}
 
-
         {pets.length > 0 && (
 
           <section className="pets-list">
@@ -128,7 +279,7 @@ function Pets() {
 
               <article
                 className="pet-card"
-                key={pet.id}
+                key={pet._id}
               >
 
                 <div className="pet-image">
@@ -140,6 +291,7 @@ function Pets() {
                   <div className="pet-card-header">
 
                     <div>
+
                       <span className="pet-species">
                         {pet.especie}
                       </span>
@@ -147,11 +299,14 @@ function Pets() {
                       <h2>
                         {pet.nome}
                       </h2>
+
                     </div>
 
                     <button
                       className="delete-button"
-                      onClick={() => removerPet(pet.id)}
+                      onClick={() =>
+                        removerPet(pet._id)
+                      }
                     >
                       Excluir
                     </button>
@@ -162,22 +317,30 @@ function Pets() {
 
                     <div>
                       <span>Raça</span>
-                      <strong>{pet.raca || 'Não informado'}</strong>
+                      <strong>
+                        {pet.raca || 'Não informado'}
+                      </strong>
                     </div>
 
                     <div>
                       <span>Idade</span>
-                      <strong>{pet.idade} anos</strong>
+                      <strong>
+                        {pet.idade} anos
+                      </strong>
                     </div>
 
                     <div>
                       <span>Sexo</span>
-                      <strong>{pet.sexo}</strong>
+                      <strong>
+                        {pet.sexo}
+                      </strong>
                     </div>
 
                     <div>
                       <span>Peso</span>
-                      <strong>{pet.peso} kg</strong>
+                      <strong>
+                        {pet.peso} kg
+                      </strong>
                     </div>
 
                   </div>
@@ -185,8 +348,15 @@ function Pets() {
                   {pet.observacoes && (
 
                     <div className="pet-observations">
-                      <span>Observações</span>
-                      <p>{pet.observacoes}</p>
+
+                      <span>
+                        Observações
+                      </span>
+
+                      <p>
+                        {pet.observacoes}
+                      </p>
+
                     </div>
 
                   )}
@@ -201,7 +371,6 @@ function Pets() {
 
         )}
 
-
         {showForm && (
 
           <div className="form-overlay">
@@ -211,6 +380,7 @@ function Pets() {
               <div className="form-header">
 
                 <div>
+
                   <span className="section-label">
                     NOVO PET
                   </span>
@@ -222,17 +392,19 @@ function Pets() {
                   <p>
                     Preencha as informações abaixo.
                   </p>
+
                 </div>
 
                 <button
                   className="close-button"
-                  onClick={() => setShowForm(false)}
+                  onClick={() =>
+                    setShowForm(false)
+                  }
                 >
                   ×
                 </button>
 
               </div>
-
 
               <form onSubmit={handleSubmit}>
 
@@ -248,13 +420,14 @@ function Pets() {
                       type="text"
                       id="nome"
                       value={nome}
-                      onChange={(e) => setNome(e.target.value)}
+                      onChange={(e) =>
+                        setNome(e.target.value)
+                      }
                       placeholder="Nome do pet"
                       required
                     />
 
                   </div>
-
 
                   <div className="input-group">
 
@@ -265,7 +438,9 @@ function Pets() {
                     <select
                       id="especie"
                       value={especie}
-                      onChange={(e) => setEspecie(e.target.value)}
+                      onChange={(e) =>
+                        setEspecie(e.target.value)
+                      }
                       required
                     >
                       <option value="">
@@ -294,7 +469,6 @@ function Pets() {
 
                 </div>
 
-
                 <div className="form-row">
 
                   <div className="input-group">
@@ -307,13 +481,14 @@ function Pets() {
                       type="text"
                       id="raca"
                       value={raca}
-                      onChange={(e) => setRaca(e.target.value)}
+                      onChange={(e) =>
+                        setRaca(e.target.value)
+                      }
                       placeholder="Ex: Labrador"
                       required
                     />
 
                   </div>
-
 
                   <div className="input-group">
 
@@ -325,7 +500,9 @@ function Pets() {
                       type="number"
                       id="idade"
                       value={idade}
-                      onChange={(e) => setIdade(e.target.value)}
+                      onChange={(e) =>
+                        setIdade(e.target.value)
+                      }
                       placeholder="Idade em anos"
                       min="0"
                       required
@@ -334,7 +511,6 @@ function Pets() {
                   </div>
 
                 </div>
-
 
                 <div className="form-row">
 
@@ -347,7 +523,9 @@ function Pets() {
                     <select
                       id="sexo"
                       value={sexo}
-                      onChange={(e) => setSexo(e.target.value)}
+                      onChange={(e) =>
+                        setSexo(e.target.value)
+                      }
                       required
                     >
                       <option value="">
@@ -366,7 +544,6 @@ function Pets() {
 
                   </div>
 
-
                   <div className="input-group">
 
                     <label htmlFor="peso">
@@ -377,7 +554,9 @@ function Pets() {
                       type="number"
                       id="peso"
                       value={peso}
-                      onChange={(e) => setPeso(e.target.value)}
+                      onChange={(e) =>
+                        setPeso(e.target.value)
+                      }
                       placeholder="Peso em kg"
                       min="0"
                       step="0.1"
@@ -388,7 +567,6 @@ function Pets() {
 
                 </div>
 
-
                 <div className="input-group">
 
                   <label htmlFor="observacoes">
@@ -398,20 +576,23 @@ function Pets() {
                   <textarea
                     id="observacoes"
                     value={observacoes}
-                    onChange={(e) => setObservacoes(e.target.value)}
+                    onChange={(e) =>
+                      setObservacoes(e.target.value)
+                    }
                     placeholder="Alguma informação importante sobre seu pet?"
                     rows={4}
                   />
 
                 </div>
 
-
                 <div className="form-actions">
 
                   <button
                     type="button"
                     className="cancel-button"
-                    onClick={() => setShowForm(false)}
+                    onClick={() =>
+                      setShowForm(false)
+                    }
                   >
                     Cancelar
                   </button>
@@ -419,8 +600,11 @@ function Pets() {
                   <button
                     type="submit"
                     className="save-button"
+                    disabled={loading}
                   >
-                    Cadastrar pet
+                    {loading
+                      ? 'Cadastrando...'
+                      : 'Cadastrar pet'}
                   </button>
 
                 </div>

@@ -3,7 +3,8 @@ import Pet from '../models/Pet.js';
 class PetController {
     static async create(req, res) {
         try {
-            const {nome,
+            const {
+                nome,
                 especie,
                 raca,
                 idade,
@@ -47,7 +48,7 @@ class PetController {
 
     static async getAll(req, res) {
         try {
-            const pets = await Pet.find();
+            const pets = await Pet.find({ ativo: true });
 
             return res.status(200).json({
                 data: pets
@@ -65,7 +66,10 @@ class PetController {
         try {
             const { id } = req.params;
 
-            const pet = await Pet.findById(id);
+            const pet = await Pet.findOne({
+                _id: id,
+                ativo: true
+            });
 
             if (!pet) {
                 return res.status(404).json({
@@ -111,8 +115,11 @@ class PetController {
                 clienteId
             };
 
-            const updatedPet = await Pet.findByIdAndUpdate(
-                id,
+            const updatedPet = await Pet.findOneAndUpdate(
+                {
+                    _id: id,
+                    ativo: true
+                },
                 updatedData,
                 { new: true }
             );
@@ -140,7 +147,18 @@ class PetController {
         try {
             const { id } = req.params;
 
-            const deletedPet = await Pet.findByIdAndDelete(id);
+            const deletedPet = await Pet.findOneAndUpdate(
+                {
+                    _id: id,
+                    ativo: true
+                },
+                {
+                    ativo: false
+                },
+                {
+                    new: true
+                }
+            );
 
             if (!deletedPet) {
                 return res.status(404).json({
@@ -149,12 +167,13 @@ class PetController {
             }
 
             return res.status(200).json({
-                message: 'Pet deletado com sucesso'
+                message: 'Pet desativado com sucesso',
+                data: deletedPet
             });
 
         } catch (error) {
             return res.status(500).json({
-                message: 'Erro ao deletar pet',
+                message: 'Erro ao desativar pet',
                 error: error.message
             });
         }
@@ -162,4 +181,3 @@ class PetController {
 }
 
 export default PetController;
-

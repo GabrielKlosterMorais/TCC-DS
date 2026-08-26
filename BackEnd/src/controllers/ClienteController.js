@@ -3,11 +3,17 @@ import Cliente from '../models/Cliente.js';
 class ClienteController {
     static async create(req, res) {
         try {
-            const { nomeCliente,  email, telefone, endereco, senha } = req.body;
+            const {
+                nomeCliente,
+                email,
+                telefone,
+                endereco,
+                senha
+            } = req.body;
 
             if (!nomeCliente || !email || !telefone || !endereco || !senha) {
                 return res.status(400).json({
-                    message: "Dados inválidos. Certifique-se de enviar nomeCliente,  email, telefone, endereço e senha."
+                    message: "Dados inválidos. Certifique-se de enviar nomeCliente, email, telefone, endereço e senha."
                 });
             }
 
@@ -36,7 +42,9 @@ class ClienteController {
 
     static async getAll(req, res) {
         try {
-            const clientes = await Cliente.find();
+            const clientes = await Cliente.find({
+                ativo: true
+            });
 
             return res.status(200).json({
                 data: clientes
@@ -54,7 +62,10 @@ class ClienteController {
         try {
             const { id } = req.params;
 
-            const cliente = await Cliente.findById(id);
+            const cliente = await Cliente.findOne({
+                _id: id,
+                ativo: true
+            });
 
             if (!cliente) {
                 return res.status(404).json({
@@ -77,20 +88,30 @@ class ClienteController {
     static async update(req, res) {
         try {
             const { id } = req.params;
-            const { nomeCliente,  email, telefone, endereco } = req.body;
+
+            const {
+                nomeCliente,
+                email,
+                telefone,
+                endereco
+            } = req.body;
 
             const updatedData = {
                 nomeCliente,
-                
                 email,
                 telefone,
                 endereco
             };
 
-            const updatedCliente = await Cliente.findByIdAndUpdate(
-                id,
+            const updatedCliente = await Cliente.findOneAndUpdate(
+                {
+                    _id: id,
+                    ativo: true
+                },
                 updatedData,
-                { new: true }
+                {
+                    new: true
+                }
             );
 
             if (!updatedCliente) {
@@ -116,7 +137,18 @@ class ClienteController {
         try {
             const { id } = req.params;
 
-            const deletedCliente = await Cliente.findByIdAndDelete(id);
+            const deletedCliente = await Cliente.findOneAndUpdate(
+                {
+                    _id: id,
+                    ativo: true
+                },
+                {
+                    ativo: false
+                },
+                {
+                    new: true
+                }
+            );
 
             if (!deletedCliente) {
                 return res.status(404).json({
@@ -125,12 +157,13 @@ class ClienteController {
             }
 
             return res.status(200).json({
-                message: 'Cliente deletado com sucesso'
+                message: 'Cliente desativado com sucesso',
+                data: deletedCliente
             });
 
         } catch (error) {
             return res.status(500).json({
-                message: 'Erro ao deletar cliente',
+                message: 'Erro ao desativar cliente',
                 error: error.message
             });
         }
@@ -140,7 +173,10 @@ class ClienteController {
         const { email, senha } = req.body;
 
         try {
-            const cliente = await Cliente.findOne({ email });
+            const cliente = await Cliente.findOne({
+                email,
+                ativo: true
+            });
 
             if (!cliente) {
                 return res.status(400).json({
@@ -172,4 +208,3 @@ class ClienteController {
 }
 
 export default ClienteController;
-

@@ -6,7 +6,8 @@ const Pagamento = mongoose.model('Pagamento', {
     formaPagamento: {   type: String, required: true, enum: ['dinheiro', 'cartao', 'pix']      },
     status: {   type: String, required: true, enum: ['pendente', 'pago', 'cancelado']      },
     dataPagamento: {   type: Date, required: false      },
-    valor: {   type: Number, required: true      }
+    valor: {   type: Number, required: true      },
+    ativo: { type: Boolean, default: true }
 });
 
 export default Pagamento;
