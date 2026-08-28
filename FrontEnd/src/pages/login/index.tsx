@@ -41,7 +41,11 @@ function Login() {
 
       localStorage.setItem('user', JSON.stringify(data))
 
-      window.location.href = '/loghome'
+      if (data.tipo === 'admin') {
+        window.location.href = '/admin'
+      } else {
+        window.location.href = '/loghome'
+      }
 
     } catch {
       setError('Erro de conexão com o servidor')

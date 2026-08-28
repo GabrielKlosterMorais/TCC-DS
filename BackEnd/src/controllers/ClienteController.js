@@ -195,7 +195,8 @@ class ClienteController {
                 nome: cliente.nomeCliente,
                 email: cliente.email,
                 telefone: cliente.telefone,
-                endereco: cliente.endereco
+                endereco: cliente.endereco,
+                tipo: cliente.tipo
             });
 
         } catch (error) {

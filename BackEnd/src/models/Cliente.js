@@ -6,7 +6,8 @@ const Cliente = mongoose.model('Cliente', {
     email: {   type: String, required: true      },
     endereco: {   type: String, required: true      },
     senha: { type: String, required: true },
-    ativo: { type: Boolean, default: true }
+    ativo: { type: Boolean, default: true },
+    tipo: {type: String, enum: ['cliente', 'admin'], default: 'cliente' }
 });
 
 export default Cliente;
