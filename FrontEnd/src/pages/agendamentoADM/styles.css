@@ -1,0 +1,149 @@
+.agendamentos-page {
+  min-height: 100vh;
+  background: #f7f9fc;
+  color: #111827;
+}
+
+.agendamentos-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 30px;
+}
+
+.page-header {
+  margin-bottom: 45px;
+}
+
+.page-header span {
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.page-header h1 {
+  margin: 10px 0;
+  font-size: 42px;
+}
+
+.page-header p {
+  color: #64748b;
+}
+
+section {
+  margin-bottom: 45px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.section-title h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.section-title span {
+  background: #2563eb;
+  color: white;
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.agendamento-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr 1fr 0.7fr 1fr auto;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.agendamento-card div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.agendamento-card span {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.agendamento-card strong {
+  font-size: 14px;
+}
+
+.status .pendente {
+  color: #d97706;
+}
+
+.status .confirmado {
+  color: #16a34a;
+}
+
+.actions {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 6px;
+}
+
+.actions button {
+  border: none;
+  padding: 8px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.confirmar {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.cancelar {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.empty {
+  padding: 20px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  color: #64748b;
+}
+
+@media (max-width: 900px) {
+  .agendamento-card {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 550px) {
+  .agendamentos-container {
+    padding: 40px 15px;
+  }
+
+  .page-header h1 {
+    font-size: 34px;
+  }
+
+  .agendamento-card {
+    grid-template-columns: 1fr;
+  }
+}

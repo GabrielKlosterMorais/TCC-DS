@@ -1,75 +1,67 @@
-import './styles.css';
+import { useEffect, useState } from 'react'
+import './styles.css'
 import Navbar from '../../components/navBar'
 
-const services = [
-  {
-    title: "Banho",
-    category: "HIGIENE",
-    description:
-      "Cuidados completos para manter seu pet limpo, confortável e saudável.",
-    price: "A partir de R$ 50,00",
-    duration: "Duração média: 1h",
-    image:
-      "https://images.unsplash.com/photo-1591769225440-811ad7d6eab2?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    title: "Tosa",
-    category: "ESTÉTICA",
-    description:
-      "Tosa realizada de acordo com as características e necessidades do seu pet.",
-    price: "A partir de R$ 60,00",
-    duration: "Duração média: 1h30",
-    image:
-      "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    title: "Banho e Tosa",
-    category: "HIGIENE E ESTÉTICA",
-    description:
-      "Um cuidado completo combinando banho, higiene e tosa.",
-    price: "A partir de R$ 90,00",
-    duration: "Duração média: 2h",
-    image:
-      "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    title: "Consulta Veterinária",
-    category: "SAÚDE",
-    description:
-      "Atendimento veterinário para acompanhar a saúde e o bem-estar do seu pet.",
-    price: "A partir de R$ 120,00",
-    duration: "Duração média: 40min",
-    image:
-      "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    title: "Higiene",
-    category: "HIGIENE",
-    description:
-      "Cuidados com unhas, ouvidos e outras necessidades de higiene.",
-    price: "A partir de R$ 35,00",
-    duration: "Duração média: 30min",
-    image:
-      "https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    title: "Pet Care",
-    category: "BEM-ESTAR",
-    description:
-      "Cuidados especiais para proporcionar conforto e qualidade de vida ao seu pet.",
-    price: "A partir de R$ 70,00",
-    duration: "Duração média: 1h",
-    image:
-      "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=900&q=85",
-  },
-];
+interface Service {
+  _id: string
+  nome: string
+  descricao: string
+  preco: number
+  duracao: number
+}
 
 function Servico() {
+  const [services, setServices] = useState<Service[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const carregarServicos = async () => {
+      try {
+        const res = await fetch('http://localhost:3001/Servico')
+
+        if (!res.ok) {
+          throw new Error('Erro ao buscar serviços')
+        }
+
+        const data = await res.json()
+
+        setServices(data.data || [])
+      } catch (error) {
+        console.error(error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    carregarServicos()
+  }, [])
+
+  const formatarPreco = (preco: number) => {
+    return preco.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    })
+  }
+
+  const formatarDuracao = (duracao: number) => {
+    if (duracao >= 60) {
+      const horas = Math.floor(duracao / 60)
+      const minutos = duracao % 60
+
+      if (minutos === 0) {
+        return `${horas}h`
+      }
+
+      return `${horas}h ${minutos}min`
+    }
+
+    return `${duracao}min`
+  }
+
   return (
     <div className="services-page">
 
       <Navbar />
-
 
       <main>
 
@@ -95,7 +87,6 @@ function Servico() {
 
         </section>
 
-
         <section className="services-section">
 
           <div className="services-header">
@@ -117,72 +108,75 @@ function Servico() {
 
           </div>
 
+          {loading ? (
+            <p>Carregando serviços...</p>
+          ) : services.length === 0 ? (
+            <p>Nenhum serviço disponível.</p>
+          ) : (
 
-          <div className="services-grid">
+            <div className="services-grid">
 
-            {services.map((service) => (
+              {services.map((service) => (
 
-              <article
-                className="service-card"
-                key={service.title}
-              >
+                <article
+                  className="service-card"
+                  key={service._id}
+                >
 
-                <div className="service-image">
+                  <div className="service-image">
 
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                  />
+                    <img
+                      src="https://images.unsplash.com/photo-1591769225440-811ad7d6eab2?auto=format&fit=crop&w=900&q=85"
+                      alt={service.nome}
+                    />
 
-                  <span className="service-category">
-                    {service.category}
-                  </span>
-
-                </div>
-
-
-                <div className="service-content">
-
-                  <h3>
-                    {service.title}
-                  </h3>
-
-                  <p>
-                    {service.description}
-                  </p>
-
-
-                  <div className="service-info">
-
-                    <span>
-                      {service.duration}
+                    <span className="service-category">
+                      SERVIÇO
                     </span>
-
-                    <strong>
-                      {service.price}
-                    </strong>
 
                   </div>
 
+                  <div className="service-content">
 
-                  <a
-                    href="/agendamento"
-                    className="service-button"
-                  >
-                    Agendar serviço
-                    <span>→</span>
-                  </a>
+                    <h3>
+                      {service.nome}
+                    </h3>
 
-                </div>
+                    <p>
+                      {service.descricao}
+                    </p>
 
-              </article>
+                    <div className="service-info">
 
-            ))}
+                      <span>
+                        Duração média: {formatarDuracao(service.duracao)}
+                      </span>
 
-          </div>
+                      <strong>
+                        {formatarPreco(service.preco)}
+                      </strong>
+
+                    </div>
+
+                    <a
+                      href="/login"
+                      className="service-button"
+                    >
+                      Agendar serviço
+                      <span>→</span>
+                    </a>
+
+                  </div>
+
+                </article>
+
+              ))}
+
+            </div>
+
+          )}
 
         </section>
-
 
         <section className="booking-info">
 
@@ -194,7 +188,6 @@ function Servico() {
             />
 
           </div>
-
 
           <div className="booking-info-content">
 
@@ -216,7 +209,6 @@ function Servico() {
             <div className="booking-steps">
 
               <div className="booking-step">
-
                 <strong>01</strong>
 
                 <div>
@@ -225,12 +217,9 @@ function Servico() {
                     Encontre o cuidado que seu pet precisa.
                   </p>
                 </div>
-
               </div>
 
-
               <div className="booking-step">
-
                 <strong>02</strong>
 
                 <div>
@@ -239,12 +228,9 @@ function Servico() {
                     Selecione um dos pets cadastrados.
                   </p>
                 </div>
-
               </div>
 
-
               <div className="booking-step">
-
                 <strong>03</strong>
 
                 <div>
@@ -253,7 +239,6 @@ function Servico() {
                     Veja os horários disponíveis e confirme.
                   </p>
                 </div>
-
               </div>
 
             </div>
@@ -261,7 +246,6 @@ function Servico() {
           </div>
 
         </section>
-
 
         <section className="services-cta">
 
@@ -294,7 +278,6 @@ function Servico() {
 
       </main>
 
-
       <footer>
 
         <div className="footer-content">
@@ -315,7 +298,6 @@ function Servico() {
 
           </div>
 
-
           <div className="footer-column">
 
             <strong>Navegação</strong>
@@ -334,7 +316,6 @@ function Servico() {
 
           </div>
 
-
           <div className="footer-column">
 
             <strong>Conta</strong>
@@ -349,27 +330,17 @@ function Servico() {
 
           </div>
 
-
           <div className="footer-column">
 
             <strong>PetCare</strong>
 
-            <span>
-              Cuidado
-            </span>
-
-            <span>
-              Saúde
-            </span>
-
-            <span>
-              Bem-estar
-            </span>
+            <span>Cuidado</span>
+            <span>Saúde</span>
+            <span>Bem-estar</span>
 
           </div>
 
         </div>
-
 
         <div className="footer-bottom">
 
@@ -386,7 +357,7 @@ function Servico() {
       </footer>
 
     </div>
-  );
+  )
 }
 
-export default Servico;
+export default Servico
