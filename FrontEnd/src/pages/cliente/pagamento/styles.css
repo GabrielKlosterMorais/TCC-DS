@@ -1,0 +1,130 @@
+.payment-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 9999;
+}
+
+.payment-modal {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 32px;
+  box-sizing: border-box;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.close-payment {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: #f1f5f9;
+  color: #64748b;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.close-payment:hover {
+  background: #e2e8f0;
+}
+
+.modal-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.payment-modal h2 {
+  margin: 0 0 25px;
+  font-size: 26px;
+}
+
+.payment-details {
+  display: grid;
+  gap: 15px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.payment-details div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.payment-details span {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.payment-details strong {
+  color: #111827;
+  font-size: 14px;
+  text-align: right;
+}
+
+.modal-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.modal-total span {
+  color: #64748b;
+}
+
+.modal-total strong {
+  font-size: 24px;
+  color: #2563eb;
+}
+
+.payment-method {
+  margin-bottom: 20px;
+}
+
+.payment-method label {
+  display: block;
+  margin-bottom: 8px;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.payment-method select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dbe3ee;
+  border-radius: 9px;
+  background: #ffffff;
+  font-size: 14px;
+}
+
+.confirm-payment-button {
+  width: 100%;
+  border: none;
+  border-radius: 9px;
+  padding: 14px;
+  background: #2563eb;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.confirm-payment-button:hover {
+  background: #1d4ed8;
+}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './styles.css';
-import LogNavbar from '../../components/logNavBar';
+import LogNavbar from '../../../components/logNavBar';
 
 interface Pet {
   _id: string;

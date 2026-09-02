@@ -58,48 +58,61 @@ class AgendamentoController {
     }
 
     static async getAll(req, res) {
-        try {
-            const agendamentos = await Agendamento.find()
-                .populate('petId')
-                .populate('servicoId');
+    try {
+        const agendamentos = await Agendamento.find({ ativo: true })
+            .populate({
+                path: 'petId',
+                populate: {
+                    path: 'clienteId'
+                }
+            })
+            .populate('servicoId');
 
-            return res.status(200).json({
-                data: agendamentos
-            });
+        return res.status(200).json({
+            data: agendamentos
+        });
 
-        } catch (error) {
-            return res.status(500).json({
-                message: 'Erro ao encontrar agendamentos',
-                error: error.message
-            });
-        }
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Erro ao encontrar agendamentos',
+            error: error.message
+        });
     }
+}
 
     static async getById(req, res) {
-        try {
-            const { id } = req.params;
+    try {
+        const { id } = req.params;
 
-            const agendamento = await Agendamento.findById(id)
-                .populate('petId')
-                .populate('servicoId');
+        const agendamento = await Agendamento.findOne({
+            _id: id,
+            ativo: true
+        })
+            .populate({
+                path: 'petId',
+                populate: {
+                    path: 'clienteId'
+                }
+            })
+            .populate('servicoId');
 
-            if (!agendamento) {
-                return res.status(404).json({
-                    message: 'Agendamento não encontrado'
-                });
-            }
-
-            return res.status(200).json({
-                data: agendamento
-            });
-
-        } catch (error) {
-            return res.status(500).json({
-                message: 'Erro ao encontrar agendamento',
-                error: error.message
+        if (!agendamento) {
+            return res.status(404).json({
+                message: 'Agendamento não encontrado'
             });
         }
+
+        return res.status(200).json({
+            data: agendamento
+        });
+
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Erro ao encontrar agendamento',
+            error: error.message
+        });
     }
+}
 
     static async update(req, res) {
         try {

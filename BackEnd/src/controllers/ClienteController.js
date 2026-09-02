@@ -8,7 +8,8 @@ class ClienteController {
                 email,
                 telefone,
                 endereco,
-                senha
+                senha,
+                tipo
             } = req.body;
 
             if (!nomeCliente || !email || !telefone || !endereco || !senha) {
@@ -22,7 +23,8 @@ class ClienteController {
                 email,
                 telefone,
                 endereco,
-                senha
+                senha,
+                tipo: tipo || 'cliente'
             };
 
             const newCliente = await Cliente.create(clienteData);
@@ -93,14 +95,16 @@ class ClienteController {
                 nomeCliente,
                 email,
                 telefone,
-                endereco
+                endereco,
+                tipo
             } = req.body;
 
             const updatedData = {
                 nomeCliente,
                 email,
                 telefone,
-                endereco
+                endereco,
+                tipo
             };
 
             const updatedCliente = await Cliente.findOneAndUpdate(

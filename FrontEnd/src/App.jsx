@@ -1,15 +1,17 @@
 import React from 'react'
-import Registro from './pages/registro'
-import Login from './pages/login'
-import Home from './pages/home'
-import Servico from './pages/servicos'
-import SobreNos from './pages/sobre'
-import LogHome from './pages/logHome'
-import PetCare from './pages/petcare'
-import Pets from './pages/pets'
-import Agendamento from './pages/agendamento'
-import DashboardAdmin from './pages/dashboardAdmin'
-import AgendamentosAdmin from './pages/agendamentoADM'
+import Registro from './pages/semLogin/registro'
+import Login from './pages/semLogin/login'
+import Home from './pages/semLogin/home'
+import Servico from './pages/semLogin/servicos'
+import SobreNos from './pages/semLogin/sobre'
+import LogHome from './pages/cliente/logHome'
+import PetCare from './pages/semlogin/petcare'
+import Pets from './pages/cliente/pets'
+import Agendamento from './pages/cliente/agendamento'
+import DashboardAdmin from './pages/adm/dashboardADM'
+import AgendamentosAdmin from './pages/adm/agendamentoADM'
+import Pagamento from './pages/cliente/pagamento'
+import PagamentoADM from './pages/adm/pagamentoADM'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css'
 
@@ -28,6 +30,8 @@ function App() {
         <Route path='/agendamentos' element={<Agendamento />} />
         <Route path='/admin' element={<DashboardAdmin />} />
         <Route path='/admin/agendamentos' element={<AgendamentosAdmin />} />
+        <Route path='/pagamento' element={<Pagamento />} />
+        <Route path='/admin/pagamentos' element={<PagamentoADM />} />
       </Routes>
     </Router>
   )

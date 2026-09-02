@@ -1,5 +1,5 @@
 import './styles.css';
-import Navbar from '../../components/navBar';
+import Navbar from '../../../components/navBar';
 
 const pillars = [
   {

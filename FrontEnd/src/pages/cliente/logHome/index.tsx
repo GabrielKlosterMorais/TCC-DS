@@ -1,5 +1,5 @@
 import './styles.css';
-import LogNavbar from '../../components/logNavBar';
+import LogNavbar from '../../../components/logNavBar';
 
 const services = [
   {

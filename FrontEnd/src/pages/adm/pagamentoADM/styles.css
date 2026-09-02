@@ -1,0 +1,122 @@
+.pagamento-adm-page {
+  min-height: 100vh;
+  background: #f7f9fc;
+  color: #111827;
+}
+
+.pagamento-adm-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 60px 30px;
+}
+
+.pagamento-adm-header {
+  margin-bottom: 35px;
+}
+
+.pagamento-adm-header span {
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.pagamento-adm-header h1 {
+  margin: 8px 0;
+  font-size: 38px;
+}
+
+.pagamento-adm-header p {
+  color: #64748b;
+}
+
+.pagamentos-adm-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pagamento-adm-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-left: 5px solid;
+  border-radius: 14px;
+}
+
+.pagamento-adm-card.pendente {
+  border-left-color: #f59e0b;
+}
+
+.pagamento-adm-card.pago {
+  border-left-color: #2563eb;
+}
+
+.pagamento-adm-card.cancelado {
+  border-left-color: #dc2626;
+}
+
+.pagamento-adm-info h2 {
+  margin: 8px 0;
+  font-size: 20px;
+}
+
+.pagamento-adm-info p {
+  margin: 5px 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.status {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.pendente .status {
+  color: #d97706;
+}
+
+.pago .status {
+  color: #2563eb;
+}
+
+.cancelado .status {
+  color: #dc2626;
+}
+
+.pagamento-adm-valor {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.pagamento-adm-valor span {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.pagamento-adm-valor strong {
+  font-size: 22px;
+}
+
+.pagamento-adm-valor small {
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+@media (max-width: 650px) {
+  .pagamento-adm-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .pagamento-adm-valor {
+    align-items: flex-start;
+  }
+}

@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import './styles.css'
-import AdmNavBar from '../../components/admNavBat'
+import AdmNavBar from '../../../components/admNavBat'
 
 interface Pet {
   _id: string
   nome: string
   clienteId?: {
+    _id: string
     nomeCliente: string
   }
 }
@@ -13,6 +14,7 @@ interface Pet {
 interface Servico {
   _id: string
   nome: string
+  preco: number
 }
 
 interface Agendamento {
@@ -63,11 +65,13 @@ function DashboardAdmin() {
   }, [])
 
   const atualizarStatus = async (
-    agendamento: Agendamento,
-    status: 'confirmado' | 'cancelado'
-  ) => {
-    try {
-      await fetch(`http://localhost:3001/Agendamento/${agendamento._id}`, {
+  agendamento: Agendamento,
+  status: 'confirmado' | 'cancelado'
+) => {
+  try {
+    const res = await fetch(
+      `http://localhost:3001/Agendamento/${agendamento._id}`,
+      {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -80,13 +84,59 @@ function DashboardAdmin() {
           status,
           observacoes: agendamento.observacoes
         })
-      })
+      }
+    )
 
-      carregarDados()
-    } catch (error) {
-      console.error('Erro ao atualizar agendamento:', error)
+    if (!res.ok) {
+      throw new Error('Erro ao atualizar agendamento')
     }
+
+    if (status === 'confirmado') {
+
+      const clienteId = agendamento.petId?.clienteId?._id
+      const valor = agendamento.servicoId?.preco
+
+      if (!clienteId) {
+        throw new Error('Cliente do pet não encontrado')
+      }
+
+      if (!valor) {
+        throw new Error('Preço do serviço não encontrado')
+      }
+
+      const pagamentoRes = await fetch(
+        'http://localhost:3001/Pagamento',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            clienteId,
+            agendamentoId: agendamento._id,
+            formaPagamento: 'pix',
+            status: 'pendente',
+            valor
+          })
+        }
+      )
+
+      if (!pagamentoRes.ok) {
+        throw new Error('Agendamento confirmado, mas não foi possível criar o pagamento')
+      }
+    }
+
+    await carregarDados()
+
+  } catch (error) {
+    console.error(error)
+    alert(
+      error instanceof Error
+        ? error.message
+        : 'Erro ao atualizar agendamento'
+    )
   }
+}
 
   const pendentes = agendamentos.filter(
     (agendamento) => agendamento.status === 'pendente'

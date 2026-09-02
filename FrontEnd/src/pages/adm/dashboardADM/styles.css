@@ -1,0 +1,166 @@
+.admin-page {
+  min-height: 100vh;
+  background: #f7f9fc;
+  color: #111827;
+}
+
+.admin-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 60px 30px;
+}
+
+.admin-header {
+  margin-bottom: 40px;
+}
+
+.admin-header span,
+.section-header span {
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.admin-header h2 {
+  margin: 8px 0;
+  font-size: 38px;
+  font-weight: 800;
+}
+
+.admin-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 16px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.stat-card span {
+  display: block;
+  color: #64748b;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.stat-card strong {
+  font-size: 30px;
+  color: #111827;
+}
+
+.appointments {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.section-header h2 {
+  margin: 7px 0 0;
+  font-size: 24px;
+}
+
+.section-header a {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.appointment {
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr 0.5fr 1fr;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+  border-top: 1px solid #e2e8f0;
+}
+
+.appointment div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.appointment strong {
+  font-size: 15px;
+}
+
+.appointment span {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.actions {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 8px;
+}
+
+.actions button {
+  border: none;
+  border-radius: 7px;
+  padding: 9px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.actions button:first-child {
+  background: #2563eb;
+  color: white;
+}
+
+.actions button:last-child {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+@media (max-width: 850px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .appointment {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 550px) {
+  .admin-container {
+    padding: 40px 15px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .appointment {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+}

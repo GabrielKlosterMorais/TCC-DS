@@ -40,46 +40,37 @@ function LogNavbar() {
 
         <Link
           to="/loghome"
-          className={
-            location.pathname === '/loghome'
-              ? 'active'
-              : ''
-          }
+          className={location.pathname === '/loghome' ? 'active' : ''}
         >
           Início
         </Link>
 
         <Link
           to="/servicos"
-          className={
-            location.pathname === '/servicos'
-              ? 'active'
-              : ''
-          }
+          className={location.pathname === '/servicos' ? 'active' : ''}
         >
           Serviços
         </Link>
 
         <Link
           to="/sobre"
-          className={
-            location.pathname === '/sobre'
-              ? 'active'
-              : ''
-          }
+          className={location.pathname === '/sobre' ? 'active' : ''}
         >
           Sobre nós
         </Link>
 
         <Link
           to="/petcare"
-          className={
-            location.pathname === '/petcare'
-              ? 'active'
-              : ''
-          }
+          className={location.pathname === '/petcare' ? 'active' : ''}
         >
           PetCare
+        </Link>
+
+        <Link
+          to="/pagamento"
+          className={location.pathname === '/pagamento' ? 'active' : ''}
+        >
+          Pagamentos
         </Link>
 
       </div>

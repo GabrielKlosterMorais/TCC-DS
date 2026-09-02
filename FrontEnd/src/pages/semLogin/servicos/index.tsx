@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './styles.css'
-import Navbar from '../../components/navBar'
+import Navbar from '../../../components/navBar'
 
 interface Service {
   _id: string

@@ -1,6 +1,10 @@
 import Pagamento from '../models/Pagamento.js';
+import Agendamento from '../models/Agendamento.js';
+import Pet from '../models/Pet.js';
+import Servico from '../models/Servico.js';
 
 class PagamentoController {
+
     static async create(req, res) {
         try {
             const {
@@ -14,24 +18,82 @@ class PagamentoController {
 
             if (!clienteId || !agendamentoId || !formaPagamento || !status || !valor) {
                 return res.status(400).json({
-                    message: "Dados inválidos. Certifique-se de enviar clienteId, agendamentoId, formaPagamento, status e valor."
+                    message: "Dados inválidos."
                 });
             }
 
-            const pagamentoData = {
+            const pagamento = await Pagamento.create({
                 clienteId,
                 agendamentoId,
                 formaPagamento,
                 status,
                 dataPagamento,
                 valor
-            };
-
-            const newPagamento = await Pagamento.create(pagamentoData);
+            });
 
             return res.status(201).json({
                 message: 'Pagamento criado com sucesso',
-                data: newPagamento
+                data: pagamento
+            });
+
+        } catch (error) {
+            return res.status(500).json({
+                message: 'Erro ao criar pagamento',
+                error: error.message
+            });
+        }
+    }
+
+    static async criarPorAgendamento(req, res) {
+        try {
+            const { agendamentoId } = req.body;
+
+            const agendamento = await Agendamento.findById(agendamentoId);
+
+            if (!agendamento) {
+                return res.status(404).json({
+                    message: 'Agendamento não encontrado'
+                });
+            }
+
+            const pet = await Pet.findById(agendamento.petId);
+
+            if (!pet) {
+                return res.status(404).json({
+                    message: 'Pet não encontrado'
+                });
+            }
+
+            const servico = await Servico.findById(agendamento.servicoId);
+
+            if (!servico) {
+                return res.status(404).json({
+                    message: 'Serviço não encontrado'
+                });
+            }
+
+            const pagamentoExistente = await Pagamento.findOne({
+                agendamentoId,
+                ativo: true
+            });
+
+            if (pagamentoExistente) {
+                return res.status(400).json({
+                    message: 'Este agendamento já possui um pagamento.'
+                });
+            }
+
+            const pagamento = await Pagamento.create({
+                clienteId: pet.clienteId,
+                agendamentoId,
+                formaPagamento: 'pix',
+                status: 'pendente',
+                valor: servico.preco
+            });
+
+            return res.status(201).json({
+                message: 'Pagamento criado com sucesso',
+                data: pagamento
             });
 
         } catch (error) {
@@ -44,9 +106,21 @@ class PagamentoController {
 
     static async getAll(req, res) {
         try {
-            const pagamentos = await Pagamento.find({ ativo: true })
+            const pagamentos = await Pagamento.find({
+                ativo: true
+            })
                 .populate('clienteId')
-                .populate('agendamentoId');
+                .populate({
+                    path: 'agendamentoId',
+                    populate: [
+                        {
+                            path: 'petId'
+                        },
+                        {
+                            path: 'servicoId'
+                        }
+                    ]
+                });
 
             return res.status(200).json({
                 data: pagamentos
@@ -69,7 +143,17 @@ class PagamentoController {
                 ativo: true
             })
                 .populate('clienteId')
-                .populate('agendamentoId');
+                .populate({
+                    path: 'agendamentoId',
+                    populate: [
+                        {
+                            path: 'petId'
+                        },
+                        {
+                            path: 'servicoId'
+                        }
+                    ]
+                });
 
             if (!pagamento) {
                 return res.status(404).json({
@@ -102,25 +186,25 @@ class PagamentoController {
                 valor
             } = req.body;
 
-            const updatedData = {
-                clienteId,
-                agendamentoId,
-                formaPagamento,
-                status,
-                dataPagamento,
-                valor
-            };
-
-            const updatedPagamento = await Pagamento.findOneAndUpdate(
+            const pagamento = await Pagamento.findOneAndUpdate(
                 {
                     _id: id,
                     ativo: true
                 },
-                updatedData,
-                { new: true }
+                {
+                    clienteId,
+                    agendamentoId,
+                    formaPagamento,
+                    status,
+                    dataPagamento,
+                    valor
+                },
+                {
+                    new: true
+                }
             );
 
-            if (!updatedPagamento) {
+            if (!pagamento) {
                 return res.status(404).json({
                     message: 'Pagamento não encontrado'
                 });
@@ -128,7 +212,7 @@ class PagamentoController {
 
             return res.status(200).json({
                 message: 'Pagamento atualizado com sucesso',
-                data: updatedPagamento
+                data: pagamento
             });
 
         } catch (error) {
@@ -143,7 +227,7 @@ class PagamentoController {
         try {
             const { id } = req.params;
 
-            const deletedPagamento = await Pagamento.findOneAndUpdate(
+            const pagamento = await Pagamento.findOneAndUpdate(
                 {
                     _id: id,
                     ativo: true
@@ -156,7 +240,7 @@ class PagamentoController {
                 }
             );
 
-            if (!deletedPagamento) {
+            if (!pagamento) {
                 return res.status(404).json({
                     message: 'Pagamento não encontrado'
                 });
@@ -164,7 +248,7 @@ class PagamentoController {
 
             return res.status(200).json({
                 message: 'Pagamento desativado com sucesso',
-                data: deletedPagamento
+                data: pagamento
             });
 
         } catch (error) {
