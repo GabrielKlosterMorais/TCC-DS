@@ -10,6 +10,7 @@ function AdmNavBar() {
         <a href="/admin/agendamentos">Agendamentos</a>
         <a href="/admin/pagamentos">Pagamentos</a>
         <a href="/admin/clientes">Clientes e Pets</a>
+        <a href="/admin/servicos">Serviços</a>
         <a href="/">Sair</a>
       </div>
     </nav>

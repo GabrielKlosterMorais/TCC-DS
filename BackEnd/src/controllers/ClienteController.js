@@ -43,22 +43,38 @@ class ClienteController {
     }
 
     static async getAll(req, res) {
-        try {
-            const clientes = await Cliente.find({
-                ativo: true
-            });
+    try {
+        const clientes = await Cliente.find({
+            ativo: true
+        });
 
-            return res.status(200).json({
-                data: clientes
-            });
+        return res.status(200).json({
+            data: clientes
+        });
 
-        } catch (error) {
-            return res.status(500).json({
-                message: 'Erro ao encontrar clientes',
-                error: error.message
-            });
-        }
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Erro ao encontrar clientes',
+            error: error.message
+        });
     }
+}
+
+static async getTodos(req, res) {
+    try {
+        const clientes = await Cliente.find();
+
+        return res.status(200).json({
+            data: clientes
+        });
+
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Erro ao encontrar clientes',
+            error: error.message
+        });
+    }
+}
 
     static async getById(req, res) {
         try {

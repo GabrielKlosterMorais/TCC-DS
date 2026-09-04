@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
+import LogNavbar from '../../../components/logNavBar'
 import './styles.css'
-import Navbar from '../../../components/navBar'
 
 interface Pet {
   _id: string
   nome: string
-  clienteId: string
+  especie: string
+  raca: string
+  clienteId: string | { _id: string }
 }
 
 interface Servico {
@@ -18,8 +20,8 @@ interface Servico {
 
 interface Agendamento {
   _id: string
-  petId: Pet
-  servicoId: Servico
+  petId: Pet | string
+  servicoId: Servico | string
   data: string
   hora: string
   status: 'pendente' | 'confirmado' | 'cancelado'
@@ -27,95 +29,125 @@ interface Agendamento {
 }
 
 function Agendamento() {
-  const [agendamentos, setAgendamentos] = useState<Agendamento[]>([])
   const [pets, setPets] = useState<Pet[]>([])
   const [servicos, setServicos] = useState<Servico[]>([])
-
-  const [mesAtual, setMesAtual] = useState(new Date())
-  const [diaSelecionado, setDiaSelecionado] = useState<Date | null>(null)
+  const [agendamentos, setAgendamentos] = useState<Agendamento[]>([])
 
   const [petId, setPetId] = useState('')
   const [servicoId, setServicoId] = useState('')
+  const [data, setData] = useState('')
   const [hora, setHora] = useState('')
   const [observacoes, setObservacoes] = useState('')
 
-  const [loading, setLoading] = useState(false)
+  const [mesAtual, setMesAtual] = useState(new Date())
+  const [loading, setLoading] = useState(true)
   const [mensagem, setMensagem] = useState('')
   const [erro, setErro] = useState('')
 
-  const usuario = JSON.parse(localStorage.getItem('user') || '{}')
-
   useEffect(() => {
+    const carregarDados = async () => {
+      try {
+        const userData = localStorage.getItem('user')
+
+        if (!userData) {
+          window.location.href = '/login'
+          return
+        }
+
+        const usuario = JSON.parse(userData)
+
+        const [petsRes, servicosRes, agendamentosRes] =
+          await Promise.all([
+            fetch('http://localhost:3001/Pet'),
+            fetch('http://localhost:3001/Servico'),
+            fetch('http://localhost:3001/Agendamento')
+          ])
+
+        const petsData = await petsRes.json()
+        const servicosData = await servicosRes.json()
+        const agendamentosData = await agendamentosRes.json()
+
+        const meusPets = (petsData.data || []).filter(
+          (pet: Pet) => {
+            const id =
+              typeof pet.clienteId === 'string'
+                ? pet.clienteId
+                : pet.clienteId?._id
+
+            return id === usuario.id
+          }
+        )
+
+        setPets(meusPets)
+        setServicos(servicosData.data || [])
+        setAgendamentos(agendamentosData.data || [])
+
+      } catch (error) {
+        console.error(error)
+        setErro('Erro ao carregar os dados.')
+      } finally {
+        setLoading(false)
+      }
+    }
+
     carregarDados()
   }, [])
 
-  const carregarDados = async () => {
-    try {
-      const [petsRes, servicosRes, agendamentosRes] = await Promise.all([
-        fetch('http://localhost:3001/Pet'),
-        fetch('http://localhost:3001/Servico'),
-        fetch('http://localhost:3001/Agendamento')
-      ])
+  const servicoSelecionado = servicos.find(
+    servico => servico._id === servicoId
+  )
 
-      const petsData = await petsRes.json()
-      const servicosData = await servicosRes.json()
-      const agendamentosData = await agendamentosRes.json()
-
-      const meusPets = (petsData.data || []).filter(
-        (pet: Pet) =>
-          String(pet.clienteId) === String(usuario.id)
-      )
-
-      const meusPetsIds = meusPets.map((pet: Pet) => String(pet._id))
-
-      const meusAgendamentos = (agendamentosData.data || []).filter(
-        (agendamento: Agendamento) =>
-          meusPetsIds.includes(String(agendamento.petId?._id))
-      )
-
-      setPets(meusPets)
-      setServicos(servicosData.data || [])
-      setAgendamentos(meusAgendamentos)
-
-    } catch {
-      setErro('Erro ao carregar os dados.')
-    }
+  const formatarPreco = (valor: number) => {
+    return valor.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    })
   }
 
-  const hoje = new Date()
-  hoje.setHours(0, 0, 0, 0)
+  const formatarDuracao = (minutos: number) => {
+    if (minutos < 60) {
+      return `${minutos} min`
+    }
+
+    const horas = Math.floor(minutos / 60)
+    const minutosRestantes = minutos % 60
+
+    if (minutosRestantes === 0) {
+      return `${horas}h`
+    }
+
+    return `${horas}h ${minutosRestantes}min`
+  }
 
   const primeiroDia = new Date(
     mesAtual.getFullYear(),
     mesAtual.getMonth(),
     1
-  )
+  ).getDay()
 
-  const ultimoDia = new Date(
+  const quantidadeDias = new Date(
     mesAtual.getFullYear(),
     mesAtual.getMonth() + 1,
     0
-  )
+  ).getDate()
 
-  const diasNoMes = ultimoDia.getDate()
+  const hoje = new Date()
+  hoje.setHours(0, 0, 0, 0)
 
-  const inicioSemana = primeiroDia.getDay()
-
-  const dias = []
-
-  for (let i = 0; i < inicioSemana; i++) {
-    dias.push(null)
-  }
-
-  for (let i = 1; i <= diasNoMes; i++) {
-    dias.push(
-      new Date(
-        mesAtual.getFullYear(),
-        mesAtual.getMonth(),
-        i
-      )
-    )
-  }
+  const nomesMeses = [
+    'janeiro',
+    'fevereiro',
+    'março',
+    'abril',
+    'maio',
+    'junho',
+    'julho',
+    'agosto',
+    'setembro',
+    'outubro',
+    'novembro',
+    'dezembro'
+  ]
 
   const voltarMes = () => {
     setMesAtual(
@@ -137,60 +169,77 @@ function Agendamento() {
     )
   }
 
-  const mesmoDia = (a: Date, b: Date) => {
-    return (
-      a.getFullYear() === b.getFullYear() &&
-      a.getMonth() === b.getMonth() &&
-      a.getDate() === b.getDate()
-    )
+  const formatarData = (ano: number, mes: number, dia: number) => {
+    const mesFormatado = String(mes + 1).padStart(2, '0')
+    const diaFormatado = String(dia).padStart(2, '0')
+
+    return `${ano}-${mesFormatado}-${diaFormatado}`
   }
 
-  const agendamentosDoDia = (dia: Date) => {
-    return agendamentos.filter((agendamento) => {
-      const data = new Date(agendamento.data)
-      return mesmoDia(data, dia)
+  const agendamentosDoDia = (dataSelecionada: string) => {
+    return agendamentos.filter(agendamento => {
+      const dataAgendamento =
+        new Date(agendamento.data)
+          .toISOString()
+          .split('T')[0]
+
+      return dataAgendamento === dataSelecionada
     })
   }
 
-  const selecionarDia = (dia: Date) => {
-    if (dia < hoje) return
+  const selecionarDia = (dia: number) => {
+    const novaData = formatarData(
+      mesAtual.getFullYear(),
+      mesAtual.getMonth(),
+      dia
+    )
 
-    setDiaSelecionado(dia)
-    setMensagem('')
-    setErro('')
-  }
+    const dataSelecionada = new Date(
+      mesAtual.getFullYear(),
+      mesAtual.getMonth(),
+      dia
+    )
 
-  const criarAgendamento = async (
-    e: React.FormEvent<HTMLFormElement>
-  ) => {
-    e.preventDefault()
-
-    if (!diaSelecionado) {
-      setErro('Selecione um dia.')
+    if (dataSelecionada < hoje) {
       return
     }
 
-    if (!petId || !servicoId || !hora) {
+    setData(novaData)
+    setErro('')
+  }
+
+  const classeDia = (dia: number) => {
+    const dataDia = formatarData(
+      mesAtual.getFullYear(),
+      mesAtual.getMonth(),
+      dia
+    )
+
+    const agendamentosDia = agendamentosDoDia(dataDia)
+
+    if (agendamentosDia.some(a => a.status === 'confirmado')) {
+      return 'confirmado'
+    }
+
+    if (agendamentosDia.some(a => a.status === 'pendente')) {
+      return 'pendente'
+    }
+
+    if (agendamentosDia.some(a => a.status === 'cancelado')) {
+      return 'cancelado'
+    }
+
+    return ''
+  }
+
+  const agendar = async () => {
+    setErro('')
+    setMensagem('')
+
+    if (!petId || !servicoId || !data || !hora) {
       setErro('Preencha todos os campos obrigatórios.')
       return
     }
-
-    const conflito = agendamentos.some((agendamento) => {
-      return (
-        mesmoDia(new Date(agendamento.data), diaSelecionado) &&
-        agendamento.hora === hora &&
-        agendamento.status === 'pendente'
-      )
-    })
-
-    if (conflito) {
-      setErro('Já existe um agendamento pendente neste horário.')
-      return
-    }
-
-    setLoading(true)
-    setErro('')
-    setMensagem('')
 
     try {
       const res = await fetch(
@@ -203,7 +252,7 @@ function Agendamento() {
           body: JSON.stringify({
             petId,
             servicoId,
-            data: diaSelecionado.toISOString(),
+            data,
             hora,
             status: 'pendente',
             observacoes
@@ -211,248 +260,286 @@ function Agendamento() {
         }
       )
 
-      const data = await res.json()
+      const result = await res.json()
 
       if (!res.ok) {
-        setErro(data.message || 'Erro ao criar agendamento.')
-        return
+        throw new Error(
+          result.message ||
+          'Erro ao realizar agendamento.'
+        )
       }
 
-      setMensagem('Agendamento criado com sucesso.')
+      setMensagem(
+        'Agendamento realizado com sucesso! Aguarde a confirmação.'
+      )
+
+      setAgendamentos(prev => [
+        ...prev,
+        result.data
+      ])
 
       setPetId('')
       setServicoId('')
+      setData('')
       setHora('')
       setObservacoes('')
 
-      carregarDados()
-
-    } catch {
-      setErro('Erro de conexão com o servidor.')
-    } finally {
-      setLoading(false)
+    } catch (error) {
+      setErro(
+        error instanceof Error
+          ? error.message
+          : 'Erro ao realizar agendamento.'
+      )
     }
   }
 
-  const nomeMes = mesAtual.toLocaleDateString(
-    'pt-BR',
-    {
-      month: 'long',
-      year: 'numeric'
-    }
-  )
+  if (loading) {
+    return (
+      <div className="agendamento-page">
+        <LogNavbar />
+
+        <main className="agendamento-container">
+          <p>Carregando...</p>
+        </main>
+      </div>
+    )
+  }
 
   return (
     <div className="agendamento-page">
 
-      <Navbar />
+      <LogNavbar />
 
       <main className="agendamento-container">
 
-        <header className="agendamento-header">
+        <div className="agendamento-header">
           <span>AGENDAMENTO</span>
 
           <h1>
-            Cuide do seu pet
-            <strong> com facilidade.</strong>
+            Agende um serviço
           </h1>
 
           <p>
-            Escolha um dia disponível e agende um serviço
-            para o seu pet.
+            Escolha seu pet, serviço, data e horário.
           </p>
-        </header>
+        </div>
 
-        <section className="agendamento-content">
-
-          <div className="calendar-card">
-
-            <div className="calendar-header">
-
-              <button onClick={voltarMes}>
-                ‹
-              </button>
-
-              <h2>
-                {nomeMes}
-              </h2>
-
-              <button onClick={avancarMes}>
-                ›
-              </button>
-
-            </div>
-
-            <div className="calendar-weekdays">
-              <span>Dom</span>
-              <span>Seg</span>
-              <span>Ter</span>
-              <span>Qua</span>
-              <span>Qui</span>
-              <span>Sex</span>
-              <span>Sáb</span>
-            </div>
-
-            <div className="calendar-grid">
-
-              {dias.map((dia, index) => {
-
-                if (!dia) {
-                  return (
-                    <div
-                      key={index}
-                      className="calendar-empty"
-                    />
-                  )
-                }
-
-                const anteriores = dia < hoje
-
-                const compromissos =
-                  agendamentosDoDia(dia)
-
-                const pendente =
-                  compromissos.some(
-                    (a) => a.status === 'pendente'
-                  )
-
-                const confirmado =
-                  compromissos.some(
-                    (a) => a.status === 'confirmado'
-                  )
-
-                const cancelado =
-                  compromissos.some(
-                    (a) => a.status === 'cancelado'
-                  )
-
-                const selecionado =
-                  diaSelecionado &&
-                  mesmoDia(diaSelecionado, dia)
-
-                return (
-                  <button
-                    key={index}
-                    className={`
-                      calendar-day
-                      ${anteriores ? 'dia-anterior' : ''}
-                      ${selecionado ? 'selected' : ''}
-                      ${pendente ? 'pendente' : ''}
-                      ${confirmado ? 'confirmado' : ''}
-                      ${cancelado ? 'cancelado' : ''}
-                    `}
-                    disabled={anteriores}
-                    onClick={() => selecionarDia(dia)}
-                  >
-
-                    <span>
-                      {dia.getDate()}
-                    </span>
-
-                    {compromissos.length > 0 && (
-                      <div className="appointment-dots">
-
-                        {pendente && (
-                          <span className="dot pendente-dot" />
-                        )}
-
-                        {confirmado && (
-                          <span className="dot confirmado-dot" />
-                        )}
-
-                        {cancelado && (
-                          <span className="dot cancelado-dot" />
-                        )}
-
-                      </div>
-                    )}
-
-                  </button>
-                )
-              })}
-
-            </div>
-
-            <div className="calendar-legend">
-
-              <span>
-                <i className="legend-dot pendente-dot" />
-                Pendente
-              </span>
-
-              <span>
-                <i className="legend-dot confirmado-dot" />
-                Confirmado
-              </span>
-
-              <span>
-                <i className="legend-dot cancelado-dot" />
-                Cancelado
-              </span>
-
-            </div>
-
-            {diaSelecionado && (
-              <div className="day-appointments">
-
-                <h3>
-                  Compromissos do dia
-                </h3>
-
-                {agendamentosDoDia(diaSelecionado).length === 0 ? (
-
-                  <p>
-                    Nenhum compromisso neste dia.
-                  </p>
-
-                ) : (
-
-                  agendamentosDoDia(diaSelecionado).map(
-                    (agendamento) => (
-
-                      <div
-                        className={`day-appointment ${agendamento.status}`}
-                        key={agendamento._id}
-                      >
-
-                        <div>
-                          <strong>
-                            {agendamento.hora}
-                          </strong>
-
-                          <span>
-                            {agendamento.petId?.nome}
-                          </span>
-                        </div>
-
-                        <span>
-                          {agendamento.servicoId?.nome}
-                        </span>
-
-                      </div>
-
-                    )
-                  )
-                )}
-
-              </div>
-            )}
-
+        {erro && (
+          <div className="form-error">
+            {erro}
           </div>
+        )}
 
-          <div className="form-card">
+        {mensagem && (
+          <div className="form-success">
+            {mensagem}
+          </div>
+        )}
 
+        {pets.length === 0 ? (
+          <div className="empty-agendamento">
             <h2>
-              Novo agendamento
+              Você ainda não possui pets
             </h2>
 
-            <p className="form-description">
-              {diaSelecionado
-                ? `Dia selecionado: ${diaSelecionado.toLocaleDateString('pt-BR')}`
-                : 'Selecione um dia no calendário.'}
+            <p>
+              Cadastre um pet antes de realizar um agendamento.
             </p>
+          </div>
+        ) : (
 
-            <form onSubmit={criarAgendamento}>
+          <div className="agendamento-content">
+
+            <div className="calendar-card">
+
+              <div className="calendar-header">
+
+                <button onClick={voltarMes}>
+                  ‹
+                </button>
+
+                <h2>
+                  {nomesMeses[mesAtual.getMonth()]}{' '}
+                  {mesAtual.getFullYear()}
+                </h2>
+
+                <button onClick={avancarMes}>
+                  ›
+                </button>
+
+              </div>
+
+              <div className="calendar-weekdays">
+                <span>Dom</span>
+                <span>Seg</span>
+                <span>Ter</span>
+                <span>Qua</span>
+                <span>Qui</span>
+                <span>Sex</span>
+                <span>Sáb</span>
+              </div>
+
+              <div className="calendar-grid">
+
+                {Array.from({
+                  length: primeiroDia
+                }).map((_, index) => (
+                  <div
+                    key={`empty-${index}`}
+                    className="calendar-empty"
+                  />
+                ))}
+
+                {Array.from({
+                  length: quantidadeDias
+                }).map((_, index) => {
+
+                  const dia = index + 1
+
+                  const dataDia = formatarData(
+                    mesAtual.getFullYear(),
+                    mesAtual.getMonth(),
+                    dia
+                  )
+
+                  const dataComparacao = new Date(
+                    mesAtual.getFullYear(),
+                    mesAtual.getMonth(),
+                    dia
+                  )
+
+                  const anterior =
+                    dataComparacao < hoje
+
+                  const selecionado =
+                    data === dataDia
+
+                  return (
+                    <button
+                      key={dia}
+                      className={`calendar-day ${classeDia(dia)} ${
+                        selecionado ? 'selected' : ''
+                      } ${
+                        anterior ? 'dia-anterior' : ''
+                      }`}
+                      onClick={() =>
+                        selecionarDia(dia)
+                      }
+                      disabled={anterior}
+                    >
+                      {dia}
+
+                      {agendamentosDoDia(dataDia).length > 0 && (
+                        <div className="appointment-dots">
+
+                          {agendamentosDoDia(
+                            dataDia
+                          ).map(agendamento => (
+                            <span
+                              key={agendamento._id}
+                              className={`dot ${agendamento.status}-dot`}
+                            />
+                          ))}
+
+                        </div>
+                      )}
+                    </button>
+                  )
+                })}
+
+              </div>
+
+              <div className="calendar-legend">
+
+                <span>
+                  <i className="legend-dot pendente-dot" />
+                  Pendente
+                </span>
+
+                <span>
+                  <i className="legend-dot confirmado-dot" />
+                  Confirmado
+                </span>
+
+                <span>
+                  <i className="legend-dot cancelado-dot" />
+                  Cancelado
+                </span>
+
+              </div>
+
+              {data && (
+                <div className="day-appointments">
+
+                  <h3>
+                    Agendamentos do dia
+                  </h3>
+
+                  {agendamentosDoDia(data).length === 0 ? (
+
+                    <p>
+                      Nenhum agendamento neste dia.
+                    </p>
+
+                  ) : (
+
+                    agendamentosDoDia(data).map(
+                      agendamento => {
+
+                        const pet =
+                          typeof agendamento.petId === 'object'
+                            ? agendamento.petId
+                            : null
+
+                        const servico =
+                          typeof agendamento.servicoId === 'object'
+                            ? agendamento.servicoId
+                            : null
+
+                        return (
+                          <div
+                            key={agendamento._id}
+                            className={`day-appointment ${agendamento.status}`}
+                          >
+
+                            <div>
+                              <strong>
+                                {agendamento.hora}
+                              </strong>
+
+                              <span>
+                                {pet?.nome || 'Pet'}
+                              </span>
+
+                              <span>
+                                {servico?.nome || 'Serviço'}
+                              </span>
+                            </div>
+
+                            <span>
+                              {agendamento.status}
+                            </span>
+
+                          </div>
+                        )
+                      }
+                    )
+                  )}
+
+                </div>
+              )}
+
+            </div>
+
+            <div className="form-card">
+
+              <h2>
+                Novo agendamento
+              </h2>
+
+              <p className="form-description">
+                Preencha os dados para solicitar seu atendimento.
+              </p>
 
               <div className="input-group">
 
@@ -462,22 +549,20 @@ function Agendamento() {
 
                 <select
                   value={petId}
-                  onChange={(e) =>
+                  onChange={e =>
                     setPetId(e.target.value)
                   }
-                  required
                 >
-
                   <option value="">
                     Selecione seu pet
                   </option>
 
-                  {pets.map((pet) => (
+                  {pets.map(pet => (
                     <option
                       key={pet._id}
                       value={pet._id}
                     >
-                      {pet.nome}
+                      {pet.nome} — {pet.especie}
                     </option>
                   ))}
 
@@ -493,22 +578,21 @@ function Agendamento() {
 
                 <select
                   value={servicoId}
-                  onChange={(e) =>
+                  onChange={e =>
                     setServicoId(e.target.value)
                   }
-                  required
                 >
-
                   <option value="">
                     Selecione um serviço
                   </option>
 
-                  {servicos.map((servico) => (
+                  {servicos.map(servico => (
                     <option
                       key={servico._id}
                       value={servico._id}
                     >
-                      {servico.nome}
+                      {servico.nome} —{' '}
+                      {formatarPreco(servico.preco)}
                     </option>
                   ))}
 
@@ -516,20 +600,96 @@ function Agendamento() {
 
               </div>
 
-              <div className="input-group">
+              {servicoSelecionado && (
 
-                <label>
-                  Horário
-                </label>
+                <div className="servico-resumo">
 
-                <input
-                  type="time"
-                  value={hora}
-                  onChange={(e) =>
-                    setHora(e.target.value)
-                  }
-                  required
-                />
+                  <div>
+                    <span>
+                      Serviço
+                    </span>
+
+                    <strong>
+                      {servicoSelecionado.nome}
+                    </strong>
+                  </div>
+
+                  <div>
+                    <span>
+                      Descrição
+                    </span>
+
+                    <strong>
+                      {servicoSelecionado.descricao}
+                    </strong>
+                  </div>
+
+                  <div>
+                    <span>
+                      Duração
+                    </span>
+
+                    <strong>
+                      {formatarDuracao(
+                        servicoSelecionado.duracao
+                      )}
+                    </strong>
+                  </div>
+
+                  <div>
+                    <span>
+                      Valor
+                    </span>
+
+                    <strong className="servico-preco">
+                      {formatarPreco(
+                        servicoSelecionado.preco
+                      )}
+                    </strong>
+                  </div>
+
+                </div>
+
+              )}
+
+              <div className="form-row">
+
+                <div className="input-group">
+
+                  <label>
+                    Data
+                  </label>
+
+                  <input
+                    type="date"
+                    value={data}
+                    min={
+                      new Date()
+                        .toISOString()
+                        .split('T')[0]
+                    }
+                    onChange={e =>
+                      setData(e.target.value)
+                    }
+                  />
+
+                </div>
+
+                <div className="input-group">
+
+                  <label>
+                    Horário
+                  </label>
+
+                  <input
+                    type="time"
+                    value={hora}
+                    onChange={e =>
+                      setHora(e.target.value)
+                    }
+                  />
+
+                </div>
 
               </div>
 
@@ -541,42 +701,45 @@ function Agendamento() {
 
                 <textarea
                   value={observacoes}
-                  onChange={(e) =>
+                  onChange={e =>
                     setObservacoes(e.target.value)
                   }
-                  placeholder="Alguma observação?"
+                  placeholder="Alguma observação sobre o atendimento?"
                   rows={4}
                 />
 
               </div>
 
-              {erro && (
-                <div className="form-error">
-                  {erro}
-                </div>
-              )}
+              {servicoSelecionado && (
 
-              {mensagem && (
-                <div className="form-success">
-                  {mensagem}
+                <div className="agendamento-total">
+
+                  <span>
+                    Total do agendamento
+                  </span>
+
+                  <strong>
+                    {formatarPreco(
+                      servicoSelecionado.preco
+                    )}
+                  </strong>
+
                 </div>
+
               )}
 
               <button
-                type="submit"
                 className="submit-button"
-                disabled={loading || !diaSelecionado}
+                onClick={agendar}
               >
-                {loading
-                  ? 'Agendando...'
-                  : 'Confirmar agendamento'}
+                Confirmar agendamento
               </button>
 
-            </form>
+            </div>
 
           </div>
 
-        </section>
+        )}
 
       </main>
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import AdmNavBar from '../../../components/admNavBat'
+import AdmNavBar from '../../../components/admNavBar'
 import './styles.css'
 
 interface Pagamento {

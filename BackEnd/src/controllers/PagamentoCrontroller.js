@@ -174,54 +174,38 @@ class PagamentoController {
     }
 
     static async update(req, res) {
-        try {
-            const { id } = req.params;
+    try {
+        const { id } = req.params
 
-            const {
-                clienteId,
-                agendamentoId,
-                formaPagamento,
-                status,
-                dataPagamento,
-                valor
-            } = req.body;
-
-            const pagamento = await Pagamento.findOneAndUpdate(
-                {
-                    _id: id,
-                    ativo: true
-                },
-                {
-                    clienteId,
-                    agendamentoId,
-                    formaPagamento,
-                    status,
-                    dataPagamento,
-                    valor
-                },
-                {
-                    new: true
-                }
-            );
-
-            if (!pagamento) {
-                return res.status(404).json({
-                    message: 'Pagamento não encontrado'
-                });
+        const pagamento = await Pagamento.findOneAndUpdate(
+            {
+                _id: id,
+                ativo: true
+            },
+            req.body,
+            {
+                new: true
             }
+        )
 
-            return res.status(200).json({
-                message: 'Pagamento atualizado com sucesso',
-                data: pagamento
-            });
-
-        } catch (error) {
-            return res.status(500).json({
-                message: 'Erro ao atualizar pagamento',
-                error: error.message
-            });
+        if (!pagamento) {
+            return res.status(404).json({
+                message: 'Pagamento não encontrado'
+            })
         }
+
+        return res.status(200).json({
+            message: 'Pagamento atualizado com sucesso',
+            data: pagamento
+        })
+
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Erro ao atualizar pagamento',
+            error: error.message
+        })
     }
+}
 
     static async delete(req, res) {
         try {

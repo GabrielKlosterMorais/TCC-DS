@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './styles.css'
-import AdmNavBar from '../../../components/admNavBat'
+import AdmNavBar from '../../../components/admNavBar'
 
 interface Pet {
   _id: string

@@ -1,28 +1,35 @@
 import Agendamento from '../models/Agendamento.js';
 
 class AgendamentoController {
+
     static async create(req, res) {
         try {
             const {
                 petId,
-                servicoId,
+                servicoIds,
                 data,
                 hora,
                 status,
                 observacoes
             } = req.body;
 
-            if (!petId || !servicoId || !data || !hora || !status) {
+            if (
+                !petId ||
+                !servicoIds ||
+                !Array.isArray(servicoIds) ||
+                servicoIds.length === 0 ||
+                !data ||
+                !hora ||
+                !status
+            ) {
                 return res.status(400).json({
-                    message: "Dados inválidos. Certifique-se de enviar petId, servicoId, data, hora e status."
+                    message: 'Dados inválidos. Informe petId, servicoIds, data, hora e status.'
                 });
             }
 
-            // Verifica se já existe um agendamento pendente
-            // para o mesmo dia e horário
             const agendamentoExistente = await Agendamento.findOne({
                 data: new Date(data),
-                hora: hora,
+                hora,
                 status: 'pendente',
                 ativo: true
             });
@@ -33,20 +40,18 @@ class AgendamentoController {
                 });
             }
 
-            const agendamentoData = {
+            const agendamento = await Agendamento.create({
                 petId,
-                servicoId,
+                servicoIds,
                 data,
                 hora,
                 status,
                 observacoes
-            };
-
-            const newAgendamento = await Agendamento.create(agendamentoData);
+            });
 
             return res.status(201).json({
                 message: 'Agendamento criado com sucesso',
-                data: newAgendamento
+                data: agendamento
             });
 
         } catch (error) {
@@ -58,61 +63,63 @@ class AgendamentoController {
     }
 
     static async getAll(req, res) {
-    try {
-        const agendamentos = await Agendamento.find({ ativo: true })
-            .populate({
-                path: 'petId',
-                populate: {
-                    path: 'clienteId'
-                }
+        try {
+            const agendamentos = await Agendamento.find({
+                ativo: true
             })
-            .populate('servicoId');
+                .populate({
+                    path: 'petId',
+                    populate: {
+                        path: 'clienteId'
+                    }
+                })
+                .populate('servicoIds');
 
-        return res.status(200).json({
-            data: agendamentos
-        });
+            return res.status(200).json({
+                data: agendamentos
+            });
 
-    } catch (error) {
-        return res.status(500).json({
-            message: 'Erro ao encontrar agendamentos',
-            error: error.message
-        });
-    }
-}
-
-    static async getById(req, res) {
-    try {
-        const { id } = req.params;
-
-        const agendamento = await Agendamento.findOne({
-            _id: id,
-            ativo: true
-        })
-            .populate({
-                path: 'petId',
-                populate: {
-                    path: 'clienteId'
-                }
-            })
-            .populate('servicoId');
-
-        if (!agendamento) {
-            return res.status(404).json({
-                message: 'Agendamento não encontrado'
+        } catch (error) {
+            return res.status(500).json({
+                message: 'Erro ao encontrar agendamentos',
+                error: error.message
             });
         }
-
-        return res.status(200).json({
-            data: agendamento
-        });
-
-    } catch (error) {
-        return res.status(500).json({
-            message: 'Erro ao encontrar agendamento',
-            error: error.message
-        });
     }
-}
+
+    static async getById(req, res) {
+        try {
+            const { id } = req.params;
+
+            const agendamento = await Agendamento.findOne({
+                _id: id,
+                ativo: true
+            })
+                .populate({
+                    path: 'petId',
+                    populate: {
+                        path: 'clienteId'
+                    }
+                })
+                .populate('servicoIds');
+
+            if (!agendamento) {
+                return res.status(404).json({
+                    message: 'Agendamento não encontrado'
+                });
+            }
+
+            return res.status(200).json({
+                data: agendamento
+            });
+
+        } catch (error) {
+            return res.status(500).json({
+                message: 'Erro ao encontrar agendamento',
+                error: error.message
+            });
+        }
+    }
 
     static async update(req, res) {
         try {
@@ -120,17 +127,27 @@ class AgendamentoController {
 
             const {
                 petId,
-                servicoId,
+                servicoIds,
                 data,
                 hora,
                 status,
                 observacoes
             } = req.body;
 
+            if (
+                !servicoIds ||
+                !Array.isArray(servicoIds) ||
+                servicoIds.length === 0
+            ) {
+                return res.status(400).json({
+                    message: 'É necessário informar pelo menos um serviço.'
+                });
+            }
+
             const agendamentoExistente = await Agendamento.findOne({
                 _id: { $ne: id },
                 data: new Date(data),
-                hora: hora,
+                hora,
                 status: 'pendente',
                 ativo: true
             });
@@ -141,22 +158,25 @@ class AgendamentoController {
                 });
             }
 
-            const updatedData = {
-                petId,
-                servicoId,
-                data,
-                hora,
-                status,
-                observacoes
-            };
-
-            const updatedAgendamento = await Agendamento.findByIdAndUpdate(
-                id,
-                updatedData,
-                { new: true }
+            const agendamento = await Agendamento.findOneAndUpdate(
+                {
+                    _id: id,
+                    ativo: true
+                },
+                {
+                    petId,
+                    servicoIds,
+                    data,
+                    hora,
+                    status,
+                    observacoes
+                },
+                {
+                    new: true
+                }
             );
 
-            if (!updatedAgendamento) {
+            if (!agendamento) {
                 return res.status(404).json({
                     message: 'Agendamento não encontrado'
                 });
@@ -164,7 +184,7 @@ class AgendamentoController {
 
             return res.status(200).json({
                 message: 'Agendamento atualizado com sucesso',
-                data: updatedAgendamento
+                data: agendamento
             });
 
         } catch (error) {
@@ -179,9 +199,9 @@ class AgendamentoController {
         try {
             const { id } = req.params;
 
-            const deletedAgendamento = await Agendamento.findByIdAndDelete(id);
+            const agendamento = await Agendamento.findByIdAndDelete(id);
 
-            if (!deletedAgendamento) {
+            if (!agendamento) {
                 return res.status(404).json({
                     message: 'Agendamento não encontrado'
                 });
