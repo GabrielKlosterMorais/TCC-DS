@@ -729,7 +729,7 @@ function Agendamento() {
               )}
 
               <button
-                className="submit-button"
+                className="agendar-button"
                 onClick={agendar}
               >
                 Confirmar agendamento

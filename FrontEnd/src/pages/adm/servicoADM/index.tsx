@@ -8,6 +8,7 @@ interface Servico {
   descricao: string
   preco: number
   duracao: number
+  img?: string
 }
 
 function ServicoAdm() {
@@ -20,6 +21,7 @@ function ServicoAdm() {
   const [descricao, setDescricao] = useState('')
   const [preco, setPreco] = useState('')
   const [duracao, setDuracao] = useState('')
+  const [img, setImg] = useState('')
 
   const carregarServicos = async () => {
     try {
@@ -63,25 +65,45 @@ function ServicoAdm() {
     setDescricao('')
     setPreco('')
     setDuracao('')
+    setImg('')
     setModal(true)
   }
 
   const abrirEditar = (servico: Servico) => {
     setEditando(servico)
+
     setNome(servico.nome)
     setDescricao(servico.descricao)
     setPreco(String(servico.preco))
     setDuracao(String(servico.duracao))
+    setImg(servico.img || '')
+
     setModal(true)
   }
 
+  const fecharModal = () => {
+    setModal(false)
+    setEditando(null)
+    setNome('')
+    setDescricao('')
+    setPreco('')
+    setDuracao('')
+    setImg('')
+  }
+
   const salvarServico = async () => {
+    if (!nome || !descricao || !preco || !duracao) {
+      alert('Preencha todos os campos obrigatórios.')
+      return
+    }
+
     try {
       const dados = {
         nome,
         descricao,
         preco: Number(preco),
-        duracao: Number(duracao)
+        duracao: Number(duracao),
+        img
       }
 
       const url = editando
@@ -96,15 +118,25 @@ function ServicoAdm() {
         body: JSON.stringify(dados)
       })
 
+      const data = await res.json()
+
       if (!res.ok) {
-        throw new Error('Erro ao salvar serviço')
+        throw new Error(
+          data.message || 'Erro ao salvar serviço'
+        )
       }
 
-      setModal(false)
+      fecharModal()
       carregarServicos()
+
     } catch (error) {
       console.error(error)
-      alert('Não foi possível salvar o serviço.')
+
+      alert(
+        error instanceof Error
+          ? error.message
+          : 'Não foi possível salvar o serviço.'
+      )
     }
   }
 
@@ -126,6 +158,7 @@ function ServicoAdm() {
       }
 
       carregarServicos()
+
     } catch (error) {
       console.error(error)
       alert('Não foi possível excluir o serviço.')
@@ -164,6 +197,7 @@ function ServicoAdm() {
           <p className="loading">
             Carregando serviços...
           </p>
+
         ) : servicos.length === 0 ? (
 
           <div className="empty-services">
@@ -187,9 +221,28 @@ function ServicoAdm() {
                 key={servico._id}
               >
 
+                {/* IMAGEM */}
+                <div className="service-image">
+
+                  {servico.img ? (
+                    <img
+                      src={servico.img}
+                      alt={servico.nome}
+                    />
+                  ) : (
+                    <div className="no-image">
+                      Sem imagem
+                    </div>
+                  )}
+
+                </div>
+
+                {/* INFORMAÇÕES */}
                 <div className="service-info">
 
-                  <h2>{servico.nome}</h2>
+                  <h2>
+                    {servico.nome}
+                  </h2>
 
                   <p>
                     {servico.descricao}
@@ -209,6 +262,7 @@ function ServicoAdm() {
 
                 </div>
 
+                {/* AÇÕES */}
                 <div className="service-actions">
 
                   <button
@@ -249,7 +303,7 @@ function ServicoAdm() {
 
             <button
               className="close-modal"
-              onClick={() => setModal(false)}
+              onClick={fecharModal}
             >
               ×
             </button>
@@ -266,49 +320,105 @@ function ServicoAdm() {
                 : 'Adicionar serviço'}
             </h2>
 
-            <label>Nome</label>
+            {/* NOME */}
+            <label>
+              Nome
+            </label>
 
             <input
               type="text"
               value={nome}
-              onChange={e => setNome(e.target.value)}
+              onChange={e =>
+                setNome(e.target.value)
+              }
               placeholder="Nome do serviço"
             />
 
-            <label>Descrição</label>
+            {/* DESCRIÇÃO */}
+            <label>
+              Descrição
+            </label>
 
             <textarea
               value={descricao}
-              onChange={e => setDescricao(e.target.value)}
+              onChange={e =>
+                setDescricao(e.target.value)
+              }
               placeholder="Descrição do serviço"
             />
 
+            {/* PREÇO E DURAÇÃO */}
             <div className="form-row">
 
               <div>
-                <label>Preço</label>
+
+                <label>
+                  Preço
+                </label>
 
                 <input
                   type="number"
                   value={preco}
-                  onChange={e => setPreco(e.target.value)}
+                  onChange={e =>
+                    setPreco(e.target.value)
+                  }
                   placeholder="0.00"
+                  min="0"
+                  step="0.01"
                 />
+
               </div>
 
               <div>
-                <label>Duração</label>
+
+                <label>
+                  Duração
+                </label>
 
                 <input
                   type="number"
                   value={duracao}
-                  onChange={e => setDuracao(e.target.value)}
+                  onChange={e =>
+                    setDuracao(e.target.value)
+                  }
                   placeholder="Ex: 90"
+                  min="1"
                 />
+
               </div>
 
             </div>
 
+            {/* IMAGEM */}
+            <label>
+              URL da imagem
+            </label>
+
+            <input
+              type="url"
+              value={img}
+              onChange={e =>
+                setImg(e.target.value)
+              }
+              placeholder="https://exemplo.com/imagem.jpg"
+            />
+
+            {/* PREVIEW */}
+            {img && (
+              <div className="image-preview">
+
+                <img
+                  src={img}
+                  alt="Prévia do serviço"
+                  onError={e => {
+                    e.currentTarget.style.display = 'none'
+                  }}
+                />
+
+              </div>
+            )}
+
+            {/* SALVAR */}
             <button
               className="save-service-button"
               onClick={salvarServico}

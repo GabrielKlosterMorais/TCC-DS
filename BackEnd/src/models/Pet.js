@@ -9,7 +9,8 @@ const petSchema = new mongoose.Schema({
     peso: {   type: Number, required: true      },
     observacoes: {   type: String, required: false      },
     clienteId: {   type: mongoose.Schema.Types.ObjectId, ref: 'Cliente', required: true    },
-    ativo: { type: Boolean, default: true }
+    ativo: { type: Boolean, default: true },
+    img: { type: String }
 });
 
 const Pet = mongoose.model('Pet', petSchema);

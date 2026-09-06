@@ -18,6 +18,10 @@
   padding: 60px 0 80px;
 }
 
+/* =========================
+   CABEÇALHO
+========================= */
+
 .pets-header {
   display: flex;
   justify-content: space-between;
@@ -50,6 +54,10 @@
   line-height: 1.6;
 }
 
+/* =========================
+   BOTÃO ADICIONAR
+========================= */
+
 .add-pet-button,
 .empty-button,
 .save-button {
@@ -71,17 +79,16 @@
   white-space: nowrap;
 }
 
-.add-pet-button span {
-  font-size: 22px;
-  line-height: 1;
-}
-
 .add-pet-button:hover,
 .empty-button:hover,
 .save-button:hover {
   background: #1d4ed8;
   transform: translateY(-1px);
 }
+
+/* =========================
+   ESTADO VAZIO
+========================= */
 
 .empty-state {
   background: white;
@@ -102,7 +109,6 @@
   align-items: center;
   justify-content: center;
   font-size: 35px;
-  font-weight: 400;
 }
 
 .empty-state h2 {
@@ -124,43 +130,90 @@
   border-radius: 8px;
 }
 
+/* =========================
+   LISTA DE PETS
+========================= */
+
+/*
+   IMPORTANTE:
+   Cada pet fica em uma linha.
+*/
+
 .pets-list {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  width: 100%;
   gap: 20px;
 }
 
+/* =========================
+   CARD DO PET
+========================= */
+
 .pet-card {
-  display: flex;
+  display: flex !important;
+  flex-direction: row !important;
+
+  width: 100% !important;
+  max-width: 100% !important;
+
   background: white;
   border: 1px solid #e2e8f0;
   border-radius: 14px;
+
   overflow: hidden;
 }
 
+/* =========================
+   IMAGEM
+========================= */
+
 .pet-image {
   width: 240px;
-  min-height: 250px;
+  min-width: 240px;
+  height: 250px;
+
   background: #eff6ff;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  overflow: hidden;
+}
+
+.pet-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .pet-image span {
   font-size: 55px;
-  color: #2563eb;
 }
+
+/* =========================
+   INFORMAÇÕES
+========================= */
 
 .pet-info {
   flex: 1;
+  min-width: 0;
   padding: 28px;
 }
+
+/* =========================
+   CABEÇALHO DO CARD
+========================= */
 
 .pet-card-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  gap: 20px;
+
+  width: 100%;
 }
 
 .pet-species {
@@ -175,24 +228,71 @@
   margin-top: 4px;
   font-size: 28px;
   font-weight: 800;
+  color: #1e293b;
 }
 
+/* =========================
+   BOTÕES EDITAR / EXCLUIR
+========================= */
+
+.pet-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  flex-shrink: 0;
+}
+
+.edit-button,
 .delete-button {
-  border: none;
-  background: transparent;
-  color: #ef4444;
+  width: 80px;
+  min-width: 80px;
+
+  padding: 9px 12px;
+
+  border-radius: 8px;
+
   font-family: inherit;
   font-size: 13px;
   font-weight: 700;
+
   cursor: pointer;
+  transition: 0.2s;
 }
+
+.edit-button {
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.edit-button:hover {
+  background: #dbeafe;
+}
+
+.delete-button {
+  border: 1px solid #fecaca;
+  background: white;
+  color: #ef4444;
+}
+
+.delete-button:hover {
+  background: #fef2f2;
+}
+
+/* =========================
+   DETALHES
+========================= */
 
 .pet-details {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+
   gap: 15px;
+
   margin-top: 25px;
   padding-top: 20px;
+
   border-top: 1px solid #e2e8f0;
 }
 
@@ -205,8 +305,10 @@
 .pet-details span,
 .pet-observations span {
   color: #94a3b8;
+
   font-size: 11px;
   font-weight: 700;
+
   text-transform: uppercase;
 }
 
@@ -215,25 +317,40 @@
   color: #334155;
 }
 
+/* =========================
+   OBSERVAÇÕES
+========================= */
+
 .pet-observations {
   margin-top: 22px;
 }
 
 .pet-observations p {
   margin-top: 5px;
+
   color: #64748b;
   font-size: 14px;
+  line-height: 1.5;
 }
+
+/* =========================
+   MODAL DO FORMULÁRIO
+========================= */
 
 .form-overlay {
   position: fixed;
   inset: 0;
+
   z-index: 1000;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   padding: 25px;
+
   background: rgba(15, 23, 42, 0.45);
+
   overflow-y: auto;
 }
 
@@ -241,16 +358,25 @@
   width: 100%;
   max-width: 650px;
   max-height: 90vh;
+
   overflow-y: auto;
+
   background: white;
+
   border-radius: 14px;
+
   padding: 35px;
 }
+
+/* =========================
+   CABEÇALHO FORM
+========================= */
 
 .form-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+
   margin-bottom: 30px;
 }
 
@@ -261,6 +387,7 @@
 
 .form-header p {
   margin-top: 6px;
+
   color: #64748b;
   font-size: 14px;
 }
@@ -268,12 +395,16 @@
 .close-button {
   width: 35px;
   height: 35px;
+
   border: none;
   border-radius: 50%;
+
   background: #f1f5f9;
   color: #64748b;
+
   font-size: 24px;
   line-height: 1;
+
   cursor: pointer;
 }
 
@@ -281,9 +412,14 @@
   background: #e2e8f0;
 }
 
+/* =========================
+   FORMULÁRIO
+========================= */
+
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
+
   gap: 18px;
 }
 
@@ -293,8 +429,11 @@
 
 .input-group label {
   display: block;
+
   margin-bottom: 7px;
+
   color: #334155;
+
   font-size: 13px;
   font-weight: 700;
 }
@@ -303,14 +442,20 @@
 .input-group select,
 .input-group textarea {
   width: 100%;
+
   border: 1px solid #e2e8f0;
   border-radius: 8px;
+
   padding: 12px 14px;
+
   background: white;
   color: #1e293b;
+
   font-family: inherit;
   font-size: 14px;
+
   outline: none;
+
   transition: 0.2s;
 }
 
@@ -328,7 +473,9 @@
 .input-group select:focus,
 .input-group textarea:focus {
   border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .input-group input::placeholder,
@@ -336,28 +483,64 @@
   color: #94a3b8;
 }
 
+/* =========================
+   PRÉVIA DA IMAGEM
+========================= */
+
+.image-preview {
+  width: 150px;
+  height: 150px;
+
+  margin-bottom: 18px;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  background: #eff6ff;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+/* =========================
+   AÇÕES FORM
+========================= */
+
 .form-actions {
   display: flex;
   justify-content: flex-end;
+
   gap: 12px;
+
   margin-top: 10px;
   padding-top: 20px;
+
   border-top: 1px solid #e2e8f0;
 }
 
 .cancel-button,
 .save-button {
   height: 44px;
+
   padding: 0 20px;
+
   border-radius: 8px;
+
   font-family: inherit;
   font-size: 14px;
   font-weight: 800;
+
   cursor: pointer;
 }
 
 .cancel-button {
   border: 1px solid #e2e8f0;
+
   background: white;
   color: #64748b;
 }
@@ -370,7 +553,12 @@
   border: none;
 }
 
+/* =========================
+   RESPONSIVO
+========================= */
+
 @media (max-width: 750px) {
+
   .pets-container {
     width: 88%;
     padding: 40px 0 60px;
@@ -390,13 +578,19 @@
     justify-content: center;
   }
 
+  /* Card continua sendo um pet por linha */
   .pet-card {
-    flex-direction: column;
+    flex-direction: column !important;
   }
 
   .pet-image {
     width: 100%;
-    min-height: 180px;
+    min-width: 100%;
+    height: 250px;
+  }
+
+  .pet-info {
+    width: 100%;
   }
 
   .pet-details {
@@ -413,7 +607,12 @@
   }
 }
 
+/* =========================
+   CELULAR PEQUENO
+========================= */
+
 @media (max-width: 450px) {
+
   .pets-header h1 {
     font-size: 29px;
   }
@@ -424,6 +623,10 @@
 
   .pet-card h2 {
     font-size: 24px;
+  }
+
+  .pet-card-header {
+    gap: 10px;
   }
 
   .pet-details {
@@ -437,5 +640,16 @@
   .cancel-button,
   .save-button {
     width: 100%;
+  }
+
+  .pet-actions {
+    gap: 6px;
+  }
+
+  .edit-button,
+  .delete-button {
+    width: 75px;
+    min-width: 75px;
+    padding: 8px 10px;
   }
 }

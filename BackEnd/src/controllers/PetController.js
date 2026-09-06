@@ -1,6 +1,7 @@
 import Pet from '../models/Pet.js';
 
 class PetController {
+
     static async create(req, res) {
         try {
             const {
@@ -11,16 +12,17 @@ class PetController {
                 sexo,
                 peso,
                 observacoes,
-                clienteId
+                clienteId,
+                img
             } = req.body;
 
             if (!nome || !especie || !raca || !idade || !sexo || !peso || !clienteId) {
                 return res.status(400).json({
-                    message: "Dados inválidos. Certifique-se de enviar nome, espécie, raça, idade, sexo, peso e clienteId."
+                    message: 'Dados inválidos. Envie nome, espécie, raça, idade, sexo, peso e clienteId.'
                 });
             }
 
-            const petData = {
+            const newPet = await Pet.create({
                 nome,
                 especie,
                 raca,
@@ -28,10 +30,9 @@ class PetController {
                 sexo,
                 peso,
                 observacoes,
-                clienteId
-            };
-
-            const newPet = await Pet.create(petData);
+                clienteId,
+                img
+            });
 
             return res.status(201).json({
                 message: 'Pet criado com sucesso',
@@ -50,9 +51,7 @@ class PetController {
         try {
             const pets = await Pet.find({ ativo: true });
 
-            return res.status(200).json({
-                data: pets
-            });
+            return res.status(200).json({ data: pets });
 
         } catch (error) {
             return res.status(500).json({
@@ -64,10 +63,8 @@ class PetController {
 
     static async getById(req, res) {
         try {
-            const { id } = req.params;
-
             const pet = await Pet.findOne({
-                _id: id,
+                _id: req.params.id,
                 ativo: true
             });
 
@@ -77,9 +74,7 @@ class PetController {
                 });
             }
 
-            return res.status(200).json({
-                data: pet
-            });
+            return res.status(200).json({ data: pet });
 
         } catch (error) {
             return res.status(500).json({
@@ -91,8 +86,6 @@ class PetController {
 
     static async update(req, res) {
         try {
-            const { id } = req.params;
-
             const {
                 nome,
                 especie,
@@ -101,7 +94,8 @@ class PetController {
                 sexo,
                 peso,
                 observacoes,
-                clienteId
+                clienteId,
+                img
             } = req.body;
 
             const updatedData = {
@@ -115,9 +109,13 @@ class PetController {
                 clienteId
             };
 
+            if (img !== undefined) {
+                updatedData.img = img;
+            }
+
             const updatedPet = await Pet.findOneAndUpdate(
                 {
-                    _id: id,
+                    _id: req.params.id,
                     ativo: true
                 },
                 updatedData,
@@ -145,19 +143,13 @@ class PetController {
 
     static async delete(req, res) {
         try {
-            const { id } = req.params;
-
             const deletedPet = await Pet.findOneAndUpdate(
                 {
-                    _id: id,
+                    _id: req.params.id,
                     ativo: true
                 },
-                {
-                    ativo: false
-                },
-                {
-                    new: true
-                }
+                { ativo: false },
+                { new: true }
             );
 
             if (!deletedPet) {

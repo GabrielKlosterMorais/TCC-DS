@@ -1,32 +1,32 @@
 import Servico from '../models/Servico.js';
 
 class ServicoController {
+
     static async create(req, res) {
         try {
-            const { nome, descricao, preco, duracao } = req.body;
+            const { nome, descricao, preco, duracao, img } = req.body;
 
             if (!nome || !descricao || !preco || !duracao) {
                 return res.status(400).json({
-                    message: "Dados inválidos. Certifique-se de enviar nome, descrição, preço e duração."
+                    message: 'Dados inválidos. Envie nome, descrição, preço e duração.'
                 });
             }
 
-            const servicoData = {
+            const servico = await Servico.create({
                 nome,
                 descricao,
                 preco,
-                duracao
-            };
+                duracao,
+                img
+            });
 
-            const newServico = await Servico.create(servicoData);
-
-            return res.status(201).json({
+            res.status(201).json({
                 message: 'Serviço criado com sucesso',
-                data: newServico
+                data: servico
             });
 
         } catch (error) {
-            return res.status(500).json({
+            res.status(500).json({
                 message: 'Erro ao criar serviço',
                 error: error.message
             });
@@ -35,16 +35,12 @@ class ServicoController {
 
     static async getAll(req, res) {
         try {
-            const servicos = await Servico.find({
-                ativo: true
-            });
+            const servicos = await Servico.find({ ativo: true });
 
-            return res.status(200).json({
-                data: servicos
-            });
+            res.status(200).json({ data: servicos });
 
         } catch (error) {
-            return res.status(500).json({
+            res.status(500).json({
                 message: 'Erro ao encontrar serviços',
                 error: error.message
             });
@@ -53,10 +49,8 @@ class ServicoController {
 
     static async getById(req, res) {
         try {
-            const { id } = req.params;
-
             const servico = await Servico.findOne({
-                _id: id,
+                _id: req.params.id,
                 ativo: true
             });
 
@@ -66,12 +60,10 @@ class ServicoController {
                 });
             }
 
-            return res.status(200).json({
-                data: servico
-            });
+            res.status(200).json({ data: servico });
 
         } catch (error) {
-            return res.status(500).json({
+            res.status(500).json({
                 message: 'Erro ao encontrar serviço',
                 error: error.message
             });
@@ -80,38 +72,36 @@ class ServicoController {
 
     static async update(req, res) {
         try {
-            const { id } = req.params;
-            const { nome, descricao, preco, duracao } = req.body;
+            const { nome, descricao, preco, duracao, img } = req.body;
 
-            const updatedData = {
-                nome,
-                descricao,
-                preco,
-                duracao
-            };
-
-            const updatedServico = await Servico.findOneAndUpdate(
+            const servico = await Servico.findOneAndUpdate(
                 {
-                    _id: id,
+                    _id: req.params.id,
                     ativo: true
                 },
-                updatedData,
+                {
+                    nome,
+                    descricao,
+                    preco,
+                    duracao,
+                    img
+                },
                 { new: true }
             );
 
-            if (!updatedServico) {
+            if (!servico) {
                 return res.status(404).json({
                     message: 'Serviço não encontrado'
                 });
             }
 
-            return res.status(200).json({
+            res.status(200).json({
                 message: 'Serviço atualizado com sucesso',
-                data: updatedServico
+                data: servico
             });
 
         } catch (error) {
-            return res.status(500).json({
+            res.status(500).json({
                 message: 'Erro ao atualizar serviço',
                 error: error.message
             });
@@ -120,33 +110,27 @@ class ServicoController {
 
     static async delete(req, res) {
         try {
-            const { id } = req.params;
-
-            const deletedServico = await Servico.findOneAndUpdate(
+            const servico = await Servico.findOneAndUpdate(
                 {
-                    _id: id,
+                    _id: req.params.id,
                     ativo: true
                 },
-                {
-                    ativo: false
-                },
-                {
-                    new: true
-                }
+                { ativo: false },
+                { new: true }
             );
 
-            if (!deletedServico) {
+            if (!servico) {
                 return res.status(404).json({
                     message: 'Serviço não encontrado'
                 });
             }
 
-            return res.status(200).json({
+            res.status(200).json({
                 message: 'Serviço desativado com sucesso'
             });
 
         } catch (error) {
-            return res.status(500).json({
+            res.status(500).json({
                 message: 'Erro ao desativar serviço',
                 error: error.message
             });

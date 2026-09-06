@@ -14,30 +14,21 @@ function Navbar() {
 
       <div className="navbar-links">
 
-        <Link
-          to="/"
-          className={location.pathname === '/' ? 'active' : ''}
-        >
+        <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
           Início
         </Link>
 
-        <Link
-          to="/servicos"
-          className={location.pathname === '/servicos' ? 'active' : ''}
-        >
+        <Link to="/servicos" className={location.pathname === '/servicos' ? 'active' : ''}>
           Serviços
         </Link>
 
-        <Link
-          to="/sobre"
-          className={location.pathname === '/sobre' ? 'active' : ''}
-        >
+        <Link to="/sobre" className={location.pathname === '/sobre' ? 'active' : ''}>
           Sobre nós
         </Link>
 
         <Link
           to="/petcare"
-          className={location.pathname === '/petcare' ? 'active' : ''}
+          className={`petcare-link ${location.pathname === '/petcare' ? 'active' : ''}`}
         >
           PetCare
         </Link>

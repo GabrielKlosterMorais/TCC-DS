@@ -11,64 +11,63 @@ interface Pet {
   sexo: string;
   peso: number;
   observacoes?: string;
-  clienteId: string;
+  clienteId: string | { _id: string };
+  img?: string;
 }
+
+const formInicial = {
+  nome: '',
+  especie: '',
+  raca: '',
+  idade: '',
+  sexo: '',
+  peso: '',
+  observacoes: '',
+  img: ''
+};
 
 function Pets() {
   const [pets, setPets] = useState<Pet[]>([]);
   const [showForm, setShowForm] = useState(false);
-
-  const [nome, setNome] = useState('');
-  const [especie, setEspecie] = useState('');
-  const [raca, setRaca] = useState('');
-  const [idade, setIdade] = useState('');
-  const [sexo, setSexo] = useState('');
-  const [peso, setPeso] = useState('');
-  const [observacoes, setObservacoes] = useState('');
+  const [editando, setEditando] = useState<string | null>(null);
+  const [form, setForm] = useState(formInicial);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
   const getClienteId = () => {
-    const user = localStorage.getItem('user');
-
-    if (!user) {
-      return null;
-    }
-
     try {
-      const usuario = JSON.parse(user);
-      return usuario.id || null;
+      const user = JSON.parse(localStorage.getItem('user') || '{}');
+      return user.id || null;
     } catch {
       return null;
     }
   };
 
   const carregarPets = async () => {
-    const clienteId = getClienteId();
+    const id = getClienteId();
 
-    if (!clienteId) {
+    if (!id) {
       setError('Usuário não encontrado. Faça login novamente.');
       return;
     }
 
     try {
-      const response = await fetch('http://localhost:3001/Pet');
+      const res = await fetch('http://localhost:3001/Pet');
+      const result = await res.json();
 
-      if (!response.ok) {
-        throw new Error('Erro ao buscar pets');
-      }
+      const meusPets = (result.data || []).filter((pet: Pet) => {
+        const cliente =
+          typeof pet.clienteId === 'string'
+            ? pet.clienteId
+            : pet.clienteId?._id;
 
-      const result = await response.json();
+        return String(cliente) === String(id);
+      });
 
-      const petsDoCliente = result.data.filter(
-        (pet: Pet) => pet.clienteId === clienteId
-      );
-
-      setPets(petsDoCliente);
-    } catch (error) {
-      console.error(error);
+      setPets(meusPets);
+    } catch {
       setError('Não foi possível carregar seus pets.');
     }
   };
@@ -77,139 +76,149 @@ function Pets() {
     carregarPets();
   }, []);
 
-  const handleSubmit = async (
-    e: React.FormEvent<HTMLFormElement>
+  const alterar = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
-    e.preventDefault();
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    });
+  };
 
-    setLoading(true);
+  const abrirCadastro = () => {
+    setForm(formInicial);
+    setEditando(null);
     setError('');
     setSuccess('');
+    setShowForm(true);
+  };
+
+  const editarPet = (pet: Pet) => {
+    setForm({
+      nome: pet.nome,
+      especie: pet.especie,
+      raca: pet.raca,
+      idade: String(pet.idade),
+      sexo: pet.sexo,
+      peso: String(pet.peso),
+      observacoes: pet.observacoes || '',
+      img: pet.img || ''
+    });
+
+    setEditando(pet._id);
+    setError('');
+    setSuccess('');
+    setShowForm(true);
+  };
+
+  const salvarPet = async (e: React.FormEvent) => {
+    e.preventDefault();
 
     const clienteId = getClienteId();
 
     if (!clienteId) {
       setError('Usuário não encontrado. Faça login novamente.');
-      setLoading(false);
       return;
     }
 
-    const petData = {
-      nome,
-      especie,
-      raca,
-      idade: Number(idade),
-      sexo,
-      peso: Number(peso),
-      observacoes,
-      clienteId,
+    setLoading(true);
+    setError('');
+    setSuccess('');
+
+    const dados = {
+      ...form,
+      idade: Number(form.idade),
+      peso: Number(form.peso),
+      clienteId
     };
 
     try {
-      const response = await fetch(
-        'http://localhost:3001/Pet',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(petData),
-        }
-      );
+      const url = editando
+        ? `http://localhost:3001/Pet/${editando}`
+        : 'http://localhost:3001/Pet';
 
-      const result = await response.json();
+      const res = await fetch(url, {
+        method: editando ? 'PUT' : 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dados)
+      });
 
-      if (!response.ok) {
+      const result = await res.json();
+
+      if (!res.ok) {
         throw new Error(
-          result.message || 'Erro ao cadastrar pet'
+          result.message || 'Erro ao salvar pet.'
         );
       }
 
-      setSuccess('Pet cadastrado com sucesso!');
-
-      setNome('');
-      setEspecie('');
-      setRaca('');
-      setIdade('');
-      setSexo('');
-      setPeso('');
-      setObservacoes('');
+      setSuccess(
+        editando
+          ? 'Pet atualizado com sucesso!'
+          : 'Pet cadastrado com sucesso!'
+      );
 
       setShowForm(false);
+      setEditando(null);
+      setForm(formInicial);
 
       await carregarPets();
-    } catch (error) {
-      console.error(error);
-
-      if (error instanceof Error) {
-        setError(error.message);
-      } else {
-        setError('Erro ao cadastrar pet.');
-      }
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : 'Erro ao salvar pet.'
+      );
     } finally {
       setLoading(false);
     }
   };
 
   const removerPet = async (id: string) => {
-    const confirmar = window.confirm(
-      'Tem certeza que deseja excluir este pet?'
-    );
-
-    if (!confirmar) {
+    if (!window.confirm('Tem certeza que deseja excluir este pet?')) {
       return;
     }
 
     try {
-      const response = await fetch(
+      const res = await fetch(
         `http://localhost:3001/Pet/${id}`,
-        {
-          method: 'DELETE',
-        }
+        { method: 'DELETE' }
       );
 
-      const result = await response.json();
+      const result = await res.json();
 
-      if (!response.ok) {
+      if (!res.ok) {
         throw new Error(
-          result.message || 'Erro ao excluir pet'
+          result.message || 'Erro ao excluir pet.'
         );
       }
 
-      setPets(
-        pets.filter((pet) => pet._id !== id)
-      );
-
+      setPets(pets.filter(pet => pet._id !== id));
       setSuccess('Pet excluído com sucesso!');
       setError('');
-    } catch (error) {
-      console.error(error);
-
-      if (error instanceof Error) {
-        setError(error.message);
-      } else {
-        setError('Erro ao excluir pet.');
-      }
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : 'Erro ao excluir pet.'
+      );
     }
   };
 
   return (
     <div className="pets-page">
-
       <LogNavbar />
 
       <main className="pets-container">
 
         <section className="pets-header">
-
           <div>
-            <span className="section-label">
-              MEUS PETS
-            </span>
+            <span className="section-label">MEUS PETS</span>
 
-            <h1>
-              Seus melhores amigos.
-            </h1>
+            <h1>Seus melhores amigos.</h1>
 
             <p>
               Cadastre seus pets para acompanhar os cuidados,
@@ -219,16 +228,10 @@ function Pets() {
 
           <button
             className="add-pet-button"
-            onClick={() => {
-              setShowForm(true);
-              setError('');
-              setSuccess('');
-            }}
+            onClick={abrirCadastro}
           >
-            <span>+</span>
-            Adicionar pet
+            + Adicionar pet
           </button>
-
         </section>
 
         {error && (
@@ -244,73 +247,75 @@ function Pets() {
         )}
 
         {pets.length === 0 && !showForm && (
-
           <section className="empty-state">
-
-            <div className="empty-icon">
-              +
-            </div>
+            <div className="empty-icon">+</div>
 
             <h2>
               Você ainda não possui pets cadastrados.
             </h2>
 
             <p>
-              Cadastre seu primeiro pet para começar a organizar
-              os cuidados dele.
+              Cadastre seu primeiro pet para começar a
+              organizar os cuidados dele.
             </p>
 
             <button
               className="empty-button"
-              onClick={() => setShowForm(true)}
+              onClick={abrirCadastro}
             >
               Cadastrar meu primeiro pet
             </button>
-
           </section>
-
         )}
 
         {pets.length > 0 && (
-
           <section className="pets-list">
 
-            {pets.map((pet) => (
-
+            {pets.map(pet => (
               <article
                 className="pet-card"
                 key={pet._id}
               >
 
                 <div className="pet-image">
-                  <span>🐾</span>
+                  {pet.img ? (
+                    <img
+                      src={pet.img}
+                      alt={`Foto de ${pet.nome}`}
+                    />
+                  ) : (
+                    <span>🐾</span>
+                  )}
                 </div>
 
                 <div className="pet-info">
 
                   <div className="pet-card-header">
-
                     <div>
-
                       <span className="pet-species">
                         {pet.especie}
                       </span>
 
-                      <h2>
-                        {pet.nome}
-                      </h2>
-
+                      <h2>{pet.nome}</h2>
                     </div>
 
-                    <button
-                      className="delete-button"
-                      onClick={() =>
-                        removerPet(pet._id)
-                      }
-                    >
-                      Excluir
-                    </button>
+                    <div className="pet-actions">
 
+                      <button
+                        className="edit-button"
+                        onClick={() => editarPet(pet)}
+                      >
+                        Editar
+                      </button>
+
+                      <button
+                        className="delete-button"
+                        onClick={() => removerPet(pet._id)}
+                      >
+                        Excluir
+                      </button>
+
+                    </div>
                   </div>
 
                   <div className="pet-details">
@@ -324,69 +329,52 @@ function Pets() {
 
                     <div>
                       <span>Idade</span>
-                      <strong>
-                        {pet.idade} anos
-                      </strong>
+                      <strong>{pet.idade} anos</strong>
                     </div>
 
                     <div>
                       <span>Sexo</span>
-                      <strong>
-                        {pet.sexo}
-                      </strong>
+                      <strong>{pet.sexo}</strong>
                     </div>
 
                     <div>
                       <span>Peso</span>
-                      <strong>
-                        {pet.peso} kg
-                      </strong>
+                      <strong>{pet.peso} kg</strong>
                     </div>
 
                   </div>
 
                   {pet.observacoes && (
-
                     <div className="pet-observations">
-
-                      <span>
-                        Observações
-                      </span>
-
-                      <p>
-                        {pet.observacoes}
-                      </p>
-
+                      <span>Observações</span>
+                      <p>{pet.observacoes}</p>
                     </div>
-
                   )}
 
                 </div>
 
               </article>
-
             ))}
 
           </section>
-
         )}
 
         {showForm && (
-
           <div className="form-overlay">
 
             <section className="pet-form-card">
 
               <div className="form-header">
-
                 <div>
 
                   <span className="section-label">
-                    NOVO PET
+                    {editando ? 'EDITAR PET' : 'NOVO PET'}
                   </span>
 
                   <h2>
-                    Cadastre seu pet
+                    {editando
+                      ? 'Editar informações'
+                      : 'Cadastre seu pet'}
                   </h2>
 
                   <p>
@@ -397,74 +385,46 @@ function Pets() {
 
                 <button
                   className="close-button"
-                  onClick={() =>
-                    setShowForm(false)
-                  }
+                  onClick={() => {
+                    setShowForm(false);
+                    setEditando(null);
+                  }}
                 >
                   ×
                 </button>
-
               </div>
 
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={salvarPet}>
 
                 <div className="form-row">
 
                   <div className="input-group">
-
-                    <label htmlFor="nome">
-                      Nome
-                    </label>
+                    <label>Nome</label>
 
                     <input
-                      type="text"
-                      id="nome"
-                      value={nome}
-                      onChange={(e) =>
-                        setNome(e.target.value)
-                      }
+                      name="nome"
+                      value={form.nome}
+                      onChange={alterar}
                       placeholder="Nome do pet"
                       required
                     />
-
                   </div>
 
                   <div className="input-group">
-
-                    <label htmlFor="especie">
-                      Espécie
-                    </label>
+                    <label>Espécie</label>
 
                     <select
-                      id="especie"
-                      value={especie}
-                      onChange={(e) =>
-                        setEspecie(e.target.value)
-                      }
+                      name="especie"
+                      value={form.especie}
+                      onChange={alterar}
                       required
                     >
-                      <option value="">
-                        Selecione
-                      </option>
-
-                      <option value="Cachorro">
-                        Cachorro
-                      </option>
-
-                      <option value="Gato">
-                        Gato
-                      </option>
-
-                      <option value="Ave">
-                        Ave
-                      </option>
-
-                      <option value="Outro">
-                        Outro
-                      </option>
-
+                      <option value="">Selecione</option>
+                      <option value="Cachorro">Cachorro</option>
+                      <option value="Gato">Gato</option>
+                      <option value="Ave">Ave</option>
+                      <option value="Outro">Outro</option>
                     </select>
-
                   </div>
 
                 </div>
@@ -472,42 +432,29 @@ function Pets() {
                 <div className="form-row">
 
                   <div className="input-group">
-
-                    <label htmlFor="raca">
-                      Raça
-                    </label>
+                    <label>Raça</label>
 
                     <input
-                      type="text"
-                      id="raca"
-                      value={raca}
-                      onChange={(e) =>
-                        setRaca(e.target.value)
-                      }
+                      name="raca"
+                      value={form.raca}
+                      onChange={alterar}
                       placeholder="Ex: Labrador"
                       required
                     />
-
                   </div>
 
                   <div className="input-group">
-
-                    <label htmlFor="idade">
-                      Idade
-                    </label>
+                    <label>Idade</label>
 
                     <input
+                      name="idade"
                       type="number"
-                      id="idade"
-                      value={idade}
-                      onChange={(e) =>
-                        setIdade(e.target.value)
-                      }
-                      placeholder="Idade em anos"
+                      value={form.idade}
+                      onChange={alterar}
                       min="0"
+                      placeholder="Idade em anos"
                       required
                     />
-
                   </div>
 
                 </div>
@@ -515,74 +462,68 @@ function Pets() {
                 <div className="form-row">
 
                   <div className="input-group">
-
-                    <label htmlFor="sexo">
-                      Sexo
-                    </label>
+                    <label>Sexo</label>
 
                     <select
-                      id="sexo"
-                      value={sexo}
-                      onChange={(e) =>
-                        setSexo(e.target.value)
-                      }
+                      name="sexo"
+                      value={form.sexo}
+                      onChange={alterar}
                       required
                     >
-                      <option value="">
-                        Selecione
-                      </option>
-
-                      <option value="Macho">
-                        Macho
-                      </option>
-
-                      <option value="Fêmea">
-                        Fêmea
-                      </option>
-
+                      <option value="">Selecione</option>
+                      <option value="Macho">Macho</option>
+                      <option value="Fêmea">Fêmea</option>
                     </select>
-
                   </div>
 
                   <div className="input-group">
-
-                    <label htmlFor="peso">
-                      Peso
-                    </label>
+                    <label>Peso</label>
 
                     <input
+                      name="peso"
                       type="number"
-                      id="peso"
-                      value={peso}
-                      onChange={(e) =>
-                        setPeso(e.target.value)
-                      }
-                      placeholder="Peso em kg"
+                      value={form.peso}
+                      onChange={alterar}
                       min="0"
                       step="0.1"
+                      placeholder="Peso em kg"
                       required
                     />
-
                   </div>
 
                 </div>
 
                 <div className="input-group">
+                  <label>URL da imagem</label>
 
-                  <label htmlFor="observacoes">
-                    Observações
-                  </label>
+                  <input
+                    name="img"
+                    type="url"
+                    value={form.img}
+                    onChange={alterar}
+                    placeholder="https://exemplo.com/cachorro.jpg"
+                  />
+                </div>
+
+                {form.img && (
+                  <div className="image-preview">
+                    <img
+                      src={form.img}
+                      alt="Prévia do pet"
+                    />
+                  </div>
+                )}
+
+                <div className="input-group">
+                  <label>Observações</label>
 
                   <textarea
-                    id="observacoes"
-                    value={observacoes}
-                    onChange={(e) =>
-                      setObservacoes(e.target.value)
-                    }
+                    name="observacoes"
+                    value={form.observacoes}
+                    onChange={alterar}
                     placeholder="Alguma informação importante sobre seu pet?"
                     rows={4}
                   />
-
                 </div>
 
                 <div className="form-actions">
@@ -590,9 +531,10 @@ function Pets() {
                   <button
                     type="button"
                     className="cancel-button"
-                    onClick={() =>
-                      setShowForm(false)
-                    }
+                    onClick={() => {
+                      setShowForm(false);
+                      setEditando(null);
+                    }}
                   >
                     Cancelar
                   </button>
@@ -603,8 +545,10 @@ function Pets() {
                     disabled={loading}
                   >
                     {loading
-                      ? 'Cadastrando...'
-                      : 'Cadastrar pet'}
+                      ? 'Salvando...'
+                      : editando
+                        ? 'Salvar alterações'
+                        : 'Cadastrar pet'}
                   </button>
 
                 </div>
@@ -614,11 +558,9 @@ function Pets() {
             </section>
 
           </div>
-
         )}
 
       </main>
-
     </div>
   );
 }

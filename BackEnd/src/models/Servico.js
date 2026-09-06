@@ -6,7 +6,8 @@ const servicoSchema = new mongoose.Schema({
     descricao: {  type: String, required: true },
     preco: { type: Number, required: true },
     duracao: { type: Number, required: true },
-    ativo: { type: Boolean, default: true }
+    ativo: { type: Boolean, default: true },
+    img: { type: String }
 });
 
 const Servico = mongoose.model('Servico', servicoSchema);

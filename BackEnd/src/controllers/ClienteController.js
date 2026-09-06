@@ -1,6 +1,7 @@
 import Cliente from '../models/Cliente.js';
 
 class ClienteController {
+
     static async create(req, res) {
         try {
             const {
@@ -9,25 +10,25 @@ class ClienteController {
                 telefone,
                 endereco,
                 senha,
-                tipo
+                tipo,
+                img
             } = req.body;
 
             if (!nomeCliente || !email || !telefone || !endereco || !senha) {
                 return res.status(400).json({
-                    message: "Dados inválidos. Certifique-se de enviar nomeCliente, email, telefone, endereço e senha."
+                    message: 'Dados inválidos. Certifique-se de enviar nomeCliente, email, telefone, endereço e senha.'
                 });
             }
 
-            const clienteData = {
+            const newCliente = await Cliente.create({
                 nomeCliente,
                 email,
                 telefone,
                 endereco,
                 senha,
-                tipo: tipo || 'cliente'
-            };
-
-            const newCliente = await Cliente.create(clienteData);
+                tipo: tipo || 'cliente',
+                img
+            });
 
             return res.status(201).json({
                 message: 'Cliente criado com sucesso',
@@ -43,45 +44,37 @@ class ClienteController {
     }
 
     static async getAll(req, res) {
-    try {
-        const clientes = await Cliente.find({
-            ativo: true
-        });
+        try {
+            const clientes = await Cliente.find({ ativo: true });
 
-        return res.status(200).json({
-            data: clientes
-        });
+            return res.status(200).json({ data: clientes });
 
-    } catch (error) {
-        return res.status(500).json({
-            message: 'Erro ao encontrar clientes',
-            error: error.message
-        });
+        } catch (error) {
+            return res.status(500).json({
+                message: 'Erro ao encontrar clientes',
+                error: error.message
+            });
+        }
     }
-}
 
-static async getTodos(req, res) {
-    try {
-        const clientes = await Cliente.find();
+    static async getTodos(req, res) {
+        try {
+            const clientes = await Cliente.find();
 
-        return res.status(200).json({
-            data: clientes
-        });
+            return res.status(200).json({ data: clientes });
 
-    } catch (error) {
-        return res.status(500).json({
-            message: 'Erro ao encontrar clientes',
-            error: error.message
-        });
+        } catch (error) {
+            return res.status(500).json({
+                message: 'Erro ao encontrar clientes',
+                error: error.message
+            });
+        }
     }
-}
 
     static async getById(req, res) {
         try {
-            const { id } = req.params;
-
             const cliente = await Cliente.findOne({
-                _id: id,
+                _id: req.params.id,
                 ativo: true
             });
 
@@ -91,9 +84,7 @@ static async getTodos(req, res) {
                 });
             }
 
-            return res.status(200).json({
-                data: cliente
-            });
+            return res.status(200).json({ data: cliente });
 
         } catch (error) {
             return res.status(500).json({
@@ -105,14 +96,13 @@ static async getTodos(req, res) {
 
     static async update(req, res) {
         try {
-            const { id } = req.params;
-
             const {
                 nomeCliente,
                 email,
                 telefone,
                 endereco,
-                tipo
+                tipo,
+                img
             } = req.body;
 
             const updatedData = {
@@ -123,18 +113,21 @@ static async getTodos(req, res) {
                 tipo
             };
 
-            const updatedCliente = await Cliente.findOneAndUpdate(
+            // Só altera a imagem se ela for enviada
+            if (img !== undefined) {
+                updatedData.img = img;
+            }
+
+            const cliente = await Cliente.findOneAndUpdate(
                 {
-                    _id: id,
+                    _id: req.params.id,
                     ativo: true
                 },
                 updatedData,
-                {
-                    new: true
-                }
+                { new: true }
             );
 
-            if (!updatedCliente) {
+            if (!cliente) {
                 return res.status(404).json({
                     message: 'Cliente não encontrado'
                 });
@@ -142,7 +135,7 @@ static async getTodos(req, res) {
 
             return res.status(200).json({
                 message: 'Cliente atualizado com sucesso',
-                data: updatedCliente
+                data: cliente
             });
 
         } catch (error) {
@@ -155,22 +148,16 @@ static async getTodos(req, res) {
 
     static async delete(req, res) {
         try {
-            const { id } = req.params;
-
-            const deletedCliente = await Cliente.findOneAndUpdate(
+            const cliente = await Cliente.findOneAndUpdate(
                 {
-                    _id: id,
+                    _id: req.params.id,
                     ativo: true
                 },
-                {
-                    ativo: false
-                },
-                {
-                    new: true
-                }
+                { ativo: false },
+                { new: true }
             );
 
-            if (!deletedCliente) {
+            if (!cliente) {
                 return res.status(404).json({
                     message: 'Cliente não encontrado'
                 });
@@ -178,7 +165,7 @@ static async getTodos(req, res) {
 
             return res.status(200).json({
                 message: 'Cliente desativado com sucesso',
-                data: deletedCliente
+                data: cliente
             });
 
         } catch (error) {
@@ -198,13 +185,7 @@ static async getTodos(req, res) {
                 ativo: true
             });
 
-            if (!cliente) {
-                return res.status(400).json({
-                    message: 'E-mail ou senha incorretos.'
-                });
-            }
-
-            if (cliente.senha !== senha) {
+            if (!cliente || cliente.senha !== senha) {
                 return res.status(400).json({
                     message: 'E-mail ou senha incorretos.'
                 });
@@ -216,7 +197,8 @@ static async getTodos(req, res) {
                 email: cliente.email,
                 telefone: cliente.telefone,
                 endereco: cliente.endereco,
-                tipo: cliente.tipo
+                tipo: cliente.tipo,
+                img: cliente.img
             });
 
         } catch (error) {
