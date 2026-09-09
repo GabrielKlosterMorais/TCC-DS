@@ -55,23 +55,23 @@ function Login() {
   }
 
   return (
-    <main className="register-container">
+    <main className="login-page">
 
-      <section className="register-banner">
+      <section className="login-page-banner">
 
         <img
           src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1200&q=85"
           alt="Cachorro"
-          className="banner-image"
+          className="login-page-image"
         />
 
-        <div className="banner-content">
+        <div className="login-page-overlay">
 
-          <div className="logo">
+          <div className="login-page-logo">
             <h1>PetCare</h1>
           </div>
 
-          <div className="banner-text">
+          <div className="login-page-message">
             <h2>Bem-vindo de volta.</h2>
 
             <p>
@@ -83,15 +83,15 @@ function Login() {
 
       </section>
 
-      <section className="register-form-container">
+      <section className="login-page-form-area">
 
-        <div className="register-form">
+        <div className="login-page-form">
 
-          <div className="mobile-logo">
+          <div className="login-page-mobile-logo">
             <h1>PetCare</h1>
           </div>
 
-          <div className="form-header">
+          <div className="login-page-header">
 
             <h2>Entrar</h2>
 
@@ -103,17 +103,17 @@ function Login() {
 
           <form onSubmit={handleSubmit}>
 
-            <div className="input-group">
+            <div className="login-page-field">
 
-              <label htmlFor="email">
+              <label htmlFor="login-email">
                 E-mail
               </label>
 
-              <div className="input-wrapper">
+              <div className="login-page-input-box">
 
                 <input
                   type="email"
-                  id="email"
+                  id="login-email"
                   value={email}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     setEmail(e.target.value)
@@ -126,17 +126,17 @@ function Login() {
 
             </div>
 
-            <div className="input-group">
+            <div className="login-page-field">
 
-              <label htmlFor="password">
+              <label htmlFor="login-password">
                 Senha
               </label>
 
-              <div className="input-wrapper">
+              <div className="login-page-input-box">
 
                 <input
                   type="password"
-                  id="password"
+                  id="login-password"
                   value={senha}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     setSenha(e.target.value)
@@ -149,15 +149,21 @@ function Login() {
 
             </div>
 
+            <div className="login-page-recovery">
+              <a href="/esqueci-senha">
+                Esqueci minha senha?
+              </a>
+            </div>
+
             {error && (
-              <div className="form-error">
+              <div className="login-page-error">
                 {error}
               </div>
             )}
 
             <button
               type="submit"
-              className="register-button"
+              className="login-page-button"
               disabled={loading}
             >
               {loading ? 'Entrando...' : 'Entrar'}
@@ -165,7 +171,7 @@ function Login() {
 
           </form>
 
-          <div className="login">
+          <div className="login-page-register">
 
             <p>
               Não possui uma conta?

@@ -1,4 +1,3 @@
-import React from 'react'
 import Registro from './pages/semLogin/registro'
 import Login from './pages/semLogin/login'
 import Home from './pages/semLogin/home'
@@ -14,6 +13,8 @@ import Pagamento from './pages/cliente/pagamento'
 import PagamentoADM from './pages/adm/pagamentoADM'
 import ClientesADM from './pages/adm/clienteADM'
 import ServicoADM from './pages/adm/servicoADM'
+import Conta from './pages/cliente/conta'
+import EsqueciSenha from './pages/semLogin/esquecisenha'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css'
 
@@ -36,6 +37,8 @@ function App() {
         <Route path='/admin/pagamentos' element={<PagamentoADM />} />
         <Route path='/admin/clientes' element={<ClientesADM />} />
         <Route path='/admin/servicos' element={<ServicoADM />} />
+        <Route path='/cliente/conta' element={<Conta />} />
+        <Route path='/esqueci-senha' element={<EsqueciSenha />} />
       </Routes>
     </Router>
   )

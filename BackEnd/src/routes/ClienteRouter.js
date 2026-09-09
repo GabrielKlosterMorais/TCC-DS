@@ -6,11 +6,10 @@ const router = express.Router();
 router.post('/', ClienteController.create);
 router.post('/login', ClienteController.login);
 router.get('/', ClienteController.getAll);
-
 router.get('/todos', ClienteController.getTodos);
-
 router.get('/:id', ClienteController.getById);
 router.put('/:id', ClienteController.update);
 router.delete('/:id', ClienteController.delete);
+router.post('/validar-senha', ClienteController.validarSenha);
 
 export default router;

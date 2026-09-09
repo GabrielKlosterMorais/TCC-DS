@@ -95,56 +95,76 @@ class ClienteController {
     }
 
     static async update(req, res) {
-        try {
-            const {
-                nomeCliente,
-                email,
-                telefone,
-                endereco,
-                tipo,
-                img
-            } = req.body;
+    try {
+        const {
+            nomeCliente,
+            email,
+            telefone,
+            endereco,
+            senha,
+            tipo,
+            img
+        } = req.body;
 
-            const updatedData = {
-                nomeCliente,
-                email,
-                telefone,
-                endereco,
-                tipo
-            };
+        const updatedData = {};
 
-            // Só altera a imagem se ela for enviada
-            if (img !== undefined) {
-                updatedData.img = img;
+        if (nomeCliente !== undefined) {
+            updatedData.nomeCliente = nomeCliente;
+        }
+
+        if (email !== undefined) {
+            updatedData.email = email;
+        }
+
+        if (telefone !== undefined) {
+            updatedData.telefone = telefone;
+        }
+
+        if (endereco !== undefined) {
+            updatedData.endereco = endereco;
+        }
+
+        if (senha !== undefined) {
+            updatedData.senha = senha;
+        }
+
+        if (tipo !== undefined) {
+            updatedData.tipo = tipo;
+        }
+
+        if (img !== undefined) {
+            updatedData.img = img;
+        }
+
+        const cliente = await Cliente.findOneAndUpdate(
+            {
+                _id: req.params.id,
+                ativo: true
+            },
+            updatedData,
+            {
+                new: true
             }
+        );
 
-            const cliente = await Cliente.findOneAndUpdate(
-                {
-                    _id: req.params.id,
-                    ativo: true
-                },
-                updatedData,
-                { new: true }
-            );
-
-            if (!cliente) {
-                return res.status(404).json({
-                    message: 'Cliente não encontrado'
-                });
-            }
-
-            return res.status(200).json({
-                message: 'Cliente atualizado com sucesso',
-                data: cliente
-            });
-
-        } catch (error) {
-            return res.status(500).json({
-                message: 'Erro ao atualizar cliente',
-                error: error.message
+        if (!cliente) {
+            return res.status(404).json({
+                message: 'Cliente não encontrado'
             });
         }
+
+        return res.status(200).json({
+            message: 'Cliente atualizado com sucesso',
+            data: cliente
+        });
+
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Erro ao atualizar cliente',
+            error: error.message
+        });
     }
+}
 
     static async delete(req, res) {
         try {
@@ -208,6 +228,33 @@ class ClienteController {
             });
         }
     }
+
+    static async validarSenha(req, res) {
+    const { id, senha } = req.body;
+
+    try {
+        const cliente = await Cliente.findOne({
+            _id: id,
+            ativo: true
+        });
+
+        if (!cliente || cliente.senha !== senha) {
+            return res.status(400).json({
+                message: 'Senha incorreta'
+            });
+        }
+
+        return res.status(200).json({
+            message: 'Senha correta'
+        });
+
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Erro ao verificar senha',
+            error: error.message
+        });
+    }
+}
 }
 
 export default ClienteController;

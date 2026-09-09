@@ -1,0 +1,405 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Nunito", Arial, sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+}
+
+.conta-container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 65px 30px;
+}
+
+.conta-card {
+    width: 100%;
+    max-width: 950px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
+    overflow: hidden;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.conta-header {
+    padding: 30px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.conta-header h1 {
+    color: #1e293b;
+    font-size: 32px;
+    font-weight: 800;
+}
+
+.conta-header p {
+    margin-top: 7px;
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* ================================
+   CAMPOS
+================================ */
+
+.conta-fields {
+    width: 100%;
+}
+
+.conta-field {
+    min-height: 90px;
+    padding: 20px 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.conta-field:last-child {
+    border-bottom: none;
+}
+
+.field-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.field-info label {
+    display: block;
+    margin-bottom: 6px;
+
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.field-info span {
+    display: block;
+
+    color: #1e293b;
+    font-size: 14px;
+    font-weight: 600;
+
+    word-break: break-word;
+}
+
+/* ================================
+   BOTÃO EDITAR
+================================ */
+
+.conta-field button {
+    flex-shrink: 0;
+
+    height: 40px;
+    padding: 0 17px;
+
+    border: 1px solid #dbeafe;
+    border-radius: 7px;
+
+    background: #ffffff;
+    color: #2563eb;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 800;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.conta-field button:hover {
+    border-color: #2563eb;
+    background: #eff6ff;
+}
+
+/* ================================
+   MODAIS
+================================ */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(15, 23, 42, 0.55);
+}
+
+.modal {
+    position: relative;
+
+    width: 100%;
+    max-width: 430px;
+
+    padding: 32px;
+
+    border-radius: 14px;
+
+    background: #ffffff;
+
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
+}
+
+/* ================================
+   FECHAR MODAL
+================================ */
+
+.modal-close {
+    position: absolute;
+
+    top: 10px;
+    right: 14px;
+
+    border: none;
+    background: none;
+
+    color: #64748b;
+
+    font-size: 27px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: #1e293b;
+}
+
+/* ================================
+   TITULO MODAL
+================================ */
+
+.modal h2 {
+    margin-top: 5px;
+
+    color: #1e293b;
+
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.modal > p {
+    margin-top: 8px;
+    margin-bottom: 22px;
+
+    color: #64748b;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.modal > p strong {
+    color: #1e293b;
+}
+
+/* ================================
+   INPUT
+================================ */
+
+.modal-input {
+    width: 100%;
+}
+
+.modal-input label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #334155;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.modal-input input {
+    width: 100%;
+    height: 44px;
+
+    padding: 0 13px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 7px;
+
+    outline: none;
+
+    background: #ffffff;
+    color: #1e293b;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    transition: 0.2s;
+}
+
+.modal-input input:focus {
+    border-color: #2563eb;
+
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* ================================
+   ERRO DE AUTENTICAÇÃO
+================================ */
+
+.auth-error {
+    margin-top: 10px;
+
+    padding: 10px 12px;
+
+    border: 1px solid #fecaca;
+    border-radius: 7px;
+
+    background: #fef2f2;
+    color: #dc2626;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* ================================
+   BOTÕES DO MODAL
+================================ */
+
+.confirm-button {
+    width: 100%;
+    height: 44px;
+
+    margin-top: 17px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #2563eb;
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 800;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.confirm-button:hover {
+    background: #1d4ed8;
+}
+
+/* ================================
+   AÇÕES DE EDIÇÃO
+================================ */
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+
+    margin-top: 17px;
+}
+
+.modal-actions .cancel-button,
+.modal-actions .confirm-button {
+    margin-top: 0;
+    flex: 1;
+}
+
+.cancel-button {
+    height: 44px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 7px;
+
+    background: #ffffff;
+    color: #64748b;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 800;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.cancel-button:hover {
+    background: #f8fafc;
+}
+
+/* ================================
+   RESPONSIVO
+================================ */
+
+@media (max-width: 600px) {
+
+    .conta-container {
+        padding: 40px 5%;
+    }
+
+    .conta-header {
+        padding: 25px 20px;
+    }
+
+    .conta-header h1 {
+        font-size: 28px;
+    }
+
+    .conta-field {
+        padding: 18px 20px;
+        gap: 15px;
+    }
+
+    .field-info span {
+        font-size: 13px;
+    }
+
+    .conta-field button {
+        min-width: 70px;
+        padding: 0 12px;
+    }
+
+    .modal {
+        padding: 28px 22px;
+    }
+}
+
+@media (max-width: 430px) {
+
+    .conta-container {
+        padding: 30px 15px;
+    }
+
+    .conta-field {
+        align-items: center;
+    }
+
+    .conta-field button {
+        height: 38px;
+        min-width: 65px;
+        padding: 0 10px;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+}

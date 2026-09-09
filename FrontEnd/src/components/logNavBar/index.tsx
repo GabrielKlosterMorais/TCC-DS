@@ -53,20 +53,6 @@ function LogNavbar() {
         </Link>
 
         <Link
-          to="/sobre"
-          className={location.pathname === '/sobre' ? 'active' : ''}
-        >
-          Sobre nós
-        </Link>
-
-        <Link
-          to="/petcare"
-          className={location.pathname === '/petcare' ? 'active' : ''}
-        >
-          PetCare
-        </Link>
-
-        <Link
           to="/pagamento"
           className={location.pathname === '/pagamento' ? 'active' : ''}
         >
@@ -91,7 +77,7 @@ function LogNavbar() {
           Agendamentos
         </Link>
 
-        <div className="user-menu">
+        <Link to="/cliente/conta" className="user-menu">
 
           <div className="user-icon">
             {userName.charAt(0).toUpperCase()}
@@ -101,14 +87,14 @@ function LogNavbar() {
             {userName}
           </span>
 
-          <button
-            className="logout-button"
-            onClick={handleLogout}
-          >
-            Sair
-          </button>
+        </Link>
 
-        </div>
+        <button
+          className="logout-button"
+          onClick={handleLogout}
+        >
+          Sair
+        </button>
 
       </div>
 

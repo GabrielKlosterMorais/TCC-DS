@@ -17,7 +17,7 @@ body {
 }
 
 
-/* LADO DA IMAGEM */
+/* ==================== LADO DA IMAGEM ==================== */
 
 .register-banner {
     width: 42%;
@@ -59,39 +59,39 @@ body {
 }
 
 
-/* LOGO */
+/* ==================== LOGO ==================== */
 
 .logo h1 {
     font-size: 28px;
     font-weight: 800;
 }
 
-/* Estilo para destacar a marca PetCare com um retângulo azul
-   e movê-la levemente para cima dentro do banner. */
 .banner-content .logo {
     display: inline-block;
-    /* Move o bloco ainda mais para cima */
+
     transform: translateY(-110px);
-    /* Retângulo azul ao redor do texto */
+
     background: #2563eb;
+
     padding: 10px 18px;
+
     border-radius: 8px;
 }
 
 .banner-content .logo h1 {
-    /* Texto branco dentro do retângulo */
     color: #ffffff;
+
     margin: 0;
+
     font-size: 28px;
 }
 
 
-/* TEXTO DA IMAGEM */
+/* ==================== TEXTO DA IMAGEM ==================== */
 
 .banner-text {
-    /* Move o bloco de texto um pouco para cima para aproximar o título */
     margin-top: 45px;
-    /* garante que texto dentro do banner seja branco */
+
     color: #ffffff;
 }
 
@@ -99,8 +99,9 @@ body {
     font-size: 38px;
     line-height: 1.15;
     font-weight: 800;
+
     max-width: 450px;
-    /* título em branco */
+
     color: #ffffff;
 }
 
@@ -110,14 +111,13 @@ body {
     font-size: 17px;
     line-height: 1.6;
 
-    /* parágrafo em branco com leve opacidade */
-    color: rgba(255,255,255,0.92);
+    color: rgba(255, 255, 255, 0.92);
 
     max-width: 400px;
 }
 
 
-/* FORMULÁRIO */
+/* ==================== FORMULÁRIO ==================== */
 
 .register-form-container {
     width: 58%;
@@ -137,7 +137,7 @@ body {
 }
 
 
-/* LOGO MOBILE */
+/* ==================== LOGO MOBILE ==================== */
 
 .mobile-logo {
     display: none;
@@ -149,7 +149,7 @@ body {
 }
 
 
-/* CABEÇALHO */
+/* ==================== CABEÇALHO ==================== */
 
 .form-header {
     margin-bottom: 28px;
@@ -158,6 +158,7 @@ body {
 .form-header h2 {
     font-size: 32px;
     font-weight: 800;
+
     color: #1e293b;
 }
 
@@ -170,7 +171,7 @@ body {
 }
 
 
-/* LINHA DOS INPUTS */
+/* ==================== LINHA DOS INPUTS ==================== */
 
 .input-row {
     display: grid;
@@ -181,7 +182,7 @@ body {
 }
 
 
-/* CAMPOS */
+/* ==================== CAMPOS ==================== */
 
 .input-group {
     margin-bottom: 17px;
@@ -242,7 +243,7 @@ body {
 }
 
 
-/* TERMOS */
+/* ==================== TERMOS ==================== */
 
 .terms {
     display: flex;
@@ -269,20 +270,221 @@ body {
     cursor: pointer;
 }
 
-.terms a {
+
+/* LINK TERMOS DE USO */
+
+.terms-link {
+    border: none;
+
+    padding: 0;
+
+    background: transparent;
+
     color: #2563eb;
+
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 700;
 
     text-decoration: none;
 
-    font-weight: 700;
+    cursor: pointer;
 }
 
-.terms a:hover {
+.terms-link:hover {
     text-decoration: underline;
 }
 
 
-/* BOTÃO */
+/* ==================== MODAL TERMOS ==================== */
+
+.terms-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(15, 23, 42, 0.55);
+
+    backdrop-filter: blur(3px);
+}
+
+
+/* CAIXA DO MODAL */
+
+.terms-modal {
+    position: relative;
+
+    width: 100%;
+    max-width: 600px;
+
+    max-height: 85vh;
+
+    padding: 32px;
+
+    overflow-y: auto;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.2);
+
+    animation: termsModalOpen 0.2s ease;
+}
+
+
+/* ANIMAÇÃO */
+
+@keyframes termsModalOpen {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* TÍTULO */
+
+.terms-modal h2 {
+    margin-bottom: 18px;
+
+    color: #1e293b;
+
+    font-size: 28px;
+    font-weight: 800;
+}
+
+
+/* SUBTÍTULOS */
+
+.terms-modal h3 {
+    margin-top: 20px;
+    margin-bottom: 7px;
+
+    color: #1e293b;
+
+    font-size: 16px;
+    font-weight: 800;
+}
+
+
+/* TEXTOS */
+
+.terms-modal p {
+    margin-bottom: 12px;
+
+    color: #64748b;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* BOTÃO X */
+
+.terms-close {
+    position: absolute;
+
+    top: 15px;
+    right: 18px;
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: #64748b;
+
+    font-size: 25px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.terms-close:hover {
+    background: #f1f5f9;
+
+    color: #1e293b;
+}
+
+
+/* BOTÃO ENTENDI */
+
+.terms-ok {
+    width: 100%;
+
+    height: 45px;
+
+    margin-top: 15px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.terms-ok:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-1px);
+}
+
+
+/* ==================== ERRO ==================== */
+
+.form-error {
+    margin-bottom: 15px;
+
+    padding: 10px 12px;
+
+    border-radius: 7px;
+
+    background: #fef2f2;
+
+    color: #dc2626;
+
+    font-size: 13px;
+}
+
+
+/* ==================== BOTÃO ==================== */
 
 .register-button {
     width: 100%;
@@ -314,8 +516,14 @@ body {
     transform: translateY(-1px);
 }
 
+.register-button:disabled {
+    cursor: not-allowed;
 
-/* LOGIN */
+    opacity: 0.7;
+}
+
+
+/* ==================== LOGIN ==================== */
 
 .login {
     margin-top: 22px;
@@ -346,7 +554,7 @@ body {
 }
 
 
-/* TABLET */
+/* ==================== TABLET ==================== */
 
 @media (max-width: 1000px) {
 
@@ -368,7 +576,7 @@ body {
 }
 
 
-/* MOBILE */
+/* ==================== MOBILE ==================== */
 
 @media (max-width: 750px) {
 
@@ -415,12 +623,39 @@ body {
 
         gap: 0;
     }
+
+    /* MODAL NO CELULAR */
+
+    .terms-overlay {
+        padding: 15px;
+    }
+
+    .terms-modal {
+        max-height: 90vh;
+
+        padding: 25px 20px;
+    }
+
+    .terms-modal h2 {
+        font-size: 24px;
+
+        padding-right: 30px;
+    }
+
+    .terms-modal h3 {
+        font-size: 15px;
+    }
+
+    .terms-modal p {
+        font-size: 13px;
+    }
 }
 
 
-/* CELULAR */
+/* ==================== CELULAR ==================== */
 
 @media (max-width: 450px) {
+
     .register-form-container {
         padding: 25px 0;
     }
@@ -439,5 +674,13 @@ body {
 
     .input-group {
         margin-bottom: 15px;
+    }
+
+    .terms-modal {
+        padding: 22px 18px;
+    }
+
+    .terms-modal h2 {
+        font-size: 22px;
     }
 }
