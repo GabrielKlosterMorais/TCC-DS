@@ -1,655 +1,1529 @@
+/* 
+  O seletor * seleciona TODOS os elementos da página.
+*/
 * {
+
+  /* Remove a margem padrão dos elementos. */
   margin: 0;
+
+  /* Remove o espaçamento interno padrão. */
   padding: 0;
+
+  /* Faz width e height incluírem padding e border. */
   box-sizing: border-box;
 }
 
+
+/* =========================
+   PÁGINA PRINCIPAL
+========================= */
+
+/* 
+  Classe principal da página.
+  Ela está no <div className="pets-page"> do React.
+*/
 .pets-page {
+
+  /* Faz a página ocupar pelo menos toda a altura da tela. */
   min-height: 100vh;
+
+  /* Define a cor de fundo da página. */
   background: #f8fafc;
+
+  /* Define a cor padrão dos textos. */
   color: #1e293b;
+
+  /* Define a fonte utilizada na página. */
   font-family: "Nunito", sans-serif;
 }
 
+
+/* 
+  Container que envolve o conteúdo principal.
+  Está no <main className="pets-container">.
+*/
 .pets-container {
+
+  /* Ocupa 90% da largura disponível. */
   width: 90%;
+
+  /* Impede que o conteúdo fique maior que 1200px. */
   max-width: 1200px;
+
+  /* 
+    margin: 0 auto:
+    0 = sem margem em cima/embaixo
+    auto = centraliza horizontalmente
+  */
   margin: 0 auto;
+
+  /* 
+    60px em cima,
+    0px nas laterais,
+    80px embaixo.
+  */
   padding: 60px 0 80px;
 }
+
 
 /* =========================
    CABEÇALHO
 ========================= */
 
+
+/* 
+  Cabeçalho que contém:
+  - título
+  - descrição
+  - botão "Adicionar pet"
+*/
 .pets-header {
+
+  /* Coloca os elementos lado a lado. */
   display: flex;
+
+  /* Coloca um elemento de cada lado. */
   justify-content: space-between;
+
+  /* Alinha os elementos pela parte inferior. */
   align-items: flex-end;
+
+  /* Espaçamento caso os elementos fiquem próximos. */
   gap: 30px;
+
+  /* Espaço abaixo do cabeçalho. */
   margin-bottom: 45px;
 }
 
+
+/* 
+  Pequeno texto "MEUS PETS".
+*/
 .section-label {
+
+  /* Faz o elemento ocupar sua própria linha. */
   display: block;
+
+  /* Cor azul do texto. */
   color: #2563eb;
+
+  /* Tamanho da fonte. */
   font-size: 12px;
+
+  /* Deixa o texto mais grosso. */
   font-weight: 800;
+
+  /* Aumenta o espaço entre as letras. */
   letter-spacing: 1.5px;
+
+  /* Espaço abaixo do texto. */
   margin-bottom: 10px;
 }
 
+
+/* 
+  Título principal dentro do cabeçalho.
+*/
 .pets-header h1 {
+
+  /* Tamanho do título. */
   font-size: 42px;
+
+  /* Altura das linhas. */
   line-height: 1.1;
+
+  /* Deixa o título em negrito. */
   font-weight: 800;
+
+  /* Cor do título. */
   color: #1e293b;
 }
 
+
+/* 
+  Parágrafo de descrição do cabeçalho.
+*/
 .pets-header p {
+
+  /* Limita a largura do texto. */
   max-width: 620px;
+
+  /* 
+    15px de espaço acima.
+  */
   margin-top: 15px;
+
+  /* Cor cinza do texto. */
   color: #64748b;
+
+  /* Tamanho da fonte. */
   font-size: 16px;
+
+  /* Espaçamento entre as linhas. */
   line-height: 1.6;
 }
+
 
 /* =========================
    BOTÃO ADICIONAR
 ========================= */
 
+
+/* 
+  Esses três botões compartilham algumas propriedades:
+  - botão adicionar
+  - botão do estado vazio
+  - botão salvar
+*/
 .add-pet-button,
 .empty-button,
 .save-button {
+
+  /* Remove a borda padrão. */
   border: none;
+
+  /* Define o fundo azul. */
   background: #2563eb;
+
+  /* Define o texto como branco. */
   color: white;
+
+  /* Usa a mesma fonte da página. */
   font-family: inherit;
+
+  /* Deixa o texto mais grosso. */
   font-weight: 800;
+
+  /* Mostra o cursor de mão ao passar sobre o botão. */
   cursor: pointer;
+
+  /* Faz mudanças de estilo acontecerem suavemente. */
   transition: 0.2s;
 }
 
+
+/* 
+  Estilos específicos do botão "+ Adicionar pet".
+*/
 .add-pet-button {
+
+  /* Ativa o Flexbox. */
   display: flex;
+
+  /* Centraliza verticalmente o conteúdo. */
   align-items: center;
+
+  /* Espaço entre o + e o texto. */
   gap: 10px;
+
+  /* 
+    13px em cima/baixo
+    20px esquerda/direita
+  */
   padding: 13px 20px;
+
+  /* Arredonda os cantos. */
   border-radius: 8px;
+
+  /* Impede que o texto quebre em várias linhas. */
   white-space: nowrap;
 }
 
+
+/* 
+  Aplica o efeito quando o mouse passa
+  sobre os botões.
+*/
 .add-pet-button:hover,
 .empty-button:hover,
 .save-button:hover {
+
+  /* Escurece o azul. */
   background: #1d4ed8;
+
+  /* Move o botão 1px para cima. */
   transform: translateY(-1px);
 }
+
 
 /* =========================
    ESTADO VAZIO
 ========================= */
 
+
+/* 
+  Área exibida quando o usuário ainda
+  não possui nenhum pet cadastrado.
+*/
 .empty-state {
+
+  /* Fundo branco. */
   background: white;
+
+  /* Borda cinza clara. */
   border: 1px solid #e2e8f0;
+
+  /* Arredonda os cantos. */
   border-radius: 14px;
+
+  /* Espaçamento interno. */
   padding: 80px 30px;
+
+  /* Centraliza o conteúdo. */
   text-align: center;
 }
 
+
+/* 
+  Círculo com o símbolo "+".
+*/
 .empty-icon {
+
+  /* Largura do círculo. */
   width: 70px;
+
+  /* Altura do círculo. */
   height: 70px;
+
+  /* 
+    Centraliza horizontalmente e cria
+    25px de espaço abaixo.
+  */
   margin: 0 auto 25px;
+
+  /* Faz o elemento ficar circular. */
   border-radius: 50%;
+
+  /* Fundo azul bem claro. */
   background: #eff6ff;
+
+  /* Cor do símbolo. */
   color: #2563eb;
+
+  /* Ativa Flexbox. */
   display: flex;
+
+  /* Centraliza verticalmente. */
   align-items: center;
+
+  /* Centraliza horizontalmente. */
   justify-content: center;
+
+  /* Tamanho do símbolo. */
   font-size: 35px;
 }
 
+
+/* 
+  Título do estado vazio.
+*/
 .empty-state h2 {
+
+  /* Tamanho da fonte. */
   font-size: 24px;
+
+  /* Peso da fonte. */
   font-weight: 800;
+
+  /* Espaço abaixo do título. */
   margin-bottom: 10px;
 }
 
+
+/* 
+  Parágrafo do estado vazio.
+*/
 .empty-state p {
+
+  /* Cor cinza. */
   color: #64748b;
+
+  /* Tamanho da fonte. */
   font-size: 15px;
+
+  /* Limita a largura do texto. */
   max-width: 500px;
+
+  /* Centraliza o parágrafo e cria espaço abaixo. */
   margin: 0 auto 25px;
+
+  /* Espaçamento entre linhas. */
   line-height: 1.6;
 }
 
+
+/* 
+  Botão "Cadastrar meu primeiro pet".
+*/
 .empty-button {
+
+  /* Espaçamento interno. */
   padding: 13px 22px;
+
+  /* Cantos arredondados. */
   border-radius: 8px;
 }
+
 
 /* =========================
    LISTA DE PETS
 ========================= */
 
-/*
-   IMPORTANTE:
-   Cada pet fica em uma linha.
-*/
 
+/*
+  Cada pet fica em uma linha.
+*/
 .pets-list {
+
+  /* Ativa Flexbox. */
   display: flex !important;
+
+  /* Organiza os cards verticalmente. */
   flex-direction: column !important;
+
+  /* Faz os cards ocuparem a largura disponível. */
   align-items: stretch !important;
+
+  /* Ocupa toda a largura. */
   width: 100%;
+
+  /* Espaço de 20px entre os cards. */
   gap: 20px;
 }
+
 
 /* =========================
    CARD DO PET
 ========================= */
 
+
+/* 
+  Card individual de cada pet.
+*/
 .pet-card {
+
+  /* Ativa Flexbox. */
   display: flex !important;
+
+  /* Coloca imagem e informações lado a lado. */
   flex-direction: row !important;
 
+  /* Ocupa toda a largura disponível. */
   width: 100% !important;
+
+  /* Não permite que o card fique menor que a largura disponível. */
   max-width: 100% !important;
 
+  /* Fundo branco. */
   background: white;
+
+  /* Borda cinza clara. */
   border: 1px solid #e2e8f0;
+
+  /* Cantos arredondados. */
   border-radius: 14px;
 
+  /* Impede que conteúdo ultrapasse os cantos do card. */
   overflow: hidden;
 }
+
 
 /* =========================
    IMAGEM
 ========================= */
 
+
+/* 
+  Área onde a foto do pet aparece.
+*/
 .pet-image {
+
+  /* Largura da imagem. */
   width: 240px;
+
+  /* Garante que ela não diminua. */
   min-width: 240px;
+
+  /* Altura da área da imagem. */
   height: 250px;
 
+  /* Fundo azul claro. */
   background: #eff6ff;
 
+  /* Ativa Flexbox. */
   display: flex;
+
+  /* Centraliza verticalmente. */
   align-items: center;
+
+  /* Centraliza horizontalmente. */
   justify-content: center;
 
+  /* Esconde partes da imagem que ultrapassarem a área. */
   overflow: hidden;
 }
 
+
+/* 
+  Imagem dentro do card.
+*/
 .pet-image img {
+
+  /* Ocupa toda a largura disponível. */
   width: 100%;
+
+  /* Ocupa toda a altura disponível. */
   height: 100%;
+
+  /* 
+    Faz a imagem preencher o espaço
+    sem deformar.
+  */
   object-fit: cover;
 }
 
+
+/* 
+  Estilo da pata 🐾 quando o pet não possui imagem.
+*/
 .pet-image span {
+
+  /* Tamanho do emoji. */
   font-size: 55px;
 }
+
 
 /* =========================
    INFORMAÇÕES
 ========================= */
 
+
+/* 
+  Área onde ficam nome, raça, idade, sexo,
+  peso e observações.
+*/
 .pet-info {
+
+  /* Faz essa área ocupar o espaço restante do card. */
   flex: 1;
+
+  /* Permite que o conteúdo diminua corretamente. */
   min-width: 0;
+
+  /* Espaçamento interno. */
   padding: 28px;
 }
+
 
 /* =========================
    CABEÇALHO DO CARD
 ========================= */
 
+
+/* 
+  Cabeçalho de cada card.
+  Contém:
+  - espécie/nome
+  - botões editar/excluir
+*/
 .pet-card-header {
+
+  /* Ativa Flexbox. */
   display: flex;
+
+  /* Coloca os elementos nas extremidades. */
   justify-content: space-between;
+
+  /* Alinha pelo topo. */
   align-items: flex-start;
+
+  /* Espaço entre as áreas. */
   gap: 20px;
 
+  /* Ocupa toda a largura disponível. */
   width: 100%;
 }
 
+
+/* 
+  Texto que mostra a espécie.
+*/
 .pet-species {
+
+  /* Cor azul. */
   color: #2563eb;
+
+  /* Tamanho pequeno. */
   font-size: 11px;
+
+  /* Texto mais grosso. */
   font-weight: 800;
+
+  /* Transforma o texto em letras maiúsculas. */
   text-transform: uppercase;
+
+  /* Espaçamento entre letras. */
   letter-spacing: 1px;
 }
 
+
+/* 
+  Nome do pet dentro do card.
+*/
 .pet-card h2 {
+
+  /* Pequeno espaço entre espécie e nome. */
   margin-top: 4px;
+
+  /* Tamanho do nome. */
   font-size: 28px;
+
+  /* Deixa o nome em negrito. */
   font-weight: 800;
+
+  /* Cor do texto. */
   color: #1e293b;
 }
+
 
 /* =========================
    BOTÕES EDITAR / EXCLUIR
 ========================= */
 
+
+/* 
+  Área que contém os botões Editar e Excluir.
+*/
 .pet-actions {
+
+  /* Ativa Flexbox. */
   display: flex;
+
+  /* Coloca os botões um abaixo do outro. */
   flex-direction: column;
+
+  /* Espaço entre os botões. */
   gap: 8px;
 
+  /* Impede que essa área seja reduzida. */
   flex-shrink: 0;
 }
 
+
+/* 
+  Estilos compartilhados pelos dois botões.
+*/
 .edit-button,
 .delete-button {
+
+  /* Largura do botão. */
   width: 80px;
+
+  /* Impede que fique menor que 80px. */
   min-width: 80px;
 
+  /* Espaçamento interno. */
   padding: 9px 12px;
 
+  /* Cantos arredondados. */
   border-radius: 8px;
 
+  /* Usa a fonte da página. */
   font-family: inherit;
+
+  /* Tamanho da fonte. */
   font-size: 13px;
+
+  /* Peso da fonte. */
   font-weight: 700;
 
+  /* Cursor de mão. */
   cursor: pointer;
+
+  /* Anima mudanças de estilo. */
   transition: 0.2s;
 }
 
+
+/* 
+  Aparência do botão Editar.
+*/
 .edit-button {
+
+  /* Borda azul clara. */
   border: 1px solid #bfdbfe;
+
+  /* Fundo azul bem claro. */
   background: #eff6ff;
+
+  /* Texto azul. */
   color: #2563eb;
 }
 
+
+/* 
+  Efeito ao passar o mouse sobre Editar.
+*/
 .edit-button:hover {
+
+  /* Escurece um pouco o fundo. */
   background: #dbeafe;
 }
 
+
+/* 
+  Aparência do botão Excluir.
+*/
 .delete-button {
+
+  /* Borda vermelha clara. */
   border: 1px solid #fecaca;
+
+  /* Fundo branco. */
   background: white;
+
+  /* Texto vermelho. */
   color: #ef4444;
 }
 
+
+/* 
+  Efeito ao passar o mouse sobre Excluir.
+*/
 .delete-button:hover {
+
+  /* Fundo vermelho bem claro. */
   background: #fef2f2;
 }
+
 
 /* =========================
    DETALHES
 ========================= */
 
+
+/* 
+  Área que mostra:
+  - raça
+  - idade
+  - sexo
+  - peso
+*/
 .pet-details {
+
+  /* Ativa CSS Grid. */
   display: grid;
+
+  /* Cria 4 colunas com tamanhos iguais. */
   grid-template-columns: repeat(4, 1fr);
 
+  /* Espaço entre as colunas. */
   gap: 15px;
 
+  /* Espaço acima dos detalhes. */
   margin-top: 25px;
+
+  /* Espaçamento interno superior. */
   padding-top: 20px;
 
+  /* Linha separando o cabeçalho dos detalhes. */
   border-top: 1px solid #e2e8f0;
 }
 
+
+/* 
+  Cada bloco de informação.
+*/
 .pet-details div {
+
+  /* Ativa Flexbox. */
   display: flex;
+
+  /* Coloca título e valor um abaixo do outro. */
   flex-direction: column;
+
+  /* Espaço entre título e valor. */
   gap: 5px;
 }
 
+
+/* 
+  Títulos dos detalhes e observações.
+*/
 .pet-details span,
 .pet-observations span {
+
+  /* Cor cinza clara. */
   color: #94a3b8;
 
+  /* Tamanho pequeno. */
   font-size: 11px;
+
+  /* Deixa o texto mais grosso. */
   font-weight: 700;
 
+  /* Converte para letras maiúsculas. */
   text-transform: uppercase;
 }
 
+
+/* 
+  Valores dos detalhes.
+*/
 .pet-details strong {
+
+  /* Tamanho da fonte. */
   font-size: 14px;
+
+  /* Cor do texto. */
   color: #334155;
 }
+
 
 /* =========================
    OBSERVAÇÕES
 ========================= */
 
+
+/* 
+  Área das observações do pet.
+*/
 .pet-observations {
+
+  /* Espaço acima das observações. */
   margin-top: 22px;
 }
 
+
+/* 
+  Texto das observações.
+*/
 .pet-observations p {
+
+  /* Espaço entre o título e o texto. */
   margin-top: 5px;
 
+  /* Cor cinza. */
   color: #64748b;
+
+  /* Tamanho da fonte. */
   font-size: 14px;
+
+  /* Espaçamento entre linhas. */
   line-height: 1.5;
 }
+
 
 /* =========================
    MODAL DO FORMULÁRIO
 ========================= */
 
+
+/* 
+  Fundo que aparece atrás do formulário.
+  É utilizado quando showForm === true.
+*/
 .form-overlay {
+
+  /* 
+    fixed prende o elemento à tela,
+    independentemente da posição da página.
+  */
   position: fixed;
+
+  /* 
+    inset: 0 significa:
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+  */
   inset: 0;
 
+  /* Coloca o modal acima dos outros elementos. */
   z-index: 1000;
 
+  /* Ativa Flexbox. */
   display: flex;
+
+  /* Centraliza horizontalmente. */
   justify-content: center;
+
+  /* Centraliza verticalmente. */
   align-items: center;
 
+  /* Espaço entre o modal e as bordas da tela. */
   padding: 25px;
 
+  /* Fundo escuro transparente. */
   background: rgba(15, 23, 42, 0.45);
 
+  /* Permite rolagem caso o conteúdo seja maior que a tela. */
   overflow-y: auto;
 }
 
+
+/* 
+  Card branco que contém o formulário.
+*/
 .pet-form-card {
+
+  /* Ocupa toda a largura disponível até o limite. */
   width: 100%;
+
+  /* Limita a largura máxima do formulário. */
   max-width: 650px;
+
+  /* Limita a altura do modal a 90% da tela. */
   max-height: 90vh;
 
+  /* Permite rolagem dentro do formulário. */
   overflow-y: auto;
 
+  /* Fundo branco. */
   background: white;
 
+  /* Cantos arredondados. */
   border-radius: 14px;
 
+  /* Espaçamento interno. */
   padding: 35px;
 }
+
 
 /* =========================
    CABEÇALHO FORM
 ========================= */
 
+
+/* 
+  Cabeçalho do formulário.
+*/
 .form-header {
+
+  /* Ativa Flexbox. */
   display: flex;
+
+  /* Coloca título e botão fechar em lados opostos. */
   justify-content: space-between;
+
+  /* Alinha os elementos pelo topo. */
   align-items: flex-start;
 
+  /* Espaço abaixo do cabeçalho. */
   margin-bottom: 30px;
 }
 
+
+/* 
+  Título dentro do formulário.
+*/
 .form-header h2 {
+
+  /* Tamanho do título. */
   font-size: 28px;
+
+  /* Peso da fonte. */
   font-weight: 800;
 }
 
+
+/* 
+  Texto abaixo do título.
+*/
 .form-header p {
+
+  /* Espaço acima do parágrafo. */
   margin-top: 6px;
 
+  /* Cor cinza. */
   color: #64748b;
+
+  /* Tamanho da fonte. */
   font-size: 14px;
 }
 
+
+/* 
+  Botão "×" para fechar o formulário.
+*/
 .close-button {
+
+  /* Largura. */
   width: 35px;
+
+  /* Altura. */
   height: 35px;
 
+  /* Remove a borda. */
   border: none;
+
+  /* Torna o botão circular. */
   border-radius: 50%;
 
+  /* Fundo cinza claro. */
   background: #f1f5f9;
+
+  /* Cor do X. */
   color: #64748b;
 
+  /* Tamanho do X. */
   font-size: 24px;
+
+  /* Controla a altura da linha. */
   line-height: 1;
 
+  /* Cursor de mão. */
   cursor: pointer;
 }
 
+
+/* 
+  Efeito quando passa o mouse no botão fechar.
+*/
 .close-button:hover {
+
+  /* Deixa o fundo um pouco mais escuro. */
   background: #e2e8f0;
 }
+
 
 /* =========================
    FORMULÁRIO
 ========================= */
 
+
+/* 
+  Cada .form-row representa uma linha
+  com dois campos.
+*/
 .form-row {
+
+  /* Ativa CSS Grid. */
   display: grid;
+
+  /* Cria duas colunas iguais. */
   grid-template-columns: 1fr 1fr;
 
+  /* Espaço entre os campos. */
   gap: 18px;
 }
 
+
+/* 
+  Grupo de cada campo.
+*/
 .input-group {
+
+  /* Espaço abaixo do campo. */
   margin-bottom: 18px;
 }
 
+
+/* 
+  Labels dos campos.
+*/
 .input-group label {
+
+  /* Faz o label ocupar uma linha inteira. */
   display: block;
 
+  /* Espaço abaixo do label. */
   margin-bottom: 7px;
 
+  /* Cor do texto. */
   color: #334155;
 
+  /* Tamanho da fonte. */
   font-size: 13px;
+
+  /* Deixa o texto mais grosso. */
   font-weight: 700;
 }
 
+
+/* 
+  Estilo compartilhado pelos:
+  input
+  select
+  textarea
+*/
 .input-group input,
 .input-group select,
 .input-group textarea {
+
+  /* Ocupa toda a largura do grupo. */
   width: 100%;
 
+  /* Borda cinza clara. */
   border: 1px solid #e2e8f0;
+
+  /* Cantos arredondados. */
   border-radius: 8px;
 
+  /* Espaçamento interno. */
   padding: 12px 14px;
 
+  /* Fundo branco. */
   background: white;
+
+  /* Cor do texto digitado. */
   color: #1e293b;
 
+  /* Usa a mesma fonte da página. */
   font-family: inherit;
+
+  /* Tamanho da fonte. */
   font-size: 14px;
 
+  /* Remove o contorno padrão do navegador. */
   outline: none;
 
+  /* Faz as mudanças acontecerem suavemente. */
   transition: 0.2s;
 }
 
+
+/* 
+  Define a altura dos inputs e selects.
+*/
 .input-group input,
 .input-group select {
+
+  /* Altura fixa. */
   height: 46px;
 }
 
+
+/* 
+  Configura especificamente o textarea.
+*/
 .input-group textarea {
+
+  /* Permite que o usuário altere verticalmente o tamanho. */
   resize: vertical;
+
+  /* Define uma altura mínima. */
   min-height: 100px;
 }
 
+
+/* 
+  Estilo aplicado quando um campo recebe foco.
+*/
 .input-group input:focus,
 .input-group select:focus,
 .input-group textarea:focus {
+
+  /* Muda a borda para azul. */
   border-color: #2563eb;
 
+  /* Cria uma sombra azul ao redor do campo. */
   box-shadow:
     0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
+
+/* 
+  Estilo do texto de placeholder.
+*/
 .input-group input::placeholder,
 .input-group textarea::placeholder {
+
+  /* Deixa o placeholder cinza claro. */
   color: #94a3b8;
 }
+
 
 /* =========================
    PRÉVIA DA IMAGEM
 ========================= */
 
+
+/* 
+  Área que mostra a prévia da URL
+  da imagem digitada.
+*/
 .image-preview {
+
+  /* Largura da prévia. */
   width: 150px;
+
+  /* Altura da prévia. */
   height: 150px;
 
+  /* Espaço abaixo da imagem. */
   margin-bottom: 18px;
 
+  /* Cantos arredondados. */
   border-radius: 10px;
 
+  /* Esconde partes que ultrapassarem o espaço. */
   overflow: hidden;
 
+  /* Fundo azul claro. */
   background: #eff6ff;
 }
 
+
+/* 
+  Imagem dentro da prévia.
+*/
 .image-preview img {
+
+  /* Ocupa toda a largura. */
   width: 100%;
+
+  /* Ocupa toda a altura. */
   height: 100%;
 
+  /* Preenche a área sem deformar a imagem. */
   object-fit: cover;
 }
+
 
 /* =========================
    AÇÕES FORM
 ========================= */
 
+
+/* 
+  Área dos botões Cancelar e Salvar.
+*/
 .form-actions {
+
+  /* Ativa Flexbox. */
   display: flex;
+
+  /* Coloca os botões no lado direito. */
   justify-content: flex-end;
 
+  /* Espaço entre os botões. */
   gap: 12px;
 
+  /* Espaço acima. */
   margin-top: 10px;
+
+  /* Espaço interno superior. */
   padding-top: 20px;
 
+  /* Linha separando os botões do formulário. */
   border-top: 1px solid #e2e8f0;
 }
 
+
+/* 
+  Estilos compartilhados pelos botões
+  Cancelar e Salvar.
+*/
 .cancel-button,
 .save-button {
+
+  /* Altura dos botões. */
   height: 44px;
 
+  /* Espaçamento horizontal. */
   padding: 0 20px;
 
+  /* Cantos arredondados. */
   border-radius: 8px;
 
+  /* Usa a fonte da página. */
   font-family: inherit;
+
+  /* Tamanho do texto. */
   font-size: 14px;
+
+  /* Deixa o texto em negrito. */
   font-weight: 800;
 
+  /* Cursor de mão. */
   cursor: pointer;
 }
 
+
+/* 
+  Aparência do botão Cancelar.
+*/
 .cancel-button {
+
+  /* Borda cinza. */
   border: 1px solid #e2e8f0;
 
+  /* Fundo branco. */
   background: white;
+
+  /* Texto cinza. */
   color: #64748b;
 }
 
+
+/* 
+  Efeito ao passar o mouse em Cancelar.
+*/
 .cancel-button:hover {
+
+  /* Fundo levemente cinza. */
   background: #f8fafc;
 }
 
+
+/* 
+  Estilo específico do botão Salvar.
+*/
 .save-button {
+
+  /* Remove a borda. */
   border: none;
 }
+
 
 /* =========================
    RESPONSIVO
 ========================= */
 
+
+/* 
+  Essas regras são aplicadas quando
+  a tela tiver até 750px de largura.
+*/
 @media (max-width: 750px) {
 
+
+  /* 
+    Diminui o tamanho do container
+    em telas menores.
+  */
   .pets-container {
+
+    /* Ocupa 88% da largura. */
     width: 88%;
+
+    /* Diminui o espaçamento vertical. */
     padding: 40px 0 60px;
   }
 
+
+  /* 
+    Cabeçalho passa a ficar vertical.
+  */
   .pets-header {
+
+    /* Coloca os elementos um abaixo do outro. */
     flex-direction: column;
+
+    /* Alinha os elementos à esquerda. */
     align-items: flex-start;
   }
 
+
+  /* 
+    Diminui o tamanho do título.
+  */
   .pets-header h1 {
+
+    /* Novo tamanho do título. */
     font-size: 34px;
   }
 
+
+  /* 
+    Botão adicionar ocupa toda a largura.
+  */
   .add-pet-button {
+
+    /* Largura total. */
     width: 100%;
+
+    /* Centraliza o conteúdo do botão. */
     justify-content: center;
   }
 
-  /* Card continua sendo um pet por linha */
+
+  /*
+    Card continua sendo um pet por linha.
+  */
   .pet-card {
+
+    /* 
+      Em telas pequenas, imagem e informações
+      ficam uma embaixo da outra.
+    */
     flex-direction: column !important;
   }
 
+
+  /* 
+    Imagem passa a ocupar toda a largura.
+  */
   .pet-image {
+
+    /* Ocupa 100% da largura. */
     width: 100%;
+
+    /* Garante largura mínima de 100%. */
     min-width: 100%;
+
+    /* Mantém altura de 250px. */
     height: 250px;
   }
 
+
+  /* 
+    Informações ocupam toda a largura.
+  */
   .pet-info {
+
+    /* Largura total. */
     width: 100%;
   }
 
+
+  /* 
+    Os detalhes passam de 4 para 2 colunas.
+  */
   .pet-details {
+
+    /* Duas colunas iguais. */
     grid-template-columns: 1fr 1fr;
   }
 
+
+  /* 
+    Os campos do formulário passam
+    de duas colunas para uma.
+  */
   .form-row {
+
+    /* Uma coluna. */
     grid-template-columns: 1fr;
+
+    /* Remove o gap horizontal anterior. */
     gap: 0;
   }
 
+
+  /* 
+    Diminui o espaçamento interno do modal.
+  */
   .pet-form-card {
+
+    /* Padding menor em telas pequenas. */
     padding: 25px;
   }
 }
+
 
 /* =========================
    CELULAR PEQUENO
 ========================= */
 
+
+/* 
+  Essas regras são aplicadas em celulares
+  com até 450px de largura.
+*/
 @media (max-width: 450px) {
 
+
+  /* 
+    Diminui ainda mais o título.
+  */
   .pets-header h1 {
+
+    /* Tamanho menor para telas pequenas. */
     font-size: 29px;
   }
 
+
+  /* 
+    Diminui o espaçamento interno do card.
+  */
   .pet-info {
+
+    /* Novo padding. */
     padding: 20px;
   }
 
+
+  /* 
+    Diminui o nome do pet.
+  */
   .pet-card h2 {
+
+    /* Novo tamanho. */
     font-size: 24px;
   }
 
+
+  /* 
+    Diminui o espaço entre o nome
+    e os botões.
+  */
   .pet-card-header {
+
+    /* Novo espaçamento. */
     gap: 10px;
   }
 
+
+  /* 
+    Em celulares pequenos, os detalhes
+    ficam em uma única coluna.
+  */
   .pet-details {
+
+    /* Uma coluna. */
     grid-template-columns: 1fr;
   }
 
+
+  /* 
+    Os botões do formulário ficam
+    um abaixo do outro.
+  */
   .form-actions {
+
+    /* Organiza verticalmente. */
     flex-direction: column-reverse;
   }
 
+
+  /* 
+    Cancelar e Salvar ocupam toda a largura.
+  */
   .cancel-button,
   .save-button {
+
+    /* Largura total. */
     width: 100%;
   }
 
+
+  /* 
+    Diminui o espaço entre Editar e Excluir.
+  */
   .pet-actions {
+
+    /* Novo espaçamento. */
     gap: 6px;
   }
 
+
+  /* 
+    Diminui os botões Editar e Excluir
+    em celulares pequenos.
+  */
   .edit-button,
   .delete-button {
+
+    /* Nova largura. */
     width: 75px;
+
+    /* Impede que fiquem menores que 75px. */
     min-width: 75px;
+
+    /* Diminui o padding. */
     padding: 8px 10px;
   }
 }

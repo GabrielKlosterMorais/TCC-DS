@@ -1,149 +1,828 @@
+/* Define o estilo geral da página de agendamentos */
 .agendamentos-page {
+
+  /* Faz a página ocupar no mínimo toda a altura da tela */
   min-height: 100vh;
+
+  /* Define a cor de fundo da página */
   background: #f7f9fc;
+
+  /* Define a cor padrão dos textos */
   color: #111827;
+
 }
 
+/* Container principal do conteúdo */
 .agendamentos-container {
+
+  /* Define a largura máxima do conteúdo */
   max-width: 1100px;
+
+  /* Centraliza o container horizontalmente */
   margin: 0 auto;
+
+  /* Espaçamento interno: 60px em cima/baixo e 30px nas laterais */
   padding: 60px 30px;
+
 }
 
+/* Cabeçalho da página */
 .page-header {
+
+  /* Espaço abaixo do cabeçalho */
   margin-bottom: 45px;
+
 }
 
+/* Texto pequeno dentro do cabeçalho */
 .page-header span {
+
+  /* Define a cor azul do texto */
   color: #2563eb;
+
+  /* Define o tamanho da fonte */
   font-size: 12px;
+
+  /* Deixa o texto mais grosso */
   font-weight: 800;
+
+  /* Aumenta o espaço entre as letras */
   letter-spacing: 2px;
+
 }
 
+/* Título principal da página */
 .page-header h1 {
+
+  /* Espaçamento de 10px em cima e embaixo */
   margin: 10px 0;
+
+  /* Define o tamanho do título */
   font-size: 42px;
+
 }
 
+/* Parágrafo do cabeçalho */
 .page-header p {
+
+  /* Define a cor cinza do texto */
   color: #64748b;
+
 }
 
+/* Todas as sections da página */
 section {
+
+  /* Espaço abaixo de cada seção */
   margin-bottom: 45px;
+
 }
 
+/* Área que contém o título de cada seção */
 .section-title {
+
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Alinha os elementos verticalmente */
   align-items: center;
+
+  /* Cria 12px de espaço entre os elementos */
   gap: 12px;
+
+  /* Espaço abaixo do título */
   margin-bottom: 18px;
+
 }
 
+/* Título h2 das seções */
 .section-title h2 {
+
+  /* Remove a margem padrão do h2 */
   margin: 0;
+
+  /* Define o tamanho da fonte */
   font-size: 22px;
+
 }
 
+/* Número exibido ao lado do título da seção */
 .section-title span {
+
+  /* Define o fundo azul */
   background: #2563eb;
+
+  /* Define a cor branca do texto */
   color: white;
+
+  /* Deixa as bordas arredondadas */
   border-radius: 20px;
+
+  /* Espaçamento interno */
   padding: 4px 10px;
+
+  /* Define o tamanho do texto */
   font-size: 12px;
+
+  /* Deixa o texto em negrito */
   font-weight: bold;
+
 }
 
+/* Lista de agendamentos */
 .lista {
+
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Coloca os elementos um abaixo do outro */
   flex-direction: column;
+
+  /* Cria 12px de espaço entre os cards */
   gap: 12px;
+
 }
 
+/* Card de cada agendamento */
 .agendamento-card {
+
+  /* Usa CSS Grid para organizar as informações */
   display: grid;
+
+  /* Define 7 colunas com tamanhos diferentes */
   grid-template-columns: 1fr 1fr 1.2fr 1fr 0.7fr 1fr auto;
+
+  /* Alinha os elementos verticalmente ao centro */
   align-items: center;
+
+  /* Cria 20px de espaço entre as colunas */
   gap: 20px;
+
+  /* Espaçamento interno do card */
   padding: 20px;
+
+  /* Define o fundo branco */
   background: white;
+
+  /* Define uma borda cinza clara */
   border: 1px solid #e2e8f0;
+
+  /* Arredonda os cantos */
   border-radius: 12px;
+
 }
 
+/* Cada div dentro do card */
 .agendamento-card div {
+
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Coloca os conteúdos um abaixo do outro */
   flex-direction: column;
+
+  /* Cria 5px de espaço entre eles */
   gap: 5px;
+
 }
 
+/* Textos pequenos dentro do card */
 .agendamento-card span {
+
+  /* Define uma cor cinza clara */
   color: #94a3b8;
+
+  /* Define o tamanho da fonte */
   font-size: 11px;
+
 }
 
+/* Textos principais dentro do card */
 .agendamento-card strong {
+
+  /* Define o tamanho da fonte */
   font-size: 14px;
+
 }
 
+/* Cor do status "pendente" */
 .status .pendente {
+
+  /* Laranja */
   color: #d97706;
+
 }
 
+/* Cor do status "confirmado" */
 .status .confirmado {
+
+  /* Verde */
   color: #16a34a;
+
 }
 
-.actions {
-  display: flex !important;
-  flex-direction: row !important;
-  gap: 6px;
-}
+/* Cor do status "cancelado" */
+.status .cancelado {
 
-.actions button {
-  border: none;
-  padding: 8px 10px;
-  border-radius: 7px;
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.confirmar {
-  background: #dcfce7;
-  color: #15803d;
-}
-
-.cancelar {
-  background: #fee2e2;
+  /* Vermelho */
   color: #dc2626;
+
 }
 
+/* Área dos botões de ação */
+.actions {
+
+  /* Ativa o Flexbox e força essa propriedade */
+  display: flex !important;
+
+  /* Coloca os botões lado a lado */
+  flex-direction: row !important;
+
+  /* Cria 6px de espaço entre os botões */
+  gap: 6px;
+
+}
+
+/* Estilo geral dos botões de ação */
+.actions button {
+
+  /* Remove a borda padrão */
+  border: none;
+
+  /* Espaçamento interno */
+  padding: 8px 10px;
+
+  /* Arredonda os cantos */
+  border-radius: 7px;
+
+  /* Mostra o cursor de clique */
+  cursor: pointer;
+
+  /* Define o tamanho da fonte */
+  font-size: 12px;
+
+  /* Deixa o texto em negrito */
+  font-weight: bold;
+
+}
+
+/* Botão de confirmar */
+.confirmar {
+
+  /* Fundo verde claro */
+  background: #dcfce7;
+
+  /* Texto verde */
+  color: #15803d;
+
+}
+
+/* Efeito ao passar o mouse no botão confirmar */
+.confirmar:hover {
+
+  /* Escurece um pouco o fundo */
+  background: #bbf7d0;
+
+}
+
+/* Botão de cancelar */
+.cancelar {
+
+  /* Fundo vermelho claro */
+  background: #fee2e2;
+
+  /* Texto vermelho */
+  color: #dc2626;
+
+}
+
+/* Efeito ao passar o mouse no botão cancelar */
+.cancelar:hover {
+
+  /* Escurece um pouco o fundo */
+  background: #fecaca;
+
+}
+
+/* Estilo do botão cancelar quando está desabilitado */
+.cancelar:disabled {
+
+  /* Deixa o botão parcialmente transparente */
+  opacity: 0.5;
+
+  /* Mostra que o botão não pode ser clicado */
+  cursor: not-allowed;
+
+}
+
+/* Mensagem exibida quando não existem agendamentos */
 .empty {
+
+  /* Espaçamento interno */
   padding: 20px;
+
+  /* Fundo branco */
   background: white;
+
+  /* Borda cinza */
   border: 1px solid #e2e8f0;
+
+  /* Arredonda os cantos */
   border-radius: 10px;
+
+  /* Cor do texto */
   color: #64748b;
+
 }
 
+
+/* ============================== */
+/* MODAL DE CANCELAMENTO */
+/* ============================== */
+
+/* Fundo escuro que aparece atrás do modal */
+.cancelamento-overlay {
+
+  /* Faz o elemento ficar fixo na tela */
+  position: fixed;
+
+  /* Encosta o elemento em todos os lados da tela */
+  inset: 0;
+
+  /* Coloca o modal acima dos outros elementos */
+  z-index: 1000;
+
+  /* Ativa o Flexbox */
+  display: flex;
+
+  /* Centraliza verticalmente */
+  align-items: center;
+
+  /* Centraliza horizontalmente */
+  justify-content: center;
+
+  /* Espaçamento nas bordas da tela */
+  padding: 20px;
+
+  /* Fundo preto/azulado transparente */
+  background: rgba(15, 23, 42, 0.5);
+
+}
+
+/* Caixa principal do modal */
+.cancelamento-modal {
+
+  /* Permite posicionar elementos dentro do modal de forma absoluta */
+  position: relative;
+
+  /* Ocupa 100% do espaço disponível até o limite definido */
+  width: 100%;
+
+  /* Define a largura máxima */
+  max-width: 500px;
+
+  /* Espaçamento interno */
+  padding: 30px;
+
+  /* Arredonda os cantos */
+  border-radius: 14px;
+
+  /* Define o fundo branco */
+  background: #ffffff;
+
+  /* Adiciona uma sombra ao redor */
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
+
+}
+
+/* Botão de fechar o modal */
+.cancelamento-close {
+
+  /* Permite posicionar o botão dentro do modal */
+  position: absolute;
+
+  /* Distância do topo */
+  top: 12px;
+
+  /* Distância da direita */
+  right: 16px;
+
+  /* Largura do botão */
+  width: 32px;
+
+  /* Altura do botão */
+  height: 32px;
+
+  /* Remove a borda */
+  border: none;
+
+  /* Deixa o fundo transparente */
+  background: transparent;
+
+  /* Define a cor do X */
+  color: #64748b;
+
+  /* Define o tamanho do X */
+  font-size: 26px;
+
+  /* Define a altura da linha */
+  line-height: 1;
+
+  /* Mostra o cursor de clique */
+  cursor: pointer;
+
+}
+
+/* Efeito do botão fechar ao passar o mouse */
+.cancelamento-close:hover {
+
+  /* Escurece a cor do X */
+  color: #1e293b;
+
+}
+
+/* Título do modal */
+.cancelamento-modal h2 {
+
+  /* Remove margem superior e deixa 8px abaixo */
+  margin: 0 0 8px;
+
+  /* Define a cor */
+  color: #1e293b;
+
+  /* Define o tamanho */
+  font-size: 24px;
+
+  /* Deixa o título bem destacado */
+  font-weight: 900;
+
+}
+
+/* Primeiro parágrafo do modal */
+.cancelamento-modal > p {
+
+  /* Remove margem superior e adiciona 20px abaixo */
+  margin: 0 0 20px;
+
+  /* Define a cor cinza */
+  color: #64748b;
+
+  /* Define o tamanho da fonte */
+  font-size: 14px;
+
+}
+
+/* Área com informações do agendamento */
+.cancelamento-info {
+
+  /* Ativa o Flexbox */
+  display: flex;
+
+  /* Coloca os elementos verticalmente */
+  flex-direction: column;
+
+  /* Espaçamento entre os elementos */
+  gap: 5px;
+
+  /* Espaço abaixo da área */
+  margin-bottom: 22px;
+
+  /* Espaçamento interno */
+  padding: 14px;
+
+  /* Define uma borda */
+  border: 1px solid #e2e8f0;
+
+  /* Arredonda os cantos */
+  border-radius: 9px;
+
+  /* Fundo levemente cinza */
+  background: #f8fafc;
+
+}
+
+/* Texto em negrito dentro das informações */
+.cancelamento-info strong {
+
+  /* Define a cor */
+  color: #1e293b;
+
+  /* Define o tamanho */
+  font-size: 14px;
+
+}
+
+/* Texto normal dentro das informações */
+.cancelamento-info span {
+
+  /* Define a cor cinza */
+  color: #64748b;
+
+  /* Define o tamanho */
+  font-size: 13px;
+
+}
+
+/* Label do campo de motivo */
+.cancelamento-modal label {
+
+  /* Faz o label ocupar sua própria linha */
+  display: block;
+
+  /* Espaço abaixo do label */
+  margin-bottom: 8px;
+
+  /* Define a cor */
+  color: #334155;
+
+  /* Define o tamanho */
+  font-size: 13px;
+
+  /* Deixa o texto em negrito */
+  font-weight: 800;
+
+}
+
+/* Campo de texto do motivo do cancelamento */
+.cancelamento-modal textarea {
+
+  /* Faz o textarea ocupar sua própria linha */
+  display: block;
+
+  /* Ocupa toda a largura disponível */
+  width: 100%;
+
+  /* Define uma altura mínima */
+  min-height: 110px;
+
+  /* Espaçamento interno */
+  padding: 12px 14px;
+
+  /* Define a borda */
+  border: 1px solid #dbe3ec;
+
+  /* Arredonda os cantos */
+  border-radius: 8px;
+
+  /* Remove o contorno padrão do navegador */
+  outline: none;
+
+  /* Fundo branco */
+  background: #fff;
+
+  /* Cor do texto */
+  color: #1e293b;
+
+  /* Usa a mesma fonte do restante da aplicação */
+  font-family: inherit;
+
+  /* Define o tamanho do texto */
+  font-size: 14px;
+
+  /* Permite redimensionar apenas verticalmente */
+  resize: vertical;
+
+  /* Faz o padding entrar no cálculo da largura */
+  box-sizing: border-box;
+
+}
+
+/* Estilo do textarea quando recebe foco */
+.cancelamento-modal textarea:focus {
+
+  /* Muda a cor da borda para azul */
+  border-color: #2563eb;
+
+  /* Adiciona uma sombra azul suave */
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.1);
+
+}
+
+/* Texto de placeholder do textarea */
+.cancelamento-modal textarea::placeholder {
+
+  /* Define uma cor cinza clara */
+  color: #94a3b8;
+
+}
+
+/* Caixa de aviso sobre o cancelamento */
+.cancelamento-aviso {
+
+  /* Espaço acima do aviso */
+  margin-top: 18px;
+
+  /* Espaçamento interno */
+  padding: 13px 14px;
+
+  /* Borda azul clara */
+  border: 1px solid #bfdbfe;
+
+  /* Arredonda os cantos */
+  border-radius: 8px;
+
+  /* Fundo azul muito claro */
+  background: #eff6ff;
+
+}
+
+/* Título do aviso */
+.cancelamento-aviso strong {
+
+  /* Faz o título ocupar uma linha inteira */
+  display: block;
+
+  /* Espaço abaixo do título */
+  margin-bottom: 4px;
+
+  /* Define a cor azul */
+  color: #1d4ed8;
+
+  /* Define o tamanho */
+  font-size: 13px;
+
+}
+
+/* Texto do aviso */
+.cancelamento-aviso p {
+
+  /* Remove a margem padrão */
+  margin: 0;
+
+  /* Define a cor */
+  color: #475569;
+
+  /* Define o tamanho */
+  font-size: 12px;
+
+  /* Define o espaçamento entre as linhas */
+  line-height: 1.5;
+
+}
+
+/* Área dos botões do modal */
+.cancelamento-actions {
+
+  /* Ativa o Flexbox */
+  display: flex;
+
+  /* Coloca os botões no lado direito */
+  justify-content: flex-end;
+
+  /* Cria 10px de espaço entre os botões */
+  gap: 10px;
+
+  /* Espaço acima dos botões */
+  margin-top: 24px;
+
+}
+
+/* Estilo geral dos botões do modal */
+.cancelamento-actions button {
+
+  /* Define a altura */
+  height: 42px;
+
+  /* Espaçamento horizontal */
+  padding: 0 16px;
+
+  /* Remove a borda */
+  border: none;
+
+  /* Arredonda os cantos */
+  border-radius: 8px;
+
+  /* Usa a fonte padrão da aplicação */
+  font-family: inherit;
+
+  /* Define o tamanho do texto */
+  font-size: 13px;
+
+  /* Deixa o texto em negrito */
+  font-weight: 800;
+
+  /* Mostra o cursor de clique */
+  cursor: pointer;
+
+}
+
+/* Primeiro botão do modal, que normalmente é "Voltar/Fechar" */
+.cancelamento-actions button:first-child {
+
+  /* Fundo cinza claro */
+  background: #f1f5f9;
+
+  /* Texto cinza */
+  color: #475569;
+
+}
+
+/* Efeito ao passar o mouse no primeiro botão */
+.cancelamento-actions button:first-child:hover {
+
+  /* Escurece o fundo */
+  background: #e2e8f0;
+
+}
+
+/* Botão de confirmar o cancelamento */
+.confirmar-cancelamento {
+
+  /* Fundo vermelho */
+  background: #dc2626;
+
+  /* Texto branco */
+  color: #ffffff;
+
+}
+
+/* Efeito ao passar o mouse no botão de confirmação */
+.confirmar-cancelamento:hover {
+
+  /* Deixa o vermelho mais escuro */
+  background: #b91c1c;
+
+}
+
+/* Botão de confirmar cancelamento desabilitado */
+.confirmar-cancelamento:disabled {
+
+  /* Deixa o botão parcialmente transparente */
+  opacity: 0.5;
+
+  /* Mostra que não pode ser clicado */
+  cursor: not-allowed;
+
+}
+
+
+/* ============================== */
+/* RESPONSIVIDADE */
+/* ============================== */
+
+/* Regras aplicadas em telas com até 900px de largura */
 @media (max-width: 900px) {
+
+  /* Ajusta o layout dos cards */
   .agendamento-card {
+
+    /* Passa a utilizar somente duas colunas */
     grid-template-columns: 1fr 1fr;
+
   }
+
 }
 
+/* Regras aplicadas em telas com até 550px */
 @media (max-width: 550px) {
+
+  /* Diminui o espaçamento do container */
   .agendamentos-container {
+
+    /* 40px em cima/baixo e 15px nas laterais */
     padding: 40px 15px;
+
   }
 
+  /* Diminui o tamanho do título */
   .page-header h1 {
+
+    /* Novo tamanho do título */
     font-size: 34px;
+
   }
 
+  /* Transforma o card em uma única coluna */
   .agendamento-card {
+
+    /* Cada informação fica uma abaixo da outra */
     grid-template-columns: 1fr;
+
   }
+
+  /* Diminui o padding do modal */
+  .cancelamento-modal {
+
+    /* 25px em cima/baixo e 20px nas laterais */
+    padding: 25px 20px;
+
+  }
+
+  /* Organiza os botões do modal verticalmente */
+  .cancelamento-actions {
+
+    /* Coloca os botões um abaixo do outro */
+    flex-direction: column;
+
+  }
+
+  /* Faz os botões ocuparem toda a largura */
+  .cancelamento-actions button {
+
+    /* Largura total disponível */
+    width: 100%;
+
+  }
+
 }

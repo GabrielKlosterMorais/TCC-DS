@@ -1,470 +1,1073 @@
+/* Remove as margens e espaçamentos padrão de todos os elementos */
 * {
   margin: 0;
   padding: 0;
+
+  /* Faz o padding e a borda serem incluídos no tamanho total do elemento */
   box-sizing: border-box;
 }
 
+
+/* Página administrativa de serviços */
 .servicos-adm-page {
+
+  /* Faz a página ocupar pelo menos toda a altura da tela */
   min-height: 100vh;
+
+  /* Define a cor de fundo da página */
   background: #f8fafc;
+
+  /* Define a cor padrão dos textos */
   color: #111827;
+
+  /* Define a fonte utilizada na página */
   font-family: "Nunito", sans-serif;
 }
 
+
+/* Container principal dos serviços */
 .servicos-adm-container {
+
+  /* Define a largura máxima do conteúdo */
   max-width: 1100px;
+
+  /* Centraliza o container horizontalmente */
   margin: 0 auto;
+
+  /* 
+    Define o espaçamento interno:
+    45px em cima,
+    30px nas laterais,
+    70px embaixo
+  */
   padding: 45px 30px 70px;
 }
+
 
 /* =========================
    CABEÇALHO
 ========================= */
 
+
+/* Área que contém o título e o botão de adicionar */
 .servicos-header {
+
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Coloca o conteúdo em lados opostos */
   justify-content: space-between;
+
+  /* Alinha os elementos pela parte inferior */
   align-items: flex-end;
+
+  /* Cria 30px de espaço entre os elementos */
   gap: 30px;
+
+  /* Espaço abaixo do cabeçalho */
   margin-bottom: 35px;
 }
 
+
+/* Texto "ÁREA ADMINISTRATIVA" */
 .servicos-header span {
+
+  /* Faz o span ocupar uma linha */
   display: block;
+
+  /* Espaço abaixo do texto */
   margin-bottom: 8px;
+
+  /* Cor azul */
   color: #2563eb;
+
+  /* Tamanho da fonte */
   font-size: 12px;
+
+  /* Texto em negrito */
   font-weight: 800;
+
+  /* Espaçamento entre as letras */
   letter-spacing: 2px;
 }
 
+
+/* Título "Serviços" */
 .servicos-header h1 {
+
+  /* Remove a margem padrão */
   margin: 0;
+
+  /* Define o tamanho do título */
   font-size: 42px;
+
+  /* Define o peso da fonte */
   font-weight: 700;
+
+  /* Define a cor do título */
   color: #111827;
 }
 
+
+/* Descrição abaixo do título */
 .servicos-header p {
+
+  /* 
+    8px de margem acima,
+    0 nas laterais e abaixo
+  */
   margin: 8px 0 0;
+
+  /* Cor cinza */
   color: #64748b;
+
+  /* Tamanho do texto */
   font-size: 16px;
 }
 
+
+/* Botão "+ Adicionar serviço" */
 .add-service-button {
+
+  /* Remove a borda padrão */
   border: none;
+
+  /* Arredonda os cantos */
   border-radius: 9px;
+
+  /* Espaçamento interno */
   padding: 13px 20px;
+
+  /* Cor de fundo azul */
   background: #2563eb;
+
+  /* Cor do texto */
   color: white;
+
+  /* Tamanho da fonte */
   font-size: 14px;
+
+  /* Deixa o texto em negrito */
   font-weight: 700;
+
+  /* Mostra a mãozinha ao passar o mouse */
   cursor: pointer;
+
+  /* Impede que o texto do botão quebre em outra linha */
   white-space: nowrap;
+
+  /* Define uma transição suave */
   transition: 0.2s;
 }
 
+
+/* Efeito ao passar o mouse no botão */
 .add-service-button:hover {
+
+  /* Deixa o azul um pouco mais escuro */
   background: #1d4ed8;
+
+  /* Move o botão 1px para cima */
   transform: translateY(-1px);
 }
+
 
 /* =========================
    LISTA
 ========================= */
 
+
+/* Lista que contém todos os serviços */
 .services-list {
+
+  /* Ativa o CSS Grid */
   display: grid;
+
+  /* Cria duas colunas de tamanhos iguais */
   grid-template-columns: repeat(2, 1fr);
+
+  /* Espaço de 20px entre os cards */
   gap: 20px;
 }
+
 
 /* =========================
    CARD
 ========================= */
 
+
+/* Card individual de cada serviço */
 .service-card {
+
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Espaço entre imagem, informações e botões */
   gap: 20px;
+
+  /* Define uma altura mínima */
   min-height: 210px;
+
+  /* Espaçamento interno do card */
   padding: 18px;
+
+  /* Fundo branco */
   background: white;
+
+  /* Borda cinza clara */
   border: 1px solid #e2e8f0;
+
+  /* Arredonda os cantos */
   border-radius: 14px;
+
+  /* Garante que padding e borda sejam incluídos no tamanho */
   box-sizing: border-box;
+
+  /* Adiciona uma sombra suave */
   box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
+
+  /* Define uma transição suave */
   transition: 0.2s;
 }
 
+
+/* Efeito quando o mouse passa sobre o card */
 .service-card:hover {
+
+  /* Deixa a borda um pouco mais escura */
   border-color: #cbd5e1;
+
+  /* Aumenta levemente a sombra */
   box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
 }
+
 
 /* =========================
    IMAGEM DO SERVIÇO
 ========================= */
 
+
+/* Container da imagem */
 .service-image {
+
+  /* Define a largura da imagem */
   width: 150px;
+
+  /* Impede que o Flexbox diminua a largura */
   min-width: 150px;
+
+  /* Define a altura */
   height: 170px;
+
+  /* Esconde qualquer parte da imagem que ultrapasse o container */
   overflow: hidden;
+
+  /* Arredonda os cantos */
   border-radius: 10px;
+
+  /* Fundo azul bem claro */
   background: #eff6ff;
 }
 
+
+/* Imagem dentro do container */
 .service-image img {
+
+  /* Ocupa toda a largura disponível */
   width: 100%;
+
+  /* Ocupa toda a altura disponível */
   height: 100%;
+
+  /* Remove espaços que podem aparecer em imagens inline */
   display: block;
+
+  /* Faz a imagem preencher o espaço mantendo proporção */
   object-fit: cover;
 }
 
+
+/* Área exibida quando o serviço não possui imagem */
 .no-image {
+
+  /* Ocupa toda a largura */
   width: 100%;
+
+  /* Ocupa toda a altura */
   height: 100%;
+
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Centraliza verticalmente */
   align-items: center;
+
+  /* Centraliza horizontalmente */
   justify-content: center;
+
+  /* Cor do texto */
   color: #94a3b8;
+
+  /* Tamanho do texto */
   font-size: 13px;
+
+  /* Texto em negrito */
   font-weight: 700;
 }
+
 
 /* =========================
    INFORMAÇÕES
 ========================= */
 
+
+/* Área que contém nome e descrição */
 .service-info {
+
+  /* Faz essa área ocupar o espaço disponível */
   flex: 1;
+
+  /* Permite que o conteúdo diminua quando necessário */
   min-width: 0;
+
+  /* Pequeno espaçamento vertical */
   padding: 5px 0;
 }
 
+
+/* Nome do serviço */
 .service-info h2 {
+
+  /* 
+    0 em cima,
+    0 nas laterais,
+    10px abaixo
+  */
   margin: 0 0 10px;
+
+  /* Tamanho do título */
   font-size: 21px;
+
+  /* Cor do título */
   color: #111827;
 }
 
+
+/* Descrição do serviço */
 .service-info p {
+
+  /* 
+    0 em cima,
+    0 nas laterais,
+    20px abaixo
+  */
   margin: 0 0 20px;
+
+  /* Cor cinza */
   color: #64748b;
+
+  /* Tamanho da fonte */
   font-size: 14px;
+
+  /* Espaçamento entre as linhas */
   line-height: 1.5;
 }
+
 
 /* =========================
    PREÇO / DURAÇÃO
 ========================= */
 
+
+/* Área que contém preço e duração */
 .service-details {
+
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Permite que os elementos quebrem de linha */
   flex-wrap: wrap;
+
+  /* Espaçamento entre os elementos */
   gap: 8px;
 }
 
+
+/* Cada informação de preço ou duração */
 .service-details span {
+
+  /* Espaçamento interno */
   padding: 7px 11px;
+
+  /* Arredonda os cantos */
   border-radius: 7px;
+
+  /* Fundo azul claro */
   background: #eff6ff;
+
+  /* Texto azul */
   color: #2563eb;
+
+  /* Tamanho da fonte */
   font-size: 13px;
+
+  /* Texto em negrito */
   font-weight: 700;
 }
+
 
 /* =========================
    BOTÕES
 ========================= */
 
+
+/* Área dos botões de ação */
 .service-actions {
+
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Organiza os botões verticalmente */
   flex-direction: column;
+
+  /* Espaço entre os botões */
   gap: 8px;
+
+  /* Centraliza os botões verticalmente */
   justify-content: center;
 }
 
+
+/* Estilo compartilhado pelos botões Editar e Excluir */
 .edit-button,
 .delete-button {
+
+  /* Define uma largura mínima */
   min-width: 80px;
+
+  /* Espaçamento interno */
   padding: 9px 13px;
+
+  /* Arredonda os cantos */
   border-radius: 7px;
+
+  /* Tamanho do texto */
   font-size: 13px;
+
+  /* Texto em negrito */
   font-weight: 700;
+
+  /* Mostra o cursor de clique */
   cursor: pointer;
 }
 
+
+/* Botão Editar */
 .edit-button {
+
+  /* Borda azul clara */
   border: 1px solid #bfdbfe;
+
+  /* Fundo azul muito claro */
   background: #eff6ff;
+
+  /* Texto azul */
   color: #2563eb;
 }
 
+
+/* Efeito ao passar o mouse no botão Editar */
 .edit-button:hover {
+
+  /* Escurece levemente o fundo */
   background: #dbeafe;
 }
 
+
+/* Botão Excluir */
 .delete-button {
+
+  /* Borda vermelha clara */
   border: 1px solid #fecaca;
+
+  /* Fundo vermelho muito claro */
   background: #fef2f2;
+
+  /* Texto vermelho */
   color: #dc2626;
 }
 
+
+/* Efeito ao passar o mouse no botão Excluir */
 .delete-button:hover {
+
+  /* Deixa o fundo vermelho um pouco mais forte */
   background: #fee2e2;
 }
+
 
 /* =========================
    VAZIO
 ========================= */
 
+
+/* Área exibida quando não existem serviços */
 .empty-services {
+
+  /* Espaçamento interno */
   padding: 70px 30px;
+
+  /* Centraliza o texto */
   text-align: center;
+
+  /* Fundo branco */
   background: white;
+
+  /* Borda cinza */
   border: 1px solid #e2e8f0;
+
+  /* Arredonda os cantos */
   border-radius: 14px;
 }
 
+
+/* Título da mensagem de lista vazia */
 .empty-services h2 {
+
+  /* 
+    0 em cima,
+    0 nas laterais,
+    8px abaixo
+  */
   margin: 0 0 8px;
+
+  /* Tamanho do título */
   font-size: 22px;
 }
 
+
+/* Texto da mensagem de lista vazia */
 .empty-services p {
+
+  /* Remove a margem padrão */
   margin: 0;
+
+  /* Cor cinza */
   color: #64748b;
 }
 
+
+/* Mensagem de carregamento */
 .loading {
+
+  /* Define a cor cinza */
   color: #64748b;
+
+  /* Centraliza o texto */
   text-align: center;
+
+  /* Espaçamento interno */
   padding: 50px;
 }
+
 
 /* =========================
    MODAL
 ========================= */
 
+
+/* Fundo que aparece atrás do modal */
 .service-overlay {
+
+  /* Fixa o elemento na tela */
   position: fixed;
+
+  /* Faz o elemento ocupar toda a tela */
   inset: 0;
+
+  /* Coloca o overlay acima dos outros elementos */
   z-index: 9999;
+
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Centraliza o modal verticalmente */
   align-items: center;
+
+  /* Centraliza o modal horizontalmente */
   justify-content: center;
+
+  /* Espaçamento nas bordas da tela */
   padding: 20px;
+
+  /* Cria um fundo escuro transparente */
   background: rgba(15, 23, 42, 0.55);
+
+  /* Permite rolagem caso o conteúdo seja maior que a tela */
   overflow-y: auto;
 }
 
+
+/* Caixa principal do modal */
 .service-modal {
+
+  /* Permite posicionar elementos internos de forma absoluta */
   position: relative;
+
+  /* Ocupa toda a largura disponível até o limite */
   width: 100%;
+
+  /* Define a largura máxima */
   max-width: 500px;
+
+  /* Impede que o modal ultrapasse 90% da altura da tela */
   max-height: 90vh;
+
+  /* Permite rolar o conteúdo quando necessário */
   overflow-y: auto;
+
+  /* Espaçamento interno */
   padding: 32px;
+
+  /* Fundo branco */
   background: white;
+
+  /* Arredonda os cantos */
   border-radius: 16px;
+
+  /* Inclui padding e borda no tamanho total */
   box-sizing: border-box;
+
+  /* Adiciona uma sombra ao redor do modal */
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
 }
 
+
+/* Span que aparece dentro do modal */
 .service-modal > span {
+
+  /* Faz ocupar uma linha inteira */
   display: block;
+
+  /* Espaço abaixo do texto */
   margin-bottom: 7px;
+
+  /* Cor azul */
   color: #2563eb;
+
+  /* Tamanho pequeno */
   font-size: 11px;
+
+  /* Texto em negrito */
   font-weight: 800;
+
+  /* Espaçamento entre letras */
   letter-spacing: 2px;
 }
 
+
+/* Título do modal */
 .service-modal h2 {
+
+  /* 
+    Remove margens laterais e superiores
+    e deixa 25px abaixo
+  */
   margin: 0 0 25px;
+
+  /* Cor do título */
   color: #111827;
+
+  /* Tamanho do título */
   font-size: 25px;
 }
+
 
 /* =========================
    FECHAR MODAL
 ========================= */
 
+
+/* Botão "X" para fechar o modal */
 .close-modal {
+
+  /* Permite posicionar o botão dentro do modal */
   position: absolute;
+
+  /* Distância do topo */
   top: 15px;
+
+  /* Distância do lado direito */
   right: 15px;
+
+  /* Largura do botão */
   width: 34px;
+
+  /* Altura do botão */
   height: 34px;
+
+  /* Remove a borda */
   border: none;
+
+  /* Deixa o botão circular */
   border-radius: 50%;
+
+  /* Fundo cinza claro */
   background: #f1f5f9;
+
+  /* Cor do X */
   color: #64748b;
+
+  /* Tamanho do X */
   font-size: 22px;
+
+  /* Mostra o cursor de clique */
   cursor: pointer;
 }
 
+
+/* Efeito ao passar o mouse no X */
 .close-modal:hover {
+
+  /* Escurece o fundo do botão */
   background: #e2e8f0;
 }
+
 
 /* =========================
    FORMULÁRIO
 ========================= */
 
+
+/* Labels dos campos do formulário */
 .service-modal label {
+
+  /* Faz o label ocupar uma linha */
   display: block;
+
+  /* Espaço abaixo do label */
   margin-bottom: 7px;
+
+  /* Cor do texto */
   color: #334155;
+
+  /* Tamanho da fonte */
   font-size: 13px;
+
+  /* Texto em negrito */
   font-weight: 700;
 }
 
+
+/* Inputs e textarea do formulário */
 .service-modal input,
 .service-modal textarea {
+
+  /* Ocupa toda a largura disponível */
   width: 100%;
+
+  /* Espaço abaixo de cada campo */
   margin-bottom: 17px;
+
+  /* Espaçamento interno */
   padding: 11px 12px;
+
+  /* Borda */
   border: 1px solid #dbe3ee;
+
+  /* Arredonda os cantos */
   border-radius: 8px;
+
+  /* Remove o contorno padrão do navegador */
   outline: none;
+
+  /* Inclui padding e borda no tamanho */
   box-sizing: border-box;
+
+  /* Fundo branco */
   background: white;
+
+  /* Cor do texto digitado */
   color: #111827;
+
+  /* Utiliza a mesma fonte do restante da página */
   font-family: inherit;
+
+  /* Tamanho do texto */
   font-size: 14px;
 }
 
+
+/* Define uma altura específica para os inputs */
 .service-modal input {
+
+  /* Altura do input */
   height: 44px;
 }
 
+
+/* Estilo quando input ou textarea recebe foco */
 .service-modal input:focus,
 .service-modal textarea:focus {
+
+  /* Deixa a borda azul */
   border-color: #2563eb;
+
+  /* Cria um brilho azul suave ao redor */
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
+
+/* Campo de descrição */
 .service-modal textarea {
+
+  /* Altura mínima */
   min-height: 90px;
+
+  /* Permite que o usuário altere verticalmente o tamanho */
   resize: vertical;
 }
+
 
 /* =========================
    PREÇO E DURAÇÃO
 ========================= */
 
+
+/* Container dos campos de preço e duração */
 .form-row {
+
+  /* Ativa o CSS Grid */
   display: grid;
+
+  /* Cria duas colunas iguais */
   grid-template-columns: 1fr 1fr;
+
+  /* Espaço entre os campos */
   gap: 15px;
 }
 
+
+/* Inputs dentro da linha de preço e duração */
 .form-row input {
+
+  /* Aumenta o espaço abaixo desses inputs */
   margin-bottom: 20px;
 }
+
 
 /* =========================
    PREVIEW DA IMAGEM
 ========================= */
 
+
+/* Área de pré-visualização da imagem */
 .image-preview {
+
+  /* Ocupa toda a largura */
   width: 100%;
+
+  /* Define a altura */
   height: 180px;
+
+  /* Pequeno ajuste da margem superior */
   margin-top: -5px;
+
+  /* Espaço abaixo da prévia */
   margin-bottom: 20px;
+
+  /* Esconde qualquer parte que ultrapasse a área */
   overflow: hidden;
+
+  /* Arredonda os cantos */
   border-radius: 10px;
+
+  /* Fundo azul claro */
   background: #eff6ff;
+
+  /* Borda cinza */
   border: 1px solid #e2e8f0;
 }
 
+
+/* Imagem da pré-visualização */
 .image-preview img {
+
+  /* Ocupa toda a largura */
   width: 100%;
+
+  /* Ocupa toda a altura */
   height: 100%;
+
+  /* Remove espaços extras da imagem */
   display: block;
+
+  /* Faz a imagem preencher o espaço */
   object-fit: cover;
 }
+
 
 /* =========================
    BOTÃO SALVAR
 ========================= */
 
+
+/* Botão "Salvar alterações" ou "Adicionar serviço" */
 .save-service-button {
+
+  /* Ocupa toda a largura do modal */
   width: 100%;
+
+  /* Remove a borda */
   border: none;
+
+  /* Arredonda os cantos */
   border-radius: 8px;
+
+  /* Espaçamento interno */
   padding: 13px;
+
+  /* Fundo azul */
   background: #2563eb;
+
+  /* Texto branco */
   color: white;
+
+  /* Tamanho da fonte */
   font-size: 14px;
+
+  /* Texto em negrito */
   font-weight: 700;
+
+  /* Mostra o cursor de clique */
   cursor: pointer;
+
+  /* Cria uma transição suave */
   transition: 0.2s;
 }
 
+
+/* Efeito ao passar o mouse no botão salvar */
 .save-service-button:hover {
+
+  /* Deixa o azul mais escuro */
   background: #1d4ed8;
 }
+
 
 /* =========================
    RESPONSIVO
 ========================= */
 
+
+/* Regras para telas de até 850px */
 @media (max-width: 850px) {
 
+
+  /* Lista de serviços */
   .services-list {
+
+    /* Passa de duas colunas para uma coluna */
     grid-template-columns: 1fr;
   }
 
+
+  /* Cabeçalho */
   .servicos-header {
+
+    /* Alinha os elementos no início */
     align-items: flex-start;
+
+    /* Coloca título e botão um abaixo do outro */
     flex-direction: column;
   }
 
+
+  /* Botão de adicionar */
   .add-service-button {
+
+    /* Ocupa toda a largura disponível */
     width: 100%;
   }
 }
 
+
+/* Regras para telas de até 600px */
 @media (max-width: 600px) {
 
+
+  /* Container principal */
   .servicos-adm-container {
+
+    /* Diminui o espaçamento */
     padding: 30px 15px;
   }
 
+
+  /* Título da página */
   .servicos-header h1 {
+
+    /* Diminui o tamanho do título */
     font-size: 34px;
   }
 
+
+  /* Card do serviço */
   .service-card {
+
+    /* Coloca imagem, informações e ações verticalmente */
     flex-direction: column;
   }
 
+
+  /* Imagem do serviço */
   .service-image {
+
+    /* Ocupa toda a largura do card */
     width: 100%;
+
+    /* Aumenta a altura da imagem */
     height: 200px;
   }
 
+
+  /* Área dos botões */
   .service-actions {
+
+    /* Coloca os botões lado a lado */
     flex-direction: row;
   }
 
+
+  /* Botões Editar e Excluir */
   .edit-button,
   .delete-button {
+
+    /* Faz os dois botões dividirem igualmente o espaço */
     flex: 1;
   }
 }
 
+
+/* Regras para telas de até 500px */
 @media (max-width: 500px) {
 
+
+  /* Linha que contém preço e duração */
   .form-row {
+
+    /* Passa de duas colunas para uma coluna */
     grid-template-columns: 1fr;
+
+    /* Remove o espaço entre as linhas */
     gap: 0;
   }
 
+
+  /* Modal */
   .service-modal {
+
+    /* Diminui o espaçamento interno */
     padding: 25px 20px;
   }
 }

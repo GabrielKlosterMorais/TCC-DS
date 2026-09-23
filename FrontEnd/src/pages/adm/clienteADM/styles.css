@@ -1,230 +1,644 @@
+/* Define o estilo geral da página administrativa de clientes */
 .clientes-adm-page {
+
+  /* Faz a página ocupar pelo menos toda a altura da tela */
   min-height: 100vh;
+
+  /* Define a cor de fundo da página */
   background: #f7f9fc;
+
+  /* Define a cor padrão dos textos */
   color: #111827;
+
 }
 
+
+/* Container principal do conteúdo */
 .clientes-adm-container {
+
+  /* Define a largura máxima do conteúdo */
   max-width: 1050px;
+
+  /* Centraliza o container horizontalmente */
   margin: 0 auto;
+
+  /* Define o espaçamento interno */
   padding: 45px 30px 70px;
+
 }
 
+
+/* Cabeçalho da página */
 .clientes-adm-header {
+
+  /* Cria um espaço abaixo do cabeçalho */
   margin-bottom: 35px;
+
 }
 
+
+/* Texto pequeno "ÁREA ADMINISTRATIVA" */
 .clientes-adm-header span {
+
+  /* Define a cor azul */
   color: #2563eb;
+
+  /* Define o tamanho da fonte */
   font-size: 12px;
+
+  /* Deixa o texto mais grosso */
   font-weight: 800;
+
+  /* Aumenta o espaço entre as letras */
   letter-spacing: 2px;
+
 }
 
+
+/* Título principal "Clientes" */
 .clientes-adm-header h1 {
+
+  /* 
+    Define a margem:
+    8px em cima e embaixo
+    0 nas laterais
+  */
   margin: 8px 0;
+
+  /* Define o tamanho do título */
   font-size: 38px;
+
+  /* Deixa o título em negrito */
   font-weight: 800;
+
 }
 
+
+/* Texto de descrição abaixo do título */
 .clientes-adm-header p {
+
+  /* Remove a margem padrão do parágrafo */
   margin: 0;
+
+  /* Define a cor cinza */
   color: #64748b;
+
+  /* Define o tamanho do texto */
   font-size: 15px;
+
 }
 
+
+/* Lista que contém todos os clientes */
 .clientes-list {
+
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Organiza os cards verticalmente */
   flex-direction: column;
+
+  /* Cria 22px de espaço entre os cards */
   gap: 22px;
+
 }
 
+
+/* Card individual de cada cliente */
 .cliente-card {
+
+  /* Define o fundo branco */
   background: #ffffff;
+
+  /* Adiciona uma borda cinza clara */
   border: 1px solid #e2e8f0;
+
+  /* Arredonda os cantos */
   border-radius: 16px;
+
+  /* Espaçamento interno do card */
   padding: 26px;
+
+  /* Adiciona uma sombra suave */
   box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
+
 }
 
+
+/* Parte superior do card do cliente */
 .cliente-top {
+
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Alinha os elementos verticalmente ao centro */
   align-items: center;
+
+  /* Cria 15px de espaço entre avatar e informações */
   gap: 15px;
+
+  /* Espaço abaixo dessa área */
   padding-bottom: 22px;
+
+  /* Linha separadora abaixo das informações */
   border-bottom: 1px solid #eef2f7;
+
 }
 
+
+/* Avatar circular do cliente */
 .cliente-avatar {
+
+  /* Define a largura */
+  width: 52px;
+
+  /* Define a altura */
+  height: 52px;
+
+  /* Transforma o elemento em um círculo */
+  border-radius: 50%;
+
+  /* Define o fundo azul */
+  background: #2563eb;
+
+  /* Define a cor branca da letra */
+  color: white;
+
+  /* Ativa o Flexbox */
+  display: flex;
+
+  /* Centraliza verticalmente a letra */
+  align-items: center;
+
+  /* Centraliza horizontalmente a letra */
+  justify-content: center;
+
+  /* Define o tamanho da letra */
+  font-size: 20px;
+
+  /* Deixa a letra em negrito */
+  font-weight: 800;
+
+}
+
+
+/* Título com o nome do cliente */
+.cliente-info h2 {
+
+  /* Remove a margem superior e deixa 4px abaixo */
+  margin: 0 0 4px;
+
+  /* Define o tamanho do nome */
+  font-size: 21px;
+
+}
+
+
+/* Texto "Cliente" abaixo do nome */
+.cliente-info span {
+
+  /* Define a cor azul */
+  color: #2563eb;
+
+  /* Define o tamanho */
+  font-size: 13px;
+
+  /* Deixa o texto um pouco mais grosso */
+  font-weight: 600;
+
+}
+
+
+/* Área que contém os detalhes do cliente */
+.cliente-details {
+
+  /* Ativa o CSS Grid */
+  display: grid;
+
+  /* Cria 3 colunas de tamanho igual */
+  grid-template-columns: repeat(3, 1fr);
+
+  /* Cria 20px de espaço entre as colunas */
+  gap: 20px;
+
+  /* Espaçamento vertical */
+  padding: 22px 0;
+
+}
+
+
+/* Label dos detalhes */
+.detail label {
+
+  /* Faz o label ocupar uma linha inteira */
+  display: block;
+
+  /* Espaço abaixo do label */
+  margin-bottom: 6px;
+
+  /* Define a cor cinza */
+  color: #64748b;
+
+  /* Define o tamanho do texto */
+  font-size: 12px;
+
+  /* Deixa o texto em negrito */
+  font-weight: 700;
+
+  /* Transforma o texto em letras maiúsculas */
+  text-transform: uppercase;
+
+}
+
+
+/* Valor dos detalhes do cliente */
+.detail p {
+
+  /* Remove a margem padrão */
+  margin: 0;
+
+  /* Define a cor do texto */
+  color: #1e293b;
+
+  /* Define o tamanho */
+  font-size: 14px;
+
+}
+
+
+/* Área onde ficam os pets do cliente */
+.pets-section {
+
+  /* Define um fundo cinza bem claro */
+  background: #f8fafc;
+
+  /* Arredonda os cantos */
+  border-radius: 12px;
+
+  /* Espaçamento interno */
+  padding: 18px;
+
+}
+
+
+/* Cabeçalho da seção de pets */
+.pets-title {
+
+  /* Ativa o Flexbox */
+  display: flex;
+
+  /* Alinha verticalmente */
+  align-items: center;
+
+  /* Coloca um elemento em cada lado */
+  justify-content: space-between;
+
+  /* Espaço abaixo do título */
+  margin-bottom: 14px;
+
+}
+
+
+/* Título "Pets" */
+.pets-title h3 {
+
+  /* Remove a margem padrão */
+  margin: 0;
+
+  /* Define o tamanho */
+  font-size: 16px;
+
+}
+
+
+/* Número que mostra a quantidade de pets */
+.pets-title span {
+
+  /* Define uma largura mínima */
+  min-width: 26px;
+
+  /* Define a altura */
+  height: 26px;
+
+  /* Adiciona espaço horizontal */
+  padding: 0 7px;
+
+  /* Arredonda bastante as bordas */
+  border-radius: 20px;
+
+  /* Define o fundo azul claro */
+  background: #e0ecff;
+
+  /* Define a cor azul do número */
+  color: #2563eb;
+
+  /* Ativa o Flexbox */
+  display: flex;
+
+  /* Centraliza verticalmente */
+  align-items: center;
+
+  /* Centraliza horizontalmente */
+  justify-content: center;
+
+  /* Define o tamanho da fonte */
+  font-size: 12px;
+
+  /* Deixa o número em negrito */
+  font-weight: 800;
+
+}
+
+
+/* Lista dos pets */
+.pets-list {
+
+  /* Ativa o CSS Grid */
+  display: grid;
+
+  /* Cria duas colunas de tamanho igual */
+  grid-template-columns: repeat(2, 1fr);
+
+  /* Espaçamento entre os cards */
+  gap: 12px;
+
+}
+
+
+/* Card individual de cada pet */
+.pet-card {
+
+  /* Ativa o Flexbox */
+  display: flex;
+
+  /* Alinha os elementos verticalmente */
+  align-items: center;
+
+  /* Espaço entre ícone, informações e peso */
+  gap: 12px;
+
+  /* Fundo branco */
+  background: white;
+
+  /* Borda cinza clara */
+  border: 1px solid #e2e8f0;
+
+  /* Arredonda os cantos */
+  border-radius: 10px;
+
+  /* Espaçamento interno */
+  padding: 14px;
+
+}
+
+
+/* Ícone do pet */
+.pet-icon {
   width: 52px;
   height: 52px;
-  border-radius: 50%;
-  background: #2563eb;
-  color: white;
+  min-width: 52px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  font-weight: 800;
-}
 
-.cliente-info h2 {
-  margin: 0 0 4px;
-  font-size: 21px;
-}
+  border-radius: 50%;
 
-.cliente-info span {
+  overflow: hidden;
+
+  background: #eff6ff;
+
   color: #2563eb;
-  font-size: 13px;
-  font-weight: 600;
+
+  font-size: 20px;
+  font-weight: 700;
 }
 
-.cliente-details {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 22px 0;
+.pet-icon img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
 }
 
-.detail label {
-  display: block;
-  margin-bottom: 6px;
-  color: #64748b;
+.pet-icon span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.btn-excluir-cliente {
+  margin-left: auto;
+  padding: 9px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #dc2626;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-excluir-cliente:hover {
+  background: #b91c1c;
+}
+
+.btn-excluir-pet {
+  margin-left: auto;
+  padding: 7px 12px;
+  border: none;
+  border-radius: 7px;
+  background: #dc2626;
+  color: white;
   font-size: 12px;
   font-weight: 700;
-  text-transform: uppercase;
+  cursor: pointer;
 }
 
-.detail p {
-  margin: 0;
-  color: #1e293b;
-  font-size: 14px;
+.btn-excluir-pet:hover {
+  background: #b91c1c;
 }
 
-.pets-section {
-  background: #f8fafc;
-  border-radius: 12px;
-  padding: 18px;
-}
 
-.pets-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 14px;
-}
-
-.pets-title h3 {
-  margin: 0;
-  font-size: 16px;
-}
-
-.pets-title span {
-  min-width: 26px;
-  height: 26px;
-  padding: 0 7px;
-  border-radius: 20px;
-  background: #e0ecff;
-  color: #2563eb;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 800;
-}
-
-.pets-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-
-.pet-card {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 14px;
-}
-
-.pet-icon {
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
-  border-radius: 10px;
-  background: #eff6ff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 19px;
-}
-
+/* Área das informações do pet */
 .pet-info {
+
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Organiza as informações verticalmente */
   flex-direction: column;
+
+  /* Cria 3px de espaço entre as informações */
   gap: 3px;
+
+  /* Faz essa área ocupar o espaço disponível */
   flex: 1;
+
 }
 
+
+/* Nome do pet */
 .pet-info strong {
+
+  /* Define a cor do nome */
   color: #111827;
+
+  /* Define o tamanho */
   font-size: 15px;
+
 }
 
+
+/* Informações secundárias do pet */
 .pet-info span {
+
+  /* Define a cor cinza */
   color: #64748b;
+
+  /* Define o tamanho */
   font-size: 12px;
+
 }
 
+
+/* Peso do pet */
 .pet-weight {
+
+  /* Define a cor azul */
   color: #2563eb;
+
+  /* Define o tamanho */
   font-size: 13px;
+
+  /* Impede que "35.5 kg", por exemplo, seja quebrado em duas linhas */
   white-space: nowrap;
+
 }
 
+
+/* Mensagem exibida quando o cliente não possui pets */
 .no-pets {
+
+  /* Remove a margem padrão */
   margin: 0;
+
+  /* Define a cor cinza clara */
   color: #94a3b8;
+
+  /* Define o tamanho */
   font-size: 13px;
+
 }
 
+
+/* Mensagem exibida enquanto os clientes estão carregando */
 .clientes-loading {
+
+  /* Define a cor */
   color: #64748b;
+
+  /* Centraliza o texto */
   text-align: center;
+
+  /* Espaçamento interno */
   padding: 40px;
+
 }
 
+
+/* Caixa exibida quando nenhum cliente foi encontrado */
 .empty-clientes {
+
+  /* Fundo branco */
   background: white;
+
+  /* Borda cinza */
   border: 1px solid #e2e8f0;
+
+  /* Arredonda os cantos */
   border-radius: 14px;
+
+  /* Espaçamento interno */
   padding: 50px 20px;
+
+  /* Centraliza o conteúdo */
   text-align: center;
+
 }
 
+
+/* Título da mensagem de clientes vazios */
 .empty-clientes h2 {
+
+  /* Remove a margem superior e deixa 8px abaixo */
   margin: 0 0 8px;
+
+  /* Define o tamanho do título */
   font-size: 20px;
+
 }
 
+
+/* Parágrafo da mensagem de clientes vazios */
 .empty-clientes p {
+
+  /* Remove a margem padrão */
   margin: 0;
+
+  /* Define a cor cinza */
   color: #64748b;
+
 }
 
+
+/* ============================== */
+/* RESPONSIVIDADE */
+/* ============================== */
+
+/* Regras aplicadas em telas com até 750px */
 @media (max-width: 750px) {
+
+  /* Ajusta o espaçamento do container em telas menores */
   .clientes-adm-container {
+
+    /* 
+      30px em cima,
+      18px nas laterais
+      e 50px embaixo
+    */
     padding: 30px 18px 50px;
+
   }
 
+
+  /* Ajusta a área de detalhes do cliente */
   .cliente-details {
+
+    /* 
+      Passa de 3 colunas para apenas 1 coluna.
+      Assim os dados ficam um abaixo do outro.
+    */
     grid-template-columns: 1fr;
+
+    /* Reduz o espaço entre os detalhes */
     gap: 14px;
+
   }
 
+
+  /* Ajusta a lista de pets */
   .pets-list {
+
+    /* 
+      Passa de 2 colunas para 1 coluna.
+      Os pets ficam um abaixo do outro no celular.
+    */
     grid-template-columns: 1fr;
+
   }
+
 }

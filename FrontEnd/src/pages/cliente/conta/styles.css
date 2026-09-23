@@ -1,405 +1,841 @@
+/* =========================================================
+   RESET GERAL
+   Remove os espaçamentos padrões do navegador.
+   ========================================================= */
+
 * {
+    /* Remove margem padrão */
     margin: 0;
+
+    /* Remove espaçamento interno padrão */
     padding: 0;
+
+    /* Faz width e height incluírem padding e border */
     box-sizing: border-box;
 }
 
+
+/* Configura o comportamento da rolagem da página */
+
 html {
+    /* Faz a rolagem acontecer suavemente */
     scroll-behavior: smooth;
 }
 
+
+/* =========================================================
+   BODY
+   Define o estilo geral da página.
+   ========================================================= */
+
 body {
+
+    /* Define a fonte principal */
     font-family: "Nunito", Arial, sans-serif;
+
+    /* Cor de fundo */
     background: #f8fafc;
+
+    /* Cor padrão dos textos */
     color: #1e293b;
 }
 
+
+/* =========================================================
+   CONTAINER DA CONTA
+   É a área que envolve toda a página.
+   ========================================================= */
+
 .conta-container {
+
+    /* Ocupa toda a largura disponível */
     width: 100%;
+
+    /* Ocupa pelo menos toda a altura da tela */
     min-height: 100vh;
+
+    /* Espaçamento interno:
+       65px em cima e embaixo
+       30px nas laterais */
     padding: 65px 30px;
 }
 
+
+/* =========================================================
+   CARD PRINCIPAL
+   É o quadro branco onde ficam as informações do usuário.
+   ========================================================= */
+
 .conta-card {
+
+    /* Ocupa toda a largura disponível até o limite */
     width: 100%;
+
+    /* Limita a largura máxima do card */
     max-width: 950px;
+
+    /* Centraliza o card horizontalmente */
     margin: 0 auto;
+
+    /* Fundo branco */
     background: #ffffff;
+
+    /* Borda */
     border: 1px solid #e2e8f0;
+
+    /* Cantos arredondados */
     border-radius: 16px;
+
+    /* Sombra leve */
     box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
+
+    /* Impede que elementos ultrapassem
+       os cantos arredondados */
     overflow: hidden;
 }
 
-/* ================================
+
+/* =========================================================
    HEADER
-================================ */
+   Cabeçalho da página Minha Conta.
+   ========================================================= */
 
 .conta-header {
+
+    /* Espaçamento interno */
     padding: 30px;
+
+    /* Linha separadora abaixo do cabeçalho */
     border-bottom: 1px solid #f1f5f9;
 }
 
+
+/* Título "Minha conta" */
+
 .conta-header h1 {
+
+    /* Cor do título */
     color: #1e293b;
+
+    /* Tamanho */
     font-size: 32px;
+
+    /* Deixa o texto mais grosso */
     font-weight: 800;
 }
 
+
+/* Texto abaixo do título */
+
 .conta-header p {
+
+    /* Espaço entre o título e o texto */
     margin-top: 7px;
+
+    /* Cor cinza */
     color: #64748b;
+
+    /* Tamanho */
     font-size: 14px;
 }
 
-/* ================================
+
+/* =========================================================
    CAMPOS
-================================ */
+   Área que contém Nome, E-mail, Telefone etc.
+   ========================================================= */
 
 .conta-fields {
+
+    /* Ocupa toda a largura disponível */
     width: 100%;
 }
 
+
+/* Cada linha de informação do usuário */
+
 .conta-field {
+
+    /* Altura mínima de cada campo */
     min-height: 90px;
+
+    /* Espaçamento interno */
     padding: 20px 30px;
 
+    /* Utiliza Flexbox */
     display: flex;
+
+    /* Centraliza os elementos verticalmente */
     align-items: center;
+
+    /* Coloca informação de um lado
+       e botão do outro */
     justify-content: space-between;
 
+    /* Espaço entre informação e botão */
     gap: 25px;
 
+    /* Linha separadora */
     border-bottom: 1px solid #f1f5f9;
 }
 
+
+/* Remove a linha do último campo */
+
 .conta-field:last-child {
+
     border-bottom: none;
 }
 
+
+/* =========================================================
+   INFORMAÇÕES DO CAMPO
+   ========================================================= */
+
 .field-info {
+
+    /* Permite que essa área ocupe o espaço restante */
     flex: 1;
+
+    /* Evita que textos muito grandes
+       quebrem o layout */
     min-width: 0;
 }
 
+
+/* Nome do campo:
+   Nome, E-mail, Telefone etc. */
+
 .field-info label {
+
+    /* Faz o label ocupar uma linha inteira */
     display: block;
+
+    /* Espaço abaixo do label */
     margin-bottom: 6px;
 
+    /* Cor cinza */
     color: #64748b;
+
+    /* Tamanho pequeno */
     font-size: 12px;
+
+    /* Negrito */
     font-weight: 800;
 }
 
+
+/* Valor do campo */
+
 .field-info span {
+
+    /* Faz o span ocupar uma linha */
     display: block;
 
+    /* Cor */
     color: #1e293b;
+
+    /* Tamanho */
     font-size: 14px;
+
+    /* Peso */
     font-weight: 600;
 
+    /* Permite quebrar palavras muito grandes */
     word-break: break-word;
 }
 
-/* ================================
+
+/* =========================================================
    BOTÃO EDITAR
-================================ */
+   ========================================================= */
 
 .conta-field button {
+
+    /* Impede o botão de diminuir de tamanho */
     flex-shrink: 0;
 
+    /* Altura */
     height: 40px;
+
+    /* Espaçamento horizontal */
     padding: 0 17px;
 
+    /* Borda */
     border: 1px solid #dbeafe;
+
+    /* Cantos arredondados */
     border-radius: 7px;
 
+    /* Fundo branco */
     background: #ffffff;
+
+    /* Texto azul */
     color: #2563eb;
 
+    /* Usa a mesma fonte da página */
     font-family: inherit;
+
+    /* Tamanho */
     font-size: 12px;
+
+    /* Negrito */
     font-weight: 800;
 
+    /* Mostra que é clicável */
     cursor: pointer;
+
+    /* Suaviza as alterações */
     transition: 0.2s;
 }
 
+
+/* Efeito ao passar o mouse */
+
 .conta-field button:hover {
+
+    /* Borda fica azul */
     border-color: #2563eb;
+
+    /* Fundo fica azul claro */
     background: #eff6ff;
 }
 
-/* ================================
+
+/* =========================================================
    MODAIS
-================================ */
+   ========================================================= */
+
+
+/* Fundo escuro que fica atrás do modal */
 
 .modal-overlay {
+
+    /* Fixa o elemento na tela */
     position: fixed;
+
+    /* Faz ocupar todos os lados da tela */
     inset: 0;
 
+    /* Coloca o modal acima dos outros elementos */
     z-index: 9999;
 
+    /* Utiliza Flexbox */
     display: flex;
+
+    /* Centraliza verticalmente */
     align-items: center;
+
+    /* Centraliza horizontalmente */
     justify-content: center;
 
+    /* Espaçamento para telas pequenas */
     padding: 20px;
 
+    /* Fundo escuro transparente */
     background: rgba(15, 23, 42, 0.55);
 }
 
+
+/* Caixa branca do modal */
+
 .modal {
+
+    /* Permite posicionar o botão X
+       usando position absolute */
     position: relative;
 
+    /* Ocupa toda a largura disponível
+       respeitando o max-width */
     width: 100%;
+
+    /* Limita a largura */
     max-width: 430px;
 
+    /* Espaçamento interno */
     padding: 32px;
 
+    /* Cantos arredondados */
     border-radius: 14px;
 
+    /* Fundo branco */
     background: #ffffff;
 
+    /* Sombra do modal */
     box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
 }
 
-/* ================================
-   FECHAR MODAL
-================================ */
+
+/* =========================================================
+   BOTÃO DE FECHAR O MODAL
+   ========================================================= */
 
 .modal-close {
+
+    /* Posicionamento absoluto dentro do modal */
     position: absolute;
 
+    /* Distância do topo */
     top: 10px;
+
+    /* Distância da direita */
     right: 14px;
 
+    /* Remove borda */
     border: none;
+
+    /* Remove fundo */
     background: none;
 
+    /* Cor */
     color: #64748b;
 
+    /* Tamanho do X */
     font-size: 27px;
+
+    /* Altura da linha */
     line-height: 1;
 
+    /* Cursor de clique */
     cursor: pointer;
 }
 
+
+/* Quando passa o mouse no X */
+
 .modal-close:hover {
+
+    /* Deixa o X mais escuro */
     color: #1e293b;
 }
 
-/* ================================
-   TITULO MODAL
-================================ */
+
+/* =========================================================
+   TÍTULO DO MODAL
+   ========================================================= */
 
 .modal h2 {
+
+    /* Pequeno espaço no topo */
     margin-top: 5px;
 
+    /* Cor */
     color: #1e293b;
 
+    /* Tamanho */
     font-size: 23px;
+
+    /* Negrito */
     font-weight: 800;
 }
 
+
+/* Texto abaixo do título do modal */
+
 .modal > p {
+
+    /* Espaço acima */
     margin-top: 8px;
+
+    /* Espaço abaixo */
     margin-bottom: 22px;
 
+    /* Cor cinza */
     color: #64748b;
 
+    /* Tamanho */
     font-size: 13px;
+
+    /* Espaçamento entre linhas */
     line-height: 1.5;
 }
 
+
+/* Palavra em destaque dentro do texto */
+
 .modal > p strong {
+
+    /* Deixa o texto mais escuro */
     color: #1e293b;
 }
 
-/* ================================
-   INPUT
-================================ */
+
+/* =========================================================
+   INPUT DO MODAL
+   ========================================================= */
 
 .modal-input {
+
+    /* Ocupa toda a largura */
     width: 100%;
 }
 
+
+/* Label do input */
+
 .modal-input label {
+
+    /* Faz o label ocupar uma linha */
     display: block;
 
+    /* Espaço abaixo */
     margin-bottom: 7px;
 
+    /* Cor */
     color: #334155;
 
+    /* Tamanho */
     font-size: 13px;
+
+    /* Negrito */
     font-weight: 800;
 }
 
+
+/* Campo input */
+
 .modal-input input {
+
+    /* Ocupa toda a largura */
     width: 100%;
+
+    /* Altura */
     height: 44px;
 
+    /* Espaçamento interno horizontal */
     padding: 0 13px;
 
+    /* Borda */
     border: 1px solid #e2e8f0;
+
+    /* Cantos arredondados */
     border-radius: 7px;
 
+    /* Remove o contorno padrão do navegador */
     outline: none;
 
+    /* Fundo branco */
     background: #ffffff;
+
+    /* Cor do texto */
     color: #1e293b;
 
+    /* Usa a fonte da página */
     font-family: inherit;
+
+    /* Tamanho da fonte */
     font-size: 13px;
 
+    /* Suaviza mudanças */
     transition: 0.2s;
 }
 
+
+/* Estilo do input quando está selecionado */
+
 .modal-input input:focus {
+
+    /* Borda azul */
     border-color: #2563eb;
 
+    /* Brilho azul ao redor */
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-/* ================================
+
+/* =========================================================
    ERRO DE AUTENTICAÇÃO
-================================ */
+   ========================================================= */
 
 .auth-error {
+
+    /* Espaço acima */
     margin-top: 10px;
 
+    /* Espaçamento interno */
     padding: 10px 12px;
 
+    /* Borda vermelha */
     border: 1px solid #fecaca;
+
+    /* Cantos arredondados */
     border-radius: 7px;
 
+    /* Fundo vermelho claro */
     background: #fef2f2;
+
+    /* Texto vermelho */
     color: #dc2626;
 
+    /* Tamanho */
     font-size: 12px;
+
+    /* Negrito */
     font-weight: 700;
 }
 
-/* ================================
-   BOTÕES DO MODAL
-================================ */
+
+/* =========================================================
+   BOTÃO CONFIRMAR
+   ========================================================= */
 
 .confirm-button {
+
+    /* Ocupa toda a largura */
     width: 100%;
+
+    /* Altura */
     height: 44px;
 
+    /* Espaço acima */
     margin-top: 17px;
 
+    /* Remove borda */
     border: none;
+
+    /* Cantos arredondados */
     border-radius: 7px;
 
+    /* Fundo azul */
     background: #2563eb;
+
+    /* Texto branco */
     color: #ffffff;
 
+    /* Usa a fonte da página */
     font-family: inherit;
+
+    /* Tamanho */
     font-size: 13px;
+
+    /* Negrito */
     font-weight: 800;
 
+    /* Cursor de clique */
     cursor: pointer;
+
+    /* Transição */
     transition: 0.2s;
 }
 
+
+/* Efeito ao passar o mouse */
+
 .confirm-button:hover {
+
+    /* Azul mais escuro */
     background: #1d4ed8;
 }
 
-/* ================================
-   AÇÕES DE EDIÇÃO
-================================ */
+
+/* =========================================================
+   BOTÕES DE AÇÃO DO MODAL
+   ========================================================= */
 
 .modal-actions {
+
+    /* Organiza os botões lado a lado */
     display: flex;
+
+    /* Espaço entre os botões */
     gap: 10px;
 
+    /* Espaço acima */
     margin-top: 17px;
 }
 
+
+/* Configura os dois botões */
+
 .modal-actions .cancel-button,
 .modal-actions .confirm-button {
+
+    /* Remove a margem superior que o
+       confirm-button possui normalmente */
     margin-top: 0;
+
+    /* Divide o espaço igualmente */
     flex: 1;
 }
 
+
+/* =========================================================
+   BOTÃO CANCELAR
+   ========================================================= */
+
 .cancel-button {
+
+    /* Altura */
     height: 44px;
 
+    /* Borda */
     border: 1px solid #e2e8f0;
+
+    /* Cantos arredondados */
     border-radius: 7px;
 
+    /* Fundo branco */
     background: #ffffff;
+
+    /* Texto cinza */
     color: #64748b;
 
+    /* Usa a fonte da página */
     font-family: inherit;
+
+    /* Tamanho */
     font-size: 13px;
+
+    /* Negrito */
     font-weight: 800;
 
+    /* Cursor */
     cursor: pointer;
+
+    /* Transição */
     transition: 0.2s;
 }
 
+
+/* Efeito ao passar o mouse */
+
 .cancel-button:hover {
+
+    /* Fundo cinza bem claro */
     background: #f8fafc;
 }
 
-/* ================================
-   RESPONSIVO
-================================ */
+
+/* =========================================================
+   RESPONSIVIDADE
+   Adapta a página para telas menores.
+   ========================================================= */
+
+
+/* =========================================================
+   TELAS ATÉ 600px
+   Normalmente celulares e telas pequenas.
+   ========================================================= */
 
 @media (max-width: 600px) {
 
+
+    /* Container da conta */
+
     .conta-container {
+
+        /* Diminui o espaçamento */
         padding: 40px 5%;
     }
 
+
+    /* Cabeçalho */
+
     .conta-header {
+
+        /* Diminui o espaçamento interno */
         padding: 25px 20px;
     }
 
+
+    /* Título */
+
     .conta-header h1 {
+
+        /* Diminui o tamanho do título */
         font-size: 28px;
     }
 
+
+    /* Campos */
+
     .conta-field {
+
+        /* Diminui o espaçamento */
         padding: 18px 20px;
+
+        /* Diminui o espaço entre elementos */
         gap: 15px;
     }
 
+
+    /* Valores dos campos */
+
     .field-info span {
+
+        /* Diminui o texto */
         font-size: 13px;
     }
 
+
+    /* Botão editar */
+
     .conta-field button {
+
+        /* Define largura mínima */
         min-width: 70px;
+
+        /* Reduz o espaçamento horizontal */
         padding: 0 12px;
     }
 
+
+    /* Modal */
+
     .modal {
+
+        /* Diminui o espaçamento interno */
         padding: 28px 22px;
     }
 }
 
+
+/* =========================================================
+   TELAS ATÉ 430px
+   Celulares ainda menores.
+   ========================================================= */
+
 @media (max-width: 430px) {
 
+
+    /* Container */
+
     .conta-container {
+
+        /* Diminui ainda mais o espaçamento */
         padding: 30px 15px;
     }
 
+
+    /* Campos */
+
     .conta-field {
+
+        /* Mantém os elementos centralizados verticalmente */
         align-items: center;
     }
 
+
+    /* Botão editar */
+
     .conta-field button {
+
+        /* Diminui a altura */
         height: 38px;
+
+        /* Largura mínima menor */
         min-width: 65px;
+
+        /* Menor espaçamento interno */
         padding: 0 10px;
     }
 
+
+    /* Botões do modal */
+
     .modal-actions {
+
+        /* Coloca os botões um abaixo do outro */
         flex-direction: column;
     }
 }

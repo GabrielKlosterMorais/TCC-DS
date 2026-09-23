@@ -1,12 +1,23 @@
 import React, { useState } from 'react'
 import './styles.css'
 
+// Componente responsável pela tela de login
 function Login() {
+
+  // Guarda o e-mail digitado
   const [email, setEmail] = useState<string>('')
+
+  // Guarda a senha digitada
   const [senha, setSenha] = useState<string>('')
+
+  // Guarda mensagens de erro
   const [error, setError] = useState<string | null>(null)
+
+  // Controla o carregamento do botão
   const [loading, setLoading] = useState<boolean>(false)
 
+
+  // Executada quando o formulário é enviado
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
@@ -16,43 +27,86 @@ function Login() {
     try {
       const res = await fetch('http://localhost:3001/Cliente/login', {
         method: 'POST',
+
         headers: {
           'Content-Type': 'application/json',
         },
+
         body: JSON.stringify({
-          email,
+          email: email.trim(),
           senha,
         }),
       })
 
+      const resposta = await res.json()
+
+      console.log('Resposta do login:', resposta)
+
       if (!res.ok) {
-        const err = await res.json().catch(() => null)
-
         setError(
-          err && err.message
-            ? err.message
-            : 'Erro ao efetuar login'
+          resposta?.message || 'E-mail ou senha incorretos'
         )
-
         return
       }
 
-      const data = await res.json()
+      // O backend retorna o cliente dentro de "data"
+      const usuario = resposta?.data
 
-      localStorage.setItem('user', JSON.stringify(data))
+      console.log('Usuário recebido:', usuario)
 
-      if (data.tipo === 'admin') {
+      // Verifica se o backend realmente retornou um cliente
+      if (!usuario) {
+        setError('O servidor não retornou os dados do usuário.')
+        return
+      }
+
+      // O MongoDB utiliza "_id" para identificar o cliente
+      if (!usuario._id) {
+        setError('O usuário retornado não possui um ID.')
+        return
+      }
+
+      // Remove possíveis dados antigos
+      localStorage.removeItem('user')
+      localStorage.removeItem('userId')
+
+      // Salva o cliente completo
+      localStorage.setItem(
+        'user',
+        JSON.stringify(usuario)
+      )
+
+      // Salva somente o ID do cliente
+      localStorage.setItem(
+        'userId',
+        usuario._id
+      )
+
+      console.log(
+        'Usuário salvo no localStorage:',
+        JSON.parse(localStorage.getItem('user') || '{}')
+      )
+
+      console.log(
+        'ID salvo:',
+        localStorage.getItem('userId')
+      )
+
+      // Redireciona
+      if (usuario.tipo === 'admin') {
         window.location.href = '/admin'
       } else {
         window.location.href = '/loghome'
       }
 
-    } catch {
+    } catch (error) {
+      console.error('Erro no login:', error)
       setError('Erro de conexão com o servidor')
     } finally {
       setLoading(false)
     }
   }
+
 
   return (
     <main className="login-page">
@@ -72,16 +126,21 @@ function Login() {
           </div>
 
           <div className="login-page-message">
-            <h2>Bem-vindo de volta.</h2>
+
+            <h2>
+              Bem-vindo de volta.
+            </h2>
 
             <p>
               Faça login para acessar seus agendamentos e pets.
             </p>
+
           </div>
 
         </div>
 
       </section>
+
 
       <section className="login-page-form-area">
 
@@ -90,6 +149,7 @@ function Login() {
           <div className="login-page-mobile-logo">
             <h1>PetCare</h1>
           </div>
+
 
           <div className="login-page-header">
 
@@ -100,6 +160,7 @@ function Login() {
             </p>
 
           </div>
+
 
           <form onSubmit={handleSubmit}>
 
@@ -126,6 +187,7 @@ function Login() {
 
             </div>
 
+
             <div className="login-page-field">
 
               <label htmlFor="login-password">
@@ -149,17 +211,22 @@ function Login() {
 
             </div>
 
+
             <div className="login-page-recovery">
+
               <a href="/esqueci-senha">
                 Esqueci minha senha?
               </a>
+
             </div>
+
 
             {error && (
               <div className="login-page-error">
                 {error}
               </div>
             )}
+
 
             <button
               type="submit"
@@ -170,6 +237,7 @@ function Login() {
             </button>
 
           </form>
+
 
           <div className="login-page-register">
 
@@ -190,5 +258,6 @@ function Login() {
     </main>
   )
 }
+
 
 export default Login

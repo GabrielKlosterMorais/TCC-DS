@@ -1,254 +1,491 @@
+/* Barra principal de navegação do usuário logado */
 .logged-navbar {
+    /* Ocupa toda a largura disponível */
     width: 100%;
+
+    /* Define a altura mínima da navbar */
     min-height: 78px;
+
+    /* Define espaçamento horizontal proporcional à tela */
     padding: 0 5%;
+
+    /* Ativa o Flexbox para organizar os elementos */
     display: flex;
+
+    /* Centraliza os elementos verticalmente */
     align-items: center;
+
+    /* Distribui os elementos pela largura da navbar */
     justify-content: space-between;
+
+    /* Define o espaço entre os elementos */
     gap: 25px;
+
+    /* Define o fundo branco */
     background: #ffffff;
+
+    /* Cria uma borda na parte inferior */
     border-bottom: 1px solid #e2e8f0;
+
+    /* Permite controlar a posição do elemento */
     position: relative;
+
+    /* Mantém a navbar acima de outros elementos */
     z-index: 100;
 }
 
+/* Área do logo e nome PetCare */
 .logged-navbar-logo {
+    /* Organiza o ícone e o nome lado a lado */
     display: flex;
+
+    /* Centraliza os elementos verticalmente */
     align-items: center;
+
+    /* Define o espaço entre o ícone e o nome */
     gap: 10px;
+
+    /* Remove a decoração padrão do link */
     text-decoration: none;
+
+    /* Define a cor padrão do texto */
     color: #1e293b;
+
+    /* Impede que o logo diminua de tamanho */
     flex-shrink: 0;
 }
 
+/* Ícone com a letra P */
 .logged-logo-icon {
+    /* Define a largura do ícone */
     width: 38px;
+
+    /* Define a altura do ícone */
     height: 38px;
+
+    /* Ativa o Flexbox */
     display: flex;
+
+    /* Centraliza a letra verticalmente */
     align-items: center;
+
+    /* Centraliza a letra horizontalmente */
     justify-content: center;
+
+    /* Define o fundo azul */
     background: #2563eb;
+
+    /* Define a cor branca da letra */
     color: #ffffff;
+
+    /* Arredonda os cantos */
     border-radius: 9px;
+
+    /* Define o tamanho da letra */
     font-size: 20px;
+
+    /* Deixa a letra mais grossa */
     font-weight: 800;
 }
 
+/* Nome PetCare ao lado do ícone */
 .logged-navbar-logo h1 {
+    /* Remove a margem padrão do h1 */
     margin: 0;
+
+    /* Define o tamanho da fonte */
     font-size: 23px;
+
+    /* Define a espessura da fonte */
     font-weight: 800;
 }
 
+/* Área dos links principais */
 .logged-navbar-links {
+    /* Organiza os links lado a lado */
     display: flex;
+
+    /* Centraliza os links verticalmente */
     align-items: center;
+
+    /* Define o espaço entre os links */
     gap: 28px;
 }
 
+/* Estilo dos links principais */
 .logged-navbar-links a {
+    /* Permite posicionar o indicador do link ativo */
     position: relative;
+
+    /* Define a cor dos links */
     color: #64748b;
+
+    /* Remove o sublinhado */
     text-decoration: none;
+
+    /* Define o tamanho da fonte */
     font-size: 14px;
+
+    /* Deixa o texto mais destacado */
     font-weight: 700;
+
+    /* Cria uma transição suave nas mudanças */
     transition: 0.2s;
 }
 
+/* Efeito quando o mouse passa sobre os links */
 .logged-navbar-links a:hover {
+    /* Muda a cor para azul */
     color: #2563eb;
 }
 
+/* Estilo do link da página atual */
 .logged-navbar-links a.active {
+    /* Mantém o link ativo na cor azul */
     color: #2563eb;
 }
 
+/* Linha abaixo do link ativo */
 .logged-navbar-links a.active::after {
+    /* Cria um elemento visual depois do link */
     content: "";
+
+    /* Posiciona a linha em relação ao link */
     position: absolute;
+
+    /* Define o início da linha */
     left: 0;
+
+    /* Define o final da linha */
     right: 0;
+
+    /* Posiciona a linha abaixo do texto */
     bottom: -9px;
+
+    /* Define a espessura da linha */
     height: 2px;
+
+    /* Define a cor da linha */
     background: #2563eb;
+
+    /* Arredonda as extremidades */
     border-radius: 5px;
 }
 
+/* Área dos botões e informações do usuário */
 .logged-navbar-actions {
+    /* Organiza os elementos lado a lado */
     display: flex;
+
+    /* Centraliza os elementos verticalmente */
     align-items: center;
+
+    /* Define o espaço entre os elementos */
     gap: 10px;
 }
 
+/* Estilos compartilhados pelos botões */
 .pets-button,
 .appointments-button {
+    /* Define o espaçamento interno */
     padding: 9px 13px;
+
+    /* Arredonda os cantos */
     border-radius: 7px;
+
+    /* Remove o sublinhado dos links */
     text-decoration: none;
+
+    /* Define o tamanho do texto */
     font-size: 13px;
+
+    /* Deixa o texto mais destacado */
     font-weight: 800;
+
+    /* Cria uma transição suave */
     transition: 0.2s;
 }
 
+/* Botão "Meus Pets" */
 .pets-button {
+    /* Define a cor azul do texto */
     color: #2563eb;
+
+    /* Define um fundo azul claro */
     background: #eff6ff;
 }
 
+/* Efeito do botão "Meus Pets" */
 .pets-button:hover {
+    /* Escurece o fundo ao passar o mouse */
     background: #dbeafe;
 }
 
+/* Botão "Agendamentos" */
 .appointments-button {
+    /* Define o texto na cor branca */
     color: #ffffff;
+
+    /* Define o fundo azul */
     background: #2563eb;
 }
 
+/* Efeito do botão "Agendamentos" */
 .appointments-button:hover {
+    /* Deixa o azul mais escuro */
     background: #1d4ed8;
 }
 
+/* Área com o ícone e nome do usuário */
 .user-menu {
+    /* Organiza o ícone e o nome lado a lado */
     display: flex;
+
+    /* Centraliza os elementos verticalmente */
     align-items: center;
+
+    /* Define o espaço entre o ícone e o nome */
     gap: 8px;
+
+    /* Cria um pequeno espaço à esquerda */
     margin-left: 5px;
+
+    /* Adiciona espaço interno à esquerda */
     padding-left: 12px;
+
+    /* Cria uma linha separando o usuário dos outros elementos */
     border-left: 1px solid #e2e8f0;
+
+    /* Remove a decoração padrão do link */
     text-decoration: none;
 }
 
+/* Altera a cor do nome quando o menu do usuário recebe hover */
 .user-menu:hover .user-name {
     color: #2563eb;
 }
 
+/* Ícone circular do usuário */
 .user-icon {
+    /* Define a largura */
     width: 34px;
+
+    /* Define a altura */
     height: 34px;
+
+    /* Ativa o Flexbox */
     display: flex;
+
+    /* Centraliza a letra verticalmente */
     align-items: center;
+
+    /* Centraliza a letra horizontalmente */
     justify-content: center;
+
+    /* Cria um formato circular */
     border-radius: 50%;
+
+    /* Define o fundo azul claro */
     background: #dbeafe;
+
+    /* Define a cor da letra */
     color: #2563eb;
+
+    /* Define o tamanho da letra */
     font-size: 14px;
+
+    /* Define a espessura da letra */
     font-weight: 800;
 }
 
+/* Nome do usuário */
 .user-name {
+    /* Limita a largura do nome */
     max-width: 100px;
+
+    /* Esconde o conteúdo que ultrapassar o limite */
     overflow: hidden;
+
+    /* Mostra "..." quando o texto for muito grande */
     text-overflow: ellipsis;
+
+    /* Impede que o nome quebre em outra linha */
     white-space: nowrap;
+
+    /* Define a cor do nome */
     color: #334155;
+
+    /* Define o tamanho da fonte */
     font-size: 13px;
+
+    /* Deixa o texto mais destacado */
     font-weight: 700;
 }
 
+/* Botão "Sair" */
 .logout-button {
+    /* Remove a borda padrão */
     border: none;
+
+    /* Mantém o fundo transparente */
     background: transparent;
+
+    /* Define a cor do botão */
     color: #64748b;
+
+    /* Usa a mesma fonte do restante da aplicação */
     font-family: inherit;
+
+    /* Define o tamanho da fonte */
     font-size: 13px;
+
+    /* Define a espessura da fonte */
     font-weight: 700;
+
+    /* Mostra o cursor de clique */
     cursor: pointer;
+
+    /* Define o espaçamento interno */
     padding: 8px;
+
+    /* Cria uma transição suave */
     transition: 0.2s;
 }
 
+/* Efeito do botão "Sair" */
 .logout-button:hover {
+    /* Muda a cor para vermelho */
     color: #dc2626;
 }
 
+
+/* Responsividade para telas menores que 1200px */
 @media (max-width: 1200px) {
 
     .logged-navbar {
+        /* Reduz o espaçamento lateral */
         padding: 0 3%;
+
+        /* Reduz o espaço entre os elementos */
         gap: 15px;
     }
 
     .logged-navbar-links {
+        /* Reduz o espaço entre os links */
         gap: 18px;
     }
 
     .pets-button,
     .appointments-button {
+        /* Diminui o tamanho dos botões */
         padding: 8px 10px;
+
+        /* Diminui o tamanho da fonte */
         font-size: 12px;
     }
 
     .user-name {
+        /* Esconde o nome do usuário para economizar espaço */
         display: none;
     }
 }
 
+
+/* Responsividade para telas menores que 900px */
 @media (max-width: 900px) {
 
     .logged-navbar {
+        /* Permite que os elementos ocupem mais de uma linha */
         flex-wrap: wrap;
+
+        /* Adiciona espaçamento interno */
         padding: 15px 5%;
     }
 
     .logged-navbar-links {
+        /* Coloca os links em uma nova ordem */
         order: 3;
+
+        /* Faz os links ocuparem toda a largura */
         width: 100%;
+
+        /* Centraliza os links */
         justify-content: center;
     }
 
     .logged-navbar-actions {
+        /* Empurra as ações para o lado direito */
         margin-left: auto;
     }
 }
 
+
+/* Responsividade para telas menores que 600px */
 @media (max-width: 600px) {
 
     .logged-navbar {
+        /* Reduz o espaçamento da navbar */
         padding: 12px 4%;
     }
 
     .logged-navbar-logo h1 {
+        /* Diminui o nome PetCare */
         font-size: 20px;
     }
 
     .logged-logo-icon {
+        /* Diminui o ícone */
         width: 34px;
+
+        /* Diminui a altura */
         height: 34px;
+
+        /* Diminui a letra */
         font-size: 18px;
     }
 
     .logged-navbar-links {
+        /* Reduz o espaço entre os links */
         gap: 18px;
     }
 
     .logged-navbar-links a {
+        /* Diminui o tamanho dos links */
         font-size: 12px;
     }
 
     .pets-button {
+        /* Esconde o botão "Meus Pets" em telas pequenas */
         display: none;
     }
 
     .appointments-button {
+        /* Ajusta o tamanho do botão */
         padding: 8px 10px;
     }
 
     .logout-button {
+        /* Diminui o tamanho do texto */
         font-size: 12px;
     }
 }
 
+
+/* Responsividade para telas muito pequenas */
 @media (max-width: 450px) {
 
     .logged-navbar-links {
+        /* Reduz ainda mais o espaço entre os links */
         gap: 14px;
     }
 
     .logged-navbar-links a {
+        /* Reduz o tamanho dos textos */
         font-size: 11px;
     }
 
     .appointments-button {
+        /* Esconde o botão "Agendamentos" */
         display: none;
     }
 }

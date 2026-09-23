@@ -1,98 +1,167 @@
+/* Importa a fonte Nunito do Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
 
+/* Configurações gerais para todos os elementos */
 * {
+  /* Remove a margem padrão */
   margin: 0;
+
+  /* Remove o espaçamento interno padrão */
   padding: 0;
+
+  /* Faz o tamanho considerar padding e borda */
   box-sizing: border-box;
 }
 
+/* Ativa rolagem suave na página */
 html {
   scroll-behavior: smooth;
 }
 
+/* Configurações gerais do corpo */
 body {
+  /* Define a fonte principal */
   font-family: "Nunito", sans-serif;
+
+  /* Define a cor padrão dos textos */
   color: #172033;
+
+  /* Define o fundo branco */
   background: #fff;
 }
 
+/* Remove o sublinhado dos links */
 a {
   text-decoration: none;
 }
 
+/* Configura as imagens */
 img {
+  /* Faz a imagem ocupar seu próprio bloco */
   display: block;
+
+  /* Impede que a imagem ultrapasse o tamanho do elemento */
   max-width: 100%;
 }
 
-/* NAVBAR */
 
+/* =========================
+   NAVBAR
+========================= */
+
+/* Barra de navegação */
 .navbar {
+  /* Define a altura da navbar */
   height: 72px;
+
+  /* Define o espaçamento lateral */
   padding: 0 7%;
+
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Centraliza os elementos verticalmente */
   align-items: center;
+
+  /* Distribui os elementos horizontalmente */
   justify-content: space-between;
+
+  /* Define o fundo branco */
   background: #fff;
+
+  /* Cria uma borda inferior */
   border-bottom: 1px solid #e2e8f0;
+
+  /* Mantém a navbar fixa durante a rolagem */
   position: sticky;
+
+  /* Fixa a navbar no topo */
   top: 0;
+
+  /* Mantém a navbar acima dos outros elementos */
   z-index: 10;
 }
 
+/* Área do logo */
 .logo {
+  /* Organiza os elementos lado a lado */
   display: flex;
+
+  /* Centraliza verticalmente */
   align-items: center;
+
+  /* Espaçamento entre o ícone e o texto */
   gap: 9px;
+
+  /* Define a cor */
   color: #2563eb;
 }
 
+/* Ícone do logo */
 .logo-icon {
   width: 34px;
   height: 34px;
+
+  /* Centraliza a letra P */
   display: grid;
   place-items: center;
+
+  /* Fundo azul */
   background: #2563eb;
+
+  /* Cor da letra */
   color: white;
+
+  /* Arredonda os cantos */
   border-radius: 8px;
+
+  /* Define a espessura da letra */
   font-weight: 800;
 }
 
+/* Nome PetCare */
 .logo h1 {
   font-size: 23px;
 }
 
+/* Organiza links e ações da navbar */
 .nav-links,
 .nav-actions {
   display: flex;
   align-items: center;
 }
 
+/* Espaçamento entre os links */
 .nav-links {
   gap: 35px;
 }
 
+/* Estilo dos links */
 .nav-links a {
   color: #64748b;
   font-size: 14px;
   font-weight: 700;
 }
 
+/* Muda a cor quando o mouse passa ou quando o link está ativo */
 .nav-links a:hover,
 .nav-links a.active {
   color: #2563eb;
 }
 
+/* Espaçamento entre os botões */
 .nav-actions {
   gap: 20px;
 }
 
+/* Botão de login */
 .login-button {
   color: #334155;
   font-size: 14px;
   font-weight: 800;
 }
 
+/* Botão de cadastro */
 .register-button {
   padding: 10px 18px;
   background: #2563eb;
@@ -102,48 +171,74 @@ img {
   font-weight: 700;
 }
 
+/* Efeito do botão de cadastro */
 .register-button:hover {
   background: #1d4ed8;
 }
 
-/* HERO */
 
+/* =========================
+   HERO
+========================= */
+
+/* Seção principal da página */
 .hero {
+  /* Define uma altura mínima */
   min-height: 560px;
+
+  /* Define o espaçamento interno */
   padding: 70px 11%;
+
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Centraliza os elementos verticalmente */
   align-items: center;
+
+  /* Distribui texto e imagem */
   justify-content: space-between;
+
+  /* Define o fundo */
   background: #f7faff;
 }
 
+/* Área do conteúdo textual */
 .hero-content {
   width: 52%;
   max-width: 530px;
 }
 
+/* Labels utilizadas nas seções */
 .hero-label,
 .section-label,
 .cta-label {
   color: #2563eb;
   font-size: 12px;
   font-weight: 800;
+
+  /* Aumenta o espaçamento entre letras */
   letter-spacing: 1.2px;
 }
 
+/* Título principal */
 .hero h2 {
   margin-top: 15px;
   font-size: 44px;
   line-height: 1.1;
   font-weight: 800;
-  color:#0066ff
+  color: #0066ff;
 }
 
+/* Parte destacada do título */
 .hero h2 span {
+  /* Coloca a segunda parte em uma nova linha */
   display: block;
+
+  /* Define a cor azul */
   color: #2563eb;
 }
 
+/* Texto de apresentação */
 .hero-content > p {
   max-width: 480px;
   margin-top: 18px;
@@ -152,12 +247,14 @@ img {
   line-height: 1.6;
 }
 
+/* Área dos botões */
 .hero-buttons {
   display: flex;
   gap: 12px;
   margin-top: 25px;
 }
 
+/* Configuração comum dos botões */
 .primary-button,
 .secondary-button {
   padding: 12px 18px;
@@ -166,22 +263,26 @@ img {
   font-weight: 700;
 }
 
+/* Botão principal */
 .primary-button {
   color: white;
   background: #2563eb;
 }
 
+/* Botão secundário */
 .secondary-button {
   color: #172033;
   background: white;
   border: 1px solid #d8dee9;
 }
 
+/* Efeito dos botões ao passar o mouse */
 .primary-button:hover,
 .secondary-button:hover {
   transform: translateY(-2px);
 }
 
+/* Informações numéricas do Hero */
 .hero-info {
   display: flex;
   align-items: center;
@@ -189,93 +290,134 @@ img {
   margin-top: 30px;
 }
 
+/* Cada informação */
 .info-item {
   display: flex;
+
+  /* Coloca título e descrição em coluna */
   flex-direction: column;
 }
 
+/* Número ou informação principal */
 .info-item strong {
   font-size: 16px;
 }
 
+/* Descrição da informação */
 .info-item span {
   margin-top: 3px;
   color: #94a3b8;
   font-size: 11px;
 }
 
+/* Divisor entre as informações */
 .info-divider {
   width: 1px;
   height: 30px;
   background: #d8dee9;
 }
 
-/* HERO IMAGE */
 
+/* =========================
+   HERO IMAGE
+========================= */
+
+/* Área visual do Hero */
 .hero-visual {
   width: 42%;
   height: 430px;
+
+  /* Permite posicionar os cards sobre a imagem */
   position: relative;
+
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* Container da imagem */
 .hero-image-wrapper {
   width: 285px;
   height: 365px;
+
+  /* Esconde o excesso da imagem */
   overflow: hidden;
+
+  /* Cria o formato arredondado */
   border-radius: 140px 140px 16px 16px;
+
+  /* Adiciona sombra */
   box-shadow: 0 20px 45px rgba(15, 23, 42, .13);
 }
 
+/* Imagem principal */
 .hero-image-wrapper img {
   width: 100%;
   height: 100%;
+
+  /* Faz a imagem preencher o container */
   object-fit: cover;
 }
 
+/* Cards que ficam sobre a imagem */
 .floating-card {
+  /* Permite posicionar livremente */
   position: absolute;
+
+  /* Organiza ícone e texto */
   display: flex;
   align-items: center;
+
   gap: 10px;
   padding: 12px;
+
   background: white;
   border: 1px solid #e5e9f0;
   border-radius: 8px;
+
+  /* Cria sombra */
   box-shadow: 0 8px 25px rgba(15, 23, 42, .1);
 }
 
+/* Posicionamento do card superior */
 .card-top {
   top: 55px;
   right: 0;
 }
 
+/* Posicionamento do card inferior */
 .card-bottom {
   bottom: 50px;
   left: 0;
 }
 
+/* Ícone dos cards */
 .floating-icon {
   width: 28px;
   height: 28px;
+
+  /* Centraliza o símbolo */
   display: grid;
   place-items: center;
+
   border-radius: 6px;
+
   color: #2563eb;
   background: #dbeafe;
 }
 
+/* Versão verde do ícone */
 .floating-icon.green {
   color: #16a34a;
   background: #dcfce7;
 }
 
+/* Título dos cards */
 .floating-card strong {
   font-size: 11px;
 }
 
+/* Texto secundário dos cards */
 .floating-card span {
   display: block;
   margin-top: 2px;
@@ -283,24 +425,35 @@ img {
   font-size: 9px;
 }
 
-/* SERVIÇOS */
 
+/* =========================
+   SERVIÇOS
+========================= */
+
+/* Seção de serviços */
 .services-preview {
   padding: 80px 8%;
   background: white;
 }
 
+/* Cabeçalho da seção */
 .section-header {
   max-width: 750px;
+
+  /* Centraliza horizontalmente */
   margin: 0 auto 45px;
+
+  /* Centraliza o texto */
   text-align: center;
 }
 
+/* Label do cabeçalho */
 .section-header .section-label {
   display: block;
   margin-bottom: 10px;
 }
 
+/* Título da seção */
 .section-header h2 {
   color: #172033;
   font-size: 32px;
@@ -308,6 +461,7 @@ img {
   font-weight: 800;
 }
 
+/* Texto da seção */
 .section-header p {
   max-width: 600px;
   margin: 12px auto 0;
@@ -316,16 +470,27 @@ img {
   line-height: 1.6;
 }
 
-/* CARDS */
 
+/* =========================
+   CARDS DE SERVIÇOS
+========================= */
+
+/* Grade dos serviços */
 .services-grid {
   max-width: 950px;
   margin: 0 auto;
+
+  /* Ativa CSS Grid */
   display: grid;
+
+  /* Cria duas colunas */
   grid-template-columns: repeat(2, 1fr);
+
+  /* Espaçamento entre os cards */
   gap: 22px;
 }
 
+/* Card individual */
 .service-card {
   display: flex;
   align-items: center;
@@ -337,76 +502,98 @@ img {
   border: 1px solid #e1e6ef;
   border-radius: 12px;
 
+  /* Altura mínima */
   min-height: 190px;
 
+  /* Suaviza as animações */
   transition: .2s;
 }
 
+/* Efeito do card ao passar o mouse */
 .service-card:hover {
   transform: translateY(-3px);
   border-color: #bfdbfe;
   box-shadow: 0 8px 20px rgba(15, 23, 42, .08);
 }
 
-/* IMAGEM */
 
+/* =========================
+   IMAGEM DOS SERVIÇOS
+========================= */
+
+/* Container da imagem */
 .service-image {
+  /* Impede a imagem de diminuir */
   flex-shrink: 0;
 
   width: 135px;
   height: 135px;
 
+  /* Esconde partes que ultrapassarem o container */
   overflow: hidden;
+
   border-radius: 10px;
 }
 
+/* Imagem do serviço */
 .service-image img {
   width: 100%;
   height: 100%;
 
+  /* Faz a imagem preencher o espaço */
   object-fit: cover;
 }
 
-/* INFORMAÇÕES */
 
+/* =========================
+   INFORMAÇÕES DOS SERVIÇOS
+========================= */
+
+/* Área das informações */
 .service-info {
+  /* Ocupa o espaço disponível */
   flex: 1;
+
+  /* Evita problemas com textos grandes */
   min-width: 0;
 }
 
+/* Categoria do serviço */
 .service-category {
   color: #2563eb;
-
   font-size: 10px;
   font-weight: 800;
   letter-spacing: .8px;
 }
 
+/* Nome do serviço */
 .service-card h3 {
   margin-top: 5px;
-
   color: #172033;
-
   font-size: 20px;
   line-height: 1.15;
   font-weight: 800;
 }
 
+/* Descrição do serviço */
 .service-card p {
   margin-top: 7px;
-
   color: #718096;
-
   font-size: 13px;
   line-height: 1.4;
 }
 
-/* BOTÃO */
 
+/* =========================
+   BOTÃO DO SERVIÇO
+========================= */
+
+/* Link "Saiba mais" */
 .service-card a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   gap: 7px;
 
   margin-top: 12px;
@@ -423,13 +610,18 @@ img {
   transition: .2s;
 }
 
+/* Efeito do botão */
 .service-card a:hover {
   background: #1d4ed8;
   transform: translateY(-1px);
 }
 
-/* LOADING / VAZIO */
 
+/* =========================
+   LOADING / VAZIO
+========================= */
+
+/* Área de carregamento e mensagem vazia */
 .services-loading,
 .services-empty {
   padding: 40px;
@@ -437,32 +629,38 @@ img {
   color: #718096;
 }
 
+/* Caixa exibida quando não existem serviços */
 .services-empty {
   border: 1px solid #e2e8f0;
   border-radius: 10px;
   background: #f8fafc;
 }
 
+/* Título da mensagem */
 .services-empty h3 {
   color: #172033;
   font-size: 18px;
 }
 
+/* Texto da mensagem */
 .services-empty p {
   margin-top: 7px;
   font-size: 13px;
 }
 
+/* Rodapé da seção de serviços */
 .services-footer {
   margin-top: 40px;
   text-align: center;
 }
 
+/* Texto do rodapé */
 .services-footer p {
   color: #718096;
   font-size: 13px;
 }
 
+/* Link para visualizar todos os serviços */
 .services-footer a {
   display: inline-block;
   margin-top: 7px;
@@ -471,71 +669,101 @@ img {
   font-weight: 700;
 }
 
-/* SOBRE */
 
+/* =========================
+   SOBRE
+========================= */
+
+/* Seção de apresentação do PetCare */
 .about-preview {
   padding: 80px 10%;
+
+  /* Organiza imagem e texto lado a lado */
   display: flex;
+
   align-items: center;
   justify-content: center;
+
   gap: 60px;
+
   background: #f7faff;
 }
 
+/* Área da imagem */
 .about-preview-image {
   width: 42%;
   max-width: 450px;
+
+  /* Permite posicionar o badge */
   position: relative;
 }
 
+/* Imagem da seção Sobre */
 .about-preview-image img {
   width: 100%;
   height: 280px;
+
+  /* Faz a imagem preencher o espaço */
   object-fit: cover;
+
   border-radius: 12px;
 }
 
+/* Badge sobre a imagem */
 .image-badge {
   position: absolute;
+
   right: -15px;
   bottom: 15px;
+
   padding: 12px 16px;
+
   background: white;
   border-radius: 8px;
+
+  /* Sombra */
   box-shadow: 0 7px 18px rgba(15, 23, 42, .12);
 }
 
+/* Número do badge */
 .image-badge strong {
   display: block;
   color: #2563eb;
   font-size: 18px;
 }
 
+/* Texto do badge */
 .image-badge span {
   color: #718096;
   font-size: 11px;
 }
 
+/* Área de conteúdo */
 .about-preview-content {
   width: 43%;
   max-width: 450px;
 }
 
+/* Título da seção */
 .about-preview-content h2 {
   margin-top: 10px;
   font-size: 32px;
   line-height: 1.2;
   font-weight: 800;
   color: #172033 !important;
+
+  /* Mantém o elemento visível */
   opacity: 1;
 }
 
+/* Parte azul do título */
 .about-preview-content h2 span {
   display: block;
   color: #2563eb !important;
   opacity: 1;
 }
 
+/* Parágrafos */
 .about-preview-content p {
   margin-top: 12px;
   color: #718096;
@@ -543,50 +771,73 @@ img {
   line-height: 1.6;
 }
 
+/* Botão da seção Sobre */
 .about-button {
   display: inline-block;
+
   margin-top: 18px;
   padding: 11px 17px;
+
   color: white;
   background: #2563eb;
+
   border-radius: 7px;
+
   font-size: 13px;
   font-weight: 700;
 }
 
-/* CTA */
 
+/* =========================
+   CTA
+========================= */
+
+/* Seção de chamada para ação */
 .cta {
   padding: 65px 10%;
+
+  /* Organiza imagem e conteúdo */
   display: flex;
+
   align-items: center;
   justify-content: center;
+
   gap: 40px;
+
   background: #eff6ff;
 }
 
+/* Imagem do CTA */
 .cta-image {
   width: 140px;
   height: 140px;
+
+  /* Esconde o excesso da imagem */
   overflow: hidden;
+
+  /* Deixa a imagem circular */
   border-radius: 50%;
 }
 
+/* Imagem dentro do CTA */
 .cta-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+/* Conteúdo do CTA */
 .cta-content {
   max-width: 500px;
 }
 
+/* Título do CTA */
 .cta-content h2 {
   margin-top: 8px;
   font-size: 30px;
 }
 
+/* Texto do CTA */
 .cta-content p {
   margin-top: 10px;
   color: #718096;
@@ -594,169 +845,244 @@ img {
   line-height: 1.6;
 }
 
-/* FOOTER */
 
+/* =========================
+   FOOTER
+========================= */
+
+/* Rodapé da página */
 footer {
   padding: 40px 7% 20px;
+
+  /* Fundo escuro */
   background: #0f172a;
+
+  /* Texto branco */
   color: white;
 }
 
+/* Conteúdo do rodapé */
 .footer-content {
+  /* Ativa CSS Grid */
   display: grid;
+
+  /* Cria quatro colunas */
   grid-template-columns: 2fr 1fr 1fr 1fr;
+
+  /* Espaçamento entre as colunas */
   gap: 40px;
 }
 
+/* Logo do rodapé */
 .footer-logo {
   color: white;
 }
 
+/* Descrição do PetCare */
 .footer-brand p {
   margin-top: 8px;
   color: #718096;
   font-size: 11px;
 }
 
+/* Colunas do rodapé */
 .footer-column {
   display: flex;
+
+  /* Organiza os links verticalmente */
   flex-direction: column;
+
   gap: 8px;
 }
 
+/* Títulos das colunas */
 .footer-column strong {
   margin-bottom: 5px;
   font-size: 13px;
 }
 
+/* Links do rodapé */
 .footer-column a {
   color: #94a3b8;
   font-size: 11px;
 }
 
+/* Efeito dos links */
 .footer-column a:hover {
   color: white;
 }
 
+/* Parte inferior do rodapé */
 .footer-bottom {
   margin-top: 30px;
   padding-top: 15px;
+
+  /* Linha separadora */
   border-top: 1px solid #1e293b;
+
   display: flex;
+
+  /* Coloca os textos nas extremidades */
   justify-content: space-between;
+
   color: #64748b;
   font-size: 10px;
 }
 
-/* RESPONSIVO */
+
+/* =========================
+   RESPONSIVIDADE - TABLET
+========================= */
 
 @media (max-width: 900px) {
+
+  /* Reduz o espaçamento do Hero */
   .hero {
     padding: 60px 7%;
   }
 
+  /* Coloca os serviços em uma coluna */
   .services-grid {
     grid-template-columns: 1fr;
     max-width: 600px;
   }
 
+  /* Reduz o espaçamento da seção Sobre */
   .about-preview {
     padding: 60px 7%;
     gap: 35px;
   }
 }
 
+
+/* =========================
+   RESPONSIVIDADE - CELULAR
+========================= */
+
 @media (max-width: 650px) {
+
+  /* Ajusta a navbar */
   .navbar {
     height: auto;
     padding: 14px 6%;
+
+    /* Permite quebra de linha */
     flex-wrap: wrap;
+
     gap: 15px;
   }
 
+  /* Coloca os links da navbar em uma nova linha */
   .nav-links {
     order: 3;
     width: 100%;
+
     justify-content: center;
+
     gap: 20px;
   }
 
+  /* Ajusta o Hero para celular */
   .hero {
     padding: 55px 7%;
+
+    /* Coloca os elementos verticalmente */
     flex-direction: column;
+
     text-align: center;
+
     gap: 40px;
   }
 
+  /* Faz o conteúdo ocupar toda a largura */
   .hero-content,
   .about-preview-content,
   .about-preview-image {
     width: 100%;
   }
 
+  /* Centraliza o parágrafo do Hero */
   .hero-content > p {
     margin-left: auto;
     margin-right: auto;
   }
 
+  /* Centraliza os botões e informações */
   .hero-buttons,
   .hero-info {
     justify-content: center;
   }
 
+  /* Faz a área visual ocupar toda a largura */
   .hero-visual {
     width: 100%;
   }
 
+  /* Organiza a seção Sobre verticalmente */
   .about-preview {
     flex-direction: column;
     text-align: center;
   }
 
+  /* Organiza o CTA verticalmente */
   .cta {
     flex-direction: column;
     text-align: center;
   }
 
+  /* Cria duas colunas no footer */
   .footer-content {
     grid-template-columns: 1fr 1fr;
   }
 }
 
+
+/* =========================
+   RESPONSIVIDADE - CELULAR PEQUENO
+========================= */
+
 @media (max-width: 450px) {
 
+  /* Mantém uma coluna nos serviços */
   .services-grid {
     grid-template-columns: 1fr;
   }
 
+  /* Reduz o espaçamento dos cards */
   .service-card {
     gap: 14px;
     padding: 14px;
   }
 
+  /* Reduz o tamanho das imagens */
   .service-image {
     width: 105px;
     height: 105px;
   }
 
+  /* Reduz o tamanho do título */
   .service-card h3 {
     font-size: 17px;
   }
 
+  /* Reduz o tamanho da descrição */
   .service-card p {
     font-size: 12px;
   }
 
+  /* Reduz o botão */
   .service-card a {
     padding: 8px 11px;
     font-size: 11px;
   }
 }
 
+
 /* =========================
-   CTA
+   AJUSTES FINAIS DO CTA
 ========================= */
 
+/* Redefine a seção CTA para garantir o layout correto */
 .cta {
   padding: 65px 10%;
   display: flex;
@@ -766,24 +1092,31 @@ footer {
   background: #eff6ff;
 }
 
+/* Define tamanho fixo da imagem */
 .cta-image {
   width: 140px;
   height: 140px;
+
+  /* Impede que a imagem seja reduzida */
   flex-shrink: 0;
+
   overflow: hidden;
   border-radius: 50%;
 }
 
+/* Configura a imagem */
 .cta-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+/* Área do conteúdo */
 .cta-content {
   max-width: 500px;
 }
 
+/* Label do CTA */
 .cta-content .cta-label {
   display: block;
   color: #2563eb !important;
@@ -792,30 +1125,46 @@ footer {
   letter-spacing: 1.2px;
 }
 
+/* Título do CTA */
 .cta-content h2 {
   display: block !important;
   margin-top: 8px;
+
   color: #172033 !important;
+
   font-size: 30px;
   line-height: 1.2;
   font-weight: 800;
+
+  /* Mantém o título visível */
   opacity: 1 !important;
   visibility: visible !important;
+
+  /* Define a cor do texto em navegadores que utilizam text-fill */
   -webkit-text-fill-color: #172033 !important;
 }
 
+/* Parágrafo do CTA */
 .cta-content p {
   margin-top: 10px;
   color: #718096 !important;
   font-size: 14px;
   line-height: 1.6;
+
+  /* Mantém o texto visível */
   opacity: 1 !important;
 }
 
-/* BOTÃO */
 
+/* =========================
+   BOTÃO DO CTA
+========================= */
+
+/* Botão principal do CTA */
 .cta-button {
+  /* Organiza o texto e a seta */
   display: inline-flex !important;
+
   align-items: center !important;
   justify-content: center !important;
 
@@ -824,48 +1173,64 @@ footer {
   margin-top: 18px;
   padding: 11px 18px;
 
+  /* Permite que o botão tenha tamanho automático */
   width: auto !important;
   height: auto !important;
   min-width: 0 !important;
 
+  /* Cor do botão */
   background: #2563eb !important;
   color: #ffffff !important;
 
   border: 0;
   border-radius: 7px;
 
+  /* Fonte do botão */
   font-family: "Nunito", sans-serif;
   font-size: 13px;
   font-weight: 700;
   line-height: 1.2;
 
+  /* Remove sublinhado */
   text-decoration: none;
 
+  /* Mantém o botão visível */
   opacity: 1 !important;
   visibility: visible !important;
 
+  /* Mostra o cursor de clique */
   cursor: pointer;
+
+  /* Suaviza a animação */
   transition: 0.2s ease;
 }
 
+/* Texto dentro do botão */
 .cta-button span {
   display: inline !important;
   color: #ffffff !important;
+
   font-family: "Nunito", sans-serif;
   font-size: 13px;
   font-weight: 700;
+
   opacity: 1 !important;
   visibility: visible !important;
+
+  /* Garante a cor branca do texto */
   -webkit-text-fill-color: #ffffff !important;
 }
 
+/* Seta do botão */
 .cta-button .cta-arrow {
   font-size: 16px;
 }
 
+/* Efeito ao passar o mouse */
 .cta-button:hover {
   background: #1d4ed8 !important;
   color: #ffffff !important;
+
+  /* Move o botão levemente para cima */
   transform: translateY(-2px);
 }
-

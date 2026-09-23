@@ -1,26 +1,52 @@
+/* ==================================================
+   RESET
+================================================== */
+
+/* 
+   Remove as configurações padrão que os navegadores
+   colocam nos elementos HTML.
+*/
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0;              /* Remove margem padrão */
+    padding: 0;             /* Remove espaçamento interno padrão */
+    box-sizing: border-box; /* Faz width/height incluírem padding e border */
 }
 
+
+/* 
+   Faz a rolagem da página ficar suave quando o usuário
+   navega para alguma parte da página.
+*/
 html {
     scroll-behavior: smooth;
 }
 
+
+/* 
+   Configurações gerais do corpo da página.
+*/
 body {
-    font-family: "Nunito", Arial, sans-serif;
-    background: #ffffff;
-    color: #1e293b;
+    font-family: "Nunito", Arial, sans-serif; /* Define a fonte */
+    background: #ffffff;                       /* Fundo branco */
+    color: #1e293b;                            /* Cor padrão dos textos */
 }
 
+
+/* 
+   Container principal da página inicial.
+*/
 .home {
-    width: 100%;
-    min-height: 100vh;
-    overflow-x: hidden;
-    background: #ffffff;
+    width: 100%;             /* Ocupa toda a largura disponível */
+    min-height: 100vh;      /* No mínimo ocupa toda a altura da tela */
+    overflow-x: hidden;     /* Impede uma barra de rolagem horizontal */
+    background: #ffffff;    /* Fundo branco */
 }
 
+
+/* 
+   Faz os links dentro da página utilizarem
+   a mesma fonte definida no body.
+*/
 .home a {
     font-family: inherit;
 }
@@ -30,109 +56,186 @@ body {
    HERO
 ================================================== */
 
+/* 
+   Hero é a primeira grande seção da página.
+   É onde aparece a mensagem de boas-vindas,
+   os botões e a imagem principal.
+*/
 .home .hero {
-    width: 100%;
-    min-height: 620px;
-    padding: 75px 7%;
-    display: grid;
+    width: 100%;              /* Ocupa toda a largura */
+    min-height: 620px;        /* Altura mínima da seção */
+
+    padding: 75px 7%;         /* Espaçamento interno */
+
+    display: grid;            /* Utiliza CSS Grid */
+
+    /*
+       Cria duas colunas:
+       - primeira para o conteúdo
+       - segunda para a imagem
+    */
     grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
-    align-items: center;
-    gap: 70px;
-    background: #f8fafc;
+
+    align-items: center;      /* Centraliza verticalmente */
+
+    gap: 70px;                /* Espaço entre as colunas */
+
+    background: #f8fafc;      /* Fundo levemente acinzentado */
 }
 
+
+/* 
+   Área que contém os textos do Hero.
+*/
 .home .hero-content {
-    width: 100%;
-    max-width: 600px;
+    width: 100%;              /* Ocupa toda a largura disponível */
+    max-width: 600px;         /* Limita a largura do conteúdo */
 }
 
+
+/* 
+   Estilo do pequeno texto acima do título.
+*/
 .home .hero-label,
 .home .section-label {
-    display: inline-block;
-    color: #2563eb;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1px;
+    display: inline-block;   /* Permite controlar o elemento */
+    color: #2563eb;           /* Azul do PetCare */
+    font-size: 11px;          /* Tamanho pequeno */
+    font-weight: 800;         /* Texto em negrito */
+    letter-spacing: 1px;      /* Espaçamento entre letras */
 }
 
+
+/* 
+   Título principal do Hero.
+*/
 .home .hero-content h2 {
-    margin-top: 18px;
-    color: #1e293b;
-    font-size: 52px;
-    line-height: 1.08;
-    font-weight: 800;
+    margin-top: 18px;         /* Espaço acima do título */
+    color: #1e293b;           /* Cor escura */
+    font-size: 52px;          /* Tamanho do título */
+    line-height: 1.08;        /* Altura das linhas */
+    font-weight: 800;         /* Negrito */
 }
 
+
+/* 
+   Segunda parte do título.
+*/
 .home .hero-content h2 span {
-    display: block;
-    color: #2563eb;
+    display: block;           /* Faz o span ocupar uma nova linha */
+    color: #2563eb;            /* Destaca essa parte em azul */
 }
 
+
+/* 
+   Parágrafo principal do Hero.
+*/
 .home .hero-content > p {
-    max-width: 550px;
-    margin-top: 22px;
-    color: #64748b;
-    font-size: 16px;
-    line-height: 1.7;
+    max-width: 550px;         /* Limita a largura do texto */
+    margin-top: 22px;         /* Espaço acima do parágrafo */
+    color: #64748b;           /* Cinza */
+    font-size: 16px;          /* Tamanho do texto */
+    line-height: 1.7;         /* Espaçamento entre linhas */
 }
 
+
+/* 
+   Container dos botões do Hero.
+*/
 .home .hero-buttons {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 30px;
+    display: flex;            /* Coloca os botões lado a lado */
+    align-items: center;      /* Alinha verticalmente */
+    gap: 12px;                /* Espaço entre os botões */
+    margin-top: 30px;         /* Espaço acima dos botões */
 }
 
+
+/* 
+   Remove o sublinhado padrão dos links.
+*/
 .home .hero-buttons a {
     text-decoration: none !important;
 }
 
+
+/* 
+   Configuração compartilhada dos dois botões.
+*/
 .home .primary-button,
 .home .secondary-button {
-    min-height: 46px;
-    padding: 0 20px;
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+    min-height: 46px;         /* Altura mínima */
+    padding: 0 20px;          /* Espaçamento horizontal */
 
-    border-radius: 8px;
-    font-family: inherit;
+    display: inline-flex !important;
+
+    align-items: center;      /* Centraliza verticalmente */
+    justify-content: center;  /* Centraliza horizontalmente */
+
+    gap: 10px;                /* Espaço entre textos/elementos */
+
+    border-radius: 8px;       /* Arredonda os cantos */
+
+    font-family: inherit;     /* Usa a fonte do elemento pai */
     font-size: 13px;
     font-weight: 800;
 
     text-decoration: none !important;
-    cursor: pointer;
-    transition: 0.2s ease;
+
+    cursor: pointer;          /* Mostra o cursor de clique */
+
+    transition: 0.2s ease;    /* Suaviza alterações */
 }
 
+
+/* 
+   Primeiro botão do Hero.
+*/
 .home .primary-button {
-    background: #2563eb !important;
+    background: #2563eb !important; /* Fundo azul */
     border: 1px solid #2563eb !important;
-    color: #ffffff !important;
+    color: #ffffff !important;      /* Texto branco */
 }
 
+
+/* 
+   Garante que os spans dentro do botão também
+   tenham a cor branca.
+*/
 .home .primary-button span {
     color: #ffffff !important;
 }
 
+
+/* 
+   Efeito quando o mouse passa sobre o botão.
+*/
 .home .primary-button:hover {
     background: #1d4ed8 !important;
     border-color: #1d4ed8 !important;
     color: #ffffff !important;
-    transform: translateY(-2px);
+
+    transform: translateY(-2px); /* Move levemente para cima */
 }
 
+
+/* 
+   Segundo botão do Hero.
+*/
 .home .secondary-button {
     background: #ffffff !important;
     border: 1px solid #dbeafe !important;
     color: #2563eb !important;
 }
 
+
+/* 
+   Efeito hover do segundo botão.
+*/
 .home .secondary-button:hover {
     background: #ffffff !important;
     border-color: #2563eb !important;
     color: #2563eb !important;
+
     transform: translateY(-2px);
 }
 
@@ -141,34 +244,55 @@ body {
    HERO - INFORMAÇÕES
 ================================================== */
 
+/* 
+   Container das informações abaixo dos botões.
+*/
 .home .hero-info {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    margin-top: 45px;
+    display: flex;            /* Coloca informações lado a lado */
+    align-items: center;      /* Alinha verticalmente */
+    gap: 25px;                /* Espaço entre informações */
+    margin-top: 45px;         /* Espaço acima */
 }
 
+
+/* 
+   Cada informação individual.
+*/
 .home .info-item {
     display: flex;
-    flex-direction: column;
+    flex-direction: column;   /* Coloca número e texto um abaixo do outro */
     gap: 4px;
 }
 
+
+/* 
+   Número da informação.
+*/
 .home .info-item strong {
     color: #1e293b;
     font-size: 21px;
     font-weight: 800;
 }
 
+
+/* 
+   Texto abaixo do número.
+*/
 .home .info-item span {
     color: #64748b;
     font-size: 11px;
 }
 
+
+/* 
+   Linha vertical que separa as informações.
+*/
 .home .info-divider {
     width: 1px;
     height: 35px;
-    flex-shrink: 0;
+
+    flex-shrink: 0;           /* Impede que a linha seja diminuída */
+
     background: #cbd5e1;
 }
 
@@ -177,28 +301,52 @@ body {
    HERO - IMAGEM
 ================================================== */
 
+/* 
+   Área onde ficam a imagem principal e os cards flutuantes.
+*/
 .home .hero-visual {
-    position: relative;
+    position: relative;       /* Serve de referência para elementos absolute */
+
     width: 100%;
     min-height: 480px;
+
     display: flex;
+
     align-items: center;
     justify-content: center;
 }
 
+
+/* 
+   Container da imagem principal.
+*/
 .home .hero-image-wrapper {
     position: relative;
+
     width: 430px;
     height: 480px;
-    overflow: hidden;
-    border-radius: 25px;
+
+    overflow: hidden;         /* Esconde o que ultrapassar os limites */
+
+    border-radius: 25px;      /* Arredonda a imagem */
+
     box-shadow: 0 25px 60px rgba(15, 23, 42, 0.15);
 }
 
+
+/* 
+   Imagem dentro do container.
+*/
 .home .hero-image-wrapper img {
     width: 100%;
     height: 100%;
+
     display: block;
+
+    /*
+       Faz a imagem preencher o espaço sem
+       perder sua proporção.
+    */
     object-fit: cover;
 }
 
@@ -207,8 +355,12 @@ body {
    CARDS FLUTUANTES
 ================================================== */
 
+/* 
+   Configuração geral dos pequenos cards que
+   ficam sobre a imagem do Hero.
+*/
 .home .floating-card {
-    position: absolute;
+    position: absolute;       /* Permite posicionar sobre a imagem */
 
     width: 245px !important;
     max-width: 245px !important;
@@ -217,46 +369,77 @@ body {
 
     display: flex !important;
     align-items: center;
+
     gap: 10px;
 
     padding: 13px 16px !important;
 
     background: #ffffff !important;
+
     border: 1px solid #e2e8f0 !important;
     border-radius: 10px !important;
 
     box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
 
+    /*
+       Define a ordem de sobreposição.
+       Quanto maior o z-index, mais à frente o elemento fica.
+    */
     z-index: 5;
 }
 
+
+/* 
+   Faz o título e o texto dos cards
+   ficarem em linhas separadas.
+*/
 .home .floating-card strong,
 .home .floating-card span {
     display: block;
 }
 
+
+/* 
+   Título do card flutuante.
+*/
 .home .floating-card strong {
     color: #1e293b !important;
     font-size: 12px;
     font-weight: 800;
 }
 
+
+/* 
+   Texto secundário do card.
+*/
 .home .floating-card span {
     margin-top: 3px;
     color: #64748b !important;
     font-size: 10px;
 }
 
+
+/* 
+   Posicionamento do card superior.
+*/
 .home .card-top {
     top: 65px;
     left: calc(50% - 330px);
 }
 
+
+/* 
+   Posicionamento do card inferior.
+*/
 .home .card-bottom {
     right: calc(50% - 330px);
     bottom: 55px;
 }
 
+
+/* 
+   Ícone circular dos cards.
+*/
 .home .floating-icon {
     width: 32px !important;
     min-width: 32px !important;
@@ -269,6 +452,7 @@ body {
     flex-shrink: 0;
 
     border-radius: 50%;
+
     background: #dbeafe !important;
     color: #2563eb !important;
 
@@ -276,6 +460,10 @@ body {
     font-weight: 800;
 }
 
+
+/* 
+   Versão verde do ícone.
+*/
 .home .floating-icon.green {
     background: #dcfce7 !important;
     color: #16a34a !important;
@@ -286,21 +474,36 @@ body {
    CABEÇALHOS DAS SEÇÕES
 ================================================== */
 
+/* 
+   Configuração padrão dos cabeçalhos das seções.
+*/
 .home .section-header {
     width: 100%;
+
     display: block !important;
+
     text-align: center !important;
 }
 
+
+/* 
+   Label que aparece acima dos títulos das seções.
+*/
 .home .section-header .section-label {
     display: inline-block !important;
 }
 
+
+/* 
+   Títulos das seções.
+*/
 .home .section-header h2 {
     display: block !important;
+
     margin-top: 10px;
 
     color: #1e293b !important;
+
     font-size: 34px;
     line-height: 1.2;
     font-weight: 800;
@@ -308,13 +511,22 @@ body {
     text-align: center !important;
 }
 
+
+/* 
+   Parágrafos dos cabeçalhos.
+*/
 .home .section-header p {
     display: block !important;
 
     max-width: 600px;
+
+    /*
+       auto centraliza horizontalmente o parágrafo.
+    */
     margin: 12px auto 0;
 
     color: #64748b !important;
+
     font-size: 14px;
     line-height: 1.6;
 
@@ -326,32 +538,57 @@ body {
    AÇÕES RÁPIDAS
 ================================================== */
 
+/* 
+   Seção com os atalhos para as principais funções.
+*/
 .home .quick-actions {
     width: 100%;
+
     padding: 90px 7%;
+
     background: #f8fafc;
 }
 
+
+/* 
+   Grid dos cards de acesso rápido.
+*/
 .home .quick-grid {
     width: 100%;
+
     max-width: 1100px;
+
+    /*
+       Centraliza o grid horizontalmente.
+    */
     margin: 45px auto 0;
 
     display: grid;
+
+    /*
+       Cria três colunas de tamanhos iguais.
+    */
     grid-template-columns: repeat(3, minmax(0, 1fr));
+
     gap: 20px;
 }
 
+
+/* 
+   Card individual de acesso rápido.
+*/
 .home .quick-card {
     width: 100%;
 
     display: flex !important;
     align-items: center;
+
     gap: 15px;
 
     padding: 22px;
 
     background: #ffffff !important;
+
     border: 1px solid #e2e8f0 !important;
     border-radius: 12px;
 
@@ -361,6 +598,10 @@ body {
     transition: 0.2s ease;
 }
 
+
+/* 
+   Efeito quando o mouse passa no card.
+*/
 .home .quick-card:hover {
     border-color: #2563eb !important;
     color: #1e293b !important;
@@ -370,6 +611,10 @@ body {
     box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
 }
 
+
+/* 
+   Ícone do card de acesso rápido.
+*/
 .home .quick-icon {
     width: 45px !important;
     min-width: 45px !important;
@@ -388,27 +633,46 @@ body {
     font-weight: 800;
 }
 
+
+/* 
+   O segundo elemento dentro do card ocupa
+   o espaço restante.
+*/
 .home .quick-card div:nth-child(2) {
     flex: 1;
     min-width: 0;
 }
 
+
+/* 
+   Título do card.
+*/
 .home .quick-card h3 {
     color: #1e293b !important;
     font-size: 15px;
     font-weight: 800;
 }
 
+
+/* 
+   Descrição do card.
+*/
 .home .quick-card p {
     margin-top: 4px;
 
     color: #64748b !important;
+
     font-size: 11px;
     line-height: 1.4;
 }
 
+
+/* 
+   Seta localizada no lado direito do card.
+*/
 .home .quick-arrow {
     color: #2563eb !important;
+
     font-size: 18px;
     font-weight: 800;
 }
@@ -418,32 +682,63 @@ body {
    SERVIÇOS
 ================================================== */
 
+/* 
+   Seção que apresenta os serviços disponíveis.
+*/
 .home .services-preview {
     width: 100%;
+
     padding: 95px 7%;
+
     background: #ffffff;
 }
 
+
+/* 
+   Cabeçalho da seção de serviços.
+*/
 .home .services-preview .section-header {
     max-width: 650px;
+
+    /*
+       Centraliza o cabeçalho.
+    */
     margin: 0 auto 45px;
 }
 
+
+/* 
+   Grid onde os cards dos serviços aparecem.
+*/
 .home .services-grid {
     width: 100%;
+
     max-width: 1100px;
+
     margin: 0 auto;
 
     display: grid;
+
+    /*
+       Desktop:
+       quatro cards por linha.
+    */
     grid-template-columns: repeat(4, minmax(0, 1fr));
+
     gap: 22px;
 }
 
+
+/* 
+   Card individual de serviço.
+*/
 .home .service-card {
     min-width: 0;
+
     overflow: hidden;
 
     background: #ffffff !important;
+
     border: 1px solid #e2e8f0 !important;
     border-radius: 16px;
 
@@ -452,8 +747,13 @@ body {
     transition: 0.25s ease;
 }
 
+
+/* 
+   Efeito visual quando o mouse passa sobre o serviço.
+*/
 .home .service-card:hover {
     transform: translateY(-7px);
+
     border-color: #bfdbfe !important;
 
     box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1);
@@ -464,6 +764,9 @@ body {
    IMAGEM DO SERVIÇO
 ================================================== */
 
+/* 
+   Área da imagem do serviço.
+*/
 .home .service-image {
     position: relative;
 
@@ -475,21 +778,37 @@ body {
     background: #eff6ff;
 }
 
+
+/* 
+   Imagem do serviço.
+*/
 .home .service-image img {
     width: 100%;
     height: 100%;
 
     display: block;
 
+    /*
+       Faz a imagem preencher o espaço.
+    */
     object-fit: cover;
 
     transition: 0.35s ease;
 }
 
+
+/* 
+   Quando o mouse passa sobre o card,
+   a imagem aumenta levemente.
+*/
 .home .service-card:hover .service-image img {
     transform: scale(1.05);
 }
 
+
+/* 
+   Preço que fica sobre a imagem.
+*/
 .home .service-price {
     position: absolute;
 
@@ -511,11 +830,16 @@ body {
     z-index: 2;
 }
 
+
+/* 
+   Área exibida quando o serviço não possui imagem.
+*/
 .home .service-no-image {
     width: 100%;
     height: 100%;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -531,10 +855,17 @@ body {
    CONTEÚDO DO SERVIÇO
 ================================================== */
 
+/* 
+   Espaçamento interno das informações do serviço.
+*/
 .home .service-content {
     padding: 20px;
 }
 
+
+/* 
+   Tag "PETCARE".
+*/
 .home .service-tag {
     display: inline-block;
 
@@ -544,16 +875,30 @@ body {
 
     font-size: 10px;
     font-weight: 800;
+
     letter-spacing: 0.8px;
 }
 
+
+/* 
+   Nome do serviço.
+*/
 .home .service-content h3 {
     color: #1e293b !important;
+
     font-size: 18px;
     font-weight: 800;
 }
 
+
+/* 
+   Descrição do serviço.
+*/
 .home .service-content p {
+    /*
+       Define uma altura mínima para ajudar
+       a manter os cards mais uniformes.
+    */
     min-height: 48px;
 
     margin-top: 8px;
@@ -569,8 +914,12 @@ body {
    RODAPÉ DO CARD DE SERVIÇO
 ================================================== */
 
+/* 
+   Parte inferior de cada card de serviço.
+*/
 .home .service-footer {
     display: flex !important;
+
     align-items: center;
     justify-content: space-between;
 
@@ -579,9 +928,16 @@ body {
     margin-top: 18px;
     padding-top: 14px;
 
+    /*
+       Linha que separa a descrição do rodapé.
+    */
     border-top: 1px solid #f1f5f9;
 }
 
+
+/* 
+   Duração do serviço.
+*/
 .home .service-footer > span {
     color: #64748b !important;
 
@@ -589,12 +945,17 @@ body {
     font-weight: 700;
 }
 
+
+/* 
+   Link "Ver serviço".
+*/
 .home .service-footer a {
     width: auto !important;
     min-width: 0 !important;
     height: auto !important;
 
     display: inline-flex !important;
+
     align-items: center;
     justify-content: center;
 
@@ -617,11 +978,20 @@ body {
     box-shadow: none !important;
 }
 
+
+/* 
+   Estiliza os spans existentes dentro do link.
+*/
 .home .service-footer a span {
     margin-left: 5px;
+
     color: #2563eb !important;
 }
 
+
+/* 
+   Efeito ao passar o mouse no link.
+*/
 .home .service-footer a:hover {
     background: transparent !important;
     color: #1d4ed8 !important;
@@ -636,12 +1006,19 @@ body {
    LOADING / VAZIO
 ================================================== */
 
+/* 
+   Estilo compartilhado entre:
+   - tela de carregamento
+   - mensagem de nenhum serviço
+*/
 .home .services-loading,
 .home .services-empty {
     width: 100%;
+
     max-width: 1100px;
 
     margin: 0 auto;
+
     padding: 50px 20px;
 
     text-align: center;
@@ -652,6 +1029,10 @@ body {
     background: #f8fafc;
 }
 
+
+/* 
+   Círculo utilizado como indicador de carregamento.
+*/
 .home .services-loading span {
     width: 28px;
     height: 28px;
@@ -659,13 +1040,26 @@ body {
     display: inline-block;
 
     border: 3px solid #dbeafe;
+
+    /*
+       Apenas a parte superior recebe uma cor diferente,
+       criando o efeito de spinner.
+    */
     border-top-color: #2563eb;
 
     border-radius: 50%;
 
+    /*
+       Utiliza a animação criada no @keyframes abaixo.
+    */
     animation: serviceLoading 0.8s linear infinite;
 }
 
+
+/* 
+   Texto da tela de carregamento
+   e da tela vazia.
+*/
 .home .services-loading p,
 .home .services-empty p {
     margin-top: 12px;
@@ -675,15 +1069,28 @@ body {
     font-size: 13px;
 }
 
+
+/* 
+   Título da mensagem de serviços vazios.
+*/
 .home .services-empty h3 {
     color: #1e293b !important;
+
     font-size: 17px;
 }
 
+
+/* 
+   Define a animação do carregamento.
+   
+   O spinner gira 360 graus.
+*/
 @keyframes serviceLoading {
+
     to {
         transform: rotate(360deg);
     }
+
 }
 
 
@@ -691,31 +1098,47 @@ body {
    RODAPÉ DOS SERVIÇOS
 ================================================== */
 
+/* 
+   Parte inferior da seção de serviços.
+*/
 .home .services-footer {
     width: 100%;
+
     max-width: 1100px;
 
     margin: 35px auto 0;
 
     display: flex !important;
+
     align-items: center;
     justify-content: space-between;
 
     gap: 20px;
 }
 
+
+/* 
+   Texto do rodapé dos serviços.
+*/
 .home .services-footer p {
     color: #64748b !important;
+
     font-size: 13px;
 }
 
+
+/* 
+   Link para ver todos os serviços.
+*/
 .home .services-footer a {
     display: inline-flex !important;
+
     align-items: center;
 
     padding: 0 !important;
 
     background: transparent !important;
+
     border: none !important;
 
     color: #2563eb !important;
@@ -728,9 +1151,15 @@ body {
     box-shadow: none !important;
 }
 
+
+/* 
+   Efeito do link ao passar o mouse.
+*/
 .home .services-footer a:hover {
     background: transparent !important;
+
     color: #1d4ed8 !important;
+
     text-decoration: underline !important;
 }
 
@@ -739,26 +1168,45 @@ body {
    SOBRE
 ================================================== */
 
+/* 
+   Seção de apresentação do PetCare.
+*/
 .home .about-preview {
     width: 100%;
 
     padding: 100px 7%;
 
     display: grid;
+
+    /*
+       Duas colunas:
+       - imagem
+       - conteúdo
+    */
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 
     align-items: center;
+
     gap: 80px;
 
     background: #f8fafc;
 }
 
+
+/* 
+   Container da imagem da seção Sobre.
+*/
 .home .about-preview-image {
     position: relative;
+
     width: 100%;
     height: 450px;
 }
 
+
+/* 
+   Imagem da seção Sobre.
+*/
 .home .about-preview-image img {
     width: 100%;
     height: 100%;
@@ -770,6 +1218,10 @@ body {
     border-radius: 20px;
 }
 
+
+/* 
+   Pequeno card que aparece sobre a imagem.
+*/
 .home .image-badge {
     position: absolute;
 
@@ -788,43 +1240,74 @@ body {
     box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
 }
 
+
+/* 
+   Nome PetCare dentro do badge.
+*/
 .home .image-badge strong {
     color: #2563eb;
     font-size: 15px;
 }
 
+
+/* 
+   Texto secundário do badge.
+*/
 .home .image-badge span {
     margin-top: 3px;
+
     color: #64748b;
+
     font-size: 11px;
 }
 
+
+/* 
+   Conteúdo textual da seção Sobre.
+*/
 .home .about-preview-content {
     width: 100%;
+
     max-width: 550px;
 }
 
+
+/* 
+   Título da seção Sobre.
+*/
 .home .about-preview-content h2 {
     margin-top: 12px;
 
     color: #1e293b !important;
 
     font-size: 38px;
+
     line-height: 1.15;
+
     font-weight: 800;
 }
 
+
+/* 
+   Segunda parte do título fica em azul.
+*/
 .home .about-preview-content h2 span {
     display: block;
+
     color: #2563eb !important;
 }
 
+
+/* 
+   Parágrafos da seção Sobre.
+*/
 .home .about-preview-content p {
     margin-top: 18px;
 
     color: #64748b !important;
 
     font-size: 14px;
+
     line-height: 1.7;
 }
 
@@ -833,19 +1316,27 @@ body {
    BOTÃO SOBRE
 ================================================== */
 
+/* 
+   Link/botão que leva para a página Sobre.
+*/
 .home .about-button {
     width: fit-content !important;
+
     height: auto !important;
 
     display: inline-flex !important;
+
     align-items: center;
     justify-content: center;
 
     margin-top: 25px;
+
     padding: 0 !important;
 
     background: transparent !important;
+
     border: none !important;
+
     border-radius: 0 !important;
 
     color: #2563eb !important;
@@ -853,14 +1344,21 @@ body {
     text-decoration: none !important;
 
     font-family: inherit;
+
     font-size: 13px;
+
     font-weight: 800;
 
     box-shadow: none !important;
 }
 
+
+/* 
+   Efeito ao passar o mouse no botão.
+*/
 .home .about-button:hover {
     background: transparent !important;
+
     color: #1d4ed8 !important;
 
     text-decoration: underline !important;
@@ -873,8 +1371,15 @@ body {
    MISSÃO
 ================================================== */
 
+/* 
+   Seção que apresenta a missão do PetCare.
+*/
 .home .mission {
     width: 100%;
+
+    /*
+       Limita a largura máxima da seção.
+    */
     max-width: 1200px;
 
     margin: 0 auto;
@@ -882,6 +1387,12 @@ body {
     padding: 100px 7%;
 
     display: grid;
+
+    /*
+       Duas colunas:
+       uma um pouco maior para a imagem
+       e outra para o conteúdo.
+    */
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
 
     align-items: center;
@@ -891,6 +1402,10 @@ body {
     background: #ffffff;
 }
 
+
+/* 
+   Container da imagem da missão.
+*/
 .home .mission-image {
     width: 100%;
     height: 420px;
@@ -900,6 +1415,10 @@ body {
     border-radius: 20px;
 }
 
+
+/* 
+   Imagem da missão.
+*/
 .home .mission-image img {
     width: 100%;
     height: 100%;
@@ -907,44 +1426,73 @@ body {
     display: block;
 
     object-fit: cover;
+
+    /*
+       Define o ponto central da imagem
+       quando ocorre o corte pelo object-fit.
+    */
     object-position: center;
 }
 
+
+/* 
+   Conteúdo textual da missão.
+*/
 .home .mission-content {
     width: 100%;
+
     max-width: 500px;
 }
 
+
+/* 
+   Título da missão.
+*/
 .home .mission-content h2 {
     margin-top: 13px;
 
     color: #1e293b !important;
 
     font-size: 38px;
+
     line-height: 1.15;
+
     font-weight: 800;
 }
 
+
+/* 
+   Texto da missão.
+*/
 .home .mission-content p {
     margin-top: 20px;
 
     color: #64748b !important;
 
     font-size: 14px;
+
     line-height: 1.7;
 }
 
+
+/* 
+   Link para conhecer a história.
+*/
 .home .mission-content a {
     width: fit-content !important;
+
     height: auto !important;
 
     display: inline-flex !important;
 
     margin-top: 25px;
+
     padding: 0 !important;
 
     background: transparent !important;
+
     border: none !important;
+
     border-radius: 0 !important;
 
     color: #2563eb !important;
@@ -952,14 +1500,21 @@ body {
     text-decoration: none !important;
 
     font-family: inherit;
+
     font-size: 13px;
+
     font-weight: 800;
 
     box-shadow: none !important;
 }
 
+
+/* 
+   Efeito ao passar o mouse no link.
+*/
 .home .mission-content a:hover {
     background: transparent !important;
+
     color: #1d4ed8 !important;
 
     text-decoration: underline !important;
@@ -972,14 +1527,28 @@ body {
    CTA
 ================================================== */
 
+/* 
+   CTA significa "Call To Action".
+
+   É uma área criada para incentivar o usuário
+   a realizar uma ação, nesse caso cadastrar um pet.
+*/
 .home .cta {
     width: calc(100% - 14%);
+
     max-width: 1100px;
+
     min-height: 350px;
 
     margin: 80px auto;
 
     display: grid;
+
+    /*
+       Duas colunas:
+       - imagem
+       - conteúdo
+    */
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
 
     overflow: hidden;
@@ -989,10 +1558,18 @@ body {
     background: #eff6ff;
 }
 
+
+/* 
+   Área da imagem do CTA.
+*/
 .home .cta-image {
     min-height: 350px;
 }
 
+
+/* 
+   Imagem do CTA.
+*/
 .home .cta-image img {
     width: 100%;
     height: 100%;
@@ -1002,32 +1579,60 @@ body {
     object-fit: cover;
 }
 
+
+/* 
+   Conteúdo textual do CTA.
+*/
 .home .cta-content {
     padding: 55px;
 
     display: flex;
+
+    /*
+       Coloca os elementos em coluna.
+    */
     flex-direction: column;
+
+    /*
+       Centraliza o conteúdo verticalmente.
+    */
     justify-content: center;
 }
 
+
+/* 
+   Pequeno título acima do CTA.
+*/
 .home .cta-label {
     color: #2563eb !important;
 
     font-size: 11px;
+
     font-weight: 800;
+
     letter-spacing: 1px;
 }
 
+
+/* 
+   Título principal do CTA.
+*/
 .home .cta-content h2 {
     margin-top: 12px;
 
     color: #1e293b !important;
 
     font-size: 35px;
+
     line-height: 1.2;
+
     font-weight: 800;
 }
 
+
+/* 
+   Texto explicativo do CTA.
+*/
 .home .cta-content p {
     max-width: 480px;
 
@@ -1036,23 +1641,32 @@ body {
     color: #64748b !important;
 
     font-size: 14px;
+
     line-height: 1.7;
 }
 
+
+/* 
+   Botão do CTA.
+*/
 .home .cta-button {
     width: fit-content !important;
+
     height: auto !important;
 
     margin-top: 25px;
+
     padding: 12px 18px !important;
 
     display: inline-flex !important;
+
     align-items: center;
     justify-content: center;
 
     gap: 10px;
 
     border: 1px solid #2563eb !important;
+
     border-radius: 8px !important;
 
     background: #2563eb !important;
@@ -1062,7 +1676,9 @@ body {
     text-decoration: none !important;
 
     font-family: inherit;
+
     font-size: 13px;
+
     font-weight: 800;
 
     box-shadow: none !important;
@@ -1070,12 +1686,21 @@ body {
     transition: 0.2s ease;
 }
 
+
+/* 
+   Garante que os spans do botão fiquem brancos.
+*/
 .home .cta-button span {
     color: #ffffff !important;
 }
 
+
+/* 
+   Efeito hover do botão CTA.
+*/
 .home .cta-button:hover {
     background: #1d4ed8 !important;
+
     border-color: #1d4ed8 !important;
 
     color: #ffffff !important;
@@ -1088,6 +1713,9 @@ body {
    FOOTER
 ================================================== */
 
+/* 
+   Rodapé da página.
+*/
 .home footer {
     width: 100%;
 
@@ -1096,24 +1724,41 @@ body {
     color: #ffffff;
 }
 
+
+/* 
+   Área principal do Footer.
+*/
 .home .footer-content {
     width: 100%;
+
     max-width: 1100px;
 
     margin: 0 auto;
+
     padding: 60px 7%;
 
     display: grid;
+
+    /*
+       Cria quatro colunas.
+       A primeira é um pouco maior.
+    */
     grid-template-columns: 1.6fr 1fr 1fr 1fr;
 
     gap: 50px;
 }
 
+
+/* 
+   Logo do Footer.
+*/
 .home .footer-logo {
     width: fit-content !important;
+
     height: auto !important;
 
     display: flex !important;
+
     align-items: center;
 
     gap: 10px;
@@ -1121,6 +1766,7 @@ body {
     padding: 0 !important;
 
     background: transparent !important;
+
     border: none !important;
 
     color: #ffffff !important;
@@ -1130,29 +1776,47 @@ body {
     box-shadow: none !important;
 }
 
+
+/* 
+   Nome PetCare no logo.
+*/
 .home .footer-logo h1 {
     color: #ffffff !important;
+
     font-size: 21px;
 }
 
+
+/* 
+   Ícone "P" do logo.
+*/
 .home .logo-icon {
     width: 34px;
+
     min-width: 34px;
+
     height: 34px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     border-radius: 8px;
 
     background: #2563eb !important;
+
     color: #ffffff !important;
 
     font-size: 17px;
+
     font-weight: 800;
 }
 
+
+/* 
+   Descrição abaixo do logo.
+*/
 .home .footer-brand p {
     max-width: 220px;
 
@@ -1161,15 +1825,29 @@ body {
     color: #94a3b8 !important;
 
     font-size: 12px;
+
     line-height: 1.6;
 }
 
+
+/* 
+   Cada coluna do Footer.
+*/
 .home .footer-column {
     display: flex;
+
+    /*
+       Coloca os elementos um abaixo do outro.
+    */
     flex-direction: column;
+
     gap: 10px;
 }
 
+
+/* 
+   Título de cada coluna.
+*/
 .home .footer-column strong {
     margin-bottom: 5px;
 
@@ -1178,14 +1856,20 @@ body {
     font-size: 13px;
 }
 
+
+/* 
+   Links e textos das colunas.
+*/
 .home .footer-column a,
 .home .footer-column span {
     width: fit-content !important;
+
     height: auto !important;
 
     padding: 0 !important;
 
     background: transparent !important;
+
     border: none !important;
 
     color: #94a3b8 !important;
@@ -1197,8 +1881,13 @@ body {
     box-shadow: none !important;
 }
 
+
+/* 
+   Efeito ao passar o mouse nos links do Footer.
+*/
 .home .footer-column a:hover {
     background: transparent !important;
+
     color: #ffffff !important;
 
     text-decoration: none !important;
@@ -1209,8 +1898,12 @@ body {
    FOOTER BOTTOM
 ================================================== */
 
+/* 
+   Parte inferior do Footer.
+*/
 .home .footer-bottom {
     width: 100%;
+
     max-width: 1100px;
 
     margin: 0 auto;
@@ -1218,11 +1911,17 @@ body {
     padding: 20px 7%;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     gap: 20px;
 
+    /*
+       Linha superior para separar essa área
+       do restante do Footer.
+    */
     border-top: 1px solid #1e293b;
 
     color: #64748b !important;
@@ -1235,40 +1934,78 @@ body {
    RESPONSIVIDADE
 ================================================== */
 
+/*
+   Essa media query é aplicada quando a tela
+   possui até 1050px de largura.
+*/
 @media (max-width: 1050px) {
 
+    /*
+       Diminui o espaço entre as colunas do Hero.
+    */
     .home .hero {
         grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+
         gap: 35px;
     }
 
+
+    /*
+       Diminui o tamanho do título.
+    */
     .home .hero-content h2 {
         font-size: 44px;
     }
 
+
+    /*
+       Diminui a imagem principal.
+    */
     .home .hero-image-wrapper {
         width: 360px;
         height: 430px;
     }
 
+
+    /*
+       Diminui a largura dos cards flutuantes.
+    */
     .home .floating-card {
         width: 220px !important;
         max-width: 220px !important;
     }
 
+
+    /*
+       Ajusta a posição do card superior.
+    */
     .home .card-top {
         left: 0;
     }
 
+
+    /*
+       Ajusta a posição do card inferior.
+    */
     .home .card-bottom {
         right: 0;
     }
 
+
+    /*
+       Em telas menores, os serviços passam
+       de quatro para duas colunas.
+    */
     .home .services-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+
         max-width: 750px;
     }
 
+
+    /*
+       Diminui o espaço entre os elementos da missão.
+    */
     .home .mission {
         gap: 50px;
     }
@@ -1279,94 +2016,185 @@ body {
    TABLET
 ================================================== */
 
+/*
+   Aplicado quando a tela possui até 850px.
+*/
 @media (max-width: 850px) {
 
+    /*
+       Hero passa a utilizar apenas uma coluna.
+    */
     .home .hero {
         grid-template-columns: 1fr;
+
         padding: 70px 7%;
     }
 
+
+    /*
+       Centraliza o conteúdo do Hero.
+    */
     .home .hero-content {
         max-width: 650px;
+
         margin: 0 auto;
+
         text-align: center;
     }
 
+
+    /*
+       Centraliza o parágrafo.
+    */
     .home .hero-content > p {
         margin-left: auto;
+
         margin-right: auto;
     }
 
+
+    /*
+       Centraliza os botões.
+    */
     .home .hero-buttons {
         justify-content: center;
     }
 
+
+    /*
+       Centraliza as informações.
+    */
     .home .hero-info {
         justify-content: center;
     }
 
+
+    /*
+       Ajusta a altura da área visual.
+    */
     .home .hero-visual {
         min-height: 420px;
     }
 
+
+    /*
+       Ajusta tamanho da imagem.
+    */
     .home .hero-image-wrapper {
         width: 380px;
         height: 420px;
     }
 
+
+    /*
+       Reposiciona o card superior.
+    */
     .home .card-top {
         left: calc(50% - 300px);
     }
 
+
+    /*
+       Reposiciona o card inferior.
+    */
     .home .card-bottom {
         right: calc(50% - 300px);
     }
 
+
+    /*
+       Seção Sobre passa para uma coluna.
+    */
     .home .about-preview {
         grid-template-columns: 1fr;
+
         gap: 50px;
     }
 
+
+    /*
+       Centraliza o conteúdo da seção Sobre.
+    */
     .home .about-preview-content {
         max-width: 650px;
+
         margin: 0 auto;
+
         text-align: center;
     }
 
+
+    /*
+       Mantém o label centralizado.
+    */
     .home .about-preview-content .section-label {
         display: inline-block;
     }
 
+
+    /*
+       Centraliza o título.
+    */
     .home .about-preview-content h2 {
         text-align: center;
     }
 
+
+    /*
+       Centraliza os parágrafos.
+    */
     .home .about-preview-content p {
         text-align: center;
     }
 
+
+    /*
+       Centraliza o botão.
+    */
     .home .about-button {
         margin-left: auto;
+
         margin-right: auto;
     }
 
+
+    /*
+       Missão passa para uma única coluna.
+    */
     .home .mission {
         grid-template-columns: 1fr;
+
         gap: 45px;
+
         padding: 80px 7%;
     }
 
+
+    /*
+       Centraliza o conteúdo da missão.
+    */
     .home .mission-content {
         max-width: 650px;
+
         margin: 0 auto;
+
         text-align: center;
     }
 
+
+    /*
+       Centraliza o link da missão.
+    */
     .home .mission-content a {
         margin-left: auto;
+
         margin-right: auto;
     }
 
+
+    /*
+       CTA passa para uma única coluna.
+    */
     .home .cta {
         grid-template-columns: 1fr;
 
@@ -1376,10 +2204,19 @@ body {
         margin-right: 6%;
     }
 
+
+    /*
+       Define a altura da imagem do CTA.
+    */
     .home .cta-image {
         height: 300px;
     }
 
+
+    /*
+       Footer passa de quatro colunas
+       para duas colunas.
+    */
     .home .footer-content {
         grid-template-columns: 1fr 1fr;
     }
@@ -1390,106 +2227,210 @@ body {
    CELULAR
 ================================================== */
 
+/*
+   Aplicado em telas de até 600px.
+*/
 @media (max-width: 600px) {
 
+    /*
+       Diminui o espaçamento do Hero.
+    */
     .home .hero {
         padding: 55px 6%;
     }
 
+
+    /*
+       Diminui o tamanho do título.
+    */
     .home .hero-content h2 {
         font-size: 36px;
     }
 
+
+    /*
+       Coloca os botões um abaixo do outro.
+    */
     .home .hero-buttons {
         flex-direction: column;
     }
 
+
+    /*
+       Faz os dois botões ocuparem toda a largura.
+    */
     .home .primary-button,
     .home .secondary-button {
         width: 100%;
     }
 
+
+    /*
+       Diminui o espaço entre as informações.
+    */
     .home .hero-info {
         gap: 15px;
     }
 
+
+    /*
+       Imagem do Hero ocupa a largura disponível.
+    */
     .home .hero-image-wrapper {
         width: 100%;
+
         max-width: 380px;
+
         height: 380px;
     }
 
+
+    /*
+       Esconde os cards flutuantes no celular.
+       Isso evita que eles ocupem espaço ou
+       atrapalhem a imagem.
+    */
     .home .floating-card {
         display: none !important;
     }
 
+
+    /*
+       Diminui o espaçamento da seção de ações rápidas.
+    */
     .home .quick-actions {
         padding: 65px 6%;
     }
 
+
+    /*
+       Cards de acesso rápido passam para uma coluna.
+    */
     .home .quick-grid {
         grid-template-columns: 1fr;
+
         max-width: 500px;
     }
 
+
+    /*
+       Diminui o espaçamento da seção de serviços.
+    */
     .home .services-preview {
         padding: 70px 6%;
     }
 
+
+    /*
+       Cards de serviços passam para uma coluna.
+    */
     .home .services-grid {
         grid-template-columns: 1fr;
+
         max-width: 450px;
     }
 
+
+    /*
+       Aumenta um pouco a altura das imagens dos serviços.
+    */
     .home .service-image {
         height: 230px;
     }
 
+
+    /*
+       Rodapé dos serviços passa para coluna.
+    */
     .home .services-footer {
         flex-direction: column;
+
         text-align: center;
     }
 
+
+    /*
+       Diminui o espaçamento da seção Sobre.
+    */
     .home .about-preview {
         padding: 70px 6%;
     }
 
+
+    /*
+       Diminui a altura da imagem Sobre.
+    */
     .home .about-preview-image {
         height: 350px;
     }
 
+
+    /*
+       Diminui os títulos das seções Sobre e Missão.
+    */
     .home .about-preview-content h2,
     .home .mission-content h2 {
         font-size: 30px;
     }
 
+
+    /*
+       Diminui o espaçamento da missão.
+    */
     .home .mission {
         padding: 70px 6%;
     }
 
+
+    /*
+       Diminui a imagem da missão.
+    */
     .home .mission-image {
         height: 330px;
     }
 
+
+    /*
+       Diminui o espaço externo do CTA.
+    */
     .home .cta {
         margin: 50px 6%;
     }
 
+
+    /*
+       Diminui o espaçamento interno do conteúdo do CTA.
+    */
     .home .cta-content {
         padding: 35px 25px;
     }
 
+
+    /*
+       Diminui o título do CTA.
+    */
     .home .cta-content h2 {
         font-size: 29px;
     }
 
+
+    /*
+       Footer passa para uma única coluna.
+    */
     .home .footer-content {
         grid-template-columns: 1fr;
+
         gap: 30px;
     }
 
+
+    /*
+       Informações inferiores do Footer
+       passam para uma coluna.
+    */
     .home .footer-bottom {
         flex-direction: column;
+
         text-align: center;
     }
 }
@@ -1499,41 +2440,83 @@ body {
    CELULAR PEQUENO
 ================================================== */
 
+/*
+   Aplicado em telas de até 450px.
+*/
 @media (max-width: 450px) {
 
+    /*
+       Diminui ainda mais o título principal.
+    */
     .home .hero-content h2 {
         font-size: 31px;
     }
 
+
+    /*
+       Permite que as informações do Hero
+       quebrem para outra linha.
+    */
     .home .hero-info {
         flex-wrap: wrap;
     }
 
+
+    /*
+       Remove as linhas divisórias em telas muito pequenas.
+    */
     .home .info-divider {
         display: none;
     }
 
+
+    /*
+       Diminui a altura da imagem principal.
+    */
     .home .hero-image-wrapper {
         height: 330px;
     }
 
+
+    /*
+       Diminui o tamanho dos títulos das seções.
+    */
     .home .section-header h2 {
         font-size: 29px;
     }
 
+
+    /*
+       Diminui a imagem da seção Sobre.
+    */
     .home .about-preview-image {
         height: 300px;
     }
 
+
+    /*
+       Ajusta a posição do badge para não sair
+       da tela em celulares pequenos.
+    */
     .home .image-badge {
         right: 10px;
+
         bottom: 15px;
     }
 
+
+    /*
+       Diminui a imagem da missão.
+    */
     .home .mission-image {
         height: 280px;
     }
 
+
+    /*
+       Diminui o espaçamento interno dos cards
+       de serviços.
+    */
     .home .service-content {
         padding: 18px;
     }

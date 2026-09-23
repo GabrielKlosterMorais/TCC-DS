@@ -1,338 +1,703 @@
 /* =========================================================
    RESET
+   Remove configurações padrão do navegador
 ========================================================= */
 
+/* Aplica essas configurações em todos os elementos da página */
 * {
+    /* Remove a margem padrão */
     margin: 0;
+
+    /* Remove o espaçamento interno padrão */
     padding: 0;
+
+    /* Faz width e height considerarem também padding e border */
     box-sizing: border-box;
 }
 
+/* Configurações gerais do elemento HTML */
 html {
+    /* Faz a rolagem da página acontecer suavemente */
     scroll-behavior: smooth;
 }
 
+/* Configurações gerais do corpo da página */
 body {
+    /* Define a fonte principal utilizada na página */
     font-family: "Nunito", Arial, sans-serif;
+
+    /* Define a cor de fundo */
     background: #ffffff;
+
+    /* Define a cor padrão dos textos */
     color: #1e293b;
 }
 
+/* Container principal da página Sobre Nós */
 .about-page {
+    /* Ocupa 100% da largura disponível */
     width: 100%;
+
+    /* Garante pelo menos a altura total da tela */
     min-height: 100vh;
+
+    /* Define o fundo branco */
     background: #ffffff;
 }
 
 
 /* =========================================================
    NAVBAR
+   Estilização da barra de navegação
 ========================================================= */
 
+/* Barra principal de navegação */
 .navbar {
+    /* Ocupa toda a largura da página */
     width: 100%;
+
+    /* Define a altura da navbar */
     height: 76px;
+
+    /* Define espaçamento nas laterais */
     padding: 0 7%;
+
+    /* Ativa o Flexbox */
     display: flex;
+
+    /* Centraliza os elementos verticalmente */
     align-items: center;
+
+    /* Distribui os elementos horizontalmente */
     justify-content: space-between;
+
+    /* Fundo branco */
     background: #ffffff;
+
+    /* Linha na parte inferior da navbar */
     border-bottom: 1px solid #eef2f7;
+
+    /* Permite controlar a posição da navbar */
     position: relative;
+
+    /* Mantém a navbar acima de outros elementos */
     z-index: 10;
 }
 
+/* Container da logo */
 .logo {
+    /* Coloca os elementos da logo lado a lado */
     display: flex;
+
+    /* Centraliza os elementos verticalmente */
     align-items: center;
+
+    /* Espaço entre o ícone e o nome */
     gap: 10px;
+
+    /* Cor do texto */
     color: #1e293b;
+
+    /* Remove o sublinhado do link */
     text-decoration: none;
 }
 
+/* Quadrado azul com a letra P */
 .logo-icon {
+    /* Largura do ícone */
     width: 34px;
+
+    /* Altura do ícone */
     height: 34px;
+
+    /* Ativa Flexbox */
     display: flex;
+
+    /* Centraliza horizontalmente */
     align-items: center;
+
+    /* Centraliza verticalmente */
     justify-content: center;
+
+    /* Arredonda os cantos */
     border-radius: 8px;
+
+    /* Fundo azul */
     background: #2563eb;
+
+    /* Cor da letra */
     color: #ffffff;
+
+    /* Tamanho da letra */
     font-size: 18px;
+
+    /* Deixa a letra mais grossa */
     font-weight: 800;
 }
 
+/* Nome PetCare da logo */
 .logo h1 {
+    /* Remove margem */
     margin: 0;
+
+    /* Remove padding */
     padding: 0;
+
+    /* Define a cor */
     color: #1e293b;
+
+    /* Define o tamanho */
     font-size: 23px;
+
+    /* Altura da linha */
     line-height: 1;
+
+    /* Define o peso da fonte */
     font-weight: 800;
 }
 
+/* Container dos links da navbar */
 .nav-links {
+    /* Ativa Flexbox */
     display: flex;
+
+    /* Centraliza verticalmente */
     align-items: center;
+
+    /* Espaço entre os links */
     gap: 35px;
 }
 
+/* Estilização dos links */
 .nav-links a {
+    /* Cor dos links */
     color: #64748b;
+
+    /* Remove sublinhado */
     text-decoration: none;
+
+    /* Tamanho da fonte */
     font-size: 14px;
+
+    /* Deixa o texto mais grosso */
     font-weight: 700;
+
+    /* Faz a mudança de cor acontecer suavemente */
     transition: color 0.2s ease;
 }
 
+/* Cor do link quando o mouse passa sobre ele
+   ou quando possui a classe active */
 .nav-links a:hover,
 .nav-links a.active {
+    /* Deixa o link azul */
     color: #2563eb;
 }
 
+/* Container dos botões de login e cadastro */
 .nav-actions {
+    /* Ativa Flexbox */
     display: flex;
+
+    /* Centraliza verticalmente */
     align-items: center;
+
+    /* Espaço entre os botões */
     gap: 12px;
 }
 
+/* Botão/link de login */
 .login-button {
+    /* Espaçamento interno */
     padding: 10px 18px;
+
+    /* Cor azul */
     color: #2563eb;
+
+    /* Remove sublinhado */
     text-decoration: none;
+
+    /* Tamanho da fonte */
     font-size: 14px;
+
+    /* Peso da fonte */
     font-weight: 700;
+
+    /* Transição da cor */
     transition: color 0.2s ease;
 }
 
+/* Efeito quando passa o mouse no login */
 .login-button:hover {
+    /* Azul um pouco mais escuro */
     color: #1d4ed8;
 }
 
+/* Botão de cadastro */
 .register-button {
+    /* Espaçamento interno */
     padding: 10px 19px;
+
+    /* Arredonda os cantos */
     border-radius: 7px;
+
+    /* Fundo azul */
     background: #2563eb;
+
+    /* Texto branco */
     color: #ffffff;
+
+    /* Remove sublinhado */
     text-decoration: none;
+
+    /* Tamanho da fonte */
     font-size: 14px;
+
+    /* Peso da fonte */
     font-weight: 700;
+
+    /* Transição do fundo */
     transition: background-color 0.2s ease;
 }
 
+/* Efeito ao passar o mouse no cadastro */
 .register-button:hover {
+    /* Escurece o fundo */
     background: #1d4ed8;
 }
 
 
 /* =========================================================
    HERO
+   Primeira seção da página Sobre Nós
 ========================================================= */
 
+/* Área principal do topo da página */
 .about-hero {
+    /* Define uma altura mínima */
     min-height: 410px;
+
+    /* Ativa Flexbox */
     display: flex;
+
+    /* Centraliza o conteúdo verticalmente */
     align-items: center;
+
+    /* Espaçamento interno */
     padding: 70px 10%;
 
+    /* Cria um gradiente sobre uma imagem de fundo */
     background:
         linear-gradient(
             90deg,
+
+            /* Lado esquerdo mais claro */
             rgba(248, 250, 252, 0.98) 0%,
+
+            /* Parte central */
             rgba(248, 250, 252, 0.90) 50%,
+
+            /* Lado direito mais transparente */
             rgba(248, 250, 252, 0.45) 100%
         ),
+
+        /* Imagem utilizada como fundo */
         url("https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1600&q=85");
 
+    /* Faz a imagem preencher toda a área */
     background-size: cover;
+
+    /* Centraliza a imagem */
     background-position: center;
 }
 
+/* Container do conteúdo do Hero */
 .about-hero-content {
+    /* Ocupa toda a largura disponível */
     width: 100%;
+
+    /* Limita a largura do conteúdo */
     max-width: 650px;
 }
 
+/* Pequeno texto acima dos títulos */
 .section-label {
+    /* Faz ocupar uma linha */
     display: block;
+
+    /* Cor azul */
     color: #2563eb;
+
+    /* Tamanho pequeno */
     font-size: 11px;
+
+    /* Texto mais grosso */
     font-weight: 800;
+
+    /* Espaçamento entre as letras */
     letter-spacing: 1.8px;
 }
 
+/* Título principal do Hero */
 .about-hero h2 {
+    /* Espaçamento superior */
     margin: 14px 0 0;
+
+    /* Cor do texto */
     color: #1e293b;
+
+    /* Tamanho do título */
     font-size: 52px;
+
+    /* Altura das linhas */
     line-height: 1.08;
+
+    /* Peso da fonte */
     font-weight: 800;
 }
 
+/* Segunda parte do título */
 .about-hero h2 span {
+    /* Faz o texto ficar em uma nova linha */
     display: block;
+
+    /* Deixa a segunda parte azul */
     color: #2563eb;
 }
 
+/* Texto de descrição do Hero */
 .about-hero p {
+    /* Limita a largura do parágrafo */
     max-width: 570px;
+
+    /* Espaçamento superior */
     margin-top: 20px;
+
+    /* Cor do texto */
     color: #64748b;
+
+    /* Tamanho da fonte */
     font-size: 17px;
+
+    /* Espaçamento entre linhas */
     line-height: 1.7;
 }
 
 
 /* =========================================================
    INTRODUÇÃO
+   Seção "Nossa História"
 ========================================================= */
 
+/* Container da seção */
 .about-introduction {
+    /* Ocupa toda a largura */
     width: 100%;
+
+    /* Espaçamento interno */
     padding: 100px 8%;
+
+    /* Ativa CSS Grid */
     display: grid;
+
+    /* Cria duas colunas */
     grid-template-columns: 0.9fr 1.1fr;
+
+    /* Espaço entre imagem e texto */
     gap: 80px;
+
+    /* Centraliza verticalmente */
     align-items: center;
+
+    /* Fundo branco */
     background: #ffffff;
 }
 
+/* Container da imagem */
 .about-introduction-image {
+    /* Ocupa toda a largura da coluna */
     width: 100%;
+
+    /* Altura da imagem */
     height: 520px;
+
+    /* Esconde partes da imagem que ultrapassarem o container */
     overflow: hidden;
+
+    /* Arredonda os cantos */
     border-radius: 14px;
 }
 
+/* Imagem da introdução */
 .about-introduction-image img {
+    /* Ocupa toda a largura */
     width: 100%;
+
+    /* Ocupa toda a altura */
     height: 100%;
+
+    /* Remove espaços indesejados da imagem */
     display: block;
+
+    /* Faz a imagem preencher o container sem deformar */
     object-fit: cover;
 }
 
+/* Container do texto da introdução */
 .about-introduction-content {
+    /* Ocupa toda a largura disponível */
     width: 100%;
+
+    /* Limita a largura do texto */
     max-width: 600px;
 }
 
+/* Título da introdução */
 .about-introduction-content h2 {
+    /* Espaçamento superior */
     margin: 13px 0 0;
+
+    /* Cor */
     color: #1e293b;
+
+    /* Tamanho */
     font-size: 40px;
+
+    /* Altura das linhas */
     line-height: 1.15;
+
+    /* Peso */
     font-weight: 800;
 }
 
+/* Parte azul do título */
 .about-introduction-content h2 span {
+    /* Coloca em uma nova linha */
     display: block;
+
+    /* Cor azul */
     color: #2563eb;
 }
 
+/* Parágrafos da introdução */
 .about-introduction-content p {
+    /* Espaçamento entre título/parágrafos */
     margin-top: 18px;
+
+    /* Cor */
     color: #64748b;
+
+    /* Tamanho */
     font-size: 15px;
+
+    /* Espaçamento entre linhas */
     line-height: 1.8;
 }
 
 
 /* =========================================================
    MISSÃO
+   Seção "Nossa Missão"
 ========================================================= */
 
+/* Container da seção */
 .mission-section {
+    /* Ocupa toda a largura */
     width: 100%;
+
+    /* Espaçamento interno */
     padding: 100px 8%;
+
+    /* Ativa CSS Grid */
     display: grid;
+
+    /* Cria duas colunas iguais */
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+    /* Espaço entre as colunas */
     gap: 70px;
+
+    /* Centraliza verticalmente */
     align-items: center;
+
+    /* Fundo cinza claro */
     background: #f8fafc;
 }
 
+/* Container do texto */
 .mission-content {
+    /* Ocupa toda a largura */
     width: 100%;
+
+    /* Limita a largura */
     max-width: 600px;
 }
 
+/* Título da missão */
 .mission-content h2 {
+    /* Espaçamento superior */
     margin: 13px 0 0;
+
+    /* Cor */
     color: #1e293b;
+
+    /* Tamanho */
     font-size: 42px;
+
+    /* Altura das linhas */
     line-height: 1.15;
+
+    /* Peso */
     font-weight: 800;
 }
 
+/* Parte azul do título */
 .mission-content h2 span {
+    /* Coloca em outra linha */
     display: block;
+
+    /* Cor azul */
     color: #2563eb;
 }
 
+/* Parágrafos da missão */
 .mission-content p {
+    /* Espaçamento superior */
     margin-top: 18px;
+
+    /* Cor */
     color: #64748b;
+
+    /* Tamanho */
     font-size: 15px;
+
+    /* Espaçamento entre linhas */
     line-height: 1.8;
 }
 
+/* Container da imagem */
 .mission-image {
+    /* Ocupa toda a coluna */
     width: 100%;
+
+    /* Altura da imagem */
     height: 500px;
+
+    /* Esconde o que ultrapassar */
     overflow: hidden;
+
+    /* Cantos arredondados */
     border-radius: 14px;
 }
 
+/* Imagem da missão */
 .mission-image img {
+    /* Largura total */
     width: 100%;
+
+    /* Altura total */
     height: 100%;
+
+    /* Remove espaços */
     display: block;
+
+    /* Preenche o espaço sem deformar */
     object-fit: cover;
+
+    /* Centraliza a imagem */
     object-position: center;
 }
 
 
 /* =========================================================
    VALORES
+   Seção "Nossos Valores"
 ========================================================= */
 
+/* Container da seção */
 .values-section {
+    /* Ocupa toda a largura */
     width: 100%;
+
+    /* Espaçamento interno */
     padding: 100px 8%;
+
+    /* Fundo branco */
     background: #ffffff;
 }
 
+/* Cabeçalho da seção */
 .values-header {
+    /* Ocupa toda a largura */
     width: 100%;
+
+    /* Limita a largura */
     max-width: 650px;
+
+    /* Centraliza horizontalmente */
     margin: 0 auto 45px;
+
+    /* Centraliza o texto */
     text-align: center;
 }
 
+/* Label da seção de valores */
 .values-header .section-label {
+    /* Espaçamento inferior */
     margin-bottom: 12px;
+
+    /* Cor azul */
     color: #2563eb;
+
+    /* Tamanho */
     font-size: 11px;
+
+    /* Peso */
     font-weight: 800;
+
+    /* Espaçamento entre letras */
     letter-spacing: 1.8px;
 }
 
+/* Título da seção */
 .values-header h2 {
+    /* Margem */
     margin: 10px 0 0;
+
+    /* Cor */
     color: #1e293b;
+
+    /* Tamanho */
     font-size: 36px;
+
+    /* Altura da linha */
     line-height: 1.2;
+
+    /* Peso */
     font-weight: 800;
+
+    /* Garante que o elemento fique visível */
     opacity: 1;
+
+    /* Garante que o elemento seja visível */
     visibility: visible;
 }
 
+/* Descrição da seção */
 .values-header p {
+    /* Espaçamento superior */
     margin-top: 12px;
+
+    /* Cor */
     color: #64748b;
+
+    /* Tamanho */
     font-size: 14px;
+
+    /* Altura das linhas */
     line-height: 1.7;
+
+    /* Opacidade normal */
     opacity: 1;
 }
 
@@ -341,212 +706,423 @@ body {
    CARDS DOS VALORES
 ========================================================= */
 
+/* Grade que contém os quatro cards */
 .values-grid {
+    /* Ativa CSS Grid */
     display: grid;
+
+    /* Cria quatro colunas iguais */
     grid-template-columns: repeat(4, 1fr);
+
+    /* Espaço entre os cards */
     gap: 20px;
 }
 
+/* Card individual */
 .value-card {
+    /* Define uma altura mínima */
     min-height: 230px;
+
+    /* Espaçamento interno */
     padding: 30px 25px;
+
+    /* Borda */
     border: 1px solid #e2e8f0;
+
+    /* Cantos arredondados */
     border-radius: 12px;
+
+    /* Fundo branco */
     background: #ffffff;
 
+    /* Cria transições suaves para os efeitos */
     transition:
         transform 0.25s ease,
         border-color 0.25s ease,
         box-shadow 0.25s ease;
 }
 
+/* Efeito do card ao passar o mouse */
 .value-card:hover {
+    /* Move o card 5px para cima */
     transform: translateY(-5px);
+
+    /* Muda a cor da borda */
     border-color: #bfdbfe;
+
+    /* Adiciona uma sombra */
     box-shadow: 0 15px 30px rgba(15, 23, 42, 0.07);
 }
 
+/* Número do valor */
 .value-number {
+    /* Cor azul */
     color: #2563eb;
+
+    /* Tamanho pequeno */
     font-size: 12px;
+
+    /* Peso */
     font-weight: 800;
+
+    /* Espaçamento entre letras */
     letter-spacing: 1px;
 }
 
+/* Título do card */
 .value-card h3 {
+    /* Espaçamento superior */
     margin-top: 20px;
+
+    /* Cor */
     color: #111827;
+
+    /* Tamanho */
     font-size: 20px;
+
+    /* Altura da linha */
     line-height: 1.2;
+
+    /* Peso */
     font-weight: 800;
 }
 
+/* Texto do card */
 .value-card p {
+    /* Espaçamento superior */
     margin-top: 10px;
+
+    /* Cor */
     color: #64748b;
+
+    /* Tamanho */
     font-size: 13px;
+
+    /* Espaçamento entre linhas */
     line-height: 1.7;
 }
 
 
 /* =========================================================
    NÚMEROS
+   Seção "PetCare em Números"
 ========================================================= */
 
+/* Container da seção */
 .numbers-section {
+    /* Largura automática */
     width: auto;
+
+    /* Margem lateral de 8% e inferior de 100px */
     margin: 0 8% 100px;
+
+    /* Ativa CSS Grid */
     display: grid;
+
+    /* Cria duas colunas */
     grid-template-columns: 0.9fr 1.1fr;
+
+    /* Espaço entre imagem e conteúdo */
     gap: 70px;
+
+    /* Centraliza verticalmente */
     align-items: center;
 }
 
+/* Container da imagem */
 .numbers-image {
+    /* Ocupa toda a largura */
     width: 100%;
+
+    /* Define a altura */
     height: 480px;
+
+    /* Esconde excesso da imagem */
     overflow: hidden;
+
+    /* Arredonda os cantos */
     border-radius: 14px;
 }
 
+/* Imagem da seção */
 .numbers-image img {
+    /* Ocupa toda a largura */
     width: 100%;
+
+    /* Ocupa toda a altura */
     height: 100%;
+
+    /* Remove espaços */
     display: block;
+
+    /* Preenche o container sem deformar */
     object-fit: cover;
 }
 
+/* Conteúdo dos números */
 .numbers-content {
+    /* Ocupa toda a largura */
     width: 100%;
+
+    /* Limita a largura */
     max-width: 600px;
 }
 
+/* Título dos números */
 .numbers-content h2 {
+    /* Margem superior */
     margin: 12px 0 0;
+
+    /* Cor */
     color: #1e293b;
+
+    /* Tamanho */
     font-size: 40px;
+
+    /* Altura das linhas */
     line-height: 1.15;
+
+    /* Peso */
     font-weight: 800;
+
+    /* Opacidade normal */
     opacity: 1;
+
+    /* Elemento visível */
     visibility: visible;
 }
 
+/* Parte azul do título */
 .numbers-content h2 span {
+    /* Coloca em outra linha */
     display: block;
+
+    /* Cor azul */
     color: #2563eb;
 }
 
+/* Grid dos números */
 .numbers-grid {
+    /* Ativa CSS Grid */
     display: grid;
+
+    /* Cria duas colunas */
     grid-template-columns: 1fr 1fr;
+
+    /* Espaço entre os elementos */
     gap: 30px;
+
+    /* Espaçamento acima */
     margin-top: 35px;
 }
 
+/* Cada item de número */
 .number-item {
+    /* Espaçamento inferior */
     padding-bottom: 20px;
+
+    /* Linha inferior */
     border-bottom: 1px solid #e2e8f0;
 }
 
+/* Número em destaque */
 .number-item strong {
+    /* Faz ocupar uma linha */
     display: block;
+
+    /* Cor azul */
     color: #2563eb;
+
+    /* Tamanho grande */
     font-size: 30px;
+
+    /* Altura da linha */
     line-height: 1.2;
+
+    /* Peso */
     font-weight: 800;
 }
 
+/* Texto abaixo do número */
 .number-item span {
+    /* Faz ocupar uma linha */
     display: block;
+
+    /* Espaçamento superior */
     margin-top: 4px;
+
+    /* Cor */
     color: #64748b;
+
+    /* Tamanho */
     font-size: 12px;
 }
 
 
 /* =========================================================
    CTA
+   Área de chamada para ação
 ========================================================= */
 
+/* Container principal do CTA */
 .about-cta {
+    /* Largura automática */
     width: auto;
+
+    /* Margens laterais e inferior */
     margin: 0 8% 90px;
+
+    /* Espaçamento interno */
     padding: 55px 60px;
 
+    /* Ativa Flexbox */
     display: flex;
+
+    /* Centraliza verticalmente */
     align-items: center;
+
+    /* Coloca texto e botão em lados opostos */
     justify-content: space-between;
+
+    /* Espaço entre os elementos */
     gap: 40px;
 
+    /* Arredonda os cantos */
     border-radius: 15px;
+
+    /* Fundo azul */
     background: #2563eb;
 }
 
+/* Container do texto do CTA */
 .about-cta > div {
+    /* Limita a largura */
     max-width: 650px;
 }
 
+/* Pequeno texto do CTA */
 .about-cta > div > span {
+    /* Faz ocupar uma linha */
     display: block;
+
+    /* Cor branca */
     color: #ffffff;
+
+    /* Tamanho */
     font-size: 10px;
+
+    /* Peso */
     font-weight: 800;
+
+    /* Espaçamento entre letras */
     letter-spacing: 1.8px;
+
+    /* Deixa um pouco transparente */
     opacity: 0.85;
 }
 
+/* Título do CTA */
 .about-cta h2 {
+    /* Espaçamento */
     margin: 9px 0 0;
+
+    /* Cor branca */
     color: #ffffff;
+
+    /* Tamanho */
     font-size: 32px;
+
+    /* Altura da linha */
     line-height: 1.2;
+
+    /* Peso */
     font-weight: 800;
 }
 
+/* Texto do CTA */
 .about-cta p {
+    /* Espaçamento superior */
     margin-top: 10px;
+
+    /* Cor branca */
     color: #ffffff;
+
+    /* Tamanho */
     font-size: 14px;
+
+    /* Altura das linhas */
     line-height: 1.6;
+
+    /* Levemente transparente */
     opacity: 0.9;
 }
 
 
 /* =========================================================
    BOTÃO CTA
+   Botão "Criar minha conta"
 ========================================================= */
 
+/* Botão do CTA */
 .about-cta .cta-button {
+    /* Impede o botão de encolher */
     flex-shrink: 0;
 
+    /* Largura mínima */
     min-width: 190px;
+
+    /* Altura mínima */
     min-height: 48px;
 
+    /* Espaçamento interno */
     padding: 14px 22px;
 
+    /* Ativa Flexbox */
     display: inline-flex;
+
+    /* Centraliza verticalmente */
     align-items: center;
+
+    /* Centraliza horizontalmente */
     justify-content: center;
+
+    /* Espaço entre texto e seta */
     gap: 10px;
 
+    /* Remove a borda */
     border: none !important;
+
+    /* Arredonda os cantos */
     border-radius: 8px;
 
+    /* Fundo branco */
     background: #ffffff !important;
 
+    /* Remove sublinhado */
     text-decoration: none !important;
 
+    /* Define a fonte */
     font-family: "Nunito", Arial, sans-serif;
+
+    /* Tamanho da fonte */
     font-size: 13px;
+
+    /* Peso da fonte */
     font-weight: 800;
 
+    /* Mostra o cursor de clique */
     cursor: pointer;
 
+    /* Garante opacidade total */
     opacity: 1 !important;
+
+    /* Garante visibilidade */
     visibility: visible !important;
 
+    /* Remove sombra */
     box-shadow: none !important;
 
+    /* Define transições suaves */
     transition:
         background-color 0.2s ease,
         transform 0.2s ease;
@@ -558,37 +1134,62 @@ body {
 ========================================================= */
 
 /*
-   IMPORTANTE:
-   .cta-text está DENTRO de .cta-button.
-   
-   Por isso usamos:
-   
+   O .cta-text está dentro do .cta-button.
+
+   Portanto usamos:
+
    .cta-button .cta-text
-   
-   e NÃO:
-   
+
+   e não:
+
    .cta-button.cta-text
+
+   O primeiro significa:
+   "elemento .cta-text dentro de .cta-button".
+
+   O segundo significaria:
+   "um único elemento que possui as duas classes".
 */
 
+/* Texto "Criar minha conta" */
 .about-cta .cta-button .cta-text {
+    /* Permite controlar o elemento como um bloco dentro do botão */
     display: inline-block;
 
+    /* Remove margem */
     margin: 0;
+
+    /* Remove padding */
     padding: 0;
 
+    /* Cor azul */
     color: #2563eb !important;
+
+    /* Define a cor do preenchimento do texto em navegadores WebKit */
     -webkit-text-fill-color: #2563eb !important;
 
+    /* Fonte */
     font-family: "Nunito", Arial, sans-serif;
+
+    /* Tamanho */
     font-size: 13px;
+
+    /* Peso */
     font-weight: 800;
+
+    /* Altura da linha */
     line-height: 1;
 
+    /* Fundo transparente */
     background: transparent !important;
 
+    /* Opacidade normal */
     opacity: 1 !important;
+
+    /* Elemento visível */
     visibility: visible !important;
 
+    /* Remove sublinhado */
     text-decoration: none !important;
 }
 
@@ -597,27 +1198,51 @@ body {
    SETA DO BOTÃO
 ========================================================= */
 
+/* Seta "→" do botão */
 .about-cta .cta-button .cta-arrow {
+    /* Permite utilizar Flexbox */
     display: inline-flex;
+
+    /* Centraliza verticalmente */
     align-items: center;
+
+    /* Centraliza horizontalmente */
     justify-content: center;
 
+    /* Remove margem */
     margin: 0;
+
+    /* Remove padding */
     padding: 0;
 
+    /* Cor azul */
     color: #2563eb !important;
+
+    /* Cor do preenchimento do texto */
     -webkit-text-fill-color: #2563eb !important;
 
+    /* Fonte */
     font-family: "Nunito", Arial, sans-serif;
+
+    /* Tamanho da seta */
     font-size: 18px;
+
+    /* Peso */
     font-weight: 800;
+
+    /* Altura da linha */
     line-height: 1;
 
+    /* Fundo transparente */
     background: transparent !important;
 
+    /* Opacidade normal */
     opacity: 1 !important;
+
+    /* Garante visibilidade */
     visibility: visible !important;
 
+    /* Remove sublinhado */
     text-decoration: none !important;
 }
 
@@ -626,11 +1251,15 @@ body {
    HOVER DO BOTÃO
 ========================================================= */
 
+/* Quando o mouse passa sobre o botão */
 .about-cta .cta-button:hover {
+    /* Muda o fundo para um azul bem claro */
     background: #eff6ff !important;
 
+    /* Move o botão 2px para cima */
     transform: translateY(-2px);
 
+    /* Garante que não apareça sublinhado */
     text-decoration: none !important;
 }
 
@@ -639,8 +1268,12 @@ body {
    HOVER DO TEXTO
 ========================================================= */
 
+/* Muda a cor do texto quando o botão recebe hover */
 .about-cta .cta-button:hover .cta-text {
+    /* Azul mais escuro */
     color: #1d4ed8 !important;
+
+    /* Mantém a cor do preenchimento */
     -webkit-text-fill-color: #1d4ed8 !important;
 }
 
@@ -649,8 +1282,12 @@ body {
    HOVER DA SETA
 ========================================================= */
 
+/* Muda a cor da seta quando o botão recebe hover */
 .about-cta .cta-button:hover .cta-arrow {
+    /* Azul mais escuro */
     color: #1d4ed8 !important;
+
+    /* Mantém a cor do preenchimento */
     -webkit-text-fill-color: #1d4ed8 !important;
 }
 
@@ -659,126 +1296,198 @@ body {
    GARANTIA CONTRA ESTILOS GLOBAIS DE LINKS
 ========================================================= */
 
+/*
+   Garante que o botão não receba sublinhado
+   de outros estilos globais de links.
+*/
+
+/* Aplica a regra para todos os estados do link */
 .about-cta a.cta-button,
 .about-cta a.cta-button:link,
 .about-cta a.cta-button:visited,
 .about-cta a.cta-button:hover,
 .about-cta a.cta-button:active {
+    /* Remove o sublinhado em todos os estados */
     text-decoration: none !important;
 }
 
 
 /* =========================================================
    FOOTER
+   Rodapé da página
 ========================================================= */
 
+/* Rodapé */
 footer {
+    /* Ocupa toda a largura */
     width: 100%;
+
+    /* Espaçamento interno */
     padding: 55px 8% 25px;
+
+    /* Fundo cinza claro */
     background: #f8fafc;
+
+    /* Linha superior */
     border-top: 1px solid #eef2f7;
 }
 
+/* Conteúdo principal do footer */
 .footer-content {
+    /* Ativa CSS Grid */
     display: grid;
+
+    /* Cria quatro colunas */
     grid-template-columns: 2fr 1fr 1fr 1fr;
+
+    /* Espaço entre as colunas */
     gap: 50px;
 }
 
+/* Descrição abaixo da logo */
 .footer-brand p {
+    /* Espaçamento superior */
     margin-top: 12px;
+
+    /* Cor */
     color: #64748b;
+
+    /* Tamanho */
     font-size: 13px;
 }
 
+/* Logo do footer */
 .footer-logo {
+    /* Faz a logo funcionar como elemento inline-flex */
     display: inline-flex;
 }
 
+/* Colunas do footer */
 .footer-column {
+    /* Ativa Flexbox */
     display: flex;
+
+    /* Organiza os elementos verticalmente */
     flex-direction: column;
+
+    /* Espaçamento entre os elementos */
     gap: 11px;
 }
 
+/* Títulos das colunas */
 .footer-column strong {
+    /* Espaçamento inferior */
     margin-bottom: 5px;
+
+    /* Cor */
     color: #1e293b;
+
+    /* Tamanho */
     font-size: 13px;
 }
 
+/* Links e textos das colunas */
 .footer-column a,
 .footer-column span {
+    /* Cor */
     color: #64748b;
+
+    /* Remove sublinhado */
     text-decoration: none;
+
+    /* Tamanho */
     font-size: 12px;
 }
 
+/* Efeito nos links do footer */
 .footer-column a:hover {
+    /* Muda para azul */
     color: #2563eb;
 }
 
+/* Parte inferior do footer */
 .footer-bottom {
+    /* Espaçamento acima */
     margin-top: 45px;
+
+    /* Espaçamento interno superior */
     padding-top: 20px;
 
+    /* Ativa Flexbox */
     display: flex;
+
+    /* Coloca os textos em lados opostos */
     justify-content: space-between;
 
+    /* Linha separadora */
     border-top: 1px solid #e2e8f0;
 
+    /* Cor dos textos */
     color: #94a3b8;
+
+    /* Tamanho */
     font-size: 11px;
 }
 
 
 /* =========================================================
    TABLET
+   Regras para telas de até 1000px
 ========================================================= */
 
 @media (max-width: 1000px) {
 
+    /* Diminui o espaçamento lateral da navbar */
     .navbar {
         padding: 0 5%;
     }
 
+    /* Diminui o espaçamento do Hero */
     .about-hero {
         padding: 60px 7%;
     }
 
+    /* Diminui o tamanho do título */
     .about-hero h2 {
         font-size: 44px;
     }
 
+    /* Ajusta o espaçamento da introdução */
     .about-introduction {
         padding: 80px 6%;
         gap: 45px;
     }
 
+    /* Ajusta o espaçamento da missão */
     .mission-section {
         padding: 80px 6%;
         gap: 45px;
     }
 
+    /* Ajusta o espaçamento dos valores */
     .values-section {
         padding: 80px 6%;
     }
 
+    /* Os quatro cards passam para duas colunas */
     .values-grid {
         grid-template-columns: 1fr 1fr;
     }
 
+    /* Diminui as margens da seção de números */
     .numbers-section {
         margin-left: 6%;
         margin-right: 6%;
         gap: 45px;
     }
 
+    /* Diminui as margens do CTA */
     .about-cta {
         margin-left: 6%;
         margin-right: 6%;
     }
 
+    /* Diminui o espaçamento lateral do footer */
     footer {
         padding-left: 6%;
         padding-right: 6%;
@@ -788,180 +1497,266 @@ footer {
 
 /* =========================================================
    MOBILE
+   Regras para telas de até 750px
 ========================================================= */
 
 @media (max-width: 750px) {
 
-    /* NAVBAR */
+    /* =====================================================
+       NAVBAR NO CELULAR
+    ===================================================== */
 
     .navbar {
+        /* Altura automática */
         height: auto;
+
+        /* Espaçamento interno */
         padding: 18px 6%;
 
+        /* Permite que os elementos quebrem para outra linha */
         flex-wrap: wrap;
+
+        /* Espaço entre os elementos */
         gap: 18px;
     }
 
+    /* Links da navbar */
     .nav-links {
+        /* Coloca os links na terceira posição */
         order: 3;
+
+        /* Ocupa toda a largura */
         width: 100%;
 
+        /* Centraliza os links */
         justify-content: center;
+
+        /* Espaço entre eles */
         gap: 25px;
     }
 
+    /* Área dos botões */
     .nav-actions {
+        /* Empurra os botões para a direita */
         margin-left: auto;
     }
 
 
-    /* HERO */
+    /* =====================================================
+       HERO NO CELULAR
+    ===================================================== */
 
     .about-hero {
+        /* Aumenta um pouco a altura */
         min-height: 430px;
+
+        /* Ajusta o espaçamento */
         padding: 60px 7%;
+
+        /* Move o foco da imagem */
         background-position: 65% center;
     }
 
+    /* Diminui o título */
     .about-hero h2 {
         font-size: 38px;
     }
 
+    /* Diminui o texto */
     .about-hero p {
         font-size: 15px;
     }
 
 
-    /* INTRODUÇÃO */
+    /* =====================================================
+       INTRODUÇÃO NO CELULAR
+    ===================================================== */
 
     .about-introduction {
+        /* Diminui o espaçamento */
         padding: 65px 6%;
 
+        /* Troca Grid por Flexbox */
         display: flex;
+
+        /* Coloca os elementos verticalmente */
         flex-direction: column;
 
+        /* Espaço entre imagem e texto */
         gap: 35px;
 
+        /* Faz os elementos ocuparem a largura */
         align-items: stretch;
     }
 
+    /* Diminui a altura da imagem */
     .about-introduction-image {
         height: 350px;
     }
 
+    /* Diminui o título */
     .about-introduction-content h2 {
         font-size: 31px;
     }
 
 
-    /* MISSÃO */
+    /* =====================================================
+       MISSÃO NO CELULAR
+    ===================================================== */
 
     .mission-section {
+        /* Diminui o espaçamento */
         padding: 65px 6%;
 
+        /* Troca Grid por Flexbox */
         display: flex;
+
+        /* Organiza verticalmente */
         flex-direction: column;
 
+        /* Espaço entre os elementos */
         gap: 35px;
     }
 
+    /* Diminui o título */
     .mission-content h2 {
         font-size: 31px;
     }
 
+    /* Ajusta a imagem */
     .mission-image {
         width: 100%;
         height: 350px;
     }
 
 
-    /* VALORES */
+    /* =====================================================
+       VALORES NO CELULAR
+    ===================================================== */
 
     .values-section {
+        /* Diminui o espaçamento */
         padding: 65px 6%;
     }
 
+    /* Diminui a margem do cabeçalho */
     .values-header {
         margin-bottom: 35px;
     }
 
+    /* Diminui o título */
     .values-header h2 {
         font-size: 30px;
     }
 
+    /* Os cards passam a ficar um embaixo do outro */
     .values-grid {
         grid-template-columns: 1fr;
     }
 
+    /* Remove a altura mínima dos cards */
     .value-card {
         min-height: auto;
     }
 
 
-    /* NÚMEROS */
+    /* =====================================================
+       NÚMEROS NO CELULAR
+    ===================================================== */
 
     .numbers-section {
+        /* Diminui as margens */
         margin: 0 6% 65px;
 
+        /* Troca Grid por Flexbox */
         display: flex;
+
+        /* Organiza verticalmente */
         flex-direction: column;
 
+        /* Espaço entre imagem e conteúdo */
         gap: 35px;
 
+        /* Faz os elementos ocuparem a largura */
         align-items: stretch;
     }
 
+    /* Diminui a altura da imagem */
     .numbers-image {
         height: 350px;
     }
 
+    /* Diminui o título */
     .numbers-content h2 {
         font-size: 31px;
     }
 
+    /* Diminui o espaço entre os números */
     .numbers-grid {
         gap: 20px;
     }
 
 
-    /* CTA */
+    /* =====================================================
+       CTA NO CELULAR
+    ===================================================== */
 
     .about-cta {
+        /* Diminui as margens */
         margin: 0 6% 60px;
+
+        /* Diminui o espaçamento interno */
         padding: 40px 30px;
 
+        /* Troca Flexbox por bloco */
         display: block;
     }
 
+    /* Diminui o tamanho do título */
     .about-cta h2 {
         font-size: 27px;
     }
 
+    /* Ajusta o botão */
     .about-cta .cta-button {
+        /* Largura automática */
         width: auto;
+
+        /* Mantém uma largura mínima */
         min-width: 190px;
 
+        /* Cria espaço acima */
         margin-top: 25px;
     }
 
 
-    /* FOOTER */
+    /* =====================================================
+       FOOTER NO CELULAR
+    ===================================================== */
 
     footer {
+        /* Ajusta o espaçamento */
         padding: 45px 7% 20px;
     }
 
+    /* Cria duas colunas */
     .footer-content {
         grid-template-columns: 1fr 1fr;
+
+        /* Espaço entre elas */
         gap: 35px;
     }
 
+    /* A marca ocupa as duas colunas */
     .footer-brand {
         grid-column: span 2;
     }
 
+    /* Organiza os textos inferiores verticalmente */
     .footer-bottom {
         flex-direction: column;
+
+        /* Espaço entre eles */
         gap: 8px;
     }
 }
@@ -969,54 +1764,69 @@ footer {
 
 /* =========================================================
    CELULAR PEQUENO
+   Regras para telas de até 450px
 ========================================================= */
 
 @media (max-width: 450px) {
 
+    /* Diminui o nome PetCare */
     .logo h1 {
         font-size: 20px;
     }
 
+    /* Diminui o ícone */
     .logo-icon {
         width: 30px;
         height: 30px;
         font-size: 16px;
     }
 
+    /* Diminui o espaço entre os botões */
     .nav-actions {
         gap: 3px;
     }
 
+    /* Diminui o tamanho do botão de login */
     .login-button {
         padding: 8px 10px;
     }
 
+    /* Diminui o tamanho do botão de cadastro */
     .register-button {
         padding: 9px 12px;
     }
 
+    /* Diminui o espaço entre os links */
     .nav-links {
         gap: 17px;
     }
 
+    /* Diminui o tamanho dos links */
     .nav-links a {
         font-size: 12px;
     }
 
 
-    /* HERO */
+    /* =====================================================
+       HERO
+    ===================================================== */
 
     .about-hero {
+        /* Aumenta a altura para telas pequenas */
         min-height: 450px;
     }
 
+    /* Diminui ainda mais o título */
     .about-hero h2 {
         font-size: 32px;
     }
 
 
-    /* IMAGENS */
+    /* =====================================================
+       IMAGENS
+    ===================================================== */
 
+    /* Diminui as três imagens principais */
     .about-introduction-image,
     .mission-image,
     .numbers-image {
@@ -1024,35 +1834,49 @@ footer {
     }
 
 
-    /* NÚMEROS */
+    /* =====================================================
+       NÚMEROS
+    ===================================================== */
 
     .numbers-grid {
+        /* Mantém um pequeno espaço entre os números */
         gap: 20px;
     }
 
+    /* Diminui o tamanho dos números */
     .number-item strong {
         font-size: 26px;
     }
 
 
-    /* CTA */
+    /* =====================================================
+       CTA
+    ===================================================== */
 
     .about-cta {
+        /* Diminui o espaçamento interno */
         padding: 35px 25px;
     }
 
+    /* Faz o botão ocupar toda a largura */
     .about-cta .cta-button {
         width: 100%;
+
+        /* Remove a largura mínima */
         min-width: 0;
     }
 
 
-    /* FOOTER */
+    /* =====================================================
+       FOOTER
+    ===================================================== */
 
     .footer-content {
+        /* Passa de duas colunas para uma */
         grid-template-columns: 1fr;
     }
 
+    /* A marca deixa de ocupar duas colunas */
     .footer-brand {
         grid-column: auto;
     }

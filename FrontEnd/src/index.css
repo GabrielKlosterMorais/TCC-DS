@@ -1,34 +1,86 @@
+/* Define configurações globais para o elemento :root.
+   O :root representa o elemento principal do documento HTML. */
 :root {
+
+  /* Define a fonte padrão de toda a aplicação como Nunito.
+     Caso Nunito não esteja disponível, será usada uma fonte sans-serif. */
   font-family: "Nunito", sans-serif;
 
+  /* Define a cor padrão dos textos como um azul/cinza escuro. */
   color: #1e293b;
+
+  /* Define a cor de fundo padrão como branca. */
   background: #ffffff;
 
+  /* Impede que o navegador crie automaticamente versões
+     artificiais de negrito ou itálico da fonte. */
   font-synthesis: none;
+
+  /* Melhora a forma como os textos são renderizados pelo navegador,
+     deixando a leitura mais nítida. */
   text-rendering: optimizeLegibility;
+
+  /* Melhora a suavização das fontes em navegadores baseados em WebKit,
+     como Chrome e Safari. */
   -webkit-font-smoothing: antialiased;
+
+  /* Melhora a suavização das fontes em sistemas macOS. */
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+/* O seletor * seleciona TODOS os elementos da página. */
 * {
+
+  /* Remove as margens padrão adicionadas pelo navegador. */
   margin: 0;
+
+  /* Remove os espaçamentos internos padrão. */
   padding: 0;
+
+  /* Faz com que width e height incluam o padding e a borda
+     no tamanho total do elemento. */
   box-sizing: border-box;
 }
 
+
+/* Aplica essas configurações tanto ao elemento html
+   quanto ao elemento body. */
 html,
 body {
+
+  /* Faz o documento ocupar 100% da largura disponível. */
   width: 100%;
+
+  /* Garante que a altura mínima seja de 100%. */
   min-height: 100%;
 }
 
+
+/* Configura especificamente o body da página. */
 body {
+
+  /* Remove novamente qualquer margem padrão do navegador. */
   margin: 0;
+
+  /* Define uma largura mínima para a página.
+     Isso ajuda a evitar problemas em telas muito pequenas. */
   min-width: 320px;
+
+  /* Define o fundo geral da aplicação como branco. */
   background: #ffffff;
 }
 
+
+/* Seleciona o elemento com id="root".
+   Esse elemento normalmente está no index.html
+   e é onde o React coloca toda a aplicação. */
 #root {
+
+  /* Faz o React ocupar toda a largura disponível. */
   width: 100%;
+
+  /* Garante que a aplicação tenha pelo menos a altura
+     total da tela do dispositivo. */
   min-height: 100vh;
 }

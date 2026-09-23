@@ -1,261 +1,454 @@
+// Importa os hooks useEffect e useState do React
 import { useEffect, useState } from 'react'
+
+// Importa os estilos CSS da página
 import './styles.css'
+
+// Importa a barra de navegação da área administrativa
 import AdmNavBar from '../../../components/admNavBar'
 
+
+// Interface que define a estrutura de um Pet
 interface Pet {
+
+  // ID único do pet no MongoDB
   _id: string
+
+  // Nome do pet
   nome: string
+
+  // Cliente responsável pelo pet
   clienteId?: {
     _id: string
     nomeCliente: string
   }
 }
 
+
+// Interface que define a estrutura de um serviço
 interface Servico {
+
+  // ID único do serviço
   _id: string
+
+  // Nome do serviço
   nome: string
+
+  // Preço do serviço
   preco: number
 }
 
+
+// Interface que define a estrutura de um agendamento
 interface Agendamento {
+
+  // ID único do agendamento
   _id: string
+
+  // Pet relacionado ao agendamento
   petId: Pet
+
+  // Serviço relacionado ao agendamento
   servicoId: Servico
+
+  // Data do agendamento
   data: string
+
+  // Horário do agendamento
   hora: string
-  status: 'pendente' | 'confirmado' | 'cancelado'
+
+  // Status atual do agendamento
+  status: 'confirmado' | 'cancelado'
+
+  // Observações são opcionais
   observacoes?: string
 }
 
+
+// Interface que define a estrutura de um pagamento
 interface Pagamento {
+
+  // ID único do pagamento
   _id: string
+
+  // Status do pagamento
   status: string
 }
 
-function DashboardAdmin() {
-  const [agendamentos, setAgendamentos] = useState<Agendamento[]>([])
-  const [pagamentos, setPagamentos] = useState<Pagamento[]>([])
-  const [pets, setPets] = useState<Pet[]>([])
-  const [loading, setLoading] = useState(true)
 
+// Componente principal do Dashboard Administrativo
+function DashboardAdmin() {
+
+  // Guarda todos os agendamentos encontrados na API
+  const [agendamentos, setAgendamentos] =
+    useState<Agendamento[]>([])
+
+  // Guarda todos os pagamentos encontrados na API
+  const [pagamentos, setPagamentos] =
+    useState<Pagamento[]>([])
+
+  // Guarda todos os pets encontrados na API
+  const [pets, setPets] =
+    useState<Pet[]>([])
+
+  // Controla o carregamento dos dados
+  const [loading, setLoading] =
+    useState(true)
+
+
+  // =========================================================
+  // CARREGAR DADOS
+  // =========================================================
+
+  // Busca os dados necessários para o dashboard
   const carregarDados = async () => {
+
     try {
-      const [agendamentosRes, pagamentosRes, petsRes] = await Promise.all([
-        fetch('http://localhost:3001/Agendamento'),
-        fetch('http://localhost:3001/Pagamento'),
-        fetch('http://localhost:3001/Pet')
+
+      // Faz as três requisições ao mesmo tempo
+      const [
+        agendamentosRes,
+        pagamentosRes,
+        petsRes
+      ] = await Promise.all([
+
+        // Busca os agendamentos
+        fetch(
+          'http://localhost:3001/Agendamento'
+        ),
+
+        // Busca os pagamentos
+        fetch(
+          'http://localhost:3001/Pagamento'
+        ),
+
+        // Busca os pets
+        fetch(
+          'http://localhost:3001/Pet'
+        )
+
       ])
 
-      const agendamentosData = await agendamentosRes.json()
-      const pagamentosData = await pagamentosRes.json()
-      const petsData = await petsRes.json()
 
-      setAgendamentos(agendamentosData.data || [])
-      setPagamentos(pagamentosData.data || [])
-      setPets(petsData.data || [])
+      // Converte os agendamentos para JSON
+      const agendamentosData =
+        await agendamentosRes.json()
+
+      // Converte os pagamentos para JSON
+      const pagamentosData =
+        await pagamentosRes.json()
+
+      // Converte os pets para JSON
+      const petsData =
+        await petsRes.json()
+
+
+      // Salva os agendamentos
+      setAgendamentos(
+        agendamentosData.data || []
+      )
+
+      // Salva os pagamentos
+      setPagamentos(
+        pagamentosData.data || []
+      )
+
+      // Salva os pets
+      setPets(
+        petsData.data || []
+      )
+
+
     } catch (error) {
-      console.error('Erro ao carregar dados:', error)
+
+      // Mostra o erro no console
+      console.error(
+        'Erro ao carregar dados:',
+        error
+      )
+
     } finally {
+
+      // Finaliza o carregamento
       setLoading(false)
     }
   }
 
+
+  // =========================================================
+  // EXECUTAR AO ABRIR A PÁGINA
+  // =========================================================
+
   useEffect(() => {
+
+    // Busca os dados
     carregarDados()
+
   }, [])
 
-  const atualizarStatus = async (
-  agendamento: Agendamento,
-  status: 'confirmado' | 'cancelado'
-) => {
-  try {
-    const res = await fetch(
-      `http://localhost:3001/Agendamento/${agendamento._id}`,
-      {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          petId: agendamento.petId._id,
-          servicoId: agendamento.servicoId._id,
-          data: agendamento.data,
-          hora: agendamento.hora,
-          status,
-          observacoes: agendamento.observacoes
-        })
-      }
+
+  // =========================================================
+  // FILTRAR AGENDAMENTOS
+  // =========================================================
+
+  // Como agora todo agendamento criado já é confirmado,
+  // não precisamos mais de uma lista de pendentes.
+
+  // Lista somente os agendamentos confirmados
+  const confirmados =
+    agendamentos.filter(
+      agendamento =>
+        agendamento.status === 'confirmado'
     )
 
-    if (!res.ok) {
-      throw new Error('Erro ao atualizar agendamento')
-    }
 
-    if (status === 'confirmado') {
-
-      const clienteId = agendamento.petId?.clienteId?._id
-      const valor = agendamento.servicoId?.preco
-
-      if (!clienteId) {
-        throw new Error('Cliente do pet não encontrado')
-      }
-
-      if (!valor) {
-        throw new Error('Preço do serviço não encontrado')
-      }
-
-      const pagamentoRes = await fetch(
-        'http://localhost:3001/Pagamento',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            clienteId,
-            agendamentoId: agendamento._id,
-            formaPagamento: 'pix',
-            status: 'pendente',
-            valor
-          })
-        }
-      )
-
-      if (!pagamentoRes.ok) {
-        throw new Error('Agendamento confirmado, mas não foi possível criar o pagamento')
-      }
-    }
-
-    await carregarDados()
-
-  } catch (error) {
-    console.error(error)
-    alert(
-      error instanceof Error
-        ? error.message
-        : 'Erro ao atualizar agendamento'
+  // Lista somente os pagamentos pendentes
+  const pagamentosPendentes =
+    pagamentos.filter(
+      pagamento =>
+        pagamento.status === 'pendente'
     )
-  }
-}
 
-  const pendentes = agendamentos.filter(
-    (agendamento) => agendamento.status === 'pendente'
-  )
 
-  const confirmados = agendamentos.filter(
-    (agendamento) => agendamento.status === 'confirmado'
-  )
+  // =========================================================
+  // FORMATAR DATA
+  // =========================================================
 
-  const pagamentosPendentes = pagamentos.filter(
-    (pagamento) => pagamento.status === 'pendente'
-  )
-
+  // Converte uma data para o formato brasileiro
   const formatarData = (data: string) => {
-    return new Date(data).toLocaleDateString('pt-BR')
+
+    return new Date(data)
+      .toLocaleDateString('pt-BR')
   }
+
+
+  // =========================================================
+  // RETORNO DA PÁGINA
+  // =========================================================
 
   return (
+
     <div className="admin-page">
 
+      {/* Barra de navegação administrativa */}
       <AdmNavBar />
 
+
+      {/* Conteúdo principal */}
       <main className="admin-container">
 
+
+        {/* =================================================
+            CABEÇALHO
+        ================================================= */}
+
         <div className="admin-header">
+
+          {/* Identificação da área */}
           <span>ÁREA ADMINISTRATIVA</span>
+
+          {/* Título */}
           <h2>Dashboard</h2>
-          <p>Gerencie os agendamentos e pagamentos do PetCare.</p>
+
+          {/* Descrição */}
+          <p>
+            Gerencie os agendamentos e pagamentos do PetCare.
+          </p>
+
         </div>
 
+
+        {/* =================================================
+            CARREGAMENTO
+        ================================================= */}
+
         {loading ? (
-          <p>Carregando dados...</p>
+
+          <p>
+            Carregando dados...
+          </p>
+
         ) : (
+
           <>
+
+
+            {/* =================================================
+                CARDS DE ESTATÍSTICAS
+            ================================================= */}
+
             <div className="stats">
 
+
+              {/* Agendamentos confirmados */}
               <div className="stat-card">
-                <span>Agendamentos pendentes</span>
-                <strong>{pendentes.length}</strong>
+
+                <span>
+                  Agendamentos confirmados
+                </span>
+
+                <strong>
+                  {confirmados.length}
+                </strong>
+
               </div>
 
+
+              {/* Pagamentos pendentes */}
               <div className="stat-card">
-                <span>Agendamentos confirmados</span>
-                <strong>{confirmados.length}</strong>
+
+                <span>
+                  Pagamentos pendentes
+                </span>
+
+                <strong>
+                  {pagamentosPendentes.length}
+                </strong>
+
               </div>
 
+
+              {/* Pets cadastrados */}
               <div className="stat-card">
-                <span>Pagamentos pendentes</span>
-                <strong>{pagamentosPendentes.length}</strong>
+
+                <span>
+                  Pets cadastrados
+                </span>
+
+                <strong>
+                  {pets.length}
+                </strong>
+
               </div>
 
-              <div className="stat-card">
-                <span>Pets cadastrados</span>
-                <strong>{pets.length}</strong>
-              </div>
 
             </div>
 
+
+            {/* =================================================
+                AGENDAMENTOS
+            ================================================= */}
+
             <section className="appointments">
 
+
+              {/* Cabeçalho da seção */}
               <div className="section-header">
+
                 <div>
-                  <span>ATENÇÃO</span>
-                  <h2>Agendamentos pendentes</h2>
+
+                  <span>
+                    AGENDAMENTOS
+                  </span>
+
+                  <h2>
+                    Próximos agendamentos
+                  </h2>
+
                 </div>
 
+
+                {/* Link para a página completa */}
                 <a href="/admin/agendamentos">
                   Ver todos →
                 </a>
+
               </div>
 
-              {pendentes.length === 0 ? (
-                <p>Nenhum agendamento pendente.</p>
+
+              {/* Verifica se existem agendamentos */}
+              {confirmados.length === 0 ? (
+
+                <p>
+                  Nenhum agendamento confirmado.
+                </p>
+
               ) : (
-                pendentes.map((agendamento) => (
 
-                  <div className="appointment" key={agendamento._id}>
+                confirmados.map(
+                  (agendamento) => (
 
-                    <div>
-                      <strong>{agendamento.petId?.nome}</strong>
+                    <div
+                      className="appointment"
+                      key={agendamento._id}
+                    >
+
+
+                      {/* =================================================
+                          PET E CLIENTE
+                      ================================================= */}
+
+                      <div>
+
+                        {/* Nome do pet */}
+                        <strong>
+                          {agendamento.petId?.nome}
+                        </strong>
+
+                        {/* Nome do cliente */}
+                        <span>
+                          {
+                            agendamento.petId
+                              ?.clienteId
+                              ?.nomeCliente ||
+                            'Cliente'
+                          }
+                        </span>
+
+                      </div>
+
+
+                      {/* =================================================
+                          SERVIÇO E DATA
+                      ================================================= */}
+
+                      <div>
+
+                        {/* Nome do serviço */}
+                        <strong>
+                          {agendamento.servicoId?.nome}
+                        </strong>
+
+                        {/* Data */}
+                        <span>
+                          {formatarData(
+                            agendamento.data
+                          )}
+                        </span>
+
+                      </div>
+
+
+                      {/* =================================================
+                          HORÁRIO
+                      ================================================= */}
+
+                      <strong>
+                        {agendamento.hora}
+                      </strong>
+
+
+                      {/* =================================================
+                          STATUS
+                      ================================================= */}
+
                       <span>
-                        {agendamento.petId?.clienteId?.nomeCliente || 'Cliente'}
+                        Confirmado
                       </span>
-                    </div>
 
-                    <div>
-                      <strong>{agendamento.servicoId?.nome}</strong>
-                      <span>{formatarData(agendamento.data)}</span>
-                    </div>
-
-                    <strong>{agendamento.hora}</strong>
-
-                    <div className="actions">
-
-                      <button
-                        onClick={() =>
-                          atualizarStatus(agendamento, 'confirmado')
-                        }
-                      >
-                        Confirmar
-                      </button>
-
-                      <button
-                        onClick={() =>
-                          atualizarStatus(agendamento, 'cancelado')
-                        }
-                      >
-                        Cancelar
-                      </button>
 
                     </div>
 
-                  </div>
+                  )
+                )
 
-                ))
               )}
 
             </section>
+
+
           </>
+
         )}
 
       </main>
@@ -264,4 +457,6 @@ function DashboardAdmin() {
   )
 }
 
+
+// Exporta o componente
 export default DashboardAdmin

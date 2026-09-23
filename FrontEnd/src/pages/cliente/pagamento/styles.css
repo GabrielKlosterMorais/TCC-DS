@@ -1,420 +1,1007 @@
+/* =========================================================
+   PÁGINA PRINCIPAL DE PAGAMENTOS
+   ========================================================= */
+
+/* Container geral da página */
 .pagamento-page {
+
+  /* Faz a página ocupar pelo menos toda a altura da tela */
   min-height: 100vh;
+
+  /* Cor de fundo geral */
   background: #f7f9fc;
+
+  /* Cor padrão dos textos */
   color: #111827;
 }
 
+
+/* Container que limita a largura do conteúdo */
 .pagamento-container {
+
+  /* Largura máxima do conteúdo */
   max-width: 1050px;
+
+  /* Centraliza o container horizontalmente */
   margin: 0 auto;
+
+  /* Espaçamento interno:
+     60px em cima
+     35px nas laterais
+     80px embaixo */
   padding: 60px 35px 80px;
+
+  /* Faz padding e bordas fazerem parte da largura total */
   box-sizing: border-box;
 }
 
+
+/* =========================================================
+   CABEÇALHO
+   ========================================================= */
+
 .pagamento-header {
+
+  /* Centraliza os textos */
   text-align: center;
+
+  /* Espaçamento abaixo do cabeçalho */
   margin-bottom: 45px;
 }
 
+
+/* Pequeno texto "PAGAMENTOS" */
 .pagamento-header span {
+
+  /* Faz o span ocupar uma linha inteira */
   display: block;
+
+  /* Cor azul */
   color: #2563eb;
+
+  /* Tamanho pequeno */
   font-size: 12px;
+
+  /* Texto mais grosso */
   font-weight: 800;
+
+  /* Espaçamento entre as letras */
   letter-spacing: 2px;
+
+  /* Espaçamento abaixo */
   margin-bottom: 10px;
 }
 
+
+/* Título "Seus pagamentos" */
 .pagamento-header h1 {
+
+  /* Remove a margem padrão do h1 */
   margin: 0;
+
+  /* Tamanho da fonte */
   font-size: 42px;
+
+  /* Deixa o título mais grosso */
   font-weight: 800;
+
+  /* Cor do título */
   color: #111827;
 }
 
+
+/* Descrição abaixo do título */
 .pagamento-header p {
+
+  /* Margem superior de 12px e centralização horizontal */
   margin: 12px auto 0;
+
+  /* Limita a largura do texto */
   max-width: 650px;
+
+  /* Cor cinza */
   color: #64748b;
+
+  /* Tamanho da fonte */
   font-size: 16px;
+
+  /* Espaçamento vertical entre as linhas */
   line-height: 1.6;
 }
 
+
+/* =========================================================
+   LISTA DE PAGAMENTOS
+   ========================================================= */
+
 .payments-list {
+
+  /* Utiliza Flexbox */
   display: flex;
+
+  /* Organiza os cards verticalmente */
   flex-direction: column;
+
+  /* Espaçamento entre os cards */
   gap: 18px;
 }
 
+
+/* Card individual de pagamento */
 .payment-card {
+
+  /* Utiliza Flexbox */
   display: flex;
+
+  /* Centraliza os elementos verticalmente */
   align-items: center;
+
+  /* Coloca informações de um lado
+     e valor do outro */
   justify-content: space-between;
+
+  /* Espaçamento entre as áreas */
   gap: 30px;
+
+  /* Espaçamento interno */
   padding: 28px 30px;
+
+  /* Fundo branco */
   background: #ffffff;
+
+  /* Borda geral */
   border: 1px solid #e2e8f0;
+
+  /* Borda esquerda de 5px */
   border-left: 5px solid;
+
+  /* Arredonda os cantos */
   border-radius: 16px;
+
+  /* Sombra suave */
   box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+
+  /* Suaviza alterações visuais */
   transition: 0.2s ease;
+
+  /* Mantém padding e bordas dentro da largura */
   box-sizing: border-box;
 }
 
+
+/* Efeito quando o mouse passa sobre o card */
 .payment-card:hover {
+
+  /* Move o card levemente para cima */
   transform: translateY(-2px);
+
+  /* Aumenta um pouco a sombra */
   box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
 }
 
+
+/* =========================================================
+   CORES DA BORDA DE ACORDO COM O STATUS
+   ========================================================= */
+
+
+/* Pagamento pendente */
 .payment-card.pendente {
+
+  /* Borda esquerda amarela/laranja */
   border-left-color: #f59e0b;
 }
 
+
+/* Pagamento finalizado */
 .payment-card.pago {
+
+  /* Borda esquerda verde */
   border-left-color: #22c55e;
 }
 
+
+/* Pagamento cancelado */
 .payment-card.cancelado {
+
+  /* Borda esquerda vermelha */
   border-left-color: #ef4444;
 }
 
+
+/* =========================================================
+   INFORMAÇÕES DO PAGAMENTO
+   ========================================================= */
+
 .payment-info {
+
+  /* Permite que essa área ocupe o espaço disponível */
   flex: 1;
 }
 
+
+/* Texto do status */
 .payment-status {
+
+  /* Permite aplicar dimensões e margens */
   display: inline-block;
+
+  /* Espaçamento inferior */
   margin-bottom: 9px;
+
+  /* Tamanho da fonte */
   font-size: 11px;
+
+  /* Texto em negrito */
   font-weight: 800;
+
+  /* Espaçamento entre letras */
   letter-spacing: 1.3px;
 }
 
+
+/* Status pendente */
 .payment-card.pendente .payment-status {
+
+  /* Cor laranja */
   color: #d97706;
 }
 
+
+/* Status pago */
 .payment-card.pago .payment-status {
+
+  /* Cor verde */
   color: #16a34a;
 }
 
+
+/* Status cancelado */
 .payment-card.cancelado .payment-status {
+
+  /* Cor vermelha */
   color: #dc2626;
 }
 
+
+/* Nome do serviço */
 .payment-info h2 {
+
+  /* Remove margem superior e adiciona 10px abaixo */
   margin: 0 0 10px;
+
+  /* Tamanho do título */
   font-size: 21px;
+
+  /* Peso da fonte */
   font-weight: 700;
+
+  /* Cor */
   color: #111827;
 }
 
+
+/* Informações do pet, data e horário */
 .payment-info p {
+
+  /* Pequeno espaçamento vertical */
   margin: 5px 0;
+
+  /* Cor cinza */
   color: #64748b;
+
+  /* Tamanho */
   font-size: 14px;
 }
 
+
+/* =========================================================
+   ÁREA DO VALOR
+   ========================================================= */
+
 .payment-value {
+
+  /* Define uma largura mínima */
   min-width: 170px;
+
+  /* Utiliza Flexbox */
   display: flex;
+
+  /* Organiza os elementos verticalmente */
   flex-direction: column;
+
+  /* Alinha os elementos à direita */
   align-items: flex-end;
+
+  /* Espaçamento entre os elementos */
   gap: 8px;
 }
 
+
+/* Texto "Valor" */
 .payment-value span {
+
+  /* Cor cinza mais clara */
   color: #94a3b8;
+
+  /* Tamanho pequeno */
   font-size: 12px;
+
+  /* Peso da fonte */
   font-weight: 500;
 }
 
+
+/* Valor em reais */
 .payment-value strong {
+
+  /* Cor escura */
   color: #111827;
+
+  /* Tamanho maior */
   font-size: 23px;
+
+  /* Texto mais forte */
   font-weight: 800;
 }
 
+
+/* Botão "Pagar agora" */
 .payment-value button {
+
+  /* Pequeno espaço acima */
   margin-top: 5px;
+
+  /* Espaçamento interno */
   padding: 11px 20px;
+
+  /* Remove borda padrão */
   border: none;
+
+  /* Arredonda o botão */
   border-radius: 9px;
+
+  /* Fundo azul */
   background: #2563eb;
+
+  /* Texto branco */
   color: #ffffff;
+
+  /* Tamanho da fonte */
   font-size: 13px;
+
+  /* Texto em negrito */
   font-weight: 700;
+
+  /* Mostra a mãozinha ao passar o mouse */
   cursor: pointer;
+
+  /* Suaviza a animação */
   transition: 0.2s ease;
 }
 
+
+/* Efeito do botão ao passar o mouse */
 .payment-value button:hover {
+
+  /* Azul mais escuro */
   background: #1d4ed8;
+
+  /* Move o botão levemente para cima */
   transform: translateY(-1px);
 }
 
+
+/* =========================================================
+   ESTADO VAZIO
+   ========================================================= */
+
+/* Caixa exibida quando não existem pagamentos */
 .empty-payment {
+
+  /* Espaçamento interno */
   padding: 55px 30px;
+
+  /* Centraliza o conteúdo */
   text-align: center;
+
+  /* Fundo branco */
   background: #ffffff;
+
+  /* Borda */
   border: 1px solid #e2e8f0;
+
+  /* Cantos arredondados */
   border-radius: 16px;
 }
 
+
+/* Título da mensagem de estado vazio */
 .empty-payment h2 {
+
+  /* Remove margem superior e adiciona margem inferior */
   margin: 0 0 10px;
+
+  /* Tamanho da fonte */
   font-size: 21px;
+
+  /* Cor */
   color: #111827;
 }
 
+
+/* Texto da mensagem */
 .empty-payment p {
+
+  /* Remove margens padrão */
   margin: 0;
+
+  /* Cor cinza */
   color: #64748b;
+
+  /* Tamanho */
   font-size: 14px;
 }
+
+
+/* =========================================================
+   MENSAGEM DE ERRO
+   ========================================================= */
 
 .form-error {
+
+  /* Espaçamento interno */
   padding: 15px 18px;
+
+  /* Espaçamento inferior */
   margin-bottom: 25px;
+
+  /* Borda vermelha clara */
   border: 1px solid #fecaca;
+
+  /* Cantos arredondados */
   border-radius: 10px;
+
+  /* Fundo vermelho bem claro */
   background: #fef2f2;
+
+  /* Texto vermelho */
   color: #dc2626;
+
+  /* Centraliza o texto */
   text-align: center;
+
+  /* Tamanho da fonte */
   font-size: 14px;
 }
 
 
-/* MODAL DE PAGAMENTO */
+/* =========================================================
+   MODAL DE PAGAMENTO
+   ========================================================= */
 
+
+/* Fundo escuro que aparece atrás do modal */
 .payment-overlay {
+
+  /* Fixa o elemento na tela */
   position: fixed;
+
+  /* Coloca o overlay em cima dos outros elementos */
   inset: 0;
+
+  /* Define uma prioridade muito alta */
   z-index: 9999;
 
+  /* Utiliza Flexbox */
   display: flex;
+
+  /* Centraliza verticalmente */
   align-items: center;
+
+  /* Centraliza horizontalmente */
   justify-content: center;
 
+  /* Espaçamento para o modal não encostar nas bordas */
   padding: 20px;
+
+  /* Mantém o padding dentro da largura */
   box-sizing: border-box;
 
+  /* Fundo escuro transparente */
   background: rgba(15, 23, 42, 0.58);
+
+  /* Aplica um desfoque atrás do modal */
   backdrop-filter: blur(4px);
 }
 
+
+/* Caixa branca do modal */
 .payment-modal {
+
+  /* Permite posicionar elementos dentro do modal
+     usando position absolute */
   position: relative;
 
+  /* Ocupa até 100% da largura disponível */
   width: 100%;
+
+  /* Limita a largura máxima */
   max-width: 500px;
 
+  /* Espaçamento interno */
   padding: 35px;
+
+  /* Inclui padding na largura total */
   box-sizing: border-box;
 
+  /* Fundo branco */
   background: #ffffff;
+
+  /* Cantos arredondados */
   border-radius: 18px;
 
+  /* Sombra para destacar o modal */
   box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
 
+  /* Executa a animação ao aparecer */
   animation: paymentModal 0.2s ease;
 }
 
+
+/* =========================================================
+   ANIMAÇÃO DO MODAL
+   ========================================================= */
+
 @keyframes paymentModal {
+
+  /* Estado inicial da animação */
   from {
+
+    /* Começa transparente */
     opacity: 0;
+
+    /* Começa um pouco abaixo e levemente menor */
     transform: translateY(15px) scale(0.98);
   }
 
+  /* Estado final */
   to {
+
+    /* Fica totalmente visível */
     opacity: 1;
+
+    /* Volta para a posição normal e tamanho normal */
     transform: translateY(0) scale(1);
   }
 }
 
+
+/* =========================================================
+   BOTÃO DE FECHAR
+   ========================================================= */
+
 .close-payment {
+
+  /* Posicionamento absoluto dentro do modal */
   position: absolute;
+
+  /* Distância do topo */
   top: 15px;
+
+  /* Distância da direita */
   right: 15px;
 
+  /* Largura */
   width: 34px;
+
+  /* Altura */
   height: 34px;
 
+  /* Remove a borda */
   border: none;
+
+  /* Deixa o botão redondo */
   border-radius: 50%;
 
+  /* Fundo cinza claro */
   background: #f1f5f9;
+
+  /* Cor do X */
   color: #64748b;
 
+  /* Tamanho do X */
   font-size: 22px;
+
+  /* Centraliza verticalmente o símbolo */
   line-height: 34px;
 
+  /* Mostra a mãozinha */
   cursor: pointer;
+
+  /* Suaviza o hover */
   transition: 0.2s ease;
 }
 
+
+/* Efeito ao passar o mouse no botão fechar */
 .close-payment:hover {
+
+  /* Fundo um pouco mais escuro */
   background: #e2e8f0;
+
+  /* Deixa o X mais escuro */
   color: #111827;
 }
 
+
+/* Pequeno texto "PAGAMENTO" no modal */
 .modal-label {
+
+  /* Faz o elemento ocupar a linha */
   display: block;
+
+  /* Espaçamento inferior */
   margin-bottom: 8px;
 
+  /* Cor azul */
   color: #2563eb;
+
+  /* Tamanho pequeno */
   font-size: 11px;
+
+  /* Texto em negrito */
   font-weight: 800;
+
+  /* Espaçamento entre letras */
   letter-spacing: 2px;
 }
 
+
+/* Título do modal */
 .payment-modal h2 {
+
+  /* Remove margem superior e adiciona margem inferior */
   margin: 0 0 28px;
 
+  /* Cor */
   color: #111827;
+
+  /* Tamanho */
   font-size: 27px;
+
+  /* Peso da fonte */
   font-weight: 800;
 }
 
+
+/* =========================================================
+   DETALHES DO PAGAMENTO NO MODAL
+   ========================================================= */
+
 .payment-details {
+
+  /* Utiliza Flexbox */
   display: flex;
+
+  /* Organiza cada informação em uma linha */
   flex-direction: column;
 
+  /* Espaçamento vertical */
   padding: 18px 0;
 
+  /* Linha superior */
   border-top: 1px solid #e2e8f0;
+
+  /* Linha inferior */
   border-bottom: 1px solid #e2e8f0;
 
+  /* Espaçamento entre as informações */
   gap: 15px;
 }
 
+
+/* Cada linha de detalhe */
 .payment-details div {
+
+  /* Utiliza Flexbox */
   display: flex;
+
+  /* Centraliza verticalmente */
   align-items: center;
+
+  /* Coloca o título de um lado
+     e o valor do outro */
   justify-content: space-between;
 
+  /* Espaço mínimo entre os elementos */
   gap: 20px;
 }
 
+
+/* Nome dos campos:
+   Serviço, Pet, Data e Horário */
 .payment-details span {
+
+  /* Cor cinza */
   color: #64748b;
+
+  /* Tamanho */
   font-size: 14px;
 }
 
+
+/* Valores dos campos */
 .payment-details strong {
+
+  /* Cor escura */
   color: #111827;
+
+  /* Tamanho */
   font-size: 14px;
+
+  /* Alinha o texto à direita */
   text-align: right;
 }
 
+
+/* =========================================================
+   TOTAL
+   ========================================================= */
+
 .modal-total {
+
+  /* Utiliza Flexbox */
   display: flex;
+
+  /* Centraliza verticalmente */
   align-items: center;
+
+  /* Coloca "Total" de um lado
+     e o valor do outro */
   justify-content: space-between;
 
+  /* Espaçamento vertical */
   margin: 22px 0;
 }
 
+
+/* Texto "Total" */
 .modal-total span {
+
+  /* Cor cinza */
   color: #64748b;
+
+  /* Tamanho */
   font-size: 14px;
 }
 
+
+/* Valor total */
 .modal-total strong {
+
+  /* Cor azul */
   color: #2563eb;
+
+  /* Tamanho maior */
   font-size: 25px;
+
+  /* Texto em negrito */
   font-weight: 800;
 }
 
+
+/* =========================================================
+   FORMA DE PAGAMENTO
+   ========================================================= */
+
 .payment-method {
+
+  /* Espaçamento abaixo */
   margin-bottom: 22px;
 }
 
+
+/* Label "Forma de pagamento" */
 .payment-method label {
+
+  /* Faz o label ocupar uma linha */
   display: block;
 
+  /* Espaçamento abaixo */
   margin-bottom: 8px;
 
+  /* Cor */
   color: #334155;
+
+  /* Tamanho */
   font-size: 14px;
+
+  /* Texto em negrito */
   font-weight: 700;
 }
 
+
+/* Campo select */
 .payment-method select {
+
+  /* Ocupa toda a largura disponível */
   width: 100%;
 
+  /* Espaçamento interno */
   padding: 12px 14px;
 
+  /* Inclui padding na largura */
   box-sizing: border-box;
 
+  /* Borda */
   border: 1px solid #dbe3ee;
+
+  /* Cantos arredondados */
   border-radius: 9px;
 
+  /* Remove o contorno padrão do navegador */
   outline: none;
 
+  /* Fundo branco */
   background: #ffffff;
+
+  /* Cor do texto */
   color: #111827;
 
+  /* Tamanho */
   font-size: 14px;
 
+  /* Cursor de seleção */
   cursor: pointer;
 }
 
+
+/* Quando o select recebe foco */
 .payment-method select:focus {
+
+  /* Muda a cor da borda para azul */
   border-color: #2563eb;
 }
 
+
+/* =========================================================
+   BOTÃO CONFIRMAR PAGAMENTO
+   ========================================================= */
+
 .confirm-payment-button {
+
+  /* Ocupa toda a largura do modal */
   width: 100%;
 
+  /* Espaçamento interno */
   padding: 14px;
 
+  /* Remove borda */
   border: none;
+
+  /* Arredonda os cantos */
   border-radius: 9px;
 
+  /* Fundo azul */
   background: #2563eb;
+
+  /* Texto branco */
   color: #ffffff;
 
+  /* Tamanho da fonte */
   font-size: 14px;
+
+  /* Texto em negrito */
   font-weight: 700;
 
+  /* Cursor de botão */
   cursor: pointer;
 
+  /* Suaviza o hover */
   transition: 0.2s ease;
 }
 
+
+/* Efeito ao passar o mouse */
 .confirm-payment-button:hover {
+
+  /* Azul mais escuro */
   background: #1d4ed8;
 }
 
 
-/* RESPONSIVO */
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+/*
+  @media permite criar regras diferentes
+  dependendo do tamanho da tela.
+
+  Neste caso, as regras abaixo são aplicadas
+  quando a tela possui no máximo 700px de largura.
+
+  Isso é utilizado principalmente para celulares
+  e telas menores.
+*/
 
 @media (max-width: 700px) {
+
+
+  /* =======================================================
+     CONTAINER NO CELULAR
+     ======================================================= */
+
   .pagamento-container {
+
+    /* Reduz o espaçamento lateral e vertical */
     padding: 40px 20px 60px;
   }
 
+
+  /* Título menor em telas pequenas */
   .pagamento-header h1 {
+
+    /* Reduz o tamanho de 42px para 32px */
     font-size: 32px;
   }
 
+
+  /* =======================================================
+     CARD NO CELULAR
+     ======================================================= */
+
   .payment-card {
+
+    /* Muda a direção dos elementos.
+
+       Desktop:
+       informações | valor
+
+       Celular:
+       informações
+       valor
+       botão
+    */
+
     flex-direction: column;
+
+    /* Alinha os elementos à esquerda */
     align-items: flex-start;
+
+    /* Espaçamento entre as partes */
     gap: 25px;
   }
 
+
+  /* Área do valor no celular */
   .payment-value {
+
+    /* Ocupa toda a largura */
     width: 100%;
+
+    /* Alinha os elementos à esquerda */
     align-items: flex-start;
   }
 
+
+  /* Botão de pagamento no celular */
   .payment-value button {
+
+    /* Ocupa toda a largura disponível */
     width: 100%;
   }
 
+
+  /* =======================================================
+     MODAL NO CELULAR
+     ======================================================= */
+
   .payment-modal {
+
+    /* Reduz o espaçamento interno */
     padding: 28px 22px;
   }
+
 }

@@ -1,535 +1,1458 @@
+/* =========================================================
+   PÁGINA DE AGENDAMENTO
+   Define o estilo geral da página.
+   ========================================================= */
+
 .agendamento-page {
+
+  /* Faz a página ocupar pelo menos toda a altura da tela */
   min-height: 100vh;
+
+  /* Cor de fundo geral da página */
   background: #f7f9fc;
+
+  /* Cor padrão dos textos */
   color: #111827;
+
 }
+
+
+/* =========================================================
+   CONTAINER PRINCIPAL
+   Controla largura e espaçamento do conteúdo.
+   ========================================================= */
 
 .agendamento-container {
+
+  /* Limita a largura máxima do conteúdo */
   max-width: 1180px;
+
+  /* Centraliza o container horizontalmente */
   margin: 0 auto;
+
+  /* Espaçamento interno:
+     55px em cima
+     30px nas laterais
+     90px embaixo */
   padding: 55px 30px 90px;
+
 }
+
+
+/* =========================================================
+   CABEÇALHO
+   Contém "AGENDAMENTO", título e descrição.
+   ========================================================= */
 
 .agendamento-header {
+
+  /* Centraliza todos os textos */
   text-align: center;
+
+  /* Espaço abaixo do cabeçalho */
   margin-bottom: 35px;
+
 }
+
+
+/* Texto pequeno "AGENDAMENTO" */
 
 .agendamento-header > span {
+
+  /* Cor azul */
   color: #2563eb;
+
+  /* Tamanho da fonte */
   font-size: 12px;
+
+  /* Deixa o texto mais grosso */
   font-weight: 800;
+
+  /* Aumenta o espaço entre as letras */
   letter-spacing: 2px;
+
 }
+
+
+/* Título principal */
 
 .agendamento-header h1 {
+
+  /* Espaçamento acima e abaixo */
   margin: 10px 0 6px;
+
+  /* Tamanho do título */
   font-size: 42px;
+
+  /* Peso da fonte */
   font-weight: 800;
+
+  /* Cor do título */
   color: #111827;
+
 }
 
+
+/* Texto abaixo do título */
+
 .agendamento-header p {
+
+  /* Remove margem padrão */
   margin: 0;
+
+  /* Cor cinza */
   color: #64748b;
+
+  /* Tamanho da fonte */
   font-size: 16px;
+
 }
+
+
+/* =========================================================
+   MENSAGENS DE ERRO E SUCESSO
+   ========================================================= */
 
 .form-error,
 .form-success {
+
+  /* Limita a largura das mensagens */
   max-width: 900px;
+
+  /* Centraliza e adiciona espaço inferior */
   margin: 0 auto 25px;
+
+  /* Espaçamento interno */
   padding: 14px 18px;
+
+  /* Arredonda os cantos */
   border-radius: 10px;
+
+  /* Tamanho da fonte */
   font-size: 14px;
+
+  /* Centraliza o texto */
   text-align: center;
+
 }
+
+
+/* Mensagem de erro */
 
 .form-error {
+
+  /* Fundo vermelho bem claro */
   background: #fef2f2;
+
+  /* Borda vermelha clara */
   border: 1px solid #fecaca;
+
+  /* Texto vermelho */
   color: #dc2626;
+
 }
+
+
+/* Mensagem de sucesso */
 
 .form-success {
+
+  /* Fundo verde claro */
   background: #f0fdf4;
+
+  /* Borda verde clara */
   border: 1px solid #bbf7d0;
+
+  /* Texto verde */
   color: #16a34a;
+
 }
 
+
+/* =========================================================
+   ÁREA PRINCIPAL
+   Divide calendário e formulário em duas colunas.
+   ========================================================= */
+
 .agendamento-content {
+
+  /* Utiliza CSS Grid */
   display: grid;
+
+  /* A primeira coluna é maior que a segunda */
   grid-template-columns: 1.2fr 0.8fr;
+
+  /* Espaço entre calendário e formulário */
   gap: 25px;
+
+  /* Alinha os elementos no início */
   align-items: start;
+
 }
+
+
+/* =========================================================
+   CARDS
+   Estilo geral do calendário e formulário.
+   ========================================================= */
 
 .calendar-card,
 .agendamento-form {
+
+  /* Fundo branco */
   background: #ffffff;
+
+  /* Borda */
   border: 1px solid #e2e8f0;
+
+  /* Cantos arredondados */
   border-radius: 16px;
+
+  /* Espaçamento interno */
   padding: 25px;
+
+  /* Sombra leve */
   box-shadow: 0 5px 20px rgba(15, 23, 42, 0.05);
+
 }
 
-/* CALENDÁRIO */
+
+/* =========================================================
+   CALENDÁRIO
+   ========================================================= */
+
+
+/* Cabeçalho do calendário */
 
 .calendar-header {
+
+  /* Coloca os elementos lado a lado */
   display: flex;
+
+  /* Centraliza verticalmente */
   align-items: center;
+
+  /* Coloca um elemento em cada extremidade */
   justify-content: space-between;
+
+  /* Espaço abaixo */
   margin-bottom: 25px;
+
 }
+
+
+/* Nome do mês */
 
 .calendar-header h2 {
+
+  /* Remove margem padrão */
   margin: 0;
+
+  /* Tamanho da fonte */
   font-size: 20px;
+
+  /* Primeira letra do mês fica maiúscula */
   text-transform: capitalize;
+
 }
+
+
+/* Botões de voltar e avançar mês */
 
 .calendar-header button {
+
+  /* Largura */
   width: 38px;
+
+  /* Altura */
   height: 38px;
+
+  /* Borda */
   border: 1px solid #dbe3ee;
+
+  /* Cantos arredondados */
   border-radius: 8px;
+
+  /* Fundo branco */
   background: #ffffff;
+
+  /* Cor azul */
   color: #2563eb;
+
+  /* Tamanho dos símbolos ‹ e › */
   font-size: 22px;
+
+  /* Mostra a mãozinha ao passar o mouse */
   cursor: pointer;
+
+  /* Suaviza alterações */
   transition: 0.2s;
+
 }
 
+
+/* Efeito ao passar o mouse nos botões */
+
 .calendar-header button:hover {
+
+  /* Fundo azul */
   background: #2563eb;
+
+  /* Símbolo fica branco */
   color: #ffffff;
+
 }
+
+
+/* =========================================================
+   DIAS DA SEMANA E DIAS DO CALENDÁRIO
+   ========================================================= */
 
 .calendar-weekdays,
 .calendar-grid {
+
+  /* Utiliza Grid */
   display: grid;
+
+  /* Cria 7 colunas, uma para cada dia da semana */
   grid-template-columns: repeat(7, 1fr);
+
+  /* Espaço entre os elementos */
   gap: 7px;
+
 }
+
+
+/* Espaço abaixo dos nomes dos dias */
 
 .calendar-weekdays {
+
   margin-bottom: 7px;
+
 }
+
+
+/* Nomes Dom, Seg, Ter... */
 
 .calendar-weekdays span {
+
+  /* Centraliza os nomes */
   text-align: center;
+
+  /* Cor cinza */
   color: #94a3b8;
+
+  /* Tamanho */
   font-size: 12px;
+
+  /* Deixa mais grosso */
   font-weight: 700;
+
 }
+
+
+/* Espaços vazios antes do primeiro dia do mês */
 
 .calendar-empty {
+
+  /* Altura mínima */
   min-height: 60px;
+
 }
+
+
+/* =========================================================
+   BOTÕES DOS DIAS
+   ========================================================= */
 
 .calendar-day {
+
+  /* Permite posicionar os pontos dentro do botão */
   position: relative;
+
+  /* Altura mínima */
   min-height: 60px;
+
+  /* Borda */
   border: 1px solid #e2e8f0;
+
+  /* Cantos arredondados */
   border-radius: 9px;
+
+  /* Fundo branco */
   background: #ffffff;
+
+  /* Cor do número */
   color: #111827;
+
+  /* Cursor de clique */
   cursor: pointer;
+
+  /* Número em negrito */
   font-weight: 700;
+
+  /* Transição suave */
   transition: 0.2s;
+
 }
+
+
+/* Efeito ao passar o mouse em um dia */
 
 .calendar-day:hover {
+
+  /* Borda azul */
   border-color: #2563eb;
+
+  /* Fundo levemente azulado */
   background: #f8fafc;
+
 }
+
+
+/* Dia selecionado */
 
 .calendar-day.selected {
+
+  /* Cria uma borda externa azul */
   outline: 2px solid #2563eb;
+
+  /* Fundo azul bem claro */
   background: #eff6ff;
+
 }
+
+
+/* Dias anteriores à data atual */
 
 .calendar-day.dia-anterior {
+
+  /* Fundo cinza */
   background: #eeeeee;
+
+  /* Texto cinza */
   color: #aaaaaa;
+
+  /* Borda cinza */
   border-color: #dddddd;
+
+  /* Cursor indica que não pode clicar */
   cursor: not-allowed;
+
 }
+
+
+/* Dia que possui agendamento pendente */
 
 .calendar-day.pendente {
+
+  /* Fundo amarelo claro */
   background: #fffbeb;
+
+  /* Borda amarela */
   border-color: #f59e0b;
+
+  /* Texto marrom/amarelado */
   color: #92400e;
+
 }
+
+
+/* Dia que possui agendamento confirmado */
 
 .calendar-day.confirmado {
+
+  /* Fundo azul claro */
   background: #eff6ff;
+
+  /* Borda azul */
   border-color: #2563eb;
+
+  /* Texto azul escuro */
   color: #1e40af;
+
 }
+
+
+/* Dia que possui agendamento cancelado */
 
 .calendar-day.cancelado {
+
+  /* Fundo vermelho claro */
   background: #fef2f2;
+
+  /* Borda vermelha */
   border-color: #dc2626;
+
+  /* Texto vermelho escuro */
   color: #991b1b;
+
 }
 
+
+/* =========================================================
+   PONTOS DOS AGENDAMENTOS
+   ========================================================= */
+
 .appointment-dots {
+
+  /* Permite posicionar os pontos */
   position: absolute;
+
+  /* Coloca os pontos próximos ao final do botão */
   bottom: 7px;
+
+  /* Centraliza horizontalmente */
   left: 0;
   right: 0;
+
+  /* Organiza os pontos em linha */
   display: flex;
+
+  /* Centraliza os pontos */
   justify-content: center;
+
+  /* Espaço entre os pontos */
   gap: 4px;
+
 }
+
+
+/* Formato dos pontos */
 
 .dot,
 .legend-dot {
+
+  /* Faz o elemento aparecer na mesma linha */
   display: inline-block;
+
+  /* Largura */
   width: 7px;
+
+  /* Altura */
   height: 7px;
+
+  /* Transforma o quadrado em círculo */
   border-radius: 50%;
+
 }
+
+
+/* Ponto de agendamento pendente */
 
 .pendente-dot {
+
   background: #f59e0b;
+
 }
+
+
+/* Ponto de agendamento confirmado */
 
 .confirmado-dot {
+
   background: #2563eb;
+
 }
+
+
+/* Ponto de agendamento cancelado */
 
 .cancelado-dot {
+
   background: #dc2626;
+
 }
+
+
+/* =========================================================
+   LEGENDA DO CALENDÁRIO
+   ========================================================= */
 
 .calendar-legend {
+
+  /* Coloca os itens lado a lado */
   display: flex;
+
+  /* Espaço entre os itens */
   gap: 15px;
+
+  /* Espaço acima da legenda */
   margin-top: 20px;
+
+  /* Cor dos textos */
   color: #64748b;
+
+  /* Tamanho */
   font-size: 12px;
+
 }
+
+
+/* Cada item da legenda */
 
 .calendar-legend span {
+
+  /* Organiza ponto e texto lado a lado */
   display: flex;
+
+  /* Centraliza verticalmente */
   align-items: center;
+
+  /* Espaço entre ponto e texto */
   gap: 5px;
+
 }
 
-/* AGENDAMENTOS DO DIA */
+
+/* =========================================================
+   AGENDAMENTOS DO DIA
+   ========================================================= */
 
 .day-appointments {
+
+  /* Espaço acima */
   margin-top: 25px;
+
+  /* Espaçamento interno superior */
   padding-top: 20px;
+
+  /* Linha separadora */
   border-top: 1px solid #e2e8f0;
+
 }
+
+
+/* Título "Agendamentos do dia" */
 
 .day-appointments h3 {
+
+  /* Remove margem superior */
   margin: 0 0 12px;
+
+  /* Tamanho */
   font-size: 16px;
+
 }
+
+
+/* Mensagem quando não existem agendamentos */
 
 .day-appointments p {
+
+  /* Cor cinza */
   color: #64748b;
+
+  /* Tamanho */
   font-size: 13px;
+
 }
+
+
+/* Card de cada agendamento */
 
 .day-appointment {
+
+  /* Organiza os elementos horizontalmente */
   display: flex;
+
+  /* Coloca informações de um lado e status do outro */
   justify-content: space-between;
+
+  /* Centraliza verticalmente */
   align-items: center;
+
+  /* Espaçamento interno */
   padding: 12px;
+
+  /* Espaço entre agendamentos */
   margin-bottom: 8px;
+
+  /* Cantos arredondados */
   border-radius: 8px;
+
+  /* Borda lateral */
   border-left: 4px solid;
+
+  /* Fundo */
   background: #f8fafc;
+
 }
+
+
+/* Informações do agendamento */
 
 .day-appointment > div {
+
+  /* Organiza as informações verticalmente */
   display: flex;
+
   flex-direction: column;
+
+  /* Pequeno espaço entre elas */
   gap: 3px;
+
 }
+
+
+/* Textos dentro do agendamento */
 
 .day-appointment span {
+
+  /* Tamanho */
   font-size: 13px;
+
+  /* Cor cinza */
   color: #64748b;
+
 }
+
+
+/* Cor da borda para pendente */
 
 .day-appointment.pendente {
+
   border-color: #f59e0b;
+
 }
+
+
+/* Cor da borda para confirmado */
 
 .day-appointment.confirmado {
+
   border-color: #2563eb;
+
 }
+
+
+/* Cor da borda para cancelado */
 
 .day-appointment.cancelado {
+
   border-color: #dc2626;
+
 }
 
-/* FORMULÁRIO */
+
+/* =========================================================
+   FORMULÁRIO
+   ========================================================= */
 
 .agendamento-form {
+
+  /* Aumenta o espaçamento interno do formulário */
   padding: 30px;
+
 }
+
+
+/* Cada campo do formulário */
 
 .form-group {
+
+  /* Espaço abaixo de cada campo */
   margin-bottom: 20px;
+
 }
 
+
+/* Labels */
+
 .form-group label {
+
+  /* Faz o label ocupar uma linha */
   display: block;
+
+  /* Espaço abaixo do label */
   margin-bottom: 8px;
+
+  /* Cor */
   color: #1e293b;
+
+  /* Tamanho */
   font-size: 14px;
+
+  /* Negrito */
   font-weight: 700;
+
 }
+
+
+/* Inputs, selects e textarea */
 
 .form-group input,
 .form-group select,
 .form-group textarea {
+
+  /* Ocupa toda a largura disponível */
   width: 100%;
+
+  /* Faz o padding entrar no cálculo da largura */
   box-sizing: border-box;
+
+  /* Espaçamento interno */
   padding: 12px 14px;
+
+  /* Borda */
   border: 1px solid #dbe3ee;
+
+  /* Cantos arredondados */
   border-radius: 9px;
+
+  /* Fundo */
   background: #ffffff;
+
+  /* Cor do texto */
   color: #111827;
+
+  /* Usa a fonte definida pelo elemento pai */
   font-family: inherit;
+
+  /* Tamanho */
   font-size: 14px;
+
+  /* Remove o contorno padrão do navegador */
   outline: none;
+
+  /* Suaviza mudança de borda e sombra */
   transition: border-color 0.2s, box-shadow 0.2s;
+
 }
+
+
+/* Estilo quando o usuário clica no campo */
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
+
+  /* Borda azul */
   border-color: #2563eb;
+
+  /* Cria uma sombra azul ao redor */
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+
 }
+
+
+/* Campo de observações */
 
 .form-group textarea {
+
+  /* Permite aumentar/diminuir verticalmente */
   resize: vertical;
+
+  /* Altura mínima */
   min-height: 100px;
+
 }
+
+
+/* Linha que contém dois campos */
 
 .form-row {
+
+  /* Utiliza Grid */
   display: grid;
+
+  /* Divide em duas colunas iguais */
   grid-template-columns: 1fr 1fr;
+
+  /* Espaço entre os campos */
   gap: 18px;
+
 }
 
-/* RESUMO DO SERVIÇO */
+
+/* =========================================================
+   RESUMO DO SERVIÇO
+   ========================================================= */
 
 .servico-resumo {
+
+  /* Espaço externo */
   margin: 5px 0 25px;
+
+  /* Espaçamento interno */
   padding: 20px;
+
+  /* Borda */
   border: 1px solid #dbe3ee;
+
+  /* Cantos arredondados */
   border-radius: 12px;
+
+  /* Fundo */
   background: #f8fafc;
+
 }
+
+
+/* Cada linha do resumo */
 
 .servico-resumo > div {
+
+  /* Coloca nome e informação em lados opostos */
   display: flex;
+
   justify-content: space-between;
+
+  /* Centraliza verticalmente */
   align-items: center;
+
+  /* Espaço entre os elementos */
   gap: 20px;
+
+  /* Espaçamento vertical */
   padding: 10px 0;
+
+  /* Linha separadora */
   border-bottom: 1px solid #e2e8f0;
+
 }
+
+
+/* Remove a borda da última linha */
 
 .servico-resumo > div:last-child {
+
   border-bottom: none;
+
   padding-bottom: 0;
+
 }
+
+
+/* Remove o espaço superior da primeira linha */
 
 .servico-resumo > div:first-child {
+
   padding-top: 0;
+
 }
+
+
+/* Labels do resumo */
 
 .servico-resumo span {
+
+  /* Cor cinza */
   color: #64748b;
+
+  /* Tamanho */
   font-size: 13px;
+
+  /* Peso */
   font-weight: 600;
+
 }
+
+
+/* Informações do resumo */
 
 .servico-resumo strong {
+
+  /* Cor */
   color: #111827;
+
+  /* Tamanho */
   font-size: 14px;
+
+  /* Alinha o texto à direita */
   text-align: right;
+
 }
+
+
+/* Preço do serviço */
 
 .servico-resumo .servico-preco {
+
+  /* Azul */
   color: #2563eb;
+
+  /* Preço maior */
   font-size: 20px;
+
 }
 
-/* TOTAL */
+
+/* =========================================================
+   TOTAL DO AGENDAMENTO
+   ========================================================= */
 
 .agendamento-total {
+
+  /* Coloca texto e preço lado a lado */
   display: flex;
+
+  /* Coloca cada informação em uma extremidade */
   justify-content: space-between;
+
+  /* Centraliza verticalmente */
   align-items: center;
+
+  /* Espaçamento externo */
   margin: 25px 0 20px;
+
+  /* Espaçamento interno */
   padding: 18px 20px;
+
+  /* Cantos arredondados */
   border-radius: 12px;
+
+  /* Fundo azul claro */
   background: #eff6ff;
+
+  /* Borda azul clara */
   border: 1px solid #bfdbfe;
+
 }
+
+
+/* Texto "Total do agendamento" */
 
 .agendamento-total span {
+
+  /* Azul escuro */
   color: #1e40af;
+
+  /* Tamanho */
   font-size: 14px;
+
+  /* Negrito */
   font-weight: 700;
+
 }
+
+
+/* Valor total */
 
 .agendamento-total strong {
+
+  /* Azul */
   color: #2563eb;
+
+  /* Fonte maior */
   font-size: 24px;
+
 }
 
-/* BOTÃO */
+
+/* =========================================================
+   BOTÃO DE CONFIRMAÇÃO
+   ========================================================= */
 
 .agendar-button {
+
+  /* Faz o botão ocupar sua própria linha */
   display: block;
+
+  /* Ocupa toda a largura */
   width: 100%;
+
+  /* Espaçamento interno */
   padding: 14px 20px;
+
+  /* Espaço acima */
   margin-top: 10px;
+
+  /* Remove borda padrão */
   border: none;
+
+  /* Arredonda os cantos */
   border-radius: 9px;
+
+  /* Fundo azul */
   background: #2563eb;
+
+  /* Texto branco */
   color: #ffffff;
+
+  /* Usa a fonte herdada */
   font-family: inherit;
+
+  /* Tamanho */
   font-size: 14px;
+
+  /* Negrito */
   font-weight: 700;
+
+  /* Centraliza o texto */
   text-align: center;
+
+  /* Mostra que é clicável */
   cursor: pointer;
+
+  /* Suaviza mudanças */
   transition: background 0.2s ease, transform 0.1s ease;
+
 }
+
+
+/* Efeito ao passar o mouse */
 
 .agendar-button:hover {
+
+  /* Azul um pouco mais escuro */
   background: #1d4ed8;
+
 }
+
+
+/* Efeito ao clicar */
 
 .agendar-button:active {
+
+  /* Move o botão levemente para baixo */
   transform: translateY(1px);
+
 }
+
+
+/* Estado desabilitado */
 
 .agendar-button:disabled {
+
+  /* Cinza */
   background: #94a3b8;
+
+  /* Deixa um pouco transparente */
   opacity: 0.7;
+
+  /* Mostra que não pode clicar */
   cursor: not-allowed;
+
 }
 
-/* SEM PET */
+
+/* =========================================================
+   MENSAGEM QUANDO NÃO EXISTE PET
+   ========================================================= */
 
 .empty-agendamento {
+
+  /* Limita a largura */
   max-width: 700px;
+
+  /* Centraliza */
   margin: 30px auto;
+
+  /* Espaçamento interno */
   padding: 45px 30px;
+
+  /* Fundo branco */
   background: #ffffff;
+
+  /* Borda */
   border: 1px solid #e2e8f0;
+
+  /* Cantos arredondados */
   border-radius: 16px;
+
+  /* Centraliza o conteúdo */
   text-align: center;
+
 }
+
+
+/* Título da mensagem */
 
 .empty-agendamento h2 {
+
+  /* Espaçamento inferior */
   margin: 0 0 10px;
+
+  /* Cor */
   color: #111827;
+
+  /* Tamanho */
   font-size: 22px;
+
 }
+
+
+/* Texto da mensagem */
 
 .empty-agendamento p {
+
+  /* Remove margem */
   margin: 0;
+
+  /* Cor cinza */
   color: #64748b;
+
+  /* Tamanho */
   font-size: 14px;
+
 }
 
-/* RESPONSIVO */
+
+/* =========================================================
+   RESPONSIVIDADE
+   Adapta o site para telas menores.
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   TABLETS / TELAS ATÉ 900px
+   --------------------------------------------------------- */
 
 @media (max-width: 900px) {
+
   .agendamento-content {
+
+    /* Calendário e formulário passam a ficar
+       um abaixo do outro */
     grid-template-columns: 1fr;
+
   }
+
 }
 
+
+/* ---------------------------------------------------------
+   TELAS ATÉ 700px
+   --------------------------------------------------------- */
+
 @media (max-width: 700px) {
+
   .agendamento-container {
+
+    /* Reduz o espaçamento em telas menores */
     padding: 40px 18px 60px;
+
   }
 
   .agendamento-header h1 {
+
+    /* Diminui o título */
     font-size: 34px;
+
   }
 
   .agendamento-header p {
+
+    /* Diminui o texto */
     font-size: 14px;
+
   }
 
   .agendamento-form,
   .calendar-card {
+
+    /* Reduz o padding dos cards */
     padding: 22px;
+
   }
 
   .form-row {
+
+    /* Data e horário ficam um abaixo do outro */
     grid-template-columns: 1fr;
+
+    /* Remove o espaço extra */
     gap: 0;
+
   }
 
   .servico-resumo > div {
+
+    /* Alinha o conteúdo no início */
     align-items: flex-start;
+
+    /* Coloca label e informação em coluna */
     flex-direction: column;
+
+    /* Espaço pequeno entre eles */
     gap: 5px;
+
   }
 
   .servico-resumo strong {
+
+    /* Alinha o texto à esquerda */
     text-align: left;
+
   }
 
   .agendamento-total {
+
+    /* Adiciona espaço entre os elementos */
     gap: 15px;
+
   }
 
   .agendamento-total strong {
+
+    /* Diminui o tamanho do preço */
     font-size: 20px;
+
   }
+
 }
 
+
+/* ---------------------------------------------------------
+   CELULARES PEQUENOS - ATÉ 450px
+   --------------------------------------------------------- */
+
 @media (max-width: 450px) {
+
   .agendamento-container {
+
+    /* Reduz ainda mais os espaçamentos */
     padding: 30px 12px 50px;
+
   }
 
   .agendamento-header h1 {
+
+    /* Título menor */
     font-size: 29px;
+
   }
 
   .agendamento-form,
   .calendar-card {
+
+    /* Reduz o espaço interno */
     padding: 18px;
+
+    /* Reduz o arredondamento */
     border-radius: 12px;
+
   }
 
   .calendar-weekdays,
   .calendar-grid {
+
+    /* Reduz o espaço entre os dias */
     gap: 4px;
+
   }
 
   .calendar-day,
   .calendar-empty {
+
+    /* Reduz a altura dos dias */
     min-height: 45px;
+
   }
 
   .calendar-legend {
+
+    /* Coloca a legenda na vertical */
     flex-direction: column;
+
+    /* Espaço entre os itens */
     gap: 7px;
+
   }
 
   .agendamento-total {
+
+    /* Coloca o texto e o preço um abaixo do outro */
     flex-direction: column;
+
+    /* Alinha à esquerda */
     align-items: flex-start;
+
   }
+
+}
+/* =========================================================
+   AÇÕES DO AGENDAMENTO
+   ========================================================= */
+
+.appointment-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+/* =========================================================
+   BOTÃO CANCELAR
+   ========================================================= */
+
+.cancelar-button {
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 7px 12px;
+  background: #ffffff;
+  color: #dc2626;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+
+/* Efeito ao passar o mouse */
+
+.cancelar-button:hover {
+  background: #dc2626;
+  border-color: #dc2626;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(220, 38, 38, 0.2);
+}
+
+
+/* Efeito ao clicar */
+
+.cancelar-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+
+/* =========================================================
+   STATUS DO AGENDAMENTO
+   ========================================================= */
+
+.appointment-actions > span {
+  padding: 5px 9px;
+  border-radius: 20px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+
+/* Status cancelado */
+
+.day-appointment.cancelado .appointment-actions > span {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE DO BOTÃO
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .day-appointment {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .appointment-actions {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 7px;
+  }
+
+  .cancelar-button {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
 }

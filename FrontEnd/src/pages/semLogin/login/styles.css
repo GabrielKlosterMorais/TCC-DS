@@ -1,293 +1,638 @@
+/* Define o container principal da página de login */
 .login-page {
+
+  /* Ocupa toda a largura disponível */
   width: 100%;
+
+  /* Ocupa toda a altura da tela */
   height: 100vh;
+
+  /* Organiza os elementos lado a lado */
   display: flex;
+
+  /* Impede que o conteúdo ultrapasse os limites da tela */
   overflow: hidden;
+
+  /* Define o fundo branco */
   background: #fff;
+
+  /* Define a fonte principal */
   font-family: "Nunito", Arial, sans-serif;
 }
 
+/* Define a área da imagem do lado esquerdo */
 .login-page-banner {
+
+  /* Permite posicionar elementos internos de forma absoluta */
   position: relative;
+
+  /* Ocupa metade da largura da página */
   width: 50%;
+
+  /* Ocupa toda a altura da tela */
   height: 100vh;
+
+  /* Esconde qualquer conteúdo que ultrapasse a área */
   overflow: hidden;
 }
 
+/* Configura a imagem principal do banner */
 .login-page-image {
+
+  /* Permite posicionar a imagem dentro do banner */
   position: absolute;
-  inset: 0;
+
+  /* Posiciona a imagem no topo */
+  top: 0;
+
+  /* Posiciona a imagem no lado esquerdo */
+  left: 0;
+
+  /* Faz a imagem ocupar toda a largura */
   width: 100%;
+
+  /* Faz a imagem ocupar toda a altura */
   height: 100%;
+
+  /* Faz a imagem preencher o espaço mantendo sua proporção */
   object-fit: cover;
 }
 
-.login-page-banner::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.38);
-}
-
+/* Camada utilizada para posicionar o conteúdo sobre a imagem */
 .login-page-overlay {
+
+  /* Permite posicionar os elementos internos */
   position: relative;
-  z-index: 2;
+
+  /* Ocupa toda a largura do banner */
   width: 100%;
+
+  /* Ocupa toda a altura do banner */
   height: 100%;
+
+  /* Coloca essa camada acima da imagem */
+  z-index: 2;
 }
 
+/* Posiciona o logo sobre a imagem */
 .login-page-logo {
+
+  /* Permite posicionamento exato */
   position: absolute;
+
+  /* Define a distância do topo */
   top: 40px;
-  left: 55px;
+
+  /* Define a distância do lado esquerdo */
+  left: 420px;
 }
 
+/* Estiliza o título do logo */
 .login-page-logo h1 {
+
+  /* Remove a margem padrão do título */
   margin: 0;
+
+  /* Adiciona espaço interno */
   padding: 7px 14px;
+
+  /* Arredonda os cantos */
   border-radius: 7px;
+
+  /* Define a cor azul do fundo */
   background: #2563eb;
+
+  /* Define a cor branca do texto */
   color: #fff;
+
+  /* Define o tamanho da fonte */
   font-size: 25px;
+
+  /* Deixa o texto mais espesso */
   font-weight: 900;
 }
 
+/* Posiciona a mensagem de boas-vindas */
 .login-page-message {
+
+  /* Permite posicionamento exato */
   position: absolute;
-  left: 55px;
-  bottom: 75px;
+
+  /* Define a distância do lado esquerdo */
+  left: 300px;
+
+  /* Define a distância da parte inferior */
+  bottom: 420px;
 }
 
+/* Estiliza o título da mensagem */
 .login-page-message h2 {
-  margin: 0 0 10px;
+
+  /* Remove a margem padrão e adiciona espaço inferior */
+  margin: 0 0 10px 0;
+
+  /* Define a cor branca */
   color: #fff;
+
+  /* Define o tamanho do título */
   font-size: 38px;
+
+  /* Controla a altura das linhas */
   line-height: 1.15;
+
+  /* Deixa o título mais espesso */
   font-weight: 900;
 }
 
+/* Estiliza o texto da mensagem */
 .login-page-message p {
+
+  /* Remove a margem padrão */
   margin: 0;
+
+  /* Define a cor branca */
   color: #fff;
+
+  /* Define o tamanho da fonte */
   font-size: 15px;
+
+  /* Define o espaçamento vertical entre as linhas */
   line-height: 1.5;
 }
 
+/* Define a área do formulário */
 .login-page-form-area {
+
+  /* Ocupa metade da largura da página */
   width: 50%;
+
+  /* Ocupa toda a altura da tela */
   height: 100vh;
+
+  /* Utiliza Flexbox para organizar o formulário */
   display: flex;
+
+  /* Centraliza o formulário verticalmente */
   align-items: center;
+
+  /* Centraliza o formulário horizontalmente */
   justify-content: center;
+
+  /* Adiciona espaçamento interno */
   padding: 40px;
+
+  /* Define o fundo branco */
+  background: #fff;
 }
 
+/* Define o tamanho máximo do formulário */
 .login-page-form {
+
+  /* Permite que o formulário utilize toda a largura disponível */
   width: 100%;
+
+  /* Limita a largura máxima */
   max-width: 400px;
 }
 
+/* Logo exibido somente em telas menores */
 .login-page-mobile-logo {
+
+  /* Esconde o logo inicialmente */
   display: none;
 }
 
+/* Define a área do cabeçalho do formulário */
 .login-page-header {
+
+  /* Ocupa toda a largura */
   width: 100%;
-  margin: 0 0 34px;
+
+  /* Adiciona espaço abaixo do cabeçalho */
+  margin: 0 0 34px 0;
 }
 
+/* Estiliza o título "Entrar" */
 .login-page-header h2 {
-  margin: 0 0 8px;
+
+  /* Remove a margem padrão e adiciona espaço inferior */
+  margin: 0 0 8px 0;
+
+  /* Define a cor do título */
   color: #1e293b;
+
+  /* Define o tamanho da fonte */
   font-size: 30px;
+
+  /* Define a altura das linhas */
   line-height: 1.2;
+
+  /* Deixa o título mais espesso */
   font-weight: 900;
 }
 
+/* Estiliza a descrição abaixo do título */
 .login-page-header p {
+
+  /* Remove a margem padrão */
   margin: 0;
+
+  /* Define a cor do texto */
   color: #64748b;
+
+  /* Define o tamanho da fonte */
   font-size: 14px;
+
+  /* Define o espaçamento entre as linhas */
   line-height: 1.5;
 }
 
+/* Define o espaçamento de cada campo */
 .login-page-field {
+
+  /* Ocupa toda a largura disponível */
   width: 100%;
+
+  /* Adiciona espaço abaixo do campo */
   margin-bottom: 20px;
 }
 
+/* Estiliza os textos dos campos */
 .login-page-field label {
+
+  /* Faz o label ocupar uma linha inteira */
   display: block;
+
+  /* Adiciona espaço abaixo do label */
   margin-bottom: 8px;
+
+  /* Define a cor do texto */
   color: #334155;
+
+  /* Define o tamanho da fonte */
   font-size: 13px;
+
+  /* Deixa o texto mais espesso */
   font-weight: 800;
 }
 
+/* Define a área ao redor do input */
 .login-page-input-box {
+
+  /* Ocupa toda a largura disponível */
   width: 100%;
 }
 
+/* Estiliza os campos de entrada */
 .login-page-input-box input {
+
+  /* Faz o input ocupar sua própria linha */
   display: block;
+
+  /* Ocupa toda a largura */
   width: 100%;
+
+  /* Define a altura do campo */
   height: 48px;
+
+  /* Adiciona espaço interno nas laterais */
   padding: 0 14px;
+
+  /* Define a borda */
   border: 1px solid #dbe3ec;
+
+  /* Arredonda os cantos */
   border-radius: 8px;
+
+  /* Remove o contorno padrão do navegador */
   outline: none;
+
+  /* Define o fundo branco */
   background: #fff;
+
+  /* Define a cor do texto digitado */
   color: #1e293b;
+
+  /* Utiliza a fonte herdada da página */
   font-family: inherit;
+
+  /* Define o tamanho do texto */
   font-size: 14px;
 }
 
+/* Estilo aplicado quando o usuário seleciona o input */
 .login-page-input-box input:focus {
+
+  /* Altera a cor da borda */
   border-color: #2563eb;
+
+  /* Cria uma sombra azul ao redor do campo */
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
+/* Estiliza o texto de exemplo dos inputs */
 .login-page-input-box input::placeholder {
+
+  /* Define a cor do placeholder */
   color: #94a3b8;
 }
 
+/* Define a área do link de recuperação */
 .login-page-recovery {
+
+  /* Ocupa toda a largura */
   width: 100%;
+
+  /* Move o elemento um pouco para cima */
   margin-top: -8px;
+
+  /* Adiciona espaço abaixo */
   margin-bottom: 18px;
+
+  /* Alinha o link à direita */
   text-align: right;
 }
 
+/* Estiliza o link "Esqueci minha senha?" */
 .login-page-recovery a {
+
+  /* Define a cor azul */
   color: #2563eb;
+
+  /* Define o tamanho da fonte */
   font-size: 13px;
+
+  /* Deixa o texto mais espesso */
   font-weight: 700;
+
+  /* Remove o sublinhado padrão */
   text-decoration: none;
 }
 
+/* Adiciona sublinhado quando o mouse passa sobre o link */
 .login-page-recovery a:hover {
+
+  /* Exibe o sublinhado */
   text-decoration: underline;
 }
 
+/* Define a caixa de mensagem de erro */
 .login-page-error {
+
+  /* Ocupa toda a largura */
   width: 100%;
+
+  /* Adiciona espaço abaixo */
   margin-bottom: 16px;
+
+  /* Adiciona espaço interno */
   padding: 11px 13px;
+
+  /* Define a borda vermelha clara */
   border: 1px solid #fecaca;
+
+  /* Arredonda os cantos */
   border-radius: 8px;
+
+  /* Define o fundo da mensagem */
   background: #fef2f2;
+
+  /* Define a cor do texto */
   color: #dc2626;
+
+  /* Define o tamanho da fonte */
   font-size: 13px;
+
+  /* Deixa a mensagem mais espessa */
   font-weight: 700;
 }
 
+/* Estiliza o botão de login */
 .login-page-button {
+
+  /* Faz o botão ocupar sua própria linha */
   display: block;
+
+  /* Ocupa toda a largura */
   width: 100%;
+
+  /* Define a altura */
   height: 48px;
+
+  /* Remove a borda padrão */
   border: none;
+
+  /* Arredonda os cantos */
   border-radius: 8px;
+
+  /* Define o fundo azul */
   background: #2563eb;
+
+  /* Define o texto branco */
   color: #fff;
+
+  /* Utiliza a fonte da página */
   font-family: inherit;
+
+  /* Define o tamanho do texto */
   font-size: 14px;
+
+  /* Deixa o texto mais espesso */
   font-weight: 800;
+
+  /* Mostra o cursor de clique */
   cursor: pointer;
 }
 
+/* Altera a cor do botão quando o mouse passa sobre ele */
 .login-page-button:hover {
+
+  /* Utiliza um azul mais escuro */
   background: #1d4ed8;
 }
 
+/* Estilo do botão enquanto estiver desabilitado */
 .login-page-button:disabled {
+
+  /* Deixa o botão parcialmente transparente */
   opacity: 0.7;
+
+  /* Mostra que o botão não pode ser clicado */
   cursor: not-allowed;
 }
 
+/* Define a área para criação de uma nova conta */
 .login-page-register {
+
+  /* Adiciona espaço acima */
   margin-top: 22px;
+
+  /* Centraliza o conteúdo */
   text-align: center;
 }
 
+/* Estiliza o texto "Não possui uma conta?" */
 .login-page-register p {
+
+  /* Permite que o texto fique na mesma linha do link */
   display: inline;
+
+  /* Remove a margem padrão */
+  margin: 0;
+
+  /* Define a cor do texto */
   color: #64748b;
+
+  /* Define o tamanho da fonte */
   font-size: 13px;
 }
 
+/* Estiliza o link "Criar conta" */
 .login-page-register a {
+
+  /* Adiciona um pequeno espaço entre o texto e o link */
   margin-left: 5px;
+
+  /* Define a cor azul */
   color: #2563eb;
+
+  /* Define o tamanho da fonte */
   font-size: 13px;
+
+  /* Deixa o link mais espesso */
   font-weight: 800;
+
+  /* Remove o sublinhado padrão */
   text-decoration: none;
 }
 
+/* Adiciona sublinhado ao passar o mouse */
 .login-page-register a:hover {
+
+  /* Exibe o sublinhado */
   text-decoration: underline;
 }
 
+/* Ajustes para telas de até 1000px */
 @media (max-width: 1000px) {
+
+  /* Ajusta a posição do logo */
   .login-page-logo {
+
+    /* Reduz a distância do lado esquerdo */
     left: 40px;
   }
 
+  /* Ajusta a posição da mensagem */
   .login-page-message {
+
+    /* Reduz a distância do lado esquerdo */
     left: 40px;
+
+    /* Move a mensagem para perto da parte inferior */
     bottom: 60px;
   }
 
+  /* Reduz o tamanho do título da mensagem */
   .login-page-message h2 {
+
+    /* Define um tamanho menor */
     font-size: 32px;
   }
 
+  /* Reduz o espaçamento da área do formulário */
   .login-page-form-area {
+
+    /* Define um padding menor */
     padding: 35px;
   }
 }
 
+/* Ajustes para telas de até 800px */
 @media (max-width: 800px) {
+
+  /* Altera o comportamento da página */
   .login-page {
+
+    /* Organiza o conteúdo verticalmente */
     display: block;
   }
 
+  /* Esconde o banner com a imagem */
   .login-page-banner {
+
+    /* Remove o banner da tela */
     display: none;
   }
 
+  /* Faz a área do formulário ocupar toda a tela */
   .login-page-form-area {
+
+    /* Ocupa toda a largura */
     width: 100%;
+
+    /* Ocupa toda a altura */
     height: 100vh;
+
+    /* Define o espaçamento interno */
     padding: 30px 25px;
   }
 
+  /* Aumenta o limite de largura do formulário */
   .login-page-form {
+
+    /* Permite uma largura máxima maior */
     max-width: 430px;
   }
 
+  /* Exibe o logo específico para dispositivos menores */
   .login-page-mobile-logo {
+
+    /* Torna o logo visível */
     display: block;
+
+    /* Adiciona espaço abaixo do logo */
     margin-bottom: 45px;
   }
 
+  /* Estiliza o logo da versão mobile */
   .login-page-mobile-logo h1 {
+
+    /* Remove a margem padrão */
     margin: 0;
+
+    /* Define a cor azul */
     color: #2563eb;
+
+    /* Define o tamanho */
     font-size: 28px;
+
+    /* Deixa o texto mais espesso */
     font-weight: 900;
   }
 }
 
+/* Ajustes para telas de até 450px */
 @media (max-width: 450px) {
+
+  /* Reduz o espaçamento lateral do formulário */
   .login-page-form-area {
+
+    /* Define um padding menor */
     padding: 25px 20px;
   }
 
+  /* Reduz o espaço abaixo do logo */
   .login-page-mobile-logo {
+
+    /* Define uma margem menor */
     margin-bottom: 35px;
   }
 
+  /* Reduz o tamanho do título */
   .login-page-header h2 {
+
+    /* Define o tamanho do título para telas pequenas */
     font-size: 27px;
   }
 }

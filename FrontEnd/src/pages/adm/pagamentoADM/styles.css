@@ -1,122 +1,320 @@
+/* Página inteira de pagamentos da área administrativa */
 .pagamento-adm-page {
+
+  /* Faz a página ocupar pelo menos 100% da altura da tela */
   min-height: 100vh;
+
+  /* Define a cor de fundo da página */
   background: #f7f9fc;
+
+  /* Define a cor padrão dos textos */
   color: #111827;
+
 }
 
+
+/* Container principal onde ficam os pagamentos */
 .pagamento-adm-container {
+
+  /* Define uma largura máxima para o conteúdo */
   max-width: 1100px;
+
+  /* Centraliza o container horizontalmente */
   margin: auto;
+
+  /* Define o espaçamento interno */
   padding: 60px 30px;
+
 }
 
+
+/* Cabeçalho da página de pagamentos */
 .pagamento-adm-header {
+
+  /* Cria 35px de espaço abaixo do cabeçalho */
   margin-bottom: 35px;
+
 }
 
+
+/* Texto "ÁREA ADMINISTRATIVA" */
 .pagamento-adm-header span {
+
+  /* Define a cor azul */
   color: #2563eb;
+
+  /* Define o tamanho da fonte */
   font-size: 12px;
+
+  /* Deixa o texto mais grosso */
   font-weight: 800;
+
+  /* Aumenta o espaço entre as letras */
   letter-spacing: 2px;
+
 }
 
+
+/* Título "Pagamentos" */
 .pagamento-adm-header h1 {
+
+  /* 
+    Define 8px de margem acima e abaixo
+    e 0px nas laterais
+  */
   margin: 8px 0;
+
+  /* Define o tamanho do título */
   font-size: 38px;
+
 }
 
+
+/* Texto de descrição abaixo do título */
 .pagamento-adm-header p {
+
+  /* Define a cor cinza do texto */
   color: #64748b;
+
 }
 
+
+/* Lista que contém todos os pagamentos */
 .pagamentos-adm-list {
+
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Organiza os pagamentos verticalmente */
   flex-direction: column;
+
+  /* Cria 16px de espaço entre cada pagamento */
   gap: 16px;
+
 }
 
+
+/* Card individual de pagamento */
 .pagamento-adm-card {
+
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Coloca as informações de um lado
+     e o valor do outro */
   justify-content: space-between;
+
+  /* Alinha os elementos verticalmente ao centro */
   align-items: center;
+
+  /* Espaçamento interno do card */
   padding: 24px;
+
+  /* Define o fundo branco */
   background: white;
+
+  /* Adiciona uma borda cinza clara */
   border: 1px solid #e2e8f0;
+
+  /* 
+    Cria uma borda esquerda de 5px.
+    A cor será definida de acordo com o status.
+  */
   border-left: 5px solid;
+
+  /* Arredonda os cantos do card */
   border-radius: 14px;
+
 }
 
+
+/* 
+  Estilo para pagamentos pendentes.
+  A borda esquerda fica laranja.
+*/
 .pagamento-adm-card.pendente {
+
+  /* Define a cor da borda esquerda */
   border-left-color: #f59e0b;
+
 }
 
+
+/* 
+  Estilo para pagamentos finalizados.
+  A borda esquerda fica azul.
+*/
 .pagamento-adm-card.pago {
+
+  /* Define a cor da borda esquerda */
   border-left-color: #2563eb;
+
 }
 
+
+/* 
+  Estilo para pagamentos cancelados.
+  A borda esquerda fica vermelha.
+*/
 .pagamento-adm-card.cancelado {
+
+  /* Define a cor da borda esquerda */
   border-left-color: #dc2626;
+
 }
 
+
+/* Título do serviço dentro do card */
 .pagamento-adm-info h2 {
+
+  /* Define 8px de margem em cima e embaixo */
   margin: 8px 0;
+
+  /* Define o tamanho do título */
   font-size: 20px;
+
 }
 
+
+/* Informações do cliente, pet e data */
 .pagamento-adm-info p {
+
+  /* Define 5px de margem em cima e embaixo */
   margin: 5px 0;
+
+  /* Define a cor cinza */
   color: #64748b;
+
+  /* Define o tamanho do texto */
   font-size: 14px;
+
 }
 
+
+/* Texto que mostra o status do pagamento */
 .status {
+
+  /* Define o tamanho da fonte */
   font-size: 11px;
+
+  /* Deixa o texto bem destacado */
   font-weight: 800;
+
+  /* Aumenta o espaço entre as letras */
   letter-spacing: 1px;
+
 }
 
+
+/* Cor do status quando o pagamento está pendente */
 .pendente .status {
+
+  /* Define a cor laranja */
   color: #d97706;
+
 }
 
+
+/* Cor do status quando o pagamento está pago */
 .pago .status {
+
+  /* Define a cor azul */
   color: #2563eb;
+
 }
 
+
+/* Cor do status quando o pagamento está cancelado */
 .cancelado .status {
+
+  /* Define a cor vermelha */
   color: #dc2626;
+
 }
 
+
+/* Área onde ficam valor e forma de pagamento */
 .pagamento-adm-valor {
+
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Organiza os elementos verticalmente */
   flex-direction: column;
+
+  /* Alinha os elementos à direita */
   align-items: flex-end;
+
+  /* Cria 6px de espaço entre os elementos */
   gap: 6px;
+
 }
 
+
+/* Texto "Valor" */
 .pagamento-adm-valor span {
+
+  /* Define a cor cinza */
   color: #64748b;
+
+  /* Define o tamanho do texto */
   font-size: 12px;
+
 }
 
+
+/* Valor do pagamento, por exemplo R$ 80,00 */
 .pagamento-adm-valor strong {
+
+  /* Define o tamanho do valor */
   font-size: 22px;
+
 }
 
+
+/* Forma de pagamento, por exemplo PIX */
 .pagamento-adm-valor small {
+
+  /* Define a cor cinza */
   color: #64748b;
+
+  /* Transforma o texto em letras maiúsculas */
   text-transform: uppercase;
+
 }
 
+
+/* 
+  Responsividade para telas com largura
+  de até 650px.
+*/
 @media (max-width: 650px) {
+
+
+  /* Ajusta o card de pagamento para telas menores */
   .pagamento-adm-card {
+
+    /* 
+      Coloca as informações uma abaixo da outra
+      em vez de lado a lado.
+    */
     flex-direction: column;
+
+    /* Alinha tudo à esquerda */
     align-items: flex-start;
+
+    /* Cria 20px de espaço entre as partes */
     gap: 20px;
+
   }
 
+
+  /* Ajusta a área do valor no celular */
   .pagamento-adm-valor {
+
+    /* Alinha o valor à esquerda */
     align-items: flex-start;
+
   }
+
 }

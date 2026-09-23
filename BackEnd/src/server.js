@@ -11,7 +11,7 @@ dns.setServers(['8.8.8.8', '8.8.4.4'])
 
 const app = express();
 
-console.log("ESTE É O SERVER.TS DA TECHSTORE");
+console.log("ESTE É O SERVER.TS DA PETCARE");
 
 const PORT = 3001;
 connectDatabase()

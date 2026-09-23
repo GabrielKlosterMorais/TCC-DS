@@ -1,194 +1,384 @@
+/* BARRA DE NAVEGAÇÃO */
 .navbar {
+    /* Ocupa toda a largura disponível */
     width: 100%;
+
+    /* Define a altura da navbar */
     height: 78px;
+
+    /* Define o espaçamento nas laterais */
     padding: 0 7%;
+
+    /* Ativa o Flexbox para organizar os elementos */
     display: flex;
+
+    /* Centraliza os elementos verticalmente */
     align-items: center;
+
+    /* Distribui os elementos pela largura da navbar */
     justify-content: space-between;
+
+    /* Define o fundo branco */
     background: #ffffff;
+
+    /* Adiciona uma borda na parte inferior */
     border-bottom: 1px solid #e2e8f0;
+
+    /* Permite controlar o posicionamento do elemento */
     position: relative;
+
+    /* Mantém a navbar acima de outros elementos */
     z-index: 100;
 }
 
+
 /* LOGO */
+
+/* Área que contém o ícone e o nome PetCare */
 .navbar-logo {
+    /* Organiza o ícone e o nome lado a lado */
     display: flex;
+
+    /* Centraliza os elementos verticalmente */
     align-items: center;
+
+    /* Define o espaço entre o ícone e o texto */
     gap: 10px;
+
+    /* Remove o sublinhado padrão do link */
     text-decoration: none;
+
+    /* Define a cor do texto */
     color: #1e293b !important;
 }
 
+/* Ícone com a letra P */
 .logo-icon {
+    /* Define a largura do ícone */
     width: 38px;
+
+    /* Define a altura do ícone */
     height: 38px;
+
+    /* Ativa o Flexbox */
     display: flex;
+
+    /* Centraliza a letra verticalmente */
     align-items: center;
+
+    /* Centraliza a letra horizontalmente */
     justify-content: center;
+
+    /* Define o fundo azul */
     background: #2563eb;
+
+    /* Define a cor branca da letra */
     color: #ffffff;
+
+    /* Arredonda os cantos do ícone */
     border-radius: 9px;
+
+    /* Define o tamanho da letra */
     font-size: 20px;
+
+    /* Define a espessura da letra */
     font-weight: 800;
 }
 
+/* Nome PetCare */
 .navbar-logo h1 {
+    /* Remove a margem padrão do h1 */
     margin: 0;
+
+    /* Define a cor do nome */
     color: #1e293b !important;
+
+    /* Define o tamanho da fonte */
     font-size: 23px;
+
+    /* Deixa o texto mais destacado */
     font-weight: 800;
 }
+
 
 /* LINKS DO MENU */
+
+/* Área que contém os links de navegação */
 .navbar-links {
+    /* Organiza os links lado a lado */
     display: flex;
+
+    /* Centraliza os links verticalmente */
     align-items: center;
+
+    /* Define o espaço entre os links */
     gap: 38px;
 }
 
+/* Estilização dos links */
 .navbar-links a {
+    /* Permite posicionar o indicador do link ativo */
     position: relative;
+
+    /* Define a cor dos links */
     color: #64748b;
+
+    /* Remove o sublinhado */
     text-decoration: none;
+
+    /* Define o tamanho da fonte */
     font-size: 14px;
+
+    /* Define a espessura da fonte */
     font-weight: 700;
+
+    /* Cria uma transição suave */
     transition: 0.2s;
 }
 
+/* Efeito ao passar o mouse e estilo do link ativo */
 .navbar-links a:hover,
 .navbar-links a.active {
+    /* Muda a cor para azul */
     color: #2563eb;
 }
 
+/* Linha abaixo do link que está ativo */
 .navbar-links a.active::after {
+    /* Cria um elemento visual */
     content: "";
+
+    /* Posiciona o elemento em relação ao link */
     position: absolute;
+
+    /* Define o início da linha */
     left: 0;
+
+    /* Define o final da linha */
     right: 0;
+
+    /* Posiciona a linha abaixo do texto */
     bottom: -9px;
+
+    /* Define a espessura da linha */
     height: 2px;
+
+    /* Define a cor da linha */
     background: #2563eb;
+
+    /* Arredonda as extremidades */
     border-radius: 5px;
 }
 
+
 /* BOTÕES */
+
+/* Área que contém os botões de acesso */
 .navbar-actions {
+    /* Organiza os botões lado a lado */
     display: flex;
+
+    /* Centraliza os botões verticalmente */
     align-items: center;
+
+    /* Define o espaço entre os botões */
     gap: 12px;
 }
 
+/* Botão "Entrar" */
 .login-button {
+    /* Define o espaçamento interno */
     padding: 10px 18px;
+
+    /* Define a cor azul do texto */
     color: #2563eb;
+
+    /* Remove o sublinhado */
     text-decoration: none;
+
+    /* Define o tamanho da fonte */
     font-size: 14px;
+
+    /* Deixa o texto mais destacado */
     font-weight: 800;
+
+    /* Arredonda os cantos */
     border-radius: 7px;
+
+    /* Cria uma transição suave */
     transition: 0.2s;
 }
 
+/* Efeito do botão "Entrar" */
 .login-button:hover {
+    /* Adiciona um fundo azul claro */
     background: #eff6ff;
 }
 
+/* Botão "Criar conta" */
 .register-button {
+    /* Define o espaçamento interno */
     padding: 10px 18px;
+
+    /* Define o fundo azul */
     background: #2563eb;
+
+    /* Define a cor branca do texto */
     color: #ffffff;
+
+    /* Remove o sublinhado */
     text-decoration: none;
+
+    /* Define o tamanho da fonte */
     font-size: 14px;
+
+    /* Deixa o texto mais destacado */
     font-weight: 800;
+
+    /* Arredonda os cantos */
     border-radius: 7px;
+
+    /* Cria uma transição suave */
     transition: 0.2s;
 }
 
+/* Efeito do botão "Criar conta" */
 .register-button:hover {
+    /* Deixa o fundo azul mais escuro */
     background: #1d4ed8;
+
+    /* Move o botão levemente para cima */
     transform: translateY(-1px);
 }
 
+
 /* TABLET */
+
+/* Regras aplicadas em telas de até 800px */
 @media (max-width: 800px) {
+
     .navbar {
+        /* Reduz o espaçamento lateral */
         padding: 0 5%;
     }
 
     .navbar-links {
+        /* Reduz o espaço entre os links */
         gap: 20px;
     }
 
     .navbar-actions {
+        /* Reduz o espaço entre os botões */
         gap: 5px;
     }
 
     .login-button,
     .register-button {
+        /* Diminui o espaçamento interno dos botões */
         padding: 9px 12px;
     }
 }
 
+
 /* CELULAR */
+
+/* Regras aplicadas em telas de até 650px */
 @media (max-width: 650px) {
+
     .navbar {
+        /* Permite que a altura aumente conforme o conteúdo */
         height: auto;
+
+        /* Define uma altura mínima */
         min-height: 70px;
+
+        /* Ajusta o espaçamento interno */
         padding: 15px 5%;
+
+        /* Permite que os elementos quebrem para outra linha */
         flex-wrap: wrap;
+
+        /* Define o espaço entre os elementos */
         gap: 15px;
     }
 
     .navbar-logo h1 {
+        /* Diminui o nome PetCare */
         font-size: 20px;
     }
 
     .logo-icon {
+        /* Diminui a largura do ícone */
         width: 34px;
+
+        /* Diminui a altura do ícone */
         height: 34px;
+
+        /* Diminui o tamanho da letra */
         font-size: 18px;
     }
 
     .navbar-links {
+        /* Coloca os links em uma nova linha */
         order: 3;
+
+        /* Faz os links ocuparem toda a largura */
         width: 100%;
+
+        /* Centraliza os links */
         justify-content: center;
+
+        /* Define o espaço entre os links */
         gap: 25px;
     }
 
     .navbar-actions {
+        /* Empurra os botões para o lado direito */
         margin-left: auto;
     }
 
     .navbar-links a {
+        /* Diminui o tamanho dos links */
         font-size: 13px;
     }
 
     .navbar-links a.active::after {
+        /* Aproxima a linha do texto */
         bottom: -6px;
     }
 }
 
+
 /* CELULAR PEQUENO */
+
+/* Regras aplicadas em telas de até 450px */
 @media (max-width: 450px) {
+
     .navbar {
+        /* Reduz o espaçamento da navbar */
         padding: 12px 4%;
     }
 
     .navbar-actions .login-button {
+        /* Esconde o botão "Entrar" */
         display: none;
     }
 
     .navbar-actions .register-button {
+        /* Reduz o espaçamento do botão */
         padding: 8px 12px;
+
+        /* Diminui o tamanho da fonte */
         font-size: 12px;
     }
 
     .navbar-links {
+        /* Reduz o espaço entre os links */
         gap: 18px;
     }
 
     .navbar-links a {
+        /* Diminui o tamanho dos textos */
         font-size: 12px;
     }
 }

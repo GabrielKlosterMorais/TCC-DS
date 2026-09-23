@@ -1,166 +1,454 @@
+/* Define o estilo geral da página administrativa */
 .admin-page {
+
+  /* Faz a página ocupar pelo menos toda a altura da tela */
   min-height: 100vh;
+
+  /* Define a cor de fundo da página */
   background: #f7f9fc;
+
+  /* Define a cor padrão dos textos */
   color: #111827;
+
 }
 
+
+/* Container principal do dashboard */
 .admin-container {
+
+  /* Define a largura máxima do conteúdo */
   max-width: 1180px;
+
+  /* Centraliza o container horizontalmente */
   margin: 0 auto;
+
+  /* Espaçamento interno */
   padding: 60px 30px;
+
 }
 
+
+/* Cabeçalho principal do dashboard */
 .admin-header {
+
+  /* Cria um espaço abaixo do cabeçalho */
   margin-bottom: 40px;
+
 }
 
+
+/* 
+  Aplica o mesmo estilo ao span do cabeçalho
+  e ao span do título das seções
+*/
 .admin-header span,
 .section-header span {
+
+  /* Define a cor azul */
   color: #2563eb;
+
+  /* Define o tamanho da fonte */
   font-size: 12px;
+
+  /* Deixa o texto mais grosso */
   font-weight: 800;
+
+  /* Aumenta o espaço entre as letras */
   letter-spacing: 2px;
+
 }
 
+
+/* Título principal do dashboard */
 .admin-header h2 {
+
+  /* 
+    8px de margem em cima e embaixo
+    0px nas laterais
+  */
   margin: 8px 0;
+
+  /* Define o tamanho do título */
   font-size: 38px;
+
+  /* Deixa o título em negrito */
   font-weight: 800;
+
 }
 
+
+/* Texto de descrição do dashboard */
 .admin-header p {
+
+  /* Remove a margem padrão do parágrafo */
   margin: 0;
+
+  /* Define a cor cinza */
   color: #64748b;
+
+  /* Define o tamanho do texto */
   font-size: 16px;
+
 }
 
+
+/* Área que contém os cards de estatísticas */
 .stats {
+
+  /* Ativa o CSS Grid */
   display: grid;
+
+  /* Cria 4 colunas de tamanhos iguais */
   grid-template-columns: repeat(4, 1fr);
+
+  /* Define 18px de espaço entre os cards */
   gap: 18px;
+
+  /* Cria espaço abaixo dos cards */
   margin-bottom: 40px;
+
 }
 
+
+/* Card individual de estatística */
 .stat-card {
+
+  /* Fundo branco */
   background: white;
+
+  /* Borda cinza clara */
   border: 1px solid #e2e8f0;
+
+  /* Arredonda os cantos */
   border-radius: 14px;
+
+  /* Espaçamento interno */
   padding: 24px;
+
 }
 
+
+/* Texto dentro do card de estatística */
 .stat-card span {
+
+  /* Faz o span ocupar uma linha inteira */
   display: block;
+
+  /* Define a cor cinza */
   color: #64748b;
+
+  /* Define o tamanho do texto */
   font-size: 14px;
+
+  /* Espaço abaixo do texto */
   margin-bottom: 12px;
+
 }
 
+
+/* Número da estatística */
 .stat-card strong {
+
+  /* Define o tamanho do número */
   font-size: 30px;
+
+  /* Define a cor */
   color: #111827;
+
 }
 
+
+/* Seção que contém os agendamentos */
 .appointments {
+
+  /* Define o fundo branco */
   background: white;
+
+  /* Adiciona uma borda */
   border: 1px solid #e2e8f0;
+
+  /* Arredonda os cantos */
   border-radius: 16px;
+
+  /* Espaçamento interno */
   padding: 28px;
+
 }
 
+
+/* Cabeçalho da seção de agendamentos */
 .section-header {
+
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Coloca os elementos nas extremidades */
   justify-content: space-between;
+
+  /* Alinha verticalmente ao centro */
   align-items: center;
+
+  /* Espaço abaixo do cabeçalho */
   margin-bottom: 25px;
+
 }
 
+
+/* Título da seção */
 .section-header h2 {
+
+  /* 
+    7px de margem acima,
+    0 nas laterais,
+    0 abaixo
+  */
   margin: 7px 0 0;
+
+  /* Define o tamanho do título */
   font-size: 24px;
+
 }
 
+
+/* Link "Ver todos" */
 .section-header a {
+
+  /* Define a cor azul */
   color: #2563eb;
+
+  /* Remove o sublinhado padrão */
   text-decoration: none;
+
+  /* Define o tamanho da fonte */
   font-size: 14px;
+
+  /* Deixa o texto um pouco mais grosso */
   font-weight: 600;
+
 }
 
+
+/* Efeito ao passar o mouse no link */
+.section-header a:hover {
+
+  /* Adiciona sublinhado ao passar o mouse */
+  text-decoration: underline;
+
+}
+
+
+/* Card individual de um agendamento */
 .appointment {
+
+  /* Ativa o CSS Grid */
   display: grid;
+
+  /* 
+    Define 4 colunas:
+    1ª = informações do pet/cliente
+    2ª = serviço/data
+    3ª = horário
+    4ª = ações
+  */
   grid-template-columns: 1.5fr 1.5fr 0.5fr 1fr;
+
+  /* Alinha os conteúdos verticalmente */
   align-items: center;
+
+  /* Espaço entre as colunas */
   gap: 20px;
+
+  /* Espaçamento vertical */
   padding: 20px 0;
+
+  /* Cria uma linha separando os agendamentos */
   border-top: 1px solid #e2e8f0;
+
 }
 
+
+/* Divs internas de cada agendamento */
 .appointment div {
+
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Organiza os conteúdos verticalmente */
   flex-direction: column;
+
+  /* Cria 5px de espaço entre os elementos */
   gap: 5px;
+
 }
 
+
+/* Texto principal do agendamento */
 .appointment strong {
+
+  /* Define o tamanho da fonte */
   font-size: 15px;
+
 }
 
+
+/* Textos secundários do agendamento */
 .appointment span {
+
+  /* Define a cor cinza */
   color: #64748b;
+
+  /* Define o tamanho */
   font-size: 13px;
+
 }
 
+
+/* Área onde ficam os botões */
 .actions {
+
+  /* Ativa o Flexbox e força a propriedade */
   display: flex !important;
+
+  /* Coloca os botões lado a lado */
   flex-direction: row !important;
+
+  /* Cria 8px de espaço entre os botões */
   gap: 8px;
+
 }
 
+
+/* Estilo geral dos botões */
 .actions button {
+
+  /* Remove a borda padrão */
   border: none;
+
+  /* Arredonda os cantos */
   border-radius: 7px;
+
+  /* Espaçamento interno */
   padding: 9px 12px;
+
+  /* Define o tamanho da fonte */
   font-size: 12px;
+
+  /* Deixa o texto em negrito */
   font-weight: 700;
+
+  /* Mostra o cursor de clique */
   cursor: pointer;
+
 }
 
+
+/* Primeiro botão da área de ações */
 .actions button:first-child {
+
+  /* Fundo azul */
   background: #2563eb;
+
+  /* Texto branco */
   color: white;
+
 }
 
+
+/* Segundo botão da área de ações */
 .actions button:last-child {
+
+  /* Fundo vermelho claro */
   background: #fee2e2;
+
+  /* Texto vermelho */
   color: #dc2626;
+
 }
 
+
+/* 
+  Responsividade para telas de até 850px
+  Exemplo: tablets e telas menores
+*/
 @media (max-width: 850px) {
+
+
+  /* Ajusta os cards de estatísticas */
   .stats {
+
+    /* 
+      Passa de 4 colunas para 2 colunas
+    */
     grid-template-columns: repeat(2, 1fr);
+
   }
 
+
+  /* Ajusta os cards de agendamento */
   .appointment {
+
+    /* 
+      Passa de 4 colunas para 2 colunas
+    */
     grid-template-columns: 1fr 1fr;
+
   }
+
 }
 
+
+/* 
+  Responsividade para telas de até 550px
+  Exemplo: celulares
+*/
 @media (max-width: 550px) {
+
+
+  /* Diminui o espaçamento do container */
   .admin-container {
+
+    /* 40px em cima/baixo e 15px nas laterais */
     padding: 40px 15px;
+
   }
 
+
+  /* Ajusta os cards de estatísticas */
   .stats {
+
+    /* 
+      Coloca cada card em uma única coluna
+    */
     grid-template-columns: 1fr;
+
   }
 
+
+  /* Ajusta os cards de agendamento */
   .appointment {
+
+    /* 
+      Coloca todas as informações uma abaixo da outra
+    */
     grid-template-columns: 1fr;
+
   }
 
+
+  /* Ajusta o cabeçalho da seção */
   .section-header {
+
+    /* 
+      Coloca os elementos verticalmente
+    */
     flex-direction: column;
+
+    /* Alinha os elementos à esquerda */
     align-items: flex-start;
+
+    /* Cria 15px de espaço entre eles */
     gap: 15px;
+
   }
+
 }

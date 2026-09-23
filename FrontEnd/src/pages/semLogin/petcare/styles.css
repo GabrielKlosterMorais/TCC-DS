@@ -1,762 +1,1461 @@
+/* Remove as margens e espaçamentos padrão de todos os elementos */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Faz a rolagem da página acontecer de forma suave */
 html {
     scroll-behavior: smooth;
 }
 
+/* Define as configurações gerais do corpo da página */
 body {
+    /* Define a fonte principal */
     font-family: "Nunito", sans-serif;
+
+    /* Define o fundo branco */
     background: #ffffff;
+
+    /* Define a cor padrão dos textos */
     color: #1e293b;
 }
 
+/* Remove o sublinhado padrão dos links */
 a {
     text-decoration: none;
 }
 
+/* Define o container principal da página PetCare */
 .petcare-page {
+    /* Garante que a página ocupe pelo menos toda a altura da tela */
     min-height: 100vh;
+
+    /* Define o fundo branco */
     background: #ffffff;
 }
 
 
 /* NAVBAR */
 
+/* Define a barra de navegação */
 .navbar {
+    /* Ocupa toda a largura disponível */
     width: 100%;
+
+    /* Define a altura da barra */
     height: 76px;
+
+    /* Define o espaçamento interno horizontal */
     padding: 0 7%;
+
+    /* Ativa o Flexbox */
     display: flex;
+
+    /* Centraliza os elementos verticalmente */
     align-items: center;
+
+    /* Distribui os elementos entre as extremidades */
     justify-content: space-between;
+
+    /* Define o fundo branco */
     background: #ffffff;
+
+    /* Adiciona uma linha na parte inferior */
     border-bottom: 1px solid #f1f5f9;
 }
 
+/* Organiza o logo */
 .logo {
+    /* Coloca os elementos lado a lado */
     display: flex;
+
+    /* Centraliza os elementos verticalmente */
     align-items: center;
+
+    /* Define o espaço entre o ícone e o texto */
     gap: 10px;
+
+    /* Define a cor do texto do logo */
     color: #0f172a;
 }
 
+/* Cria o ícone com a letra P */
 .logo-icon {
+    /* Define a largura */
     width: 34px;
+
+    /* Define a altura */
     height: 34px;
+
+    /* Arredonda os cantos */
     border-radius: 8px;
+
+    /* Ativa o Flexbox */
     display: flex;
+
+    /* Centraliza verticalmente */
     align-items: center;
+
+    /* Centraliza horizontalmente */
     justify-content: center;
+
+    /* Define o fundo azul */
     background: #2563eb;
+
+    /* Define a cor branca da letra */
     color: #ffffff;
+
+    /* Define o tamanho da letra */
     font-size: 17px;
+
+    /* Deixa a letra mais espessa */
     font-weight: 800;
 }
 
+/* Estiliza o nome PetCare */
 .logo h1 {
+    /* Define o tamanho do texto */
     font-size: 21px;
+
+    /* Define a espessura */
     font-weight: 800;
 }
 
+/* Organiza os links da navegação */
 .nav-links {
+    /* Coloca os links lado a lado */
     display: flex;
+
+    /* Centraliza verticalmente */
     align-items: center;
+
+    /* Define o espaço entre os links */
     gap: 34px;
 }
 
+/* Estiliza os links da navegação */
 .nav-links a {
+    /* Define a cor dos links */
     color: #64748b;
+
+    /* Define o tamanho */
     font-size: 13px;
+
+    /* Define a espessura */
     font-weight: 700;
+
+    /* Cria uma transição suave */
     transition: 0.2s;
 }
 
+/* Altera a cor quando o link está ativo ou com o mouse sobre ele */
 .nav-links a:hover,
 .nav-links a.active {
+    /* Define a cor azul */
     color: #2563eb;
 }
 
+/* Organiza os botões da navegação */
 .nav-actions {
+    /* Coloca os elementos lado a lado */
     display: flex;
+
+    /* Centraliza verticalmente */
     align-items: center;
+
+    /* Define o espaço entre os botões */
     gap: 10px;
 }
 
+/* Estiliza o botão de login */
 .login-button {
+    /* Define o espaçamento interno */
     padding: 10px 17px;
+
+    /* Define a cor azul */
     color: #2563eb;
+
+    /* Define o tamanho da fonte */
     font-size: 13px;
+
+    /* Deixa o texto mais espesso */
     font-weight: 800;
 }
 
+/* Estiliza o botão de cadastro */
 .register-button {
+    /* Define o espaçamento interno */
     padding: 11px 18px;
+
+    /* Arredonda os cantos */
     border-radius: 7px;
+
+    /* Define o fundo azul */
     background: #2563eb;
+
+    /* Define o texto branco */
     color: #ffffff;
+
+    /* Define o tamanho da fonte */
     font-size: 13px;
+
+    /* Define a espessura */
     font-weight: 800;
+
+    /* Cria uma transição suave */
     transition: 0.2s;
 }
 
+/* Altera a cor do botão de cadastro ao passar o mouse */
 .register-button:hover {
+    /* Utiliza um azul mais escuro */
     background: #1d4ed8;
 }
 
 
 /* HERO */
 
+/* Define a seção principal de apresentação */
 .petcare-hero {
+    /* Define uma altura mínima */
     min-height: 570px;
+
+    /* Define o espaçamento interno */
     padding: 80px 8%;
+
+    /* Ativa o CSS Grid */
     display: grid;
+
+    /* Divide o conteúdo em duas colunas */
     grid-template-columns: 1fr 1fr;
+
+    /* Centraliza os elementos verticalmente */
     align-items: center;
+
+    /* Define o espaço entre as colunas */
     gap: 70px;
+
+    /* Define o fundo da seção */
     background: #f8fafc;
 }
 
+/* Limita a largura do conteúdo textual do Hero */
 .petcare-hero-content {
+    /* Define a largura máxima */
     max-width: 580px;
 }
 
+/* Estiliza os pequenos títulos das seções */
 .section-label {
+    /* Faz o elemento ocupar uma linha */
     display: block;
+
+    /* Define a cor azul */
     color: #2563eb;
+
+    /* Define o tamanho */
     font-size: 11px;
+
+    /* Define a espessura */
     font-weight: 800;
+
+    /* Aumenta o espaçamento entre letras */
     letter-spacing: 2px;
 }
 
+/* Estiliza o título principal do Hero */
 .petcare-hero h2 {
+    /* Adiciona espaço acima */
     margin-top: 15px;
+
+    /* Define o tamanho do título */
     font-size: 51px;
+
+    /* Controla a altura das linhas */
     line-height: 1.08;
+
+    /* Define a espessura */
     font-weight: 800;
+
+    /* Define a cor */
     color: #0f172a;
 }
 
+/* Destaca uma parte do título */
 .petcare-hero h2 span {
+    /* Faz o texto ocupar uma nova linha */
     display: block;
+
+    /* Define a cor azul */
     color: #2563eb;
 }
 
+/* Estiliza a descrição do Hero */
 .petcare-hero p {
+    /* Limita a largura do texto */
     max-width: 520px;
+
+    /* Adiciona espaço acima */
     margin-top: 22px;
+
+    /* Define a cor */
     color: #64748b;
+
+    /* Define o tamanho */
     font-size: 15px;
+
+    /* Define o espaçamento entre linhas */
     line-height: 1.8;
 }
 
+/* Organiza os botões do Hero */
 .hero-buttons {
+    /* Coloca os botões lado a lado */
     display: flex;
+
+    /* Define o espaço entre eles */
     gap: 12px;
+
+    /* Adiciona espaço acima */
     margin-top: 30px;
 }
 
+/* Configuração comum dos botões */
 .primary-button,
 .secondary-button {
+    /* Permite organizar o conteúdo com Flexbox */
     display: inline-flex;
+
+    /* Centraliza verticalmente */
     align-items: center;
+
+    /* Centraliza horizontalmente */
     justify-content: center;
+
+    /* Define a altura mínima */
     min-height: 46px;
+
+    /* Define o espaçamento interno */
     padding: 0 20px;
+
+    /* Arredonda os cantos */
     border-radius: 7px;
+
+    /* Define o tamanho da fonte */
     font-size: 13px;
+
+    /* Define a espessura */
     font-weight: 800;
+
+    /* Cria uma transição suave */
     transition: 0.2s;
 }
 
+/* Estiliza o botão principal */
 .primary-button {
+    /* Define o fundo azul */
     background: #2563eb;
+
+    /* Define o texto branco */
     color: #ffffff;
 }
 
+/* Efeito ao passar o mouse no botão principal */
 .primary-button:hover {
+    /* Escurece o fundo */
     background: #1d4ed8;
+
+    /* Move levemente o botão para cima */
     transform: translateY(-1px);
 }
 
+/* Estiliza a seta do botão principal */
 .primary-button span {
+    /* Adiciona espaço antes da seta */
     margin-left: 10px;
+
+    /* Aumenta o tamanho da seta */
     font-size: 16px;
 }
 
+/* Estiliza o botão secundário */
 .secondary-button {
+    /* Adiciona uma borda */
     border: 1px solid #dbe3ef;
+
+    /* Define o fundo branco */
     background: #ffffff;
+
+    /* Define o texto azul */
     color: #2563eb;
 }
 
+/* Efeito do botão secundário */
 .secondary-button:hover {
+    /* Altera a cor da borda */
     border-color: #2563eb;
 }
 
+/* Define a área da imagem principal */
 .petcare-hero-image {
+    /* Define a altura */
     height: 440px;
+
+    /* Esconde o excesso da imagem */
     overflow: hidden;
+
+    /* Arredonda os cantos */
     border-radius: 16px;
 }
 
+/* Configura a imagem do Hero */
 .petcare-hero-image img {
+    /* Ocupa toda a largura */
     width: 100%;
+
+    /* Ocupa toda a altura */
     height: 100%;
+
+    /* Evita espaços extras abaixo da imagem */
     display: block;
+
+    /* Faz a imagem preencher a área */
     object-fit: cover;
 }
 
 
 /* INTRODUÇÃO */
 
+/* Define a área de introdução dos pilares */
 .pillars-intro {
+    /* Define o espaçamento interno */
     padding: 95px 7% 55px;
+
+    /* Centraliza o conteúdo */
     text-align: center;
+
+    /* Define o fundo branco */
     background: #ffffff;
 }
 
+/* Estiliza o título da introdução */
 .pillars-intro h2 {
+    /* Adiciona espaço acima */
     margin-top: 12px;
+
+    /* Define o tamanho */
     font-size: 36px;
+
+    /* Define a espessura */
     font-weight: 800;
+
+    /* Define a cor */
     color: #0f172a;
 }
 
+/* Estiliza a descrição da introdução */
 .pillars-intro p {
+    /* Limita a largura */
     max-width: 560px;
+
+    /* Centraliza horizontalmente */
     margin: 13px auto 0;
+
+    /* Define a cor */
     color: #64748b;
+
+    /* Define o tamanho */
     font-size: 14px;
+
+    /* Define o espaçamento entre linhas */
     line-height: 1.7;
 }
 
 
 /* PILARES */
 
+/* Define a área que contém todos os pilares */
 .pillars {
+    /* Define o espaçamento interno */
     padding: 0 8% 100px;
 }
 
+/* Define cada pilar individualmente */
 .pillar {
+    /* Limita a largura da seção */
     max-width: 1150px;
+
+    /* Centraliza a seção */
     margin: 0 auto;
+
+    /* Define o espaçamento vertical */
     padding: 70px 0;
+
+    /* Utiliza CSS Grid */
     display: grid;
+
+    /* Divide a seção em duas colunas */
     grid-template-columns: 1fr 1fr;
+
+    /* Centraliza verticalmente */
     align-items: center;
+
+    /* Define o espaço entre imagem e conteúdo */
     gap: 80px;
+
+    /* Adiciona uma linha separadora */
     border-bottom: 1px solid #e2e8f0;
 }
 
+/* Inverte a posição da imagem nos pilares alternados */
 .pillar.reverse .pillar-image {
+    /* Move a imagem para a segunda coluna */
     order: 2;
 }
 
+/* Inverte a posição do conteúdo nos pilares alternados */
 .pillar.reverse .pillar-content {
+    /* Move o conteúdo para a primeira coluna */
     order: 1;
 }
 
+/* Define a área da imagem do pilar */
 .pillar-image {
+    /* Permite posicionar o número sobre a imagem */
     position: relative;
+
+    /* Ocupa toda a largura disponível */
     width: 100%;
+
+    /* Define a altura */
     height: 430px;
+
+    /* Esconde o excesso */
     overflow: hidden;
+
+    /* Arredonda os cantos */
     border-radius: 14px;
 }
 
+/* Configura a imagem do pilar */
 .pillar-image img {
+    /* Ocupa toda a largura */
     width: 100%;
+
+    /* Ocupa toda a altura */
     height: 100%;
+
+    /* Remove espaços extras */
     display: block;
+
+    /* Faz a imagem preencher a área */
     object-fit: cover;
 }
 
+/* Define o número do pilar */
 .pillar-number {
+    /* Permite posicionamento sobre a imagem */
     position: absolute;
+
+    /* Define a distância do topo */
     top: 20px;
+
+    /* Define a distância do lado esquerdo */
     left: 20px;
+
+    /* Define a largura */
     width: 45px;
+
+    /* Define a altura */
     height: 45px;
+
+    /* Ativa o Flexbox */
     display: flex;
+
+    /* Centraliza verticalmente */
     align-items: center;
+
+    /* Centraliza horizontalmente */
     justify-content: center;
+
+    /* Cria um formato circular */
     border-radius: 50%;
+
+    /* Define o fundo branco */
     background: #ffffff;
+
+    /* Define a cor azul */
     color: #2563eb;
+
+    /* Define o tamanho */
     font-size: 12px;
+
+    /* Define a espessura */
     font-weight: 800;
 }
 
+/* Limita a largura do conteúdo do pilar */
 .pillar-content {
+    /* Define a largura máxima */
     max-width: 500px;
 }
 
+/* Estiliza o nome do pilar */
 .pillar-tag {
+    /* Define a cor azul */
     color: #2563eb;
+
+    /* Define o tamanho */
     font-size: 11px;
+
+    /* Define a espessura */
     font-weight: 800;
+
+    /* Aumenta o espaçamento entre letras */
     letter-spacing: 2px;
 }
 
+/* Estiliza o título do pilar */
 .pillar-content h2 {
+    /* Adiciona espaço acima */
     margin-top: 12px;
+
+    /* Define a cor */
     color: #0f172a;
+
+    /* Define o tamanho */
     font-size: 35px;
+
+    /* Define a altura das linhas */
     line-height: 1.15;
+
+    /* Define a espessura */
     font-weight: 800;
 }
 
+/* Estiliza a descrição do pilar */
 .pillar-content > p {
+    /* Adiciona espaço acima */
     margin-top: 18px;
+
+    /* Define a cor */
     color: #64748b;
+
+    /* Define o tamanho */
     font-size: 14px;
+
+    /* Define o espaçamento entre linhas */
     line-height: 1.8;
 }
 
+/* Configura a lista de itens */
 .pillar-content ul {
+    /* Remove os marcadores padrão */
     list-style: none;
+
+    /* Adiciona espaço acima */
     margin-top: 22px;
 }
 
+/* Configura cada item da lista */
 .pillar-content li {
+    /* Organiza o item com Flexbox */
     display: flex;
+
+    /* Centraliza verticalmente */
     align-items: center;
+
+    /* Define o espaço entre o check e o texto */
     gap: 10px;
+
+    /* Adiciona espaço inferior */
     margin-bottom: 11px;
+
+    /* Define a cor */
     color: #475569;
+
+    /* Define o tamanho */
     font-size: 13px;
 }
 
+/* Cria o círculo de confirmação */
 .check {
+    /* Define a largura */
     width: 20px;
+
+    /* Define a altura */
     height: 20px;
+
+    /* Impede que o elemento diminua */
     flex-shrink: 0;
+
+    /* Ativa o Flexbox */
     display: flex;
+
+    /* Centraliza verticalmente */
     align-items: center;
+
+    /* Centraliza horizontalmente */
     justify-content: center;
+
+    /* Cria um círculo */
     border-radius: 50%;
+
+    /* Define o fundo azul claro */
     background: #dbeafe;
+
+    /* Define a cor do símbolo */
     color: #2563eb;
+
+    /* Define o tamanho */
     font-size: 11px;
+
+    /* Define a espessura */
     font-weight: 800;
 }
 
+/* Estiliza o link dos serviços */
 .pillar-button {
+    /* Permite utilizar Flexbox */
     display: inline-flex;
+
+    /* Centraliza verticalmente */
     align-items: center;
+
+    /* Adiciona espaço acima */
     margin-top: 20px;
+
+    /* Define a cor */
     color: #2563eb;
+
+    /* Define o tamanho */
     font-size: 13px;
+
+    /* Define a espessura */
     font-weight: 800;
 }
 
+/* Configura a seta do botão */
 .pillar-button span {
+    /* Adiciona espaço antes da seta */
     margin-left: 8px;
+
+    /* Cria uma transição */
     transition: 0.2s;
 }
 
+/* Move a seta quando o mouse passa sobre o botão */
 .pillar-button:hover span {
+    /* Move a seta para a direita */
     transform: translateX(4px);
 }
 
 
 /* NAVEGAÇÃO */
 
+/* Define a seção de navegação */
 .petcare-navigation {
+    /* Define o espaçamento interno */
     padding: 100px 7%;
+
+    /* Define o fundo */
     background: #f8fafc;
 }
 
+/* Define o cabeçalho da navegação */
 .navigation-header {
+    /* Limita a largura */
     max-width: 600px;
+
+    /* Centraliza e adiciona espaço inferior */
     margin: 0 auto 45px;
+
+    /* Centraliza os textos */
     text-align: center;
 }
 
+/* Estiliza o título da navegação */
 .navigation-header h2 {
+    /* Adiciona espaço acima */
     margin-top: 12px;
+
+    /* Define a cor */
     color: #0f172a;
+
+    /* Define o tamanho */
     font-size: 36px;
+
+    /* Define a espessura */
     font-weight: 800;
 }
 
+/* Estiliza a descrição da navegação */
 .navigation-header p {
+    /* Adiciona espaço acima */
     margin-top: 13px;
+
+    /* Define a cor */
     color: #64748b;
+
+    /* Define o tamanho */
     font-size: 14px;
+
+    /* Define o espaçamento entre linhas */
     line-height: 1.7;
 }
 
+/* Organiza os cards de navegação */
 .navigation-cards {
+    /* Limita a largura dos cards */
     max-width: 1100px;
+
+    /* Centraliza os cards */
     margin: 0 auto;
+
+    /* Utiliza CSS Grid */
     display: grid;
+
+    /* Cria três colunas */
     grid-template-columns: repeat(3, 1fr);
+
+    /* Define o espaço entre os cards */
     gap: 20px;
 }
 
+/* Estiliza cada card */
 .navigation-card {
+    /* Permite posicionar a seta */
     position: relative;
+
+    /* Define a altura mínima */
     min-height: 210px;
+
+    /* Define o espaçamento interno */
     padding: 27px;
+
+    /* Define a borda */
     border: 1px solid #e2e8f0;
+
+    /* Arredonda os cantos */
     border-radius: 12px;
+
+    /* Define o fundo branco */
     background: #ffffff;
+
+    /* Define a cor padrão */
     color: #1e293b;
+
+    /* Cria uma transição suave */
     transition: 0.2s;
 }
 
+/* Efeito visual dos cards ao passar o mouse */
 .navigation-card:hover {
+    /* Move o card levemente para cima */
     transform: translateY(-4px);
+
+    /* Altera a cor da borda */
     border-color: #2563eb;
+
+    /* Adiciona sombra */
     box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
 }
 
+/* Estiliza o número do card */
 .navigation-number {
+    /* Define a cor azul */
     color: #2563eb;
+
+    /* Define o tamanho */
     font-size: 11px;
+
+    /* Define a espessura */
     font-weight: 800;
 }
 
+/* Estiliza o título do card */
 .navigation-card h3 {
+    /* Adiciona espaço acima */
     margin-top: 22px;
+
+    /* Define o tamanho */
     font-size: 19px;
+
+    /* Define a espessura */
     font-weight: 800;
 }
 
+/* Estiliza a descrição do card */
 .navigation-card p {
+    /* Limita a largura do texto */
     max-width: 230px;
+
+    /* Adiciona espaço acima */
     margin-top: 8px;
+
+    /* Define a cor */
     color: #64748b;
+
+    /* Define o tamanho */
     font-size: 12px;
+
+    /* Define o espaçamento entre linhas */
     line-height: 1.6;
 }
 
+/* Posiciona a seta dentro do card */
 .navigation-arrow {
+    /* Permite posicionamento absoluto */
     position: absolute;
+
+    /* Define a distância do lado direito */
     right: 25px;
+
+    /* Define a distância da parte inferior */
     bottom: 25px;
+
+    /* Define a cor azul */
     color: #2563eb;
+
+    /* Define o tamanho */
     font-size: 18px;
+
+    /* Define a espessura */
     font-weight: 800;
 }
 
 
 /* CTA */
 
+/* Define a seção de chamada para ação */
 .petcare-cta {
+    /* Limita a largura máxima */
     max-width: 1200px;
+
+    /* Define a altura mínima */
     min-height: 340px;
+
+    /* Centraliza horizontalmente e adiciona espaço vertical */
     margin: 80px auto;
+
+    /* Define o espaçamento interno */
     padding: 45px 55px;
+
+    /* Utiliza CSS Grid */
     display: grid;
+
+    /* Cria uma coluna maior para o texto e outra para a imagem */
     grid-template-columns: 1fr 280px;
+
+    /* Centraliza verticalmente */
     align-items: center;
+
+    /* Define o espaço entre as colunas */
     gap: 50px;
+
+    /* Arredonda os cantos */
     border-radius: 15px;
+
+    /* Define o fundo azul claro */
     background: #eff6ff;
 }
 
+/* Estiliza o pequeno título do CTA */
 .cta-label {
+    /* Define a cor azul */
     color: #2563eb;
+
+    /* Define o tamanho */
     font-size: 11px;
+
+    /* Define a espessura */
     font-weight: 800;
+
+    /* Aumenta o espaçamento entre letras */
     letter-spacing: 2px;
 }
 
+/* Estiliza o título do CTA */
 .petcare-cta-content h2 {
+    /* Adiciona espaço acima */
     margin-top: 12px;
+
+    /* Define a cor */
     color: #0f172a;
+
+    /* Define o tamanho */
     font-size: 34px;
+
+    /* Define o espaçamento entre linhas */
     line-height: 1.2;
+
+    /* Define a espessura */
     font-weight: 800;
 }
 
+/* Estiliza a descrição do CTA */
 .petcare-cta-content p {
+    /* Limita a largura */
     max-width: 500px;
+
+    /* Adiciona espaço acima */
     margin-top: 13px;
+
+    /* Define a cor */
     color: #64748b;
+
+    /* Define o tamanho */
     font-size: 13px;
+
+    /* Define o espaçamento entre linhas */
     line-height: 1.7;
 }
 
+/* Estiliza o botão do CTA */
 .cta-button {
+    /* Utiliza Flexbox */
     display: inline-flex;
+
+    /* Centraliza verticalmente */
     align-items: center;
+
+    /* Adiciona espaço acima */
     margin-top: 22px;
+
+    /* Define o espaçamento interno */
     padding: 13px 19px;
+
+    /* Arredonda os cantos */
     border-radius: 7px;
+
+    /* Define o fundo azul */
     background: #2563eb;
+
+    /* Define o texto branco */
     color: #ffffff;
+
+    /* Define o tamanho */
     font-size: 13px;
+
+    /* Define a espessura */
     font-weight: 800;
 }
 
+/* Estiliza a seta do botão CTA */
 .cta-button span {
+    /* Adiciona espaço antes da seta */
     margin-left: 10px;
 }
 
+/* Define a área da imagem do CTA */
 .petcare-cta-image {
+    /* Define a largura */
     width: 280px;
+
+    /* Define a altura */
     height: 250px;
+
+    /* Esconde o excesso */
     overflow: hidden;
+
+    /* Arredonda os cantos */
     border-radius: 12px;
 }
 
+/* Configura a imagem do CTA */
 .petcare-cta-image img {
+    /* Ocupa toda a largura */
     width: 100%;
+
+    /* Ocupa toda a altura */
     height: 100%;
+
+    /* Remove espaços extras */
     display: block;
+
+    /* Faz a imagem preencher o espaço */
     object-fit: cover;
 }
 
 
 /* FOOTER */
 
+/* Define o rodapé */
 footer {
+    /* Define o fundo branco */
     background: #ffffff;
+
+    /* Adiciona uma borda superior */
     border-top: 1px solid #e2e8f0;
 }
 
+/* Define a área principal do rodapé */
 .footer-content {
+    /* Limita a largura */
     max-width: 1200px;
+
+    /* Centraliza o conteúdo */
     margin: 0 auto;
+
+    /* Define o espaçamento interno */
     padding: 55px 7%;
+
+    /* Utiliza CSS Grid */
     display: grid;
+
+    /* Cria quatro colunas */
     grid-template-columns: 2fr 1fr 1fr 1fr;
+
+    /* Define o espaço entre as colunas */
     gap: 50px;
 }
 
+/* Estiliza a descrição da marca */
 .footer-brand p {
+    /* Adiciona espaço acima */
     margin-top: 18px;
+
+    /* Define a cor */
     color: #64748b;
+
+    /* Define o tamanho */
     font-size: 12px;
 }
 
+/* Organiza os links das colunas */
 .footer-column {
+    /* Utiliza Flexbox */
     display: flex;
+
+    /* Organiza os elementos verticalmente */
     flex-direction: column;
 }
 
+/* Estiliza o título das colunas */
 .footer-column strong {
+    /* Define a cor */
     color: #1e293b;
+
+    /* Define o tamanho */
     font-size: 12px;
+
+    /* Define a espessura */
     font-weight: 800;
 }
 
+/* Estiliza os links do rodapé */
 .footer-column a {
+    /* Adiciona espaço acima */
     margin-top: 15px;
+
+    /* Define a cor */
     color: #64748b;
+
+    /* Define o tamanho */
     font-size: 12px;
+
+    /* Cria uma transição */
     transition: 0.2s;
 }
 
+/* Altera a cor dos links ao passar o mouse */
 .footer-column a:hover {
+    /* Define a cor azul */
     color: #2563eb;
 }
 
+/* Define a parte inferior do rodapé */
 .footer-bottom {
+    /* Limita a largura */
     max-width: 1060px;
+
+    /* Centraliza horizontalmente */
     margin: 0 auto;
+
+    /* Define o espaçamento interno */
     padding: 20px 0;
+
+    /* Organiza os textos lado a lado */
     display: flex;
+
+    /* Distribui os textos nas extremidades */
     justify-content: space-between;
+
+    /* Adiciona uma linha superior */
     border-top: 1px solid #e2e8f0;
+
+    /* Define a cor dos textos */
     color: #94a3b8;
+
+    /* Define o tamanho da fonte */
     font-size: 10px;
 }
 
 
 /* RESPONSIVIDADE */
 
+/* Regras aplicadas em telas de até 1000px */
 @media (max-width: 1000px) {
 
+    /* Reduz o espaço entre os links */
     .nav-links {
         gap: 18px;
     }
 
+    /* Ajusta o espaçamento do Hero */
     .petcare-hero {
         padding: 65px 6%;
         gap: 40px;
     }
 
+    /* Reduz o tamanho do título */
     .petcare-hero h2 {
         font-size: 42px;
     }
 
+    /* Reduz o espaço entre os elementos dos pilares */
     .pillar {
         gap: 45px;
     }
 
+    /* Organiza os cards em duas colunas */
     .navigation-cards {
         grid-template-columns: 1fr 1fr;
     }
 
+    /* Reduz a margem do CTA */
     .petcare-cta {
         margin: 60px 6%;
     }
-
 }
 
 
+/* Regras aplicadas em telas de até 750px */
 @media (max-width: 750px) {
 
+    /* Ajusta a barra de navegação */
     .navbar {
+        /* Permite que a altura se adapte */
         height: auto;
+
+        /* Define uma altura mínima */
         min-height: 70px;
+
+        /* Define o espaçamento interno */
         padding: 15px 6%;
     }
 
+    /* Esconde os links principais da navegação */
     .nav-links {
         display: none;
     }
 
+    /* Reduz o espaço entre as ações */
     .nav-actions {
         gap: 4px;
     }
 
+    /* Esconde o botão de login */
     .login-button {
         display: none;
     }
 
+    /* Altera a estrutura do Hero */
     .petcare-hero {
+        /* Troca o Grid por Flexbox */
         display: flex;
+
+        /* Organiza os elementos verticalmente */
         flex-direction: column;
+
+        /* Define o espaçamento interno */
         padding: 60px 6%;
     }
 
+    /* Permite que o conteúdo utilize toda a largura */
     .petcare-hero-content {
         max-width: none;
     }
 
+    /* Reduz o título do Hero */
     .petcare-hero h2 {
         font-size: 38px;
     }
 
+    /* Faz a imagem ocupar toda a largura */
     .petcare-hero-image {
         width: 100%;
+
+        /* Reduz a altura da imagem */
         height: 350px;
     }
 
+    /* Reduz o espaçamento da introdução */
     .pillars-intro {
         padding: 70px 6% 35px;
     }
 
+    /* Reduz o tamanho dos títulos */
     .pillars-intro h2,
     .navigation-header h2 {
         font-size: 30px;
     }
 
+    /* Reduz o espaçamento da seção dos pilares */
     .pillars {
         padding: 0 6% 70px;
     }
 
+    /* Altera os pilares para uma organização vertical */
     .pillar,
     .pillar.reverse {
+        /* Utiliza Flexbox */
         display: flex;
+
+        /* Organiza imagem e conteúdo verticalmente */
         flex-direction: column;
+
+        /* Define o espaço entre os elementos */
         gap: 35px;
+
+        /* Reduz o espaçamento vertical */
         padding: 55px 0;
     }
 
+    /* Remove a inversão de ordem no mobile */
     .pillar.reverse .pillar-image,
     .pillar.reverse .pillar-content {
         order: initial;
     }
 
+    /* Reduz a altura das imagens */
     .pillar-image {
         height: 330px;
     }
 
+    /* Permite que o conteúdo ocupe toda a largura */
     .pillar-content {
         max-width: none;
     }
 
+    /* Reduz o título dos pilares */
     .pillar-content h2 {
         font-size: 30px;
     }
 
+    /* Reduz o espaçamento da navegação */
     .petcare-navigation {
         padding: 70px 6%;
     }
 
+    /* Organiza os cards em uma única coluna */
     .navigation-cards {
         grid-template-columns: 1fr;
     }
 
+    /* Ajusta o CTA para dispositivos menores */
     .petcare-cta {
+        /* Reduz a margem */
         margin: 50px 6%;
+
+        /* Reduz o espaçamento interno */
         padding: 35px;
+
+        /* Utiliza Flexbox */
         display: flex;
+
+        /* Organiza os elementos verticalmente */
         flex-direction: column;
+
+        /* Alinha os elementos à esquerda */
         align-items: flex-start;
     }
 
+    /* Faz a imagem do CTA ocupar toda a largura */
     .petcare-cta-image {
         width: 100%;
         height: 250px;
     }
 
+    /* Ajusta o rodapé para duas colunas */
     .footer-content {
         grid-template-columns: 1fr 1fr;
+
+        /* Reduz o espaçamento interno */
         padding: 45px 6%;
+
+        /* Reduz o espaço entre as colunas */
         gap: 35px;
     }
 
+    /* Faz a marca ocupar as duas colunas */
     .footer-brand {
         grid-column: 1 / -1;
     }
 
+    /* Organiza a parte inferior do rodapé verticalmente */
     .footer-bottom {
+        /* Define a margem lateral */
         margin: 0 6%;
+
+        /* Define o espaço entre os textos */
         gap: 10px;
+
+        /* Organiza os textos verticalmente */
         flex-direction: column;
     }
 
 }
 
 
+/* Regras aplicadas em telas de até 450px */
 @media (max-width: 450px) {
 
+    /* Reduz o tamanho do botão de cadastro */
     .register-button {
         padding: 10px 13px;
     }
 
+    /* Reduz o tamanho do título principal */
     .petcare-hero h2 {
         font-size: 34px;
     }
 
+    /* Organiza os botões verticalmente */
     .hero-buttons {
         flex-direction: column;
     }
 
+    /* Faz os botões ocuparem toda a largura */
     .primary-button,
     .secondary-button {
         width: 100%;
     }
 
+    /* Reduz a altura das imagens dos pilares */
     .pillar-image {
         height: 280px;
     }
 
+    /* Reduz o espaçamento interno do CTA */
     .petcare-cta {
         padding: 28px;
     }
 
+    /* Reduz o tamanho do título do CTA */
     .petcare-cta-content h2 {
         font-size: 28px;
     }
 
+    /* Organiza o rodapé em uma única coluna */
     .footer-content {
         grid-template-columns: 1fr;
     }
 
+    /* Retorna a configuração normal da marca */
     .footer-brand {
         grid-column: auto;
     }
-
 }

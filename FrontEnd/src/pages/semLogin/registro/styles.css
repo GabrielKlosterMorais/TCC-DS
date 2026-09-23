@@ -1,686 +1,980 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-body {
-    font-family: "Nunito", sans-serif;
-    background-color: #f8fafc;
-    color: #1e293b;
-    min-height: 100vh;
-}
+/* =========================================================
+   CONTAINER PRINCIPAL
+   ========================================================= */
 
+/* Define a área principal da página de cadastro */
 .register-container {
-    min-height: 100vh;
-    display: flex;
+
+  /* Ocupa 100% da largura disponível */
+  width: 100%;
+
+  /* Ocupa 100% da altura da tela */
+  height: 100vh;
+
+  /* Coloca os elementos lado a lado */
+  display: flex;
+
+  /* Impede que o conteúdo ultrapasse a tela */
+  overflow: hidden;
+
+  /* Define o fundo branco */
+  background: #fff;
+
+  /* Define a fonte principal da página */
+  font-family: "Nunito", Arial, sans-serif;
 }
 
 
-/* ==================== LADO DA IMAGEM ==================== */
+/* =========================================================
+   BANNER LATERAL
+   ========================================================= */
 
+/* Área esquerda da tela que contém a imagem */
 .register-banner {
-    width: 42%;
-    min-height: 100vh;
 
-    position: relative;
-    overflow: hidden;
+  /* Permite posicionar elementos dentro dela */
+  position: relative;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  /* Ocupa metade da largura da tela */
+  width: 50%;
 
-    background: #ffffff;
+  /* Ocupa toda a altura da tela */
+  height: 100vh;
+
+  /* Esconde qualquer conteúdo que ultrapasse a área */
+  overflow: hidden;
 }
 
+
+/* Imagem do cachorro */
 .banner-image {
-    position: absolute;
 
-    top: 0;
-    left: 0;
+  /* Permite posicionar a imagem livremente dentro do banner */
+  position: absolute;
 
-    width: 100%;
-    height: 100%;
+  /* Encosta a imagem no topo */
+  top: 0;
 
-    object-fit: cover;
-    object-position: center;
+  /* Encosta a imagem no lado esquerdo */
+  left: 0;
 
-    z-index: 1;
+  /* Ocupa toda a largura do banner */
+  width: 100%;
+
+  /* Ocupa toda a altura do banner */
+  height: 100%;
+
+  /* Faz a imagem preencher o espaço sem distorcer */
+  object-fit: cover;
 }
 
+
+/* Área que contém o logo e os textos do banner */
 .banner-content {
-    width: 75%;
-    max-width: 500px;
 
-    color: white;
+  /* Mantém o elemento como referência para posicionamento */
+  position: relative;
 
-    position: relative;
-    z-index: 2;
+  /* Ocupa toda a largura */
+  width: 100%;
+
+  /* Ocupa toda a altura */
+  height: 100%;
+
+  /* Coloca o conteúdo acima da imagem */
+  z-index: 2;
 }
 
 
-/* ==================== LOGO ==================== */
+/* =========================================================
+   LOGO
+   ========================================================= */
 
+/* Posicionamento da logo dentro do banner */
+.logo {
+
+  /* Permite posicionar usando top e left */
+  position: absolute;
+
+  /* Distância de 40px do topo */
+  top: 40px;
+
+  /* Posiciona o início no centro */
+  left: 50%;
+
+  /* Move a logo metade da própria largura para trás,
+     fazendo com que ela fique realmente centralizada */
+  transform: translateX(-50%);
+
+  /* Coloca a logo acima dos outros elementos */
+  z-index: 3;
+}
+
+
+/* Estilo específico do texto da logo dentro do banner */
+.register-banner .logo .logo-text {
+
+  /* Remove margem padrão */
+  margin: 0;
+
+  /* Espaçamento interno da logo */
+  padding: 7px 14px;
+
+  /* Arredonda os cantos */
+  border-radius: 7px;
+
+  /* Define o fundo azul */
+  background: #2563eb !important;
+
+  /* Define a cor do texto */
+  color: #fff !important;
+
+  /* Define o tamanho da fonte */
+  font-size: 25px !important;
+
+  /* Deixa o texto mais grosso */
+  font-weight: 900 !important;
+
+  /* Define a altura da linha */
+  line-height: 1.2;
+
+  /* Faz o elemento ocupar somente o tamanho necessário */
+  display: inline-block;
+}
+
+
+/* Estilo geral para h1 dentro da classe logo */
 .logo h1 {
-    font-size: 28px;
-    font-weight: 800;
+
+  /* Remove margem padrão */
+  margin: 0;
+
+  /* Espaçamento interno */
+  padding: 7px 14px;
+
+  /* Arredonda os cantos */
+  border-radius: 7px;
+
+  /* Fundo azul */
+  background: #2563eb;
+
+  /* Texto branco */
+  color: #fff;
+
+  /* Tamanho da fonte */
+  font-size: 25px;
+
+  /* Texto em negrito */
+  font-weight: 900;
 }
 
-.banner-content .logo {
-    display: inline-block;
 
-    transform: translateY(-110px);
+/* =========================================================
+   TEXTO DO BANNER
+   ========================================================= */
 
-    background: #2563eb;
-
-    padding: 10px 18px;
-
-    border-radius: 8px;
-}
-
-.banner-content .logo h1 {
-    color: #ffffff;
-
-    margin: 0;
-
-    font-size: 28px;
-}
-
-
-/* ==================== TEXTO DA IMAGEM ==================== */
-
+/* Área que contém o título e a descrição */
 .banner-text {
-    margin-top: 45px;
 
-    color: #ffffff;
+  /* Permite posicionar o texto dentro do banner */
+  position: absolute;
+
+  /* Posiciona o texto aproximadamente no meio vertical */
+  top: 46%;
+
+  /* Começa no centro horizontal */
+  left: 50%;
+
+  /* Move o elemento para trás metade da própria largura */
+  transform: translateX(-50%);
+
+  /* O texto pode ocupar até 85% da largura */
+  width: 85%;
+
+  /* Centraliza o texto */
+  text-align: center;
 }
 
+
+/* Título do banner */
 .banner-text h2 {
-    font-size: 38px;
-    line-height: 1.15;
-    font-weight: 800;
 
-    max-width: 450px;
+  /* Remove margem superior e deixa 10px embaixo */
+  margin: 0 0 10px 0;
 
-    color: #ffffff;
+  /* Texto branco */
+  color: #fff;
+
+  /* Tamanho do título */
+  font-size: 38px;
+
+  /* Espaçamento entre linhas */
+  line-height: 1.15;
+
+  /* Deixa o título bem destacado */
+  font-weight: 900;
 }
 
+
+/* Texto menor abaixo do título */
 .banner-text p {
-    margin-top: 20px;
 
-    font-size: 17px;
-    line-height: 1.6;
+  /* Remove as margens padrão */
+  margin: 0;
 
-    color: rgba(255, 255, 255, 0.92);
+  /* Texto branco */
+  color: #fff;
 
-    max-width: 400px;
+  /* Tamanho da fonte */
+  font-size: 15px;
+
+  /* Espaçamento entre linhas */
+  line-height: 1.5;
 }
 
 
-/* ==================== FORMULÁRIO ==================== */
+/* =========================================================
+   ÁREA DO FORMULÁRIO
+   ========================================================= */
 
+/* Área direita onde fica o formulário */
 .register-form-container {
-    width: 58%;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  /* Ocupa metade da tela */
+  width: 50%;
 
-    background: #ffffff;
+  /* Ocupa toda a altura */
+  height: 100vh;
 
-    padding: 40px 0;
+  /* Ativa Flexbox */
+  display: flex;
+
+  /* Centraliza verticalmente */
+  align-items: center;
+
+  /* Centraliza horizontalmente */
+  justify-content: center;
+
+  /* Cria espaço interno */
+  padding: 40px;
+
+  /* Fundo branco */
+  background: #fff;
+
+  /* Permite rolagem vertical se necessário */
+  overflow-y: auto;
 }
 
+
+/* Container do formulário */
 .register-form {
-    width: 78%;
-    max-width: 620px;
+
+  /* Ocupa a largura disponível */
+  width: 100%;
+
+  /* Limita a largura máxima */
+  max-width: 500px;
 }
 
 
-/* ==================== LOGO MOBILE ==================== */
-
+/* Logo utilizada na versão para celular */
 .mobile-logo {
-    display: none;
-}
 
-.mobile-logo h1 {
-    font-size: 26px;
-    font-weight: 800;
+  /* Esconde a logo inicialmente */
+  display: none;
 }
 
 
-/* ==================== CABEÇALHO ==================== */
+/* =========================================================
+   CABEÇALHO DO FORMULÁRIO
+   ========================================================= */
 
+/* Área do título do formulário */
 .form-header {
-    margin-bottom: 28px;
+
+  /* Ocupa toda a largura */
+  width: 100%;
+
+  /* Espaço inferior */
+  margin: 0 0 34px 0;
 }
 
+
+/* Título "Crie sua conta" */
 .form-header h2 {
-    font-size: 32px;
-    font-weight: 800;
 
-    color: #1e293b;
+  /* Remove margem superior e deixa espaço embaixo */
+  margin: 0 0 8px 0;
+
+  /* Cor escura */
+  color: #1e293b;
+
+  /* Tamanho do título */
+  font-size: 30px;
+
+  /* Espaçamento entre linhas */
+  line-height: 1.2;
+
+  /* Texto em negrito */
+  font-weight: 900;
 }
 
+
+/* Descrição abaixo do título */
 .form-header p {
-    margin-top: 7px;
 
-    color: #64748b;
+  /* Remove margens */
+  margin: 0;
 
-    font-size: 15px;
+  /* Cor cinza */
+  color: #64748b;
+
+  /* Tamanho da fonte */
+  font-size: 14px;
+
+  /* Espaçamento entre linhas */
+  line-height: 1.5;
 }
 
 
-/* ==================== LINHA DOS INPUTS ==================== */
+/* =========================================================
+   LINHA COM DOIS CAMPOS
+   ========================================================= */
 
+/* Usado para colocar dois inputs lado a lado */
 .input-row {
-    display: grid;
 
-    grid-template-columns: 1fr 1fr;
+  /* Ocupa toda a largura */
+  width: 100%;
 
-    gap: 18px;
+  /* Ativa Flexbox */
+  display: flex;
+
+  /* Espaço entre os campos */
+  gap: 16px;
 }
 
 
-/* ==================== CAMPOS ==================== */
-
+/* Grupo que contém label + input */
 .input-group {
-    margin-bottom: 17px;
+
+  /* Ocupa toda a largura disponível */
+  width: 100%;
+
+  /* Espaçamento abaixo de cada campo */
+  margin-bottom: 20px;
 }
 
+
+/* Faz os campos dentro de input-row dividirem
+   igualmente o espaço */
+.input-row .input-group {
+
+  /* Cada grupo pode crescer igualmente */
+  flex: 1;
+}
+
+
+/* Texto que identifica cada campo */
 .input-group label {
-    display: block;
 
-    font-size: 13px;
-    font-weight: 700;
+  /* Faz a label ocupar sua própria linha */
+  display: block;
 
-    margin-bottom: 7px;
+  /* Espaçamento abaixo da label */
+  margin-bottom: 8px;
 
-    color: #334155;
+  /* Cor do texto */
+  color: #334155;
+
+  /* Tamanho da fonte */
+  font-size: 13px;
+
+  /* Deixa a label mais destacada */
+  font-weight: 800;
 }
 
+
+/* Container do input */
 .input-wrapper {
-    position: relative;
 
-    display: flex;
-
-    align-items: center;
+  /* Ocupa toda a largura disponível */
+  width: 100%;
 }
 
+
+/* Estilo dos campos de entrada */
 .input-wrapper input {
-    width: 100%;
 
-    height: 46px;
+  /* Faz o input ocupar uma linha própria */
+  display: block;
 
-    border: 1px solid #e2e8f0;
+  /* Ocupa toda a largura */
+  width: 100%;
 
-    border-radius: 8px;
+  /* Altura do input */
+  height: 48px;
 
-    padding: 0 14px;
+  /* Espaçamento interno horizontal */
+  padding: 0 14px;
 
-    font-family: inherit;
+  /* Borda fina */
+  border: 1px solid #dbe3ec;
 
-    font-size: 13px;
+  /* Arredonda os cantos */
+  border-radius: 8px;
 
-    color: #1e293b;
+  /* Remove o contorno padrão do navegador */
+  outline: none;
 
-    outline: none;
+  /* Fundo branco */
+  background: #fff;
 
-    background: #ffffff;
+  /* Cor do texto digitado */
+  color: #1e293b;
 
-    transition: 0.2s;
+  /* Usa a mesma fonte definida no container */
+  font-family: inherit;
+
+  /* Tamanho da fonte */
+  font-size: 14px;
 }
 
-.input-wrapper input::placeholder {
-    color: #94a3b8;
-}
 
+/* Estilo aplicado quando o usuário clica no input */
 .input-wrapper input:focus {
-    border-color: #2563eb;
 
-    box-shadow:
-        0 0 0 3px rgba(37, 99, 235, 0.1);
+  /* Muda a cor da borda para azul */
+  border-color: #2563eb;
+
+  /* Cria um brilho/contorno azul suave */
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 
-/* ==================== TERMOS ==================== */
+/* Cor do texto de exemplo dentro do input */
+.input-wrapper input::placeholder {
 
+  /* Define uma cor cinza clara */
+  color: #94a3b8;
+}
+
+
+/* =========================================================
+   TERMOS DE USO
+   ========================================================= */
+
+/* Área do checkbox e texto dos termos */
 .terms {
-    display: flex;
 
-    align-items: center;
+  /* Ocupa toda a largura */
+  width: 100%;
 
-    gap: 8px;
+  /* Coloca checkbox e texto lado a lado */
+  display: flex;
 
-    margin: 5px 0 20px;
+  /* Centraliza verticalmente */
+  align-items: center;
 
-    color: #64748b;
+  /* Espaço entre checkbox e texto */
+  gap: 8px;
 
-    font-size: 13px;
+  /* Margens */
+  margin: 2px 0 18px 0;
 
-    cursor: pointer;
+  /* Cor do texto */
+  color: #64748b;
+
+  /* Tamanho */
+  font-size: 13px;
 }
 
+
+/* Checkbox dos termos */
 .terms input {
-    width: 15px;
-    height: 15px;
 
-    accent-color: #2563eb;
+  /* Largura do checkbox */
+  width: 15px;
 
-    cursor: pointer;
+  /* Altura do checkbox */
+  height: 15px;
+
+  /* Define a cor azul do checkbox */
+  accent-color: #2563eb;
 }
 
 
-/* LINK TERMOS DE USO */
-
+/* Link/botão "termos de uso" */
 .terms-link {
-    border: none;
 
-    padding: 0;
+  /* Remove espaçamento */
+  padding: 0;
 
-    background: transparent;
+  /* Remove a borda */
+  border: none;
 
-    color: #2563eb;
+  /* Remove o fundo padrão do botão */
+  background: none;
 
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: 700;
+  /* Cor azul */
+  color: #2563eb;
 
-    text-decoration: none;
+  /* Mantém a mesma fonte */
+  font-family: inherit;
 
-    cursor: pointer;
-}
+  /* Tamanho da fonte */
+  font-size: 13px;
 
-.terms-link:hover {
-    text-decoration: underline;
-}
+  /* Texto mais grosso */
+  font-weight: 800;
 
-
-/* ==================== MODAL TERMOS ==================== */
-
-.terms-overlay {
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 9999;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-
-    background: rgba(15, 23, 42, 0.55);
-
-    backdrop-filter: blur(3px);
+  /* Mostra o cursor de clique */
+  cursor: pointer;
 }
 
 
-/* CAIXA DO MODAL */
+/* =========================================================
+   MENSAGEM DE ERRO
+   ========================================================= */
 
-.terms-modal {
-    position: relative;
-
-    width: 100%;
-    max-width: 600px;
-
-    max-height: 85vh;
-
-    padding: 32px;
-
-    overflow-y: auto;
-
-    border-radius: 12px;
-
-    background: #ffffff;
-
-    box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.2);
-
-    animation: termsModalOpen 0.2s ease;
-}
-
-
-/* ANIMAÇÃO */
-
-@keyframes termsModalOpen {
-    from {
-        opacity: 0;
-        transform: translateY(-10px) scale(0.98);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-
-/* TÍTULO */
-
-.terms-modal h2 {
-    margin-bottom: 18px;
-
-    color: #1e293b;
-
-    font-size: 28px;
-    font-weight: 800;
-}
-
-
-/* SUBTÍTULOS */
-
-.terms-modal h3 {
-    margin-top: 20px;
-    margin-bottom: 7px;
-
-    color: #1e293b;
-
-    font-size: 16px;
-    font-weight: 800;
-}
-
-
-/* TEXTOS */
-
-.terms-modal p {
-    margin-bottom: 12px;
-
-    color: #64748b;
-
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-
-/* BOTÃO X */
-
-.terms-close {
-    position: absolute;
-
-    top: 15px;
-    right: 18px;
-
-    width: 32px;
-    height: 32px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: none;
-    border-radius: 50%;
-
-    background: transparent;
-
-    color: #64748b;
-
-    font-size: 25px;
-    line-height: 1;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-.terms-close:hover {
-    background: #f1f5f9;
-
-    color: #1e293b;
-}
-
-
-/* BOTÃO ENTENDI */
-
-.terms-ok {
-    width: 100%;
-
-    height: 45px;
-
-    margin-top: 15px;
-
-    border: none;
-
-    border-radius: 8px;
-
-    background: #2563eb;
-
-    color: #ffffff;
-
-    font-family: inherit;
-
-    font-size: 14px;
-
-    font-weight: 800;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-.terms-ok:hover {
-    background: #1d4ed8;
-
-    transform: translateY(-1px);
-}
-
-
-/* ==================== ERRO ==================== */
-
+/* Caixa exibida quando existe um erro */
 .form-error {
-    margin-bottom: 15px;
 
-    padding: 10px 12px;
+  /* Ocupa toda a largura */
+  width: 100%;
 
-    border-radius: 7px;
+  /* Espaçamento inferior */
+  margin-bottom: 16px;
 
-    background: #fef2f2;
+  /* Espaçamento interno */
+  padding: 11px 13px;
 
-    color: #dc2626;
+  /* Borda vermelha clara */
+  border: 1px solid #fecaca;
 
-    font-size: 13px;
+  /* Cantos arredondados */
+  border-radius: 8px;
+
+  /* Fundo vermelho muito claro */
+  background: #fef2f2;
+
+  /* Texto vermelho */
+  color: #dc2626;
+
+  /* Texto em negrito */
+  font-size: 13px;
+  font-weight: 700;
 }
 
 
-/* ==================== BOTÃO ==================== */
+/* =========================================================
+   BOTÃO DE CADASTRO
+   ========================================================= */
 
+/* Botão "Criar conta" */
 .register-button {
-    width: 100%;
 
-    height: 48px;
+  /* Faz o botão ocupar uma linha */
+  display: block;
 
-    border: none;
+  /* Ocupa toda a largura */
+  width: 100%;
 
-    border-radius: 8px;
+  /* Altura */
+  height: 48px;
 
-    background: #2563eb;
+  /* Remove a borda padrão */
+  border: none;
 
-    color: white;
+  /* Arredonda os cantos */
+  border-radius: 8px;
 
-    font-family: inherit;
+  /* Fundo azul */
+  background: #2563eb;
 
-    font-size: 15px;
+  /* Texto branco */
+  color: #fff;
 
-    font-weight: 800;
+  /* Usa a fonte principal */
+  font-family: inherit;
 
-    cursor: pointer;
+  /* Tamanho */
+  font-size: 14px;
 
-    transition: 0.2s;
+  /* Deixa o texto destacado */
+  font-weight: 800;
+
+  /* Mostra que o botão é clicável */
+  cursor: pointer;
 }
 
+
+/* Quando o mouse passa sobre o botão */
 .register-button:hover {
-    background: #1d4ed8;
 
-    transform: translateY(-1px);
+  /* Escurece um pouco o azul */
+  background: #1d4ed8;
 }
 
+
+/* Quando o botão está desabilitado */
 .register-button:disabled {
-    cursor: not-allowed;
 
-    opacity: 0.7;
+  /* Deixa o botão mais transparente */
+  opacity: 0.7;
+
+  /* Indica que não pode ser clicado */
+  cursor: not-allowed;
 }
 
 
-/* ==================== LOGIN ==================== */
+/* =========================================================
+   LINK PARA LOGIN
+   ========================================================= */
 
+/* Área abaixo do formulário */
 .login {
-    margin-top: 22px;
 
-    text-align: center;
+  /* Espaço acima */
+  margin-top: 22px;
 
-    font-size: 14px;
-
-    color: #64748b;
+  /* Centraliza o conteúdo */
+  text-align: center;
 }
 
+
+/* Texto "Já possui uma conta?" */
 .login p {
-    display: inline;
+
+  /* Mantém o texto na mesma linha */
+  display: inline;
+
+  /* Remove margem */
+  margin: 0;
+
+  /* Cor cinza */
+  color: #64748b;
+
+  /* Tamanho */
+  font-size: 13px;
 }
 
+
+/* Link "Entrar" */
 .login a {
-    margin-left: 5px;
 
-    color: #2563eb;
+  /* Cria pequeno espaço entre os textos */
+  margin-left: 5px;
 
-    text-decoration: none;
+  /* Azul */
+  color: #2563eb;
 
-    font-weight: 700;
+  /* Tamanho */
+  font-size: 13px;
+
+  /* Texto em negrito */
+  font-weight: 800;
+
+  /* Remove o sublinhado padrão */
+  text-decoration: none;
 }
 
+
+/* Quando o mouse passa sobre "Entrar" */
 .login a:hover {
-    text-decoration: underline;
+
+  /* Adiciona sublinhado */
+  text-decoration: underline;
 }
 
 
-/* ==================== TABLET ==================== */
+/* =========================================================
+   FUNDO DO MODAL
+   ========================================================= */
 
+/* Fundo escuro que aparece atrás dos termos */
+.terms-overlay {
+
+  /* Fica fixo em relação à tela */
+  position: fixed;
+
+  /* Define distância zero em todos os lados */
+  inset: 0;
+
+  /* Coloca o modal acima do restante da página */
+  z-index: 10;
+
+  /* Ativa Flexbox */
+  display: flex;
+
+  /* Centraliza verticalmente */
+  align-items: center;
+
+  /* Centraliza horizontalmente */
+  justify-content: center;
+
+  /* Espaçamento interno */
+  padding: 20px;
+
+  /* Fundo escuro transparente */
+  background: rgba(15, 23, 42, 0.5);
+}
+
+
+/* =========================================================
+   JANELA DOS TERMOS
+   ========================================================= */
+
+/* Caixa branca onde aparecem os termos */
+.terms-modal {
+
+  /* Serve como referência para o botão de fechar */
+  position: relative;
+
+  /* Ocupa toda a largura disponível até o limite */
+  width: 100%;
+
+  /* Largura máxima */
+  max-width: 500px;
+
+  /* Altura máxima de 80% da tela */
+  max-height: 80vh;
+
+  /* Espaçamento interno */
+  padding: 30px;
+
+  /* Cria rolagem caso o texto seja muito grande */
+  overflow-y: auto;
+
+  /* Arredonda os cantos */
+  border-radius: 12px;
+
+  /* Fundo branco */
+  background: #fff;
+}
+
+
+/* Botão "X" para fechar o modal */
+.terms-close {
+
+  /* Permite posicioná-lo no canto */
+  position: absolute;
+
+  /* Distância do topo */
+  top: 12px;
+
+  /* Distância da direita */
+  right: 16px;
+
+  /* Remove borda */
+  border: none;
+
+  /* Remove fundo */
+  background: none;
+
+  /* Cor cinza */
+  color: #64748b;
+
+  /* Tamanho do X */
+  font-size: 25px;
+
+  /* Mostra que é clicável */
+  cursor: pointer;
+}
+
+
+/* Título do modal */
+.terms-modal h2 {
+
+  /* Margem inferior */
+  margin: 0 0 20px 0;
+
+  /* Cor */
+  color: #1e293b;
+
+  /* Tamanho */
+  font-size: 25px;
+}
+
+
+/* Subtítulos dos termos */
+.terms-modal h3 {
+
+  /* Espaçamento superior e inferior */
+  margin: 20px 0 8px 0;
+
+  /* Cor escura */
+  color: #1e293b;
+
+  /* Tamanho */
+  font-size: 15px;
+}
+
+
+/* Texto dos termos */
+.terms-modal p {
+
+  /* Remove margem padrão */
+  margin: 0;
+
+  /* Cor cinza */
+  color: #64748b;
+
+  /* Tamanho */
+  font-size: 14px;
+
+  /* Espaçamento entre linhas */
+  line-height: 1.6;
+}
+
+
+/* Botão "Entendi" */
+.terms-ok {
+
+  /* Ocupa toda a largura */
+  width: 100%;
+
+  /* Altura */
+  height: 45px;
+
+  /* Espaçamento acima */
+  margin-top: 25px;
+
+  /* Remove borda */
+  border: none;
+
+  /* Arredonda os cantos */
+  border-radius: 8px;
+
+  /* Fundo azul */
+  background: #2563eb;
+
+  /* Texto branco */
+  color: #fff;
+
+  /* Fonte */
+  font-family: inherit;
+
+  /* Tamanho */
+  font-size: 14px;
+
+  /* Negrito */
+  font-weight: 800;
+
+  /* Cursor de clique */
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE — ATÉ 1000px
+   ========================================================= */
+
+/* Essas regras são aplicadas quando a tela
+   possui no máximo 1000px de largura */
 @media (max-width: 1000px) {
 
-    .register-banner {
-        width: 38%;
-    }
+  /* Mantém a logo com 40px do topo */
+  .logo {
+    top: 40px;
+  }
 
-    .register-form-container {
-        width: 62%;
-    }
+  /* Ajusta a posição do texto */
+  .banner-text {
+    top: 46%;
+    width: 85%;
+  }
 
-    .banner-text h2 {
-        font-size: 32px;
-    }
+  /* Diminui o tamanho do título */
+  .banner-text h2 {
+    font-size: 32px;
+  }
 
-    .register-form {
-        width: 82%;
-    }
+  /* Diminui o espaçamento interno do formulário */
+  .register-form-container {
+    padding: 35px;
+  }
 }
 
 
-/* ==================== MOBILE ==================== */
+/* =========================================================
+   RESPONSIVIDADE — ATÉ 800px
+   ========================================================= */
 
-@media (max-width: 750px) {
+/* Aplicado em telas menores, como tablets e celulares */
+@media (max-width: 800px) {
 
-    .register-container {
-        display: block;
-    }
+  /* Faz o container principal deixar de ser
+     lado a lado */
+  .register-container {
+    display: block;
+  }
 
-    .register-banner {
-        display: none;
-    }
+  /* Esconde o banner com a imagem */
+  .register-banner {
+    display: none;
+  }
 
-    .register-form-container {
-        width: 100%;
+  /* O formulário passa a ocupar toda a tela */
+  .register-form-container {
+    width: 100%;
+    height: 100vh;
 
-        min-height: 100vh;
+    /* Espaçamento interno */
+    padding: 30px 25px;
+  }
 
-        padding: 35px 0;
-    }
+  /* Limita o formulário para não ficar
+     excessivamente largo */
+  .register-form {
+    max-width: 430px;
+  }
 
-    .register-form {
-        width: 85%;
+  /* Mostra a logo que estava escondida */
+  .mobile-logo {
+    display: block;
 
-        max-width: 500px;
-    }
+    /* Espaçamento abaixo da logo */
+    margin-bottom: 45px;
+  }
 
-    .mobile-logo {
-        display: flex;
+  /* Estilo da logo na versão mobile */
+  .mobile-logo h1 {
+    margin: 0;
+    color: #2563eb;
+    font-size: 28px;
+    font-weight: 900;
+  }
 
-        justify-content: center;
-
-        align-items: center;
-
-        margin-bottom: 35px;
-
-        color: #2563eb;
-    }
-
-    .form-header h2 {
-        font-size: 28px;
-    }
-
-    .input-row {
-        grid-template-columns: 1fr;
-
-        gap: 0;
-    }
-
-    /* MODAL NO CELULAR */
-
-    .terms-overlay {
-        padding: 15px;
-    }
-
-    .terms-modal {
-        max-height: 90vh;
-
-        padding: 25px 20px;
-    }
-
-    .terms-modal h2 {
-        font-size: 24px;
-
-        padding-right: 30px;
-    }
-
-    .terms-modal h3 {
-        font-size: 15px;
-    }
-
-    .terms-modal p {
-        font-size: 13px;
-    }
+  /* Os campos que antes estavam lado a lado
+     passam a ficar um embaixo do outro */
+  .input-row {
+    display: block;
+  }
 }
 
 
-/* ==================== CELULAR ==================== */
+/* =========================================================
+   RESPONSIVIDADE — ATÉ 450px
+   ========================================================= */
 
+/* Aplicado em celulares menores */
 @media (max-width: 450px) {
 
-    .register-form-container {
-        padding: 25px 0;
-    }
+  /* Diminui o espaçamento lateral */
+  .register-form-container {
+    padding: 25px 20px;
+  }
 
-    .register-form {
-        width: 88%;
-    }
+  /* Diminui o espaço abaixo da logo */
+  .mobile-logo {
+    margin-bottom: 35px;
+  }
 
-    .form-header {
-        margin-bottom: 24px;
-    }
-
-    .form-header h2 {
-        font-size: 25px;
-    }
-
-    .input-group {
-        margin-bottom: 15px;
-    }
-
-    .terms-modal {
-        padding: 22px 18px;
-    }
-
-    .terms-modal h2 {
-        font-size: 22px;
-    }
+  /* Diminui o título */
+  .form-header h2 {
+    font-size: 27px;
+  }
 }
+

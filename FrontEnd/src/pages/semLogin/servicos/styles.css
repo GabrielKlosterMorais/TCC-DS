@@ -1,653 +1,1248 @@
 /* =========================
    RESET
-========================= */
+   ========================= */
 
+/* Aplica essas configurações em todos os elementos da página */
 * {
+  /* Remove a margem padrão dos elementos */
   margin: 0;
+
+  /* Remove o espaçamento interno padrão */
   padding: 0;
+
+  /* Faz o tamanho do elemento incluir padding e borda */
   box-sizing: border-box;
 }
 
+
+/* Configurações gerais da página de serviços */
 .services-page {
+  /* Faz a página ocupar pelo menos toda a altura da tela */
   min-height: 100vh;
+
+  /* Cor de fundo da página */
   background: #f8fafc;
+
+  /* Cor padrão dos textos */
   color: #111827;
+
+  /* Fonte utilizada na página */
   font-family: "Nunito", sans-serif;
 }
 
 
 /* =========================
    HERO
-========================= */
+   ========================= */
 
+/* Área principal do topo da página */
 .services-hero {
+  /* Espaçamento interno:
+     75px em cima,
+     30px nas laterais,
+     65px embaixo */
   padding: 75px 30px 65px;
+
+  /* Cor de fundo */
   background: #f8fafc;
 }
 
+
+/* Limita e centraliza o conteúdo do Hero */
 .services-hero-content {
+  /* Impede que o conteúdo fique muito largo */
   max-width: 1100px;
+
+  /* Centraliza horizontalmente */
   margin: 0 auto;
 }
 
+
+/* Texto pequeno "NOSSOS SERVIÇOS" */
 .section-label {
+  /* Faz o span ocupar sua própria linha */
   display: block;
+
+  /* Espaço abaixo do texto */
   margin-bottom: 12px;
+
+  /* Cor azul */
   color: #2563eb;
+
+  /* Tamanho da fonte */
   font-size: 12px;
+
+  /* Deixa o texto em negrito */
   font-weight: 800;
+
+  /* Espaçamento entre as letras */
   letter-spacing: 2px;
 }
 
+
+/* Título principal do Hero */
 .services-hero h2 {
+  /* Limita a largura do título */
   max-width: 700px;
+
+  /* Remove a margem padrão */
   margin: 0;
+
+  /* Tamanho do título */
   font-size: 46px;
+
+  /* Espaçamento entre as linhas */
   line-height: 1.1;
+
+  /* Deixa o título mais forte */
   font-weight: 800;
+
+  /* Cor do texto */
   color: #111827;
 }
 
+
+/* Span que fica dentro do título */
 .services-hero h2 span {
+  /* Faz o span começar em uma nova linha */
   display: block;
+
+  /* Deixa essa parte do título azul */
   color: #2563eb;
 }
 
+
+/* Parágrafo do Hero */
 .services-hero p {
+  /* Limita a largura do texto */
   max-width: 650px;
+
+  /* Cria espaço entre o título e o parágrafo */
   margin-top: 20px;
+
+  /* Cor cinza */
   color: #64748b;
+
+  /* Tamanho da fonte */
   font-size: 16px;
+
+  /* Espaçamento entre as linhas */
   line-height: 1.7;
 }
 
 
 /* =========================
    SERVICES SECTION
-========================= */
+   ========================= */
 
+/* Seção onde ficam os serviços */
 .services-section {
+  /* Limita a largura da seção */
   max-width: 1100px;
+
+  /* Centraliza a seção */
   margin: 0 auto;
+
+  /* Espaçamento interno */
   padding: 30px 30px 80px;
 }
 
+
+/* Cabeçalho da seção de serviços */
 .services-header {
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Coloca os elementos nas extremidades */
   justify-content: space-between;
+
+  /* Alinha os elementos pela parte inferior */
   align-items: flex-end;
+
+  /* Espaço entre os elementos */
   gap: 40px;
+
+  /* Espaço abaixo do cabeçalho */
   margin-bottom: 35px;
 }
 
+
+/* Título da seção de serviços */
 .services-header h2 {
+  /* Pequeno espaço acima */
   margin-top: 5px;
+
+  /* Tamanho da fonte */
   font-size: 32px;
+
+  /* Negrito */
   font-weight: 800;
+
+  /* Cor do texto */
   color: #111827;
 }
 
+
+/* Parágrafo do cabeçalho */
 .services-header > p {
+  /* Limita a largura do parágrafo */
   max-width: 430px;
+
+  /* Cor cinza */
   color: #64748b;
+
+  /* Tamanho da fonte */
   font-size: 14px;
+
+  /* Espaçamento entre linhas */
   line-height: 1.6;
 }
 
 
 /* =========================
    SERVICES GRID
-========================= */
+   ========================= */
 
+/* Grade que contém os cards dos serviços */
 .services-grid {
+  /* Ativa o CSS Grid */
   display: grid;
+
+  /* Cria duas colunas com o mesmo tamanho */
   grid-template-columns: repeat(2, 1fr);
+
+  /* Espaço entre os cards */
   gap: 25px;
 }
 
 
 /* =========================
    SERVICE CARD
-========================= */
+   ========================= */
 
+/* Card individual de cada serviço */
 .service-card {
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Organiza os elementos verticalmente */
   flex-direction: column;
+
+  /* Esconde qualquer conteúdo que ultrapasse o card */
   overflow: hidden;
+
+  /* Fundo branco */
   background: white;
+
+  /* Borda do card */
   border: 1px solid #e2e8f0;
+
+  /* Arredonda os cantos */
   border-radius: 14px;
+
+  /* Cria uma sombra leve */
   box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
+
+  /* Faz as alterações visuais acontecerem suavemente */
   transition: 0.2s;
 }
 
+
+/* Efeito quando o mouse passa sobre o card */
 .service-card:hover {
+  /* Move o card 3px para cima */
   transform: translateY(-3px);
+
+  /* Muda a cor da borda */
   border-color: #cbd5e1;
+
+  /* Aumenta a sombra */
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
 }
 
 
 /* =========================
    SERVICE IMAGE
-========================= */
+   ========================= */
 
+/* Área que contém a imagem do serviço */
 .service-image {
+  /* Permite posicionar elementos sobre a imagem */
   position: relative;
+
+  /* Ocupa toda a largura do card */
   width: 100%;
+
+  /* Define a altura da imagem */
   height: 220px;
+
+  /* Esconde partes da imagem que ultrapassarem a área */
   overflow: hidden;
 }
 
+
+/* Imagem dentro do card */
 .service-image img {
+  /* Ocupa toda a largura */
   width: 100%;
+
+  /* Ocupa toda a altura */
   height: 100%;
+
+  /* Faz a imagem preencher o espaço sem deformar */
   object-fit: cover;
+
+  /* Remove alguns espaços indesejados da imagem */
   display: block;
 }
 
+
+/* Etiqueta "SERVIÇO" que aparece sobre a imagem */
 .service-category {
+  /* Permite posicionar a etiqueta sobre a imagem */
   position: absolute;
+
+  /* Distância do topo */
   top: 18px;
+
+  /* Distância da esquerda */
   left: 18px;
+
+  /* Espaçamento interno da etiqueta */
   padding: 11px 14px;
+
+  /* Arredonda os cantos */
   border-radius: 7px;
+
+  /* Fundo branco */
   background: white;
+
+  /* Texto azul */
   color: #2563eb;
+
+  /* Tamanho da fonte */
   font-size: 11px;
+
+  /* Deixa o texto em negrito */
   font-weight: 800;
+
+  /* Espaçamento entre as letras */
   letter-spacing: 1px;
 }
 
 
 /* =========================
    SERVICE CONTENT
-========================= */
+   ========================= */
 
+/* Área com as informações do serviço */
 .service-content {
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Organiza os elementos verticalmente */
   flex-direction: column;
+
+  /* Permite que o conteúdo ocupe o espaço disponível */
   flex: 1;
+
+  /* Espaçamento interno */
   padding: 28px;
 }
 
+
+/* Nome do serviço */
 .service-content h3 {
+  /* Espaço abaixo do nome */
   margin-bottom: 8px;
+
+  /* Cor do texto */
   color: #111827;
+
+  /* Tamanho da fonte */
   font-size: 25px;
+
+  /* Negrito */
   font-weight: 800;
 }
 
+
+/* Descrição do serviço */
 .service-content > p {
+  /* Define uma altura mínima para ajudar a alinhar os cards */
   min-height: 45px;
+
+  /* Cor cinza */
   color: #64748b;
+
+  /* Tamanho da fonte */
   font-size: 14px;
+
+  /* Espaçamento entre linhas */
   line-height: 1.6;
 }
 
 
 /* =========================
    SERVICE INFO
-========================= */
+   ========================= */
 
+/* Área que mostra duração e preço */
 .service-info {
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Coloca duração de um lado e preço do outro */
   justify-content: space-between;
+
+  /* Alinha os elementos pela parte inferior */
   align-items: flex-end;
+
+  /* Espaço entre os elementos */
   gap: 20px;
 
+  /* Espaço acima */
   margin-top: 25px;
+
+  /* Espaço interno acima da borda */
   padding-top: 18px;
 
+  /* Cria uma linha separando as informações */
   border-top: 1px solid #e2e8f0;
 }
 
+
+/* Textos "DURAÇÃO" e "A PARTIR DE" */
 .service-info span {
+  /* Organiza o conteúdo em coluna */
   display: flex;
+
+  /* Coloca os elementos verticalmente */
   flex-direction: column;
+
+  /* Espaço entre os elementos */
   gap: 5px;
 
+  /* Cor cinza */
   color: #64748b;
+
+  /* Tamanho pequeno */
   font-size: 11px;
+
+  /* Deixa o texto em negrito */
   font-weight: 700;
+
+  /* Transforma o texto em letras maiúsculas */
   text-transform: uppercase;
+
+  /* Pequeno espaçamento entre letras */
   letter-spacing: 0.5px;
 }
 
+
+/* Valores de duração e preço */
 .service-info strong {
+  /* Cor azul */
   color: #2563eb;
+
+  /* Tamanho do texto */
   font-size: 21px;
+
+  /* Deixa o texto em negrito */
   font-weight: 800;
 }
 
 
 /* =========================
    SERVICE BUTTON
-========================= */
+   ========================= */
 
+/* Botão "Agendar serviço" */
 .service-button {
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Alinha verticalmente */
   align-items: center;
+
+  /* Coloca o texto de um lado e a seta do outro */
   justify-content: space-between;
 
+  /* Ocupa toda a largura disponível */
   width: 100%;
+
+  /* Espaço acima do botão */
   margin-top: 25px;
+
+  /* Espaçamento interno */
   padding: 14px 17px;
 
+  /* Remove a borda padrão */
   border: none;
+
+  /* Arredonda os cantos */
   border-radius: 8px;
 
+  /* Fundo azul */
   background: #2563eb;
 
-  /* IMPORTANTE */
+  /* Texto branco */
   color: #ffffff !important;
 
+  /* Remove o sublinhado do link */
   text-decoration: none;
 
+  /* Usa a mesma fonte da página */
   font-family: inherit;
+
+  /* Tamanho do texto */
   font-size: 14px;
+
+  /* Deixa o texto em negrito */
   font-weight: 800;
 
+  /* Mostra a mãozinha ao passar o mouse */
   cursor: pointer;
 
+  /* Suaviza as mudanças */
   transition: 0.2s;
 }
 
-/* Garante que qualquer texto/span dentro do botão fique branco */
+
+/* Garante que o botão continue branco em todos os estados */
 .service-button,
 .service-button:visited,
 .service-button:hover,
 .service-button:active,
 .service-button:focus {
+  /* Mantém o texto branco */
   color: #ffffff !important;
+
+  /* Remove o sublinhado */
   text-decoration: none;
 }
 
+
+/* Seta dentro do botão */
 .service-button span {
+  /* Mantém a seta branca */
   color: #ffffff !important;
+
+  /* Tamanho da seta */
   font-size: 20px;
+
+  /* Ajusta a altura da linha */
   line-height: 1;
 }
 
+
+/* Efeito quando o mouse passa no botão */
 .service-button:hover {
+  /* Deixa o azul um pouco mais escuro */
   background: #1d4ed8;
+
+  /* Move o botão 1px para cima */
   transform: translateY(-1px);
 }
 
 
 /* =========================
    BOOKING INFO
-========================= */
+   ========================= */
 
+/* Seção que explica como fazer um agendamento */
 .booking-info {
+  /* Limita a largura */
   max-width: 1100px;
+
+  /* Centraliza e cria espaço abaixo */
   margin: 0 auto 80px;
+
+  /* Espaçamento lateral */
   padding: 0 30px;
 
+  /* Ativa o CSS Grid */
   display: grid;
+
+  /* Cria duas colunas */
   grid-template-columns: 1fr 1fr;
+
+  /* Espaço entre imagem e conteúdo */
   gap: 50px;
+
+  /* Alinha os elementos verticalmente */
   align-items: center;
 }
 
+
+/* Área da imagem da seção de agendamento */
 .booking-info-image {
+  /* Ocupa toda a largura disponível */
   width: 100%;
+
+  /* Altura da imagem */
   height: 500px;
+
+  /* Esconde o que ultrapassar a área */
   overflow: hidden;
+
+  /* Arredonda os cantos */
   border-radius: 14px;
 }
 
+
+/* Imagem da seção de agendamento */
 .booking-info-image img {
+  /* Ocupa toda a largura */
   width: 100%;
+
+  /* Ocupa toda a altura */
   height: 100%;
+
+  /* Preenche o espaço sem deformar */
   object-fit: cover;
+
+  /* Remove espaços indesejados */
   display: block;
 }
 
+
+/* Título da seção de agendamento */
 .booking-info-content h2 {
+  /* Pequeno espaço acima */
   margin-top: 5px;
+
+  /* Cor do texto */
   color: #111827;
+
+  /* Tamanho do título */
   font-size: 36px;
+
+  /* Espaçamento entre linhas */
   line-height: 1.15;
+
+  /* Negrito */
   font-weight: 800;
 }
 
+
+/* Parte azul do título */
 .booking-info-content h2 span {
+  /* Coloca o span em uma nova linha */
   display: block;
+
+  /* Cor azul */
   color: #2563eb;
 }
 
+
+/* Parágrafo da seção */
 .booking-info-content > p {
+  /* Espaço acima */
   margin-top: 18px;
+
+  /* Cor cinza */
   color: #64748b;
+
+  /* Tamanho da fonte */
   font-size: 15px;
+
+  /* Espaçamento entre linhas */
   line-height: 1.7;
 }
 
 
 /* =========================
    BOOKING STEPS
-========================= */
+   ========================= */
 
+/* Área que contém os passos do agendamento */
 .booking-steps {
+  /* Espaço acima dos passos */
   margin-top: 30px;
 }
 
+
+/* Cada passo individual */
 .booking-step {
+  /* Ativa o Flexbox */
   display: flex;
+
+  /* Alinha os elementos pelo topo */
   align-items: flex-start;
+
+  /* Espaço entre número e texto */
   gap: 18px;
 
+  /* Espaçamento interno */
   padding: 18px 0;
 
+  /* Linha na parte superior */
   border-top: 1px solid #e2e8f0;
 }
 
+
+/* Adiciona uma linha na parte inferior do último passo */
 .booking-step:last-child {
   border-bottom: 1px solid #e2e8f0;
 }
 
+
+/* Número do passo: 01, 02, 03 */
 .booking-step > strong {
+  /* Cor azul */
   color: #2563eb;
+
+  /* Tamanho da fonte */
   font-size: 13px;
+
+  /* Negrito */
   font-weight: 800;
 }
 
+
+/* Título de cada passo */
 .booking-step h3 {
+  /* Espaço abaixo */
   margin-bottom: 4px;
+
+  /* Cor do texto */
   color: #111827;
+
+  /* Tamanho da fonte */
   font-size: 15px;
+
+  /* Negrito */
   font-weight: 800;
 }
 
+
+/* Descrição de cada passo */
 .booking-step p {
+  /* Cor cinza */
   color: #64748b;
+
+  /* Tamanho pequeno */
   font-size: 13px;
 }
 
 
 /* =========================
    CTA
-========================= */
+   ========================= */
 
+/* Seção azul de chamada para ação */
 .services-cta {
+  /* Limita a largura */
   max-width: 1100px;
+
+  /* Centraliza e cria espaço abaixo */
   margin: 0 auto 80px;
+
+  /* Espaçamento interno */
   padding: 45px 50px;
 
+  /* Ativa Flexbox */
   display: flex;
+
+  /* Coloca texto e botão nas extremidades */
   justify-content: space-between;
+
+  /* Alinha verticalmente */
   align-items: center;
+
+  /* Espaço entre os elementos */
   gap: 30px;
 
+  /* Fundo azul */
   background: #2563eb;
+
+  /* Arredonda os cantos */
   border-radius: 14px;
 }
 
+
+/* Texto pequeno dentro do CTA */
 .services-cta > div > span {
+  /* Cor azul clara */
   color: #dbeafe;
+
+  /* Tamanho pequeno */
   font-size: 11px;
+
+  /* Negrito */
   font-weight: 800;
+
+  /* Espaçamento entre letras */
   letter-spacing: 2px;
 }
 
+
+/* Título do CTA */
 .services-cta h2 {
+  /* Espaço acima */
   margin-top: 8px;
+
+  /* Texto branco */
   color: white;
+
+  /* Tamanho do título */
   font-size: 30px;
+
+  /* Negrito */
   font-weight: 800;
 }
 
+
+/* Parágrafo do CTA */
 .services-cta p {
+  /* Espaço acima */
   margin-top: 8px;
+
+  /* Cor azul clara */
   color: #dbeafe;
+
+  /* Tamanho da fonte */
   font-size: 14px;
 }
 
+
 /* =========================
    BOTÃO CTA DOS SERVIÇOS
-========================= */
+   ========================= */
 
+/* Botão "Criar minha conta" */
 .services-cta-button {
+  /* Faz o botão funcionar como um Flexbox */
   display: inline-flex !important;
+
+  /* Centraliza verticalmente */
   align-items: center !important;
+
+  /* Centraliza horizontalmente */
   justify-content: center !important;
+
+  /* Espaço entre texto e seta */
   gap: 15px !important;
 
+  /* Largura se adapta ao conteúdo */
   width: fit-content !important;
+
+  /* Remove uma largura mínima */
   min-width: 0 !important;
+
+  /* Altura automática */
   height: auto !important;
 
+  /* Espaçamento interno */
   padding: 14px 20px !important;
 
+  /* Fundo branco */
   background: #ffffff !important;
+
+  /* Texto azul */
   color: #2563eb !important;
 
+  /* Remove borda */
   border: none !important;
+
+  /* Arredonda os cantos */
   border-radius: 8px !important;
 
+  /* Fonte utilizada */
   font-family: "Nunito", sans-serif !important;
+
+  /* Tamanho do texto */
   font-size: 14px !important;
+
+  /* Negrito */
   font-weight: 800 !important;
 
+  /* Altura das linhas */
   line-height: 1.2 !important;
+
+  /* Remove sublinhado */
   text-decoration: none !important;
+
+  /* Impede quebra do texto */
   white-space: nowrap !important;
 
+  /* Mostra a mãozinha */
   cursor: pointer;
 
+  /* Suaviza o hover */
   transition: 0.2s ease;
 }
 
+
+/* Efeito quando passa o mouse no botão CTA */
 .services-cta-button:hover {
+  /* Fundo levemente azulado */
   background: #eff6ff !important;
+
+  /* Mantém o texto azul */
   color: #2563eb !important;
 
+  /* Move o botão levemente para cima */
   transform: translateY(-1px);
 }
 
+
+/* Texto "Criar minha conta" */
 .services-cta-text {
+  /* Mantém o texto na mesma linha */
   display: inline !important;
 
+  /* Cor azul */
   color: #2563eb !important;
 
+  /* Tamanho */
   font-size: 14px !important;
+
+  /* Negrito */
   font-weight: 800 !important;
 }
 
+
+/* Seta do botão CTA */
 .services-cta-arrow {
+  /* Mantém a seta na mesma linha */
   display: inline !important;
 
+  /* Cor azul */
   color: #2563eb !important;
 
+  /* Tamanho da seta */
   font-size: 18px !important;
+
+  /* Negrito */
   font-weight: 800 !important;
 
+  /* Altura da linha */
   line-height: 1 !important;
 }
 
 
 /* =========================
    FOOTER
-========================= */
+   ========================= */
 
+/* Rodapé da página */
 footer {
+  /* Linha separando o conteúdo do footer */
   border-top: 1px solid #e2e8f0;
+
+  /* Fundo branco */
   background: white;
 }
 
+
+/* Conteúdo principal do footer */
 .footer-content {
+  /* Limita a largura */
   max-width: 1100px;
+
+  /* Centraliza */
   margin: 0 auto;
+
+  /* Espaçamento interno */
   padding: 50px 30px;
 
+  /* Ativa CSS Grid */
   display: grid;
+
+  /* Cria quatro colunas */
   grid-template-columns: 2fr 1fr 1fr 1fr;
+
+  /* Espaço entre as colunas */
   gap: 40px;
 }
 
+
+/* Descrição da marca */
 .footer-brand p {
+  /* Espaço acima */
   margin-top: 12px;
+
+  /* Cor cinza */
   color: #64748b;
+
+  /* Tamanho */
   font-size: 14px;
 }
 
+
+/* Logo do footer */
 .footer-logo {
+  /* Ativa Flexbox */
   display: flex;
+
+  /* Alinha verticalmente */
   align-items: center;
+
+  /* Espaço entre ícone e nome */
   gap: 10px;
+
+  /* Remove sublinhado */
   text-decoration: none;
 }
 
+
+/* Nome PetCare no footer */
 .footer-logo h1 {
+  /* Cor */
   color: #111827;
+
+  /* Tamanho */
   font-size: 22px;
 }
 
+
+/* Ícone da logo */
 .logo-icon {
+  /* Largura */
   width: 38px;
+
+  /* Altura */
   height: 38px;
 
+  /* Ativa Flexbox */
   display: flex;
+
+  /* Centraliza verticalmente */
   align-items: center;
+
+  /* Centraliza horizontalmente */
   justify-content: center;
 
+  /* Arredonda os cantos */
   border-radius: 8px;
 
+  /* Fundo azul */
   background: #2563eb;
+
+  /* Cor do conteúdo */
   color: white;
 
+  /* Tamanho */
   font-size: 20px;
+
+  /* Negrito */
   font-weight: 800;
 }
 
+
+/* Cada coluna do footer */
 .footer-column {
+  /* Ativa Flexbox */
   display: flex;
+
+  /* Organiza os elementos verticalmente */
   flex-direction: column;
+
+  /* Espaço entre os elementos */
   gap: 10px;
 }
 
+
+/* Título das colunas */
 .footer-column strong {
+  /* Espaço abaixo */
   margin-bottom: 5px;
+
+  /* Cor */
   color: #111827;
+
+  /* Tamanho */
   font-size: 14px;
 }
 
+
+/* Links e textos das colunas */
 .footer-column a,
 .footer-column span {
+  /* Cor cinza */
   color: #64748b;
+
+  /* Tamanho */
   font-size: 13px;
+
+  /* Remove sublinhado dos links */
   text-decoration: none;
 }
 
+
+/* Efeito quando passa o mouse nos links */
 .footer-column a:hover {
+  /* Muda a cor para azul */
   color: #2563eb;
 }
 
+
+/* Parte inferior do footer */
 .footer-bottom {
+  /* Limita a largura */
   max-width: 1100px;
+
+  /* Centraliza */
   margin: 0 auto;
+
+  /* Espaçamento interno */
   padding: 20px 30px;
 
+  /* Ativa Flexbox */
   display: flex;
+
+  /* Coloca os elementos nas extremidades */
   justify-content: space-between;
 
+  /* Linha superior */
   border-top: 1px solid #e2e8f0;
 
+  /* Cor dos textos */
   color: #94a3b8;
+
+  /* Tamanho */
   font-size: 12px;
 }
 
 
 /* =========================
    RESPONSIVO
-========================= */
+   ========================= */
 
+/* Regras aplicadas quando a tela possui até 850px */
 @media (max-width: 850px) {
 
+  /* Os cards passam de duas colunas para uma */
   .services-grid {
     grid-template-columns: 1fr;
   }
 
+  /* O cabeçalho passa a ficar na vertical */
   .services-header {
     flex-direction: column;
+
+    /* Alinha os elementos à esquerda */
     align-items: flex-start;
   }
 
+  /* A seção de informações passa de duas colunas para uma */
   .booking-info {
     grid-template-columns: 1fr;
   }
 
+  /* Diminui a altura da imagem */
   .booking-info-image {
     height: 400px;
   }
 
+  /* Cria espaço nas laterais do CTA */
   .services-cta {
     margin-left: 30px;
     margin-right: 30px;
   }
 
+  /* Footer passa a ter duas colunas */
   .footer-content {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 
+/* =========================
+   CELULAR
+   ========================= */
+
+/* Regras aplicadas quando a tela possui até 600px */
 @media (max-width: 600px) {
 
+  /* Reduz o espaçamento do Hero */
   .services-hero {
     padding: 50px 20px;
   }
 
+  /* Diminui o tamanho do título */
   .services-hero h2 {
     font-size: 36px;
   }
 
+  /* Reduz o espaçamento da seção de serviços */
   .services-section {
     padding: 20px 20px 60px;
   }
 
+  /* Diminui a altura da imagem */
   .service-image {
     height: 200px;
   }
 
+  /* Reduz o espaçamento interno dos cards */
   .service-content {
     padding: 22px;
   }
 
+  /* Reduz o espaçamento lateral */
   .booking-info {
     padding: 0 20px;
   }
 
+  /* Diminui a imagem */
   .booking-info-image {
     height: 300px;
   }
 
+  /* Diminui o título da seção */
   .booking-info-content h2 {
     font-size: 30px;
   }
 
+  /* CTA ocupa uma área mais adequada para celular */
   .services-cta {
     margin-left: 20px;
     margin-right: 20px;
+
+    /* Diminui o espaçamento interno */
     padding: 30px;
+
+    /* Coloca o conteúdo um abaixo do outro */
     flex-direction: column;
+
+    /* Alinha os elementos à esquerda */
     align-items: flex-start;
   }
 
+  /* ATENÇÃO:
+     Aqui está .cta-button, mas no seu TSX
+     o botão usa .services-cta-button.
+     
+     Portanto, estas regras não afetam o botão
+     .services-cta-button. */
   .cta-button {
+    /* Faz o botão ocupar toda a largura */
     width: 100%;
+
+    /* Coloca o conteúdo nas extremidades */
     justify-content: space-between;
   }
 
+  /* Footer fica com apenas uma coluna */
   .footer-content {
     grid-template-columns: 1fr;
+
+    /* Reduz o espaçamento lateral */
     padding: 40px 20px;
   }
 
+  /* Parte inferior do footer */
   .footer-bottom {
+    /* Reduz o espaçamento */
     padding: 20px;
+
+    /* Coloca os elementos um abaixo do outro */
     flex-direction: column;
+
+    /* Cria espaço entre eles */
     gap: 8px;
   }
 }

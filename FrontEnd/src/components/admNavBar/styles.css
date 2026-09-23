@@ -1,45 +1,108 @@
+/* Barra principal de navegação do administrador */
 .admin-navbar {
+
+  /* Define a altura da barra */
   height: 70px;
+
+  /* Adiciona espaço nas laterais */
   padding: 0 40px;
+
+  /* Define o fundo branco */
   background: #fff;
+
+  /* Cria uma borda na parte inferior */
   border-bottom: 1px solid #e5e7eb;
+
+  /* Coloca os elementos lado a lado */
   display: flex;
+
+  /* Centraliza os elementos verticalmente */
   align-items: center;
+
+  /* Coloca o logo de um lado e os links do outro */
   justify-content: space-between;
+
 }
 
+/* Título "PetCare" dentro da navbar */
 .admin-navbar h1 {
+
+  /* Define a cor azul do título */
   color: #2563eb;
+
+  /* Define o tamanho da fonte */
   font-size: 22px;
+
 }
 
+/* Área que contém os links de navegação */
 .admin-nav-links {
+
+  /* Coloca os links lado a lado */
   display: flex;
+
+  /* Define o espaço entre cada link */
   gap: 28px;
+
 }
 
+/* Estilização dos links da navbar */
 .admin-nav-links a {
+
+  /* Define a cor dos links */
   color: #475569;
+
+  /* Remove o sublinhado padrão dos links */
   text-decoration: none;
+
+  /* Define o tamanho da fonte */
   font-size: 13px;
+
+  /* Deixa o texto um pouco mais destacado */
   font-weight: 600;
+
 }
 
+/* Estilo aplicado quando o mouse passa sobre um link */
 .admin-nav-links a:hover {
+
+  /* Muda a cor do link para azul */
   color: #2563eb;
+
 }
 
+/* Responsividade para telas menores */
 @media (max-width: 700px) {
+
+  /* Altera a navbar em telas pequenas */
   .admin-navbar {
+
+    /* Permite que a altura aumente conforme o conteúdo */
     height: auto;
+
+    /* Diminui o espaçamento nas laterais */
     padding: 20px;
+
+    /* Coloca o título e os links um abaixo do outro */
     flex-direction: column;
+
+    /* Define o espaço entre título e links */
     gap: 15px;
+
   }
 
+  /* Ajusta os links para telas pequenas */
   .admin-nav-links {
+
+    /* Permite que os links quebrem para outra linha */
     flex-wrap: wrap;
+
+    /* Centraliza os links */
     justify-content: center;
+
+    /* Diminui o espaço entre os links */
     gap: 15px;
+
   }
+
 }
